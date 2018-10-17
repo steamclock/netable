@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		B3329DE22177A6C1009BA29B /* SCNetworkAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = B3329DE02177A6C1009BA29B /* SCNetworkAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B3329DFF2177A7F1009BA29B /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3329DFE2177A7F1009BA29B /* NetworkAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B3329DDD2177A6C0009BA29B /* SCNetworkAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SCNetworkAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3329DE02177A6C1009BA29B /* SCNetworkAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCNetworkAPI.h; sourceTree = "<group>"; };
 		B3329DE12177A6C1009BA29B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3329DFE2177A7F1009BA29B /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,10 +48,19 @@
 		B3329DDF2177A6C1009BA29B /* SCNetworkAPI */ = {
 			isa = PBXGroup;
 			children = (
+				B3329DFD2177A7DE009BA29B /* Source */,
 				B3329DE02177A6C1009BA29B /* SCNetworkAPI.h */,
 				B3329DE12177A6C1009BA29B /* Info.plist */,
 			);
 			path = SCNetworkAPI;
+			sourceTree = "<group>";
+		};
+		B3329DFD2177A7DE009BA29B /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				B3329DFE2177A7F1009BA29B /* NetworkAPI.swift */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,6 +106,7 @@
 				TargetAttributes = {
 					B3329DDC2177A6C0009BA29B = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -130,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3329DFF2177A7F1009BA29B /* NetworkAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +274,7 @@
 		B3329DE62177A6C1009BA29B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -278,6 +292,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.steamclock.SCNetworkAPI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -286,6 +301,7 @@
 		B3329DE72177A6C1009BA29B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
