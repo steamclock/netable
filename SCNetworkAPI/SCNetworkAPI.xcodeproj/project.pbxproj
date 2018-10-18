@@ -7,58 +7,130 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B3329DE22177A6C1009BA29B /* SCNetworkAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = B3329DE02177A6C1009BA29B /* SCNetworkAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B3329DFF2177A7F1009BA29B /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3329DFE2177A7F1009BA29B /* NetworkAPI.swift */; };
+		4A09664EC1BB557BB60F9820 /* Pods_SCNetworkAPITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B6478AE3031BD6A60B78EDC /* Pods_SCNetworkAPITests.framework */; };
+		B3EDDDC02177B0E000420FF2 /* SCNetworkAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3EDDDB62177B0E000420FF2 /* SCNetworkAPI.framework */; };
+		B3EDDDC52177B0E000420FF2 /* SCNetworkAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EDDDC42177B0E000420FF2 /* SCNetworkAPITests.swift */; };
+		B3EDDDD22177B0F400420FF2 /* SCNetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EDDDD12177B0F400420FF2 /* SCNetworkAPI.swift */; };
+		B3EDDDDD217902C400420FF2 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EDDDDC217902C400420FF2 /* Request.swift */; };
+		B3EDDDDF217902E400420FF2 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EDDDDE217902E400420FF2 /* Notification.swift */; };
+		B3EDDDE12179030300420FF2 /* PaginatedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EDDDE02179030300420FF2 /* PaginatedResult.swift */; };
+		C357B4F7656489BDE28D2471 /* Pods_SCNetworkAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B620FB764ACCACC6F5FE178 /* Pods_SCNetworkAPI.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		B3EDDDC12177B0E000420FF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B3EDDDAD2177B0E000420FF2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B3EDDDB52177B0E000420FF2;
+			remoteInfo = SCNetworkAPI;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		B3329DDD2177A6C0009BA29B /* SCNetworkAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SCNetworkAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3329DE02177A6C1009BA29B /* SCNetworkAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCNetworkAPI.h; sourceTree = "<group>"; };
-		B3329DE12177A6C1009BA29B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B3329DFE2177A7F1009BA29B /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
+		1B620FB764ACCACC6F5FE178 /* Pods_SCNetworkAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCNetworkAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B6478AE3031BD6A60B78EDC /* Pods_SCNetworkAPITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCNetworkAPITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		765AD572F19520D66789C900 /* Pods-SCNetworkAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCNetworkAPI.release.xcconfig"; path = "Pods/Target Support Files/Pods-SCNetworkAPI/Pods-SCNetworkAPI.release.xcconfig"; sourceTree = "<group>"; };
+		8F161F1196D4CE88A3755992 /* Pods-SCNetworkAPITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCNetworkAPITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SCNetworkAPITests/Pods-SCNetworkAPITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A5C11D1E332862C7A6FF8D13 /* Pods-SCNetworkAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCNetworkAPI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SCNetworkAPI/Pods-SCNetworkAPI.debug.xcconfig"; sourceTree = "<group>"; };
+		B3EDDDB62177B0E000420FF2 /* SCNetworkAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SCNetworkAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3EDDDBA2177B0E000420FF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3EDDDBF2177B0E000420FF2 /* SCNetworkAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SCNetworkAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3EDDDC42177B0E000420FF2 /* SCNetworkAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNetworkAPITests.swift; sourceTree = "<group>"; };
+		B3EDDDC62177B0E000420FF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3EDDDD12177B0F400420FF2 /* SCNetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNetworkAPI.swift; sourceTree = "<group>"; };
+		B3EDDDDC217902C400420FF2 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		B3EDDDDE217902E400420FF2 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		B3EDDDE02179030300420FF2 /* PaginatedResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedResult.swift; sourceTree = "<group>"; };
+		FAB6400ADA1172F64D4FD59F /* Pods-SCNetworkAPITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCNetworkAPITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SCNetworkAPITests/Pods-SCNetworkAPITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B3329DDA2177A6C0009BA29B /* Frameworks */ = {
+		B3EDDDB32177B0E000420FF2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C357B4F7656489BDE28D2471 /* Pods_SCNetworkAPI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3EDDDBC2177B0E000420FF2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3EDDDC02177B0E000420FF2 /* SCNetworkAPI.framework in Frameworks */,
+				4A09664EC1BB557BB60F9820 /* Pods_SCNetworkAPITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B3329DD32177A6C0009BA29B = {
+		30A4E2EBB3317C3D247AA57E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B3329DDF2177A6C1009BA29B /* SCNetworkAPI */,
-				B3329DDE2177A6C1009BA29B /* Products */,
+				1B620FB764ACCACC6F5FE178 /* Pods_SCNetworkAPI.framework */,
+				3B6478AE3031BD6A60B78EDC /* Pods_SCNetworkAPITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8CDA075BD961C3545D5FB0EA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A5C11D1E332862C7A6FF8D13 /* Pods-SCNetworkAPI.debug.xcconfig */,
+				765AD572F19520D66789C900 /* Pods-SCNetworkAPI.release.xcconfig */,
+				8F161F1196D4CE88A3755992 /* Pods-SCNetworkAPITests.debug.xcconfig */,
+				FAB6400ADA1172F64D4FD59F /* Pods-SCNetworkAPITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B3EDDDAC2177B0E000420FF2 = {
+			isa = PBXGroup;
+			children = (
+				B3EDDDB82177B0E000420FF2 /* SCNetworkAPI */,
+				B3EDDDC32177B0E000420FF2 /* SCNetworkAPITests */,
+				B3EDDDB72177B0E000420FF2 /* Products */,
+				8CDA075BD961C3545D5FB0EA /* Pods */,
+				30A4E2EBB3317C3D247AA57E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		B3329DDE2177A6C1009BA29B /* Products */ = {
+		B3EDDDB72177B0E000420FF2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B3329DDD2177A6C0009BA29B /* SCNetworkAPI.framework */,
+				B3EDDDB62177B0E000420FF2 /* SCNetworkAPI.framework */,
+				B3EDDDBF2177B0E000420FF2 /* SCNetworkAPITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B3329DDF2177A6C1009BA29B /* SCNetworkAPI */ = {
+		B3EDDDB82177B0E000420FF2 /* SCNetworkAPI */ = {
 			isa = PBXGroup;
 			children = (
-				B3329DFD2177A7DE009BA29B /* Source */,
-				B3329DE02177A6C1009BA29B /* SCNetworkAPI.h */,
-				B3329DE12177A6C1009BA29B /* Info.plist */,
+				B3EDDDD02177B0E600420FF2 /* Source */,
+				B3EDDDBA2177B0E000420FF2 /* Info.plist */,
 			);
 			path = SCNetworkAPI;
 			sourceTree = "<group>";
 		};
-		B3329DFD2177A7DE009BA29B /* Source */ = {
+		B3EDDDC32177B0E000420FF2 /* SCNetworkAPITests */ = {
 			isa = PBXGroup;
 			children = (
-				B3329DFE2177A7F1009BA29B /* NetworkAPI.swift */,
+				B3EDDDC42177B0E000420FF2 /* SCNetworkAPITests.swift */,
+				B3EDDDC62177B0E000420FF2 /* Info.plist */,
+			);
+			path = SCNetworkAPITests;
+			sourceTree = "<group>";
+		};
+		B3EDDDD02177B0E600420FF2 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				B3EDDDDE217902E400420FF2 /* Notification.swift */,
+				B3EDDDE02179030300420FF2 /* PaginatedResult.swift */,
+				B3EDDDDC217902C400420FF2 /* Request.swift */,
+				B3EDDDD12177B0F400420FF2 /* SCNetworkAPI.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -66,25 +138,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		B3329DD82177A6C0009BA29B /* Headers */ = {
+		B3EDDDB12177B0E000420FF2 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3329DE22177A6C1009BA29B /* SCNetworkAPI.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		B3329DDC2177A6C0009BA29B /* SCNetworkAPI */ = {
+		B3EDDDB52177B0E000420FF2 /* SCNetworkAPI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B3329DE52177A6C1009BA29B /* Build configuration list for PBXNativeTarget "SCNetworkAPI" */;
+			buildConfigurationList = B3EDDDCA2177B0E000420FF2 /* Build configuration list for PBXNativeTarget "SCNetworkAPI" */;
 			buildPhases = (
-				B3329DD82177A6C0009BA29B /* Headers */,
-				B3329DD92177A6C0009BA29B /* Sources */,
-				B3329DDA2177A6C0009BA29B /* Frameworks */,
-				B3329DDB2177A6C0009BA29B /* Resources */,
+				5E6F9641E5DA2D7A4E586D3D /* [CP] Check Pods Manifest.lock */,
+				B3EDDDB12177B0E000420FF2 /* Headers */,
+				B3EDDDB22177B0E000420FF2 /* Sources */,
+				B3EDDDB32177B0E000420FF2 /* Frameworks */,
+				B3EDDDB42177B0E000420FF2 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -92,43 +164,75 @@
 			);
 			name = SCNetworkAPI;
 			productName = SCNetworkAPI;
-			productReference = B3329DDD2177A6C0009BA29B /* SCNetworkAPI.framework */;
+			productReference = B3EDDDB62177B0E000420FF2 /* SCNetworkAPI.framework */;
 			productType = "com.apple.product-type.framework";
+		};
+		B3EDDDBE2177B0E000420FF2 /* SCNetworkAPITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3EDDDCD2177B0E000420FF2 /* Build configuration list for PBXNativeTarget "SCNetworkAPITests" */;
+			buildPhases = (
+				7BBED565FDFCC0431BD4A853 /* [CP] Check Pods Manifest.lock */,
+				B3EDDDBB2177B0E000420FF2 /* Sources */,
+				B3EDDDBC2177B0E000420FF2 /* Frameworks */,
+				B3EDDDBD2177B0E000420FF2 /* Resources */,
+				436145B20B0D3B92B7B3BAD0 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B3EDDDC22177B0E000420FF2 /* PBXTargetDependency */,
+			);
+			name = SCNetworkAPITests;
+			productName = SCNetworkAPITests;
+			productReference = B3EDDDBF2177B0E000420FF2 /* SCNetworkAPITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		B3329DD42177A6C0009BA29B /* Project object */ = {
+		B3EDDDAD2177B0E000420FF2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = steamclock;
 				TargetAttributes = {
-					B3329DDC2177A6C0009BA29B = {
+					B3EDDDB52177B0E000420FF2 = {
 						CreatedOnToolsVersion = 10.0;
 						LastSwiftMigration = 1000;
 					};
+					B3EDDDBE2177B0E000420FF2 = {
+						CreatedOnToolsVersion = 10.0;
+					};
 				};
 			};
-			buildConfigurationList = B3329DD72177A6C0009BA29B /* Build configuration list for PBXProject "SCNetworkAPI" */;
+			buildConfigurationList = B3EDDDB02177B0E000420FF2 /* Build configuration list for PBXProject "SCNetworkAPI" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = B3329DD32177A6C0009BA29B;
-			productRefGroup = B3329DDE2177A6C1009BA29B /* Products */;
+			mainGroup = B3EDDDAC2177B0E000420FF2;
+			productRefGroup = B3EDDDB72177B0E000420FF2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B3329DDC2177A6C0009BA29B /* SCNetworkAPI */,
+				B3EDDDB52177B0E000420FF2 /* SCNetworkAPI */,
+				B3EDDDBE2177B0E000420FF2 /* SCNetworkAPITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		B3329DDB2177A6C0009BA29B /* Resources */ = {
+		B3EDDDB42177B0E000420FF2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3EDDDBD2177B0E000420FF2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -137,19 +241,95 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		436145B20B0D3B92B7B3BAD0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SCNetworkAPITests/Pods-SCNetworkAPITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SCNetworkAPITests/Pods-SCNetworkAPITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5E6F9641E5DA2D7A4E586D3D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SCNetworkAPI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7BBED565FDFCC0431BD4A853 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SCNetworkAPITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		B3329DD92177A6C0009BA29B /* Sources */ = {
+		B3EDDDB22177B0E000420FF2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3329DFF2177A7F1009BA29B /* NetworkAPI.swift in Sources */,
+				B3EDDDE12179030300420FF2 /* PaginatedResult.swift in Sources */,
+				B3EDDDD22177B0F400420FF2 /* SCNetworkAPI.swift in Sources */,
+				B3EDDDDD217902C400420FF2 /* Request.swift in Sources */,
+				B3EDDDDF217902E400420FF2 /* Notification.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3EDDDBB2177B0E000420FF2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3EDDDC52177B0E000420FF2 /* SCNetworkAPITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		B3EDDDC22177B0E000420FF2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B3EDDDB52177B0E000420FF2 /* SCNetworkAPI */;
+			targetProxy = B3EDDDC12177B0E000420FF2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
-		B3329DE32177A6C1009BA29B /* Debug */ = {
+		B3EDDDC82177B0E000420FF2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -181,7 +361,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -201,11 +381,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -213,7 +393,7 @@
 			};
 			name = Debug;
 		};
-		B3329DE42177A6C1009BA29B /* Release */ = {
+		B3EDDDC92177B0E000420FF2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -245,7 +425,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -259,34 +439,36 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		B3329DE62177A6C1009BA29B /* Debug */ = {
+		B3EDDDCB2177B0E000420FF2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5C11D1E332862C7A6FF8D13 /* Pods-SCNetworkAPI.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = GH868RP95T;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = SCNetworkAPI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"@executable_path/Frameworks",
+					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.steamclock.SCNetworkAPI;
@@ -294,58 +476,108 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		B3329DE72177A6C1009BA29B /* Release */ = {
+		B3EDDDCC2177B0E000420FF2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 765AD572F19520D66789C900 /* Pods-SCNetworkAPI.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = GH868RP95T;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = SCNetworkAPI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"@executable_path/Frameworks",
+					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.steamclock.SCNetworkAPI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B3EDDDCE2177B0E000420FF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F161F1196D4CE88A3755992 /* Pods-SCNetworkAPITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = GH868RP95T;
+				INFOPLIST_FILE = SCNetworkAPITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.steamclock.SCNetworkAPITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		B3EDDDCF2177B0E000420FF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAB6400ADA1172F64D4FD59F /* Pods-SCNetworkAPITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = GH868RP95T;
+				INFOPLIST_FILE = SCNetworkAPITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.steamclock.SCNetworkAPITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B3329DD72177A6C0009BA29B /* Build configuration list for PBXProject "SCNetworkAPI" */ = {
+		B3EDDDB02177B0E000420FF2 /* Build configuration list for PBXProject "SCNetworkAPI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B3329DE32177A6C1009BA29B /* Debug */,
-				B3329DE42177A6C1009BA29B /* Release */,
+				B3EDDDC82177B0E000420FF2 /* Debug */,
+				B3EDDDC92177B0E000420FF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B3329DE52177A6C1009BA29B /* Build configuration list for PBXNativeTarget "SCNetworkAPI" */ = {
+		B3EDDDCA2177B0E000420FF2 /* Build configuration list for PBXNativeTarget "SCNetworkAPI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B3329DE62177A6C1009BA29B /* Debug */,
-				B3329DE72177A6C1009BA29B /* Release */,
+				B3EDDDCB2177B0E000420FF2 /* Debug */,
+				B3EDDDCC2177B0E000420FF2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B3EDDDCD2177B0E000420FF2 /* Build configuration list for PBXNativeTarget "SCNetworkAPITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3EDDDCE2177B0E000420FF2 /* Debug */,
+				B3EDDDCF2177B0E000420FF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = B3329DD42177A6C0009BA29B /* Project object */;
+	rootObject = B3EDDDAD2177B0E000420FF2 /* Project object */;
 }

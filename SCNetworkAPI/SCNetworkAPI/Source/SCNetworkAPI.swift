@@ -1,5 +1,5 @@
 //
-//  NetworkAPI.swift
+//  SCNetworkAPI.swift
 //  SCNetworkAPI
 //
 //  Created by Brendan Lensink on 2018-10-17.
@@ -20,39 +20,7 @@ public enum Result<Value> {
     case failure(Error)
 }
 
-public struct Empty: Codable {
-    public static let data = "{}".data(using: .utf8)!
-}
-
-public protocol Request {
-    associatedtype Parameters: Encodable
-    associatedtype Returning: Decodable
-
-    var method: HTTPMethod { get }
-    var path: String { get }
-    var parameters: Parameters { get }
-}
-
-public extension Request where Parameters == Empty {
-    var parameters: Parameters {
-        return Empty()
-    }
-}
-
-extension Notification.Name {
-    public static let NetworkAPIRequestDidComplete = Notification.Name(rawValue: "com.steamclock.scNetworkAPI.notification.name.requestDidComplete")
-}
-
-extension Notification {
-    public struct NetworkAPI {
-        public static let request = "com.steamclock.scNetworkAPI.key.request"
-        public static let response = "com.steamclock.scNetworkAPI.key.response"
-        public static let responseData = "com.steamclock.scNetworkAPI.key.responseData"
-        public static let responseError = "com.steamclock.scNetworkAPI.key.responseError"
-    }
-}
-
-public class NetworkAPI {
+open class NetworkAPI {
     public enum Error: Swift.Error {
         case httpError(Int)
         case malformedURL
@@ -193,7 +161,7 @@ public class NetworkAPI {
 
 private func debugLogError(_ closure: @autoclosure () -> Any?, functionName: StaticString = #function, fileName: StaticString = #file, lineNumber: Int = #line) {
     #if DEBUG
-        let message = closure() ?? ""
-        NSLog("\(fileName):\(lineNumber) \(functionName) \(message)")
+    let message = closure() ?? ""
+    NSLog("\(fileName):\(lineNumber) \(functionName) \(message)")
     #endif
 }
