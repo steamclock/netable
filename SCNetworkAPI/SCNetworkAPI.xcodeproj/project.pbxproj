@@ -18,6 +18,10 @@
 		B3EDDDF72179190C00420FF2 /* SCNetworkAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3EDDDEE2179190C00420FF2 /* SCNetworkAPI.framework */; };
 		B3EDDDFE2179190C00420FF2 /* SCNetworkAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = B3EDDDF02179190C00420FF2 /* SCNetworkAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3EDDE0521791A0D00420FF2 /* SCNetworkAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = B3EDDDF02179190C00420FF2 /* SCNetworkAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B3EDDE0A21791F3800420FF2 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EDDDDC217902C400420FF2 /* Request.swift */; };
+		B3EDDE0B21791F3A00420FF2 /* SCNetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EDDDD12177B0F400420FF2 /* SCNetworkAPI.swift */; };
+		B3EDDE0C21791F3D00420FF2 /* PaginatedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EDDDE02179030300420FF2 /* PaginatedResult.swift */; };
+		B3EDDE0D21791F4000420FF2 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EDDDDE217902E400420FF2 /* Notification.swift */; };
 		C357B4F7656489BDE28D2471 /* Pods_SCNetworkAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B620FB764ACCACC6F5FE178 /* Pods_SCNetworkAPI.framework */; };
 /* End PBXBuildFile section */
 
@@ -422,6 +426,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3EDDE0D21791F4000420FF2 /* Notification.swift in Sources */,
+				B3EDDE0A21791F3800420FF2 /* Request.swift in Sources */,
+				B3EDDE0B21791F3A00420FF2 /* SCNetworkAPI.swift in Sources */,
+				B3EDDE0C21791F3D00420FF2 /* PaginatedResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,7 +508,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -558,7 +567,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -590,6 +600,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.steamclock.SCNetworkAPI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -619,6 +630,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.steamclock.SCNetworkAPI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -680,6 +692,7 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = SCNetworkAPI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -687,7 +700,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.steamclock.SCNetworkAPIMobile;
 				PRODUCT_NAME = SCNetworkAPI;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -706,6 +721,7 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = SCNetworkAPI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -713,7 +729,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.steamclock.SCNetworkAPIMobile;
 				PRODUCT_NAME = SCNetworkAPI;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
@@ -721,6 +739,7 @@
 		B3EDDE012179190C00420FF2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = GH868RP95T;
@@ -739,6 +758,7 @@
 		B3EDDE022179190C00420FF2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = GH868RP95T;

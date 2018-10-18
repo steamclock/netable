@@ -2,7 +2,7 @@
 //  SCNetworkAPI.swift
 //  SCNetworkAPI
 //
-//  Created by Brendan Lensink on 2018-10-17.
+//  Created by Nigel Brooke on 2018-10-17.
 //  Copyright © 2018 steamclock. All rights reserved.
 //
 
