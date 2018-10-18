@@ -12,7 +12,6 @@
 		B3EDDDD22177B0F400420FF2 /* SCNetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EDDDD12177B0F400420FF2 /* SCNetworkAPI.swift */; };
 		B3EDDDDD217902C400420FF2 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EDDDDC217902C400420FF2 /* Request.swift */; };
 		B3EDDDDF217902E400420FF2 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EDDDDE217902E400420FF2 /* Notification.swift */; };
-		B3EDDDE12179030300420FF2 /* PaginatedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EDDDE02179030300420FF2 /* PaginatedResult.swift */; };
 		B3EDDDE52179055800420FF2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B3EDDDE42179055800420FF2 /* README.md */; };
 		B3EDDDE72179058A00420FF2 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = B3EDDDE62179058A00420FF2 /* CHANGELOG.md */; };
 		B3EDDDF72179190C00420FF2 /* SCNetworkAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3EDDDEE2179190C00420FF2 /* SCNetworkAPI.framework */; };
@@ -20,7 +19,6 @@
 		B3EDDE0521791A0D00420FF2 /* SCNetworkAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = B3EDDDF02179190C00420FF2 /* SCNetworkAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3EDDE0A21791F3800420FF2 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EDDDDC217902C400420FF2 /* Request.swift */; };
 		B3EDDE0B21791F3A00420FF2 /* SCNetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EDDDD12177B0F400420FF2 /* SCNetworkAPI.swift */; };
-		B3EDDE0C21791F3D00420FF2 /* PaginatedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EDDDE02179030300420FF2 /* PaginatedResult.swift */; };
 		B3EDDE0D21791F4000420FF2 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EDDDDE217902E400420FF2 /* Notification.swift */; };
 		C357B4F7656489BDE28D2471 /* Pods_SCNetworkAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B620FB764ACCACC6F5FE178 /* Pods_SCNetworkAPI.framework */; };
 /* End PBXBuildFile section */
@@ -54,7 +52,6 @@
 		B3EDDDD12177B0F400420FF2 /* SCNetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNetworkAPI.swift; sourceTree = "<group>"; };
 		B3EDDDDC217902C400420FF2 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		B3EDDDDE217902E400420FF2 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
-		B3EDDDE02179030300420FF2 /* PaginatedResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedResult.swift; sourceTree = "<group>"; };
 		B3EDDDE42179055800420FF2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../../README.md; sourceTree = "<group>"; };
 		B3EDDDE62179058A00420FF2 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../../../CHANGELOG.md; sourceTree = "<group>"; };
 		B3EDDDEE2179190C00420FF2 /* SCNetworkAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SCNetworkAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,7 +152,6 @@
 			isa = PBXGroup;
 			children = (
 				B3EDDDDE217902E400420FF2 /* Notification.swift */,
-				B3EDDDE02179030300420FF2 /* PaginatedResult.swift */,
 				B3EDDDDC217902C400420FF2 /* Request.swift */,
 				B3EDDDD12177B0F400420FF2 /* SCNetworkAPI.swift */,
 			);
@@ -389,7 +385,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3EDDDE12179030300420FF2 /* PaginatedResult.swift in Sources */,
 				B3EDDDD22177B0F400420FF2 /* SCNetworkAPI.swift in Sources */,
 				B3EDDDDD217902C400420FF2 /* Request.swift in Sources */,
 				B3EDDDDF217902E400420FF2 /* Notification.swift in Sources */,
@@ -410,7 +405,6 @@
 				B3EDDE0D21791F4000420FF2 /* Notification.swift in Sources */,
 				B3EDDE0A21791F3800420FF2 /* Request.swift in Sources */,
 				B3EDDE0B21791F3A00420FF2 /* SCNetworkAPI.swift in Sources */,
-				B3EDDE0C21791F3D00420FF2 /* PaginatedResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
