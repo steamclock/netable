@@ -6,7 +6,7 @@ target 'SCNetworkAPI' do
   use_frameworks!
 
   # Pods for SCNetworkAPI
-  pod 'Alamofire' #TODO: lock this version down, probably
+  pod 'Alamofire',  '~> 4.7'
 
   target 'SCNetworkAPITests' do
     inherit! :search_paths
