@@ -220,7 +220,6 @@
 				B3EDDDBB2177B0E000420FF2 /* Sources */,
 				B3EDDDBC2177B0E000420FF2 /* Frameworks */,
 				B3EDDDBD2177B0E000420FF2 /* Resources */,
-				436145B20B0D3B92B7B3BAD0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -347,24 +346,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		436145B20B0D3B92B7B3BAD0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SCNetworkAPITests/Pods-SCNetworkAPITests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SCNetworkAPITests/Pods-SCNetworkAPITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5E6F9641E5DA2D7A4E586D3D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

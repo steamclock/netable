@@ -5,7 +5,6 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/steamclock/networkAPI"
   s.license      = "MIT" 
   s.author             = { "Brendan Lensink" => "brendan@steamclock.com", "Nigel Brooke" => "nigel@steamclock.com" }
-  s.dependency 'Alamofire'
   s.ios.deployment_target = "10.0"
   s.osx.deployment_target = "10.12"
   s.source       = { :git => "https://github.com/steamclock/networkAPI.git", :tag => "#{s.version}" }
