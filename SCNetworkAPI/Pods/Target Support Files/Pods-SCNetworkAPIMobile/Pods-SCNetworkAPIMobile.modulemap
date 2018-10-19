@@ -1,0 +1,6 @@
+framework module Pods_SCNetworkAPIMobile {
+  umbrella header "Pods-SCNetworkAPIMobile-umbrella.h"
+
+  export *
+  module * { export * }
+}

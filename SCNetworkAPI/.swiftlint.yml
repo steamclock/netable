@@ -1,0 +1,45 @@
+excluded:
+- Carthage
+- Pods
+
+disabled_rules:
+- identifier_name
+
+force_try:
+severity: warning
+
+force_cast:
+severity: warning
+
+file_length: 500
+
+type_body_length: 300
+
+line_length: 200
+
+function_body_length: 125
+
+large_tuple:
+warning: 3
+error: 4
+
+identifier_name:
+excluded:
+- id
+
+opt_in_rules:
+- closure_end_indentation
+- closure_spacing
+- empty_count
+- explicit_init
+- fatal_error_message
+- first_where
+- let_var_whitespace
+- multiline_parameters
+- operator_usage_whitespace
+- overridden_super_call
+- private_outlet
+- unneeded_parentheses_in_closure_argument
+- prohibited_super_call
+- redundant_nil_coalescing
+- sorted_imports

@@ -1,0 +1,38 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'SCNetworkAPIMobile' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for SCNetworkAPIMobile
+  pod 'SwiftLint'
+
+  target 'SCNetworkAPIMobileTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+
+target 'SCNetworkAPIOSX' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for SCNetworkAPIOSX
+  pod 'SwiftLint'
+
+  target 'SCNetworkAPIOSXTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+
+target 'SCNetworkExample' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for SCNetworkExample
+
+end

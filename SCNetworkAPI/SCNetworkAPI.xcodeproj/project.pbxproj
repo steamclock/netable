@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09C66FC4FDBCAE49453D580F /* Pods_SCNetworkAPIMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F126AD2CEE0EB0C25C67EDE /* Pods_SCNetworkAPIMobile.framework */; };
+		0E07F5B98908205592AD72E3 /* Pods_SCNetworkAPIOSXTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1E152977926008171EE4FD /* Pods_SCNetworkAPIOSXTests.framework */; };
+		7A058C5FF7048425C0715051 /* Pods_SCNetworkAPIMobileTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FFCF8D12B1773CDF02A1890 /* Pods_SCNetworkAPIMobileTests.framework */; };
+		80E201816E37F824F39C539B /* Pods_SCNetworkAPIOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB68FF4A04443D7754BECF4F /* Pods_SCNetworkAPIOSX.framework */; };
+		98A6568F1FE9E89944D0FE30 /* Pods_SCNetworkExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82AFD6A4B11F4CA3B45E72A /* Pods_SCNetworkExample.framework */; };
 		B332D985217A6C5B00C9E4B3 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B332D984217A6C5B00C9E4B3 /* ExampleViewController.swift */; };
 		B332D987217A6CBF00C9E4B3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B332D986217A6CBF00C9E4B3 /* README.md */; };
 		B3546265217A465100FC442C /* SCNetworkAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B354625B217A465100FC442C /* SCNetworkAPI.framework */; };
@@ -71,6 +76,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		36E11029C105B554F9EF1DBF /* Pods-SCNetworkExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCNetworkExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-SCNetworkExample/Pods-SCNetworkExample.release.xcconfig"; sourceTree = "<group>"; };
+		494A18D78525A959AAB35098 /* Pods-SCNetworkExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCNetworkExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SCNetworkExample/Pods-SCNetworkExample.debug.xcconfig"; sourceTree = "<group>"; };
+		5F126AD2CEE0EB0C25C67EDE /* Pods_SCNetworkAPIMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCNetworkAPIMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		75E91547E2AD2E40E8E6F988 /* Pods-SCNetworkAPIMobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCNetworkAPIMobileTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SCNetworkAPIMobileTests/Pods-SCNetworkAPIMobileTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7FFCF8D12B1773CDF02A1890 /* Pods_SCNetworkAPIMobileTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCNetworkAPIMobileTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		85FD1F493FC2D299E49C5722 /* Pods-SCNetworkAPIOSXTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCNetworkAPIOSXTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SCNetworkAPIOSXTests/Pods-SCNetworkAPIOSXTests.release.xcconfig"; sourceTree = "<group>"; };
+		87FC7D3F11EA4CEB172E67FB /* Pods-SCNetworkAPIMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCNetworkAPIMobile.release.xcconfig"; path = "Pods/Target Support Files/Pods-SCNetworkAPIMobile/Pods-SCNetworkAPIMobile.release.xcconfig"; sourceTree = "<group>"; };
+		A82AFD6A4B11F4CA3B45E72A /* Pods_SCNetworkExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCNetworkExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA1E152977926008171EE4FD /* Pods_SCNetworkAPIOSXTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCNetworkAPIOSXTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B332D984217A6C5B00C9E4B3 /* ExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		B332D986217A6CBF00C9E4B3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		B354625B217A465100FC442C /* SCNetworkAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SCNetworkAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +107,12 @@
 		B3EE113B217A6B950063634A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3EE113E217A6B950063634A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3EE1140217A6B950063634A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7C0D828E0D3D7905BFA9CF3 /* Pods-SCNetworkAPIMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCNetworkAPIMobile.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SCNetworkAPIMobile/Pods-SCNetworkAPIMobile.debug.xcconfig"; sourceTree = "<group>"; };
+		CA50095A6EE1D506CEC10468 /* Pods-SCNetworkAPIOSX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCNetworkAPIOSX.release.xcconfig"; path = "Pods/Target Support Files/Pods-SCNetworkAPIOSX/Pods-SCNetworkAPIOSX.release.xcconfig"; sourceTree = "<group>"; };
+		D3C9576427984D08FEF6F184 /* Pods-SCNetworkAPIOSX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCNetworkAPIOSX.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SCNetworkAPIOSX/Pods-SCNetworkAPIOSX.debug.xcconfig"; sourceTree = "<group>"; };
+		D9DDAEB1B138D7B1A011DD37 /* Pods-SCNetworkAPIMobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCNetworkAPIMobileTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SCNetworkAPIMobileTests/Pods-SCNetworkAPIMobileTests.release.xcconfig"; sourceTree = "<group>"; };
+		E9EB7A904248F9C85604E1DC /* Pods-SCNetworkAPIOSXTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCNetworkAPIOSXTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SCNetworkAPIOSXTests/Pods-SCNetworkAPIOSXTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FB68FF4A04443D7754BECF4F /* Pods_SCNetworkAPIOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCNetworkAPIOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09C66FC4FDBCAE49453D580F /* Pods_SCNetworkAPIMobile.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3546265217A465100FC442C /* SCNetworkAPI.framework in Frameworks */,
+				7A058C5FF7048425C0715051 /* Pods_SCNetworkAPIMobileTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80E201816E37F824F39C539B /* Pods_SCNetworkAPIOSX.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3546281217A466400FC442C /* SCNetworkAPI.framework in Frameworks */,
+				0E07F5B98908205592AD72E3 /* Pods_SCNetworkAPIOSXTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3EE114E217A6C150063634A /* SCNetworkAPI.framework in Frameworks */,
+				98A6568F1FE9E89944D0FE30 /* Pods_SCNetworkExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +171,7 @@
 				B3546291217A46EB00FC442C /* Tests */,
 				B354625C217A465100FC442C /* Products */,
 				B3EE1147217A6BE10063634A /* Frameworks */,
+				E3CA71CE7B8317309D57FC21 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -183,10 +209,10 @@
 		B3EE1125217A659F0063634A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B332D986217A6CBF00C9E4B3 /* README.md */,
 				B3EE1126217A65B50063634A /* CHANGELOG.md */,
 				B354625F217A465100FC442C /* Info.plist */,
 				B3EE1128217A65B50063634A /* LICENSE */,
+				B332D986217A6CBF00C9E4B3 /* README.md */,
 				B354625E217A465100FC442C /* SCNetworkAPI.h */,
 				B3EE1127217A65B50063634A /* SCNetworkAPI.podspec */,
 			);
@@ -197,11 +223,11 @@
 			isa = PBXGroup;
 			children = (
 				B3EE1134217A6B930063634A /* AppDelegate.swift */,
-				B3EE1138217A6B930063634A /* Main.storyboard */,
 				B3EE113B217A6B950063634A /* Assets.xcassets */,
-				B3EE113D217A6B950063634A /* LaunchScreen.storyboard */,
-				B3EE1140217A6B950063634A /* Info.plist */,
 				B332D984217A6C5B00C9E4B3 /* ExampleViewController.swift */,
+				B3EE1140217A6B950063634A /* Info.plist */,
+				B3EE113D217A6B950063634A /* LaunchScreen.storyboard */,
+				B3EE1138217A6B930063634A /* Main.storyboard */,
 			);
 			path = SCNetworkExample;
 			sourceTree = "<group>";
@@ -209,8 +235,30 @@
 		B3EE1147217A6BE10063634A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5F126AD2CEE0EB0C25C67EDE /* Pods_SCNetworkAPIMobile.framework */,
+				7FFCF8D12B1773CDF02A1890 /* Pods_SCNetworkAPIMobileTests.framework */,
+				FB68FF4A04443D7754BECF4F /* Pods_SCNetworkAPIOSX.framework */,
+				AA1E152977926008171EE4FD /* Pods_SCNetworkAPIOSXTests.framework */,
+				A82AFD6A4B11F4CA3B45E72A /* Pods_SCNetworkExample.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E3CA71CE7B8317309D57FC21 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C7C0D828E0D3D7905BFA9CF3 /* Pods-SCNetworkAPIMobile.debug.xcconfig */,
+				87FC7D3F11EA4CEB172E67FB /* Pods-SCNetworkAPIMobile.release.xcconfig */,
+				75E91547E2AD2E40E8E6F988 /* Pods-SCNetworkAPIMobileTests.debug.xcconfig */,
+				D9DDAEB1B138D7B1A011DD37 /* Pods-SCNetworkAPIMobileTests.release.xcconfig */,
+				D3C9576427984D08FEF6F184 /* Pods-SCNetworkAPIOSX.debug.xcconfig */,
+				CA50095A6EE1D506CEC10468 /* Pods-SCNetworkAPIOSX.release.xcconfig */,
+				E9EB7A904248F9C85604E1DC /* Pods-SCNetworkAPIOSXTests.debug.xcconfig */,
+				85FD1F493FC2D299E49C5722 /* Pods-SCNetworkAPIOSXTests.release.xcconfig */,
+				494A18D78525A959AAB35098 /* Pods-SCNetworkExample.debug.xcconfig */,
+				36E11029C105B554F9EF1DBF /* Pods-SCNetworkExample.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,10 +287,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B354626D217A465100FC442C /* Build configuration list for PBXNativeTarget "SCNetworkAPIMobile" */;
 			buildPhases = (
+				C1CF5C1EF883B9A517CB696C /* [CP] Check Pods Manifest.lock */,
 				B3546256217A465100FC442C /* Headers */,
 				B3546257217A465100FC442C /* Sources */,
 				B3546258217A465100FC442C /* Frameworks */,
 				B3546259217A465100FC442C /* Resources */,
+				B381207F217A870200D4A8F3 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -257,6 +307,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3546270217A465100FC442C /* Build configuration list for PBXNativeTarget "SCNetworkAPIMobileTests" */;
 			buildPhases = (
+				6650B44AED9F2A4975B3EFB7 /* [CP] Check Pods Manifest.lock */,
 				B3546260217A465100FC442C /* Sources */,
 				B3546261217A465100FC442C /* Frameworks */,
 				B3546262217A465100FC442C /* Resources */,
@@ -275,6 +326,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3546289217A466400FC442C /* Build configuration list for PBXNativeTarget "SCNetworkAPIOSX" */;
 			buildPhases = (
+				916B8512597A71312305B4F2 /* [CP] Check Pods Manifest.lock */,
 				B3546273217A466300FC442C /* Headers */,
 				B3546274217A466300FC442C /* Sources */,
 				B3546275217A466300FC442C /* Frameworks */,
@@ -293,6 +345,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B354628C217A466400FC442C /* Build configuration list for PBXNativeTarget "SCNetworkAPIOSXTests" */;
 			buildPhases = (
+				89AF60285E73CE370C620F52 /* [CP] Check Pods Manifest.lock */,
 				B354627C217A466400FC442C /* Sources */,
 				B354627D217A466400FC442C /* Frameworks */,
 				B354627E217A466400FC442C /* Resources */,
@@ -311,6 +364,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3EE1143217A6B950063634A /* Build configuration list for PBXNativeTarget "SCNetworkExample" */;
 			buildPhases = (
+				EFAE35E0B18658F7E9086358 /* [CP] Check Pods Manifest.lock */,
 				B3EE112E217A6B930063634A /* Sources */,
 				B3EE112F217A6B930063634A /* Frameworks */,
 				B3EE1130217A6B930063634A /* Resources */,
@@ -420,6 +474,117 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6650B44AED9F2A4975B3EFB7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SCNetworkAPIMobileTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89AF60285E73CE370C620F52 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SCNetworkAPIOSXTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		916B8512597A71312305B4F2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SCNetworkAPIOSX-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B381207F217A870200D4A8F3 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		C1CF5C1EF883B9A517CB696C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SCNetworkAPIMobile-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EFAE35E0B18658F7E9086358 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SCNetworkExample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B3546257217A465100FC442C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -524,6 +689,7 @@
 		};
 		B354626E217A465100FC442C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7C0D828E0D3D7905BFA9CF3 /* Pods-SCNetworkAPIMobile.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -606,6 +772,7 @@
 		};
 		B354626F217A465100FC442C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87FC7D3F11EA4CEB172E67FB /* Pods-SCNetworkAPIMobile.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -682,6 +849,7 @@
 		};
 		B3546271217A465100FC442C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75E91547E2AD2E40E8E6F988 /* Pods-SCNetworkAPIMobileTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -756,6 +924,7 @@
 		};
 		B3546272217A465100FC442C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D9DDAEB1B138D7B1A011DD37 /* Pods-SCNetworkAPIMobileTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -824,6 +993,7 @@
 		};
 		B354628A217A466400FC442C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3C9576427984D08FEF6F184 /* Pods-SCNetworkAPIOSX.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -907,6 +1077,7 @@
 		};
 		B354628B217A466400FC442C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA50095A6EE1D506CEC10468 /* Pods-SCNetworkAPIOSX.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -983,6 +1154,7 @@
 		};
 		B354628D217A466400FC442C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9EB7A904248F9C85604E1DC /* Pods-SCNetworkAPIOSXTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1057,6 +1229,7 @@
 		};
 		B354628E217A466400FC442C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85FD1F493FC2D299E49C5722 /* Pods-SCNetworkAPIOSXTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1124,6 +1297,7 @@
 		};
 		B3EE1141217A6B950063634A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 494A18D78525A959AAB35098 /* Pods-SCNetworkExample.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1198,6 +1372,7 @@
 		};
 		B3EE1142217A6B950063634A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36E11029C105B554F9EF1DBF /* Pods-SCNetworkExample.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;

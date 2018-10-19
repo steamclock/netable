@@ -25,7 +25,7 @@ struct GetCat: Request {
 }
 
 class ExampleViewController: UIViewController {
-    @IBOutlet var imageView: UIImageView!
+    @IBOutlet private var imageView: UIImageView!
 
     private let api = NetworkAPI(baseURL: URL(string: "https://api.thecatapd.com/v1/")!)
 
