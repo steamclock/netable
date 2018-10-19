@@ -14,6 +14,8 @@
 		B354628F217A46C500FC442C /* SCNetworkAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = B354625E217A465100FC442C /* SCNetworkAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3546292217A480100FC442C /* SCNetworkAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3546269217A465100FC442C /* SCNetworkAPITests.swift */; };
 		B3546294217A482D00FC442C /* SCNetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3546293217A482D00FC442C /* SCNetworkAPI.swift */; };
+		B35462AD217A4B4300FC442C /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35462AB217A4B4200FC442C /* Request.swift */; };
+		B35462AE217A4B4300FC442C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35462AC217A4B4300FC442C /* Notification.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,8 @@
 		B3546278217A466300FC442C /* SCNetworkAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SCNetworkAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3546280217A466400FC442C /* SCNetworkAPIOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SCNetworkAPIOSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3546293217A482D00FC442C /* SCNetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNetworkAPI.swift; sourceTree = "<group>"; };
+		B35462AB217A4B4200FC442C /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		B35462AC217A4B4300FC442C /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 			isa = PBXGroup;
 			children = (
 				B354625F217A465100FC442C /* Info.plist */,
+				B35462AC217A4B4300FC442C /* Notification.swift */,
+				B35462AB217A4B4200FC442C /* Request.swift */,
 				B354625E217A465100FC442C /* SCNetworkAPI.h */,
 				B3546293217A482D00FC442C /* SCNetworkAPI.swift */,
 			);
@@ -293,6 +299,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3546294217A482D00FC442C /* SCNetworkAPI.swift in Sources */,
+				B35462AD217A4B4300FC442C /* Request.swift in Sources */,
+				B35462AE217A4B4300FC442C /* Notification.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
