@@ -13,7 +13,7 @@ open class NetworkAPI {
         case codingError(Swift.Error)
         case httpError(Int)
         case malformedURL
-        case requestFailed(Swift.Error)
+        case networkError(Swift.Error)
         case wrongServer
         case noData
     }
@@ -86,7 +86,7 @@ open class NetworkAPI {
         let task = urlSession.dataTask(with: urlRequest) { data, response, error in
             do {
                 if let error = error {
-                    throw Error.requestFailed(error) // TODO: what is this error acutally passing
+                    throw Error.requestFailed(error)
                 }
 
                 guard let response = response as? HTTPURLResponse else { fatalError("Casting response to HTTPURLResponse failed") }
