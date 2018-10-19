@@ -16,6 +16,9 @@
 		B3546294217A482D00FC442C /* SCNetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3546293217A482D00FC442C /* SCNetworkAPI.swift */; };
 		B35462AD217A4B4300FC442C /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35462AB217A4B4200FC442C /* Request.swift */; };
 		B35462AE217A4B4300FC442C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35462AC217A4B4300FC442C /* Notification.swift */; };
+		B35462AF217A4BD000FC442C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35462AC217A4B4300FC442C /* Notification.swift */; };
+		B35462B0217A4BD000FC442C /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35462AB217A4B4200FC442C /* Request.swift */; };
+		B35462B1217A4BD000FC442C /* SCNetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3546293217A482D00FC442C /* SCNetworkAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -316,6 +319,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B35462AF217A4BD000FC442C /* Notification.swift in Sources */,
+				B35462B1217A4BD000FC442C /* SCNetworkAPI.swift in Sources */,
+				B35462B0217A4BD000FC442C /* Request.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -817,6 +823,7 @@
 		B354628D217A466400FC442C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -890,6 +897,7 @@
 		B354628E217A466400FC442C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
