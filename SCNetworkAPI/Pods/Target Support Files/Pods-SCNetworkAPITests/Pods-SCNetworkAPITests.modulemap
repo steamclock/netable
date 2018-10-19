@@ -1,6 +1,0 @@
-framework module Pods_SCNetworkAPITests {
-  umbrella header "Pods-SCNetworkAPITests-umbrella.h"
-
-  export *
-  module * { export * }
-}

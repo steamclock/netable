@@ -1,0 +1,16 @@
+PODS:
+  - SCNetworkAPI (0.1.0)
+
+DEPENDENCIES:
+  - SCNetworkAPI (from `../`)
+
+EXTERNAL SOURCES:
+  SCNetworkAPI:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SCNetworkAPI: 7c5e7f42ba8e1cf9685e250bad19f3e1f3f50787
+
+PODFILE CHECKSUM: 5ce02018dcb23553356a8c614012b8f8e4fdb223
+
+COCOAPODS: 1.5.3
