@@ -1,6 +1,0 @@
-framework module SCNetworkAPI {
-  umbrella header "SCNetworkAPI-umbrella.h"
-
-  export *
-  module * { export * }
-}
