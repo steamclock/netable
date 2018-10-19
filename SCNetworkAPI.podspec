@@ -22,21 +22,10 @@ TODO: Add long description of the pod here.
                        DESC
 
   s.homepage         = 'https://github.com/blensink192@gmail.com/SCNetworkAPI'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'blensink192@gmail.com' => 'blensink192@gmail.com' }
   s.source           = { :git => 'https://github.com/blensink192@gmail.com/SCNetworkAPI.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
   s.ios.deployment_target = '10.0'
-
+  s.osx.deployment_target  = '10.10'
   s.source_files = 'SCNetworkAPI/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'SCNetworkAPI' => ['SCNetworkAPI/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end
