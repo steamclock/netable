@@ -43,10 +43,6 @@ class ExampleViewController: UIViewController {
 
                 self.imageView.image = UIImage(data: data)
             case .failure(let error):
-                switch error {
-                case .codingError(let error): print("coding")
-                default: print("dasd")
-                }
                 let alert = UIAlertController(title: "Uh oh!", message: "Get cats request failed with error: \(error)", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel))
                 self.present(alert, animated: true, completion: nil)
