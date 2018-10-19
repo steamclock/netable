@@ -27,5 +27,5 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'https://github.com/steamclock/networkAPI.git', :tag => s.version.to_s }
   s.ios.deployment_target = '10.0'
   s.osx.deployment_target  = '10.10'
-  s.source_files = 'SCNetworkAPI/Source/*'
+  s.source_files = 'SCNetworkAPI/Source/*.{swift,h,m}'
 end
