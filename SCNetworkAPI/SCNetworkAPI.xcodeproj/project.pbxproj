@@ -19,6 +19,9 @@
 		B35462AF217A4BD000FC442C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35462AC217A4B4300FC442C /* Notification.swift */; };
 		B35462B0217A4BD000FC442C /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35462AB217A4B4200FC442C /* Request.swift */; };
 		B35462B1217A4BD000FC442C /* SCNetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3546293217A482D00FC442C /* SCNetworkAPI.swift */; };
+		B3EE1129217A65B50063634A /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = B3EE1126217A65B50063634A /* CHANGELOG.md */; };
+		B3EE112A217A65B50063634A /* SCNetworkAPI.podspec in Resources */ = {isa = PBXBuildFile; fileRef = B3EE1127217A65B50063634A /* SCNetworkAPI.podspec */; };
+		B3EE112B217A65B50063634A /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B3EE1128217A65B50063634A /* LICENSE */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,9 @@
 		B3546293217A482D00FC442C /* SCNetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNetworkAPI.swift; sourceTree = "<group>"; };
 		B35462AB217A4B4200FC442C /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		B35462AC217A4B4300FC442C /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		B3EE1126217A65B50063634A /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../../CHANGELOG.md; sourceTree = "<group>"; };
+		B3EE1127217A65B50063634A /* SCNetworkAPI.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SCNetworkAPI.podspec; path = ../../SCNetworkAPI.podspec; sourceTree = "<group>"; };
+		B3EE1128217A65B50063634A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = ../../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				B3546290217A46E600FC442C /* Source */,
+				B3EE1125217A659F0063634A /* Supporting Files */,
 				B3546291217A46EB00FC442C /* Tests */,
 				B354625C217A465100FC442C /* Products */,
 			);
@@ -109,10 +116,8 @@
 		B3546290217A46E600FC442C /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				B354625F217A465100FC442C /* Info.plist */,
 				B35462AC217A4B4300FC442C /* Notification.swift */,
 				B35462AB217A4B4200FC442C /* Request.swift */,
-				B354625E217A465100FC442C /* SCNetworkAPI.h */,
 				B3546293217A482D00FC442C /* SCNetworkAPI.swift */,
 			);
 			path = Source;
@@ -125,6 +130,18 @@
 				B3546269217A465100FC442C /* SCNetworkAPITests.swift */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		B3EE1125217A659F0063634A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B3EE1126217A65B50063634A /* CHANGELOG.md */,
+				B354625F217A465100FC442C /* Info.plist */,
+				B3EE1128217A65B50063634A /* LICENSE */,
+				B354625E217A465100FC442C /* SCNetworkAPI.h */,
+				B3EE1127217A65B50063634A /* SCNetworkAPI.podspec */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,6 +287,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3EE112B217A65B50063634A /* LICENSE in Resources */,
+				B3EE112A217A65B50063634A /* SCNetworkAPI.podspec in Resources */,
+				B3EE1129217A65B50063634A /* CHANGELOG.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,7 +443,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = Source/Info.plist;
+				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -499,7 +519,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = Source/Info.plist;
+				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -725,7 +745,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = Source/Info.plist;
+				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -802,7 +822,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = Source/Info.plist;
+				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
