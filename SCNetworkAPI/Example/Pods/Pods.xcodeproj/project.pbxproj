@@ -7,21 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09F678F79391359C6B2F290A0221CB18 /* SCNetworkAPI-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B799D60E7F24627BF4D44D97AA00DB5 /* SCNetworkAPI-dummy.m */; };
 		4E2CA77E031D04B5180169A5EECED5E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		5E2B1D4811E7D6C3CB72B45BF288FF4C /* SCNetworkAPI-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F7826E4811804AD01C891E18CAEA994D /* SCNetworkAPI-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5E2B1D4811E7D6C3CB72B45BF288FF4C /* SCNetworkAPI-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 42F87AEF778A01F583D74F5B754D0FF1 /* SCNetworkAPI-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8E030189A92E60BC32C8D1483F311D17 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C997BEE36C219841DD5972FA935F0F5B /* Notification.swift */; };
 		97CE635DA8748A78C58D697137B6A44F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
 		98D56D4ECF065ADCB80A1BC722253616 /* Pods-SCNetworkAPI_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDEAC44D3B1CBBAF30448BB854FC53D /* Pods-SCNetworkAPI_Tests-dummy.m */; };
 		9E74AD189FDED3D1FB941F8F7B575882 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		B0C4F4D888E6EC0D33FA14DDB9FB305E /* SCNetworkAPI-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 53CE8B73569C5CB67B18413CF4395664 /* SCNetworkAPI-dummy.m */; };
+		A3C30B2FA2DD0D0860DED1CD1798F4EB /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B346C4E8138CA6C518B26F6420CA345 /* Request.swift */; };
 		B222F6C6EE7DA3F0CFB251353364D678 /* Pods-SCNetworkAPI_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A6C5925A94BB42B4081DBCC0F6FF83 /* Pods-SCNetworkAPI_Example-dummy.m */; };
 		B3DA75977488317644F723565EC1D7EE /* Pods-SCNetworkAPI_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D9D3DF62ED0DF30C8ED8794459D6FE6 /* Pods-SCNetworkAPI_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B3EDDE57217A346E00420FF2 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EDDE54217A346E00420FF2 /* Request.swift */; };
-		B3EDDE58217A346E00420FF2 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EDDE54217A346E00420FF2 /* Request.swift */; };
-		B3EDDE59217A346E00420FF2 /* SCNetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EDDE55217A346E00420FF2 /* SCNetworkAPI.swift */; };
-		B3EDDE5A217A346E00420FF2 /* SCNetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EDDE55217A346E00420FF2 /* SCNetworkAPI.swift */; };
-		B3EDDE5B217A346E00420FF2 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EDDE56217A346E00420FF2 /* Notification.swift */; };
-		B3EDDE5C217A346E00420FF2 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EDDE56217A346E00420FF2 /* Notification.swift */; };
 		C2D9425CECF724C6571C50AFFDBD4D13 /* Pods-SCNetworkAPI_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 92EF449D3FC8714FCC824DDCB6E72B5B /* Pods-SCNetworkAPI_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D8623EEB8ED2F0255F83BBFD19AEC945 /* SCNetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C1F7523B3A227E376334ABE86E998E /* SCNetworkAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,44 +39,41 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		02913956F2D43CA57D9A20F9CBE1D677 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06A6C5925A94BB42B4081DBCC0F6FF83 /* Pods-SCNetworkAPI_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SCNetworkAPI_Example-dummy.m"; sourceTree = "<group>"; };
+		0B346C4E8138CA6C518B26F6420CA345 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = SCNetworkAPI/Classes/Request.swift; sourceTree = "<group>"; };
 		0D9D3DF62ED0DF30C8ED8794459D6FE6 /* Pods-SCNetworkAPI_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SCNetworkAPI_Tests-umbrella.h"; sourceTree = "<group>"; };
 		11B00E917B248755CE3539B277B6FAC8 /* Pods-SCNetworkAPI_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SCNetworkAPI_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		143FFD03B33D5A0A62B16C6267392D32 /* Pods-SCNetworkAPI_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SCNetworkAPI_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		2228CCA636DCB35A1D7129B022AFE4F9 /* Pods-SCNetworkAPI_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SCNetworkAPI_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		27E564CD38DDD0F2E5D65449DE1FEBA9 /* SCNetworkAPI.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SCNetworkAPI.modulemap; sourceTree = "<group>"; };
 		294BA663D1C1ECCA7897827C9BF71C94 /* Pods-SCNetworkAPI_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SCNetworkAPI_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		2BFB719F81CED030AB3BBCF10211AB39 /* SCNetworkAPI.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SCNetworkAPI.modulemap; sourceTree = "<group>"; };
 		378E9484850AEB157C355D4FA815F2BD /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E001E2C519BF5F6F772C92D067AE42B /* Pods-SCNetworkAPI_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SCNetworkAPI_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		53CE8B73569C5CB67B18413CF4395664 /* SCNetworkAPI-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SCNetworkAPI-dummy.m"; sourceTree = "<group>"; };
+		42F87AEF778A01F583D74F5B754D0FF1 /* SCNetworkAPI-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SCNetworkAPI-umbrella.h"; sourceTree = "<group>"; };
+		48C1F7523B3A227E376334ABE86E998E /* SCNetworkAPI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SCNetworkAPI.swift; path = SCNetworkAPI/Classes/SCNetworkAPI.swift; sourceTree = "<group>"; };
+		4D641D190EFD37699CB22B9E12116558 /* SCNetworkAPI-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SCNetworkAPI-prefix.pch"; sourceTree = "<group>"; };
 		546346153936DD9E65818EF57D8D3137 /* Pods-SCNetworkAPI_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SCNetworkAPI_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		58BC3CFDFC2818BA29802A8166381901 /* Pods-SCNetworkAPI_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SCNetworkAPI_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		5AC4F86AF0FC3FC8EC8A91EA56BB484A /* SCNetworkAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SCNetworkAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AC4F86AF0FC3FC8EC8A91EA56BB484A /* SCNetworkAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SCNetworkAPI.framework; path = SCNetworkAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B799D60E7F24627BF4D44D97AA00DB5 /* SCNetworkAPI-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SCNetworkAPI-dummy.m"; sourceTree = "<group>"; };
+		74BDFF0FBBB0B804D014E791468408E3 /* SCNetworkAPI.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SCNetworkAPI.xcconfig; sourceTree = "<group>"; };
 		88B259938B05FFA18E3A217C6568BC47 /* Pods-SCNetworkAPI_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SCNetworkAPI_Example.modulemap"; sourceTree = "<group>"; };
 		8BC78B1CC645AD9E21BFF34C861AAB35 /* Pods-SCNetworkAPI_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SCNetworkAPI_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		8C0A61649BC789DF1F50B92A2AB9E915 /* SCNetworkAPI.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SCNetworkAPI.xcconfig; sourceTree = "<group>"; };
+		8E104F551D5D9DCA53B6E49067F33BCC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92EF449D3FC8714FCC824DDCB6E72B5B /* Pods-SCNetworkAPI_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SCNetworkAPI_Example-umbrella.h"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9F46598DD755456A3D754F94205EE9B8 /* Pods-SCNetworkAPI_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SCNetworkAPI_Tests-resources.sh"; sourceTree = "<group>"; };
 		9FFC1B2031F457B415A7FB798E044239 /* Pods-SCNetworkAPI_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SCNetworkAPI_Example.release.xcconfig"; sourceTree = "<group>"; };
+		A0BC025E90C4E8359BB6C92601E64D50 /* SCNetworkAPI.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = SCNetworkAPI.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A1827864F8BB00C2E7967214ED5920C5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF0711B642B7B8BDD9C6DE4D5A75D6B5 /* Pods-SCNetworkAPI_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SCNetworkAPI_Example-frameworks.sh"; sourceTree = "<group>"; };
-		B3EDDE54217A346E00420FF2 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Request.swift; path = SCNetworkAPI/Classes/Request.swift; sourceTree = "<group>"; };
-		B3EDDE55217A346E00420FF2 /* SCNetworkAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SCNetworkAPI.swift; path = SCNetworkAPI/Classes/SCNetworkAPI.swift; sourceTree = "<group>"; };
-		B3EDDE56217A346E00420FF2 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = SCNetworkAPI/Classes/Notification.swift; sourceTree = "<group>"; };
-		B3EDDE5E217A375100420FF2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		B3EDDE5F217A375100420FF2 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
-		B3EDDE60217A375F00420FF2 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		B3EDDE61217A37AA00420FF2 /* SCNetworkAPI.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SCNetworkAPI.podspec; path = ../SCNetworkAPI.podspec; sourceTree = "<group>"; };
+		C997BEE36C219841DD5972FA935F0F5B /* Notification.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = SCNetworkAPI/Classes/Notification.swift; sourceTree = "<group>"; };
 		CFDEAC44D3B1CBBAF30448BB854FC53D /* Pods-SCNetworkAPI_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SCNetworkAPI_Tests-dummy.m"; sourceTree = "<group>"; };
-		E317CAFD61CFF655A4804425FD6164B2 /* Pods_SCNetworkAPI_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCNetworkAPI_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3FD98497B2410261CAFAC8F1A7A3D22 /* Pods_SCNetworkAPI_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCNetworkAPI_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E317CAFD61CFF655A4804425FD6164B2 /* Pods_SCNetworkAPI_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SCNetworkAPI_Tests.framework; path = "Pods-SCNetworkAPI_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3FD98497B2410261CAFAC8F1A7A3D22 /* Pods_SCNetworkAPI_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SCNetworkAPI_Example.framework; path = "Pods-SCNetworkAPI_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0DCCB9465421A14F859AD51338EA0F8 /* Pods-SCNetworkAPI_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SCNetworkAPI_Tests.modulemap"; sourceTree = "<group>"; };
 		F0DD319EE590883A7734CD982C915745 /* Pods-SCNetworkAPI_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SCNetworkAPI_Example-resources.sh"; sourceTree = "<group>"; };
-		F5C9ACB2304F4CD3C764C1610320F2B9 /* SCNetworkAPI-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SCNetworkAPI-prefix.pch"; sourceTree = "<group>"; };
-		F7826E4811804AD01C891E18CAEA994D /* SCNetworkAPI-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SCNetworkAPI-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,19 +104,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		05BD25CAF3E077E84FB694376C1BF64B /* SCNetworkAPI */ = {
-			isa = PBXGroup;
-			children = (
-				B3EDDE56217A346E00420FF2 /* Notification.swift */,
-				B3EDDE54217A346E00420FF2 /* Request.swift */,
-				B3EDDE55217A346E00420FF2 /* SCNetworkAPI.swift */,
-				5F0F132D229D058EB77997FEFD3ED3A7 /* Pod */,
-				CFCA0748952E941CA1B0C67A425F24BF /* Support Files */,
-			);
-			name = SCNetworkAPI;
-			path = ../..;
-			sourceTree = "<group>";
-		};
 		197559D2FE1918707889D768B20DCF09 /* Pods-SCNetworkAPI_Example */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +132,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		596B4EF23AC4463059497A227C865BC0 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				88EF804D275CDB43382031BE298801D6 /* SCNetworkAPI */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
 		5E0D919E635D23B70123790B8308F8EF /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,34 +148,28 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		5F0F132D229D058EB77997FEFD3ED3A7 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				B3EDDE61217A37AA00420FF2 /* SCNetworkAPI.podspec */,
-				B3EDDE5F217A375100420FF2 /* CHANGELOG.md */,
-				B3EDDE60217A375F00420FF2 /* LICENSE */,
-				B3EDDE5E217A375100420FF2 /* README.md */,
-			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				8CD9B343C8EA08DB031636042AD789AB /* Development Pods */,
+				596B4EF23AC4463059497A227C865BC0 /* Development Pods */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
 				3C03065CA875CDF26D7BD93696ECEE0F /* Products */,
 				FE9CA1033A674AFC2F3E9AE0BC0C49FD /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		8CD9B343C8EA08DB031636042AD789AB /* Development Pods */ = {
+		88EF804D275CDB43382031BE298801D6 /* SCNetworkAPI */ = {
 			isa = PBXGroup;
 			children = (
-				05BD25CAF3E077E84FB694376C1BF64B /* SCNetworkAPI */,
+				C997BEE36C219841DD5972FA935F0F5B /* Notification.swift */,
+				0B346C4E8138CA6C518B26F6420CA345 /* Request.swift */,
+				48C1F7523B3A227E376334ABE86E998E /* SCNetworkAPI.swift */,
+				DBA1C1199B1C6CF3163C304FBAE48367 /* Pod */,
+				CDE01FB7FD82F8F75281FA5C5BD5C0B6 /* Support Files */,
 			);
-			name = "Development Pods";
+			name = SCNetworkAPI;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -197,15 +180,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CFCA0748952E941CA1B0C67A425F24BF /* Support Files */ = {
+		CDE01FB7FD82F8F75281FA5C5BD5C0B6 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				02913956F2D43CA57D9A20F9CBE1D677 /* Info.plist */,
-				27E564CD38DDD0F2E5D65449DE1FEBA9 /* SCNetworkAPI.modulemap */,
-				8C0A61649BC789DF1F50B92A2AB9E915 /* SCNetworkAPI.xcconfig */,
-				53CE8B73569C5CB67B18413CF4395664 /* SCNetworkAPI-dummy.m */,
-				F5C9ACB2304F4CD3C764C1610320F2B9 /* SCNetworkAPI-prefix.pch */,
-				F7826E4811804AD01C891E18CAEA994D /* SCNetworkAPI-umbrella.h */,
+				8E104F551D5D9DCA53B6E49067F33BCC /* Info.plist */,
+				2BFB719F81CED030AB3BBCF10211AB39 /* SCNetworkAPI.modulemap */,
+				74BDFF0FBBB0B804D014E791468408E3 /* SCNetworkAPI.xcconfig */,
+				5B799D60E7F24627BF4D44D97AA00DB5 /* SCNetworkAPI-dummy.m */,
+				4D641D190EFD37699CB22B9E12116558 /* SCNetworkAPI-prefix.pch */,
+				42F87AEF778A01F583D74F5B754D0FF1 /* SCNetworkAPI-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "Example/Pods/Target Support Files/SCNetworkAPI";
@@ -227,6 +210,14 @@
 			);
 			name = "Pods-SCNetworkAPI_Tests";
 			path = "Target Support Files/Pods-SCNetworkAPI_Tests";
+			sourceTree = "<group>";
+		};
+		DBA1C1199B1C6CF3163C304FBAE48367 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				A0BC025E90C4E8359BB6C92601E64D50 /* SCNetworkAPI.podspec */,
+			);
+			name = Pod;
 			sourceTree = "<group>";
 		};
 		FE9CA1033A674AFC2F3E9AE0BC0C49FD /* Targets Support Files */ = {
@@ -308,7 +299,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D877CE1D0FEFC60368653A76A1AE0644 /* Build configuration list for PBXNativeTarget "SCNetworkAPI" */;
 			buildPhases = (
-				5912FBE075DD6C8BB79A5A97C86906AE /* Sources */,
+				3AD0233DBF606B38A9B073E0F2252A1D /* Sources */,
 				B7D8D3D92BDEB6BB3C5A11C21DBE72E1 /* Frameworks */,
 				AB86E778D42F2D515C5C817A188E7718 /* Headers */,
 			);
@@ -329,14 +320,6 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
-				TargetAttributes = {
-					584B24C4A230AA50E764E2030C1674FB = {
-						LastSwiftMigration = 1000;
-					};
-					A43CFAF3576E63500EF4FBCC58ABDAEF = {
-						LastSwiftMigration = 1000;
-					};
-				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -358,14 +341,14 @@
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		5912FBE075DD6C8BB79A5A97C86906AE /* Sources */ = {
+		3AD0233DBF606B38A9B073E0F2252A1D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3EDDE5C217A346E00420FF2 /* Notification.swift in Sources */,
-				B0C4F4D888E6EC0D33FA14DDB9FB305E /* SCNetworkAPI-dummy.m in Sources */,
-				B3EDDE5A217A346E00420FF2 /* SCNetworkAPI.swift in Sources */,
-				B3EDDE58217A346E00420FF2 /* Request.swift in Sources */,
+				8E030189A92E60BC32C8D1483F311D17 /* Notification.swift in Sources */,
+				A3C30B2FA2DD0D0860DED1CD1798F4EB /* Request.swift in Sources */,
+				09F678F79391359C6B2F290A0221CB18 /* SCNetworkAPI-dummy.m in Sources */,
+				D8623EEB8ED2F0255F83BBFD19AEC945 /* SCNetworkAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,10 +364,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3EDDE5B217A346E00420FF2 /* Notification.swift in Sources */,
 				B222F6C6EE7DA3F0CFB251353364D678 /* Pods-SCNetworkAPI_Example-dummy.m in Sources */,
-				B3EDDE59217A346E00420FF2 /* SCNetworkAPI.swift in Sources */,
-				B3EDDE57217A346E00420FF2 /* Request.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,12 +386,46 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		22A329B2A298BFE5F9E1C9879178F36C /* Release */ = {
+		24FAE596A8C7E1ED84C0C426CD21645D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74BDFF0FBBB0B804D014E791468408E3 /* SCNetworkAPI.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SCNetworkAPI/SCNetworkAPI-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SCNetworkAPI/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SCNetworkAPI/SCNetworkAPI.modulemap";
+				PRODUCT_MODULE_NAME = SCNetworkAPI;
+				PRODUCT_NAME = SCNetworkAPI;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		3043307C99BC21E50A149BB18EA6158B /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9FFC1B2031F457B415A7FB798E044239 /* Pods-SCNetworkAPI_Example.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -435,7 +449,6 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -443,107 +456,7 @@
 			};
 			name = Release;
 		};
-		2D28BA69364EE425C1CAB99859D12CF8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C0A61649BC789DF1F50B92A2AB9E915 /* SCNetworkAPI.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SCNetworkAPI/SCNetworkAPI-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SCNetworkAPI/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SCNetworkAPI/SCNetworkAPI.modulemap";
-				PRODUCT_MODULE_NAME = SCNetworkAPI;
-				PRODUCT_NAME = SCNetworkAPI;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		2FD453B6494D71A7BDE018D0E8BC5B57 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 294BA663D1C1ECCA7897827C9BF71C94 /* Pods-SCNetworkAPI_Tests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-SCNetworkAPI_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-SCNetworkAPI_Tests/Pods-SCNetworkAPI_Tests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		7248EDF1E6E4C6F7FFE10FBE359E46BD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C0A61649BC789DF1F50B92A2AB9E915 /* SCNetworkAPI.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SCNetworkAPI/SCNetworkAPI-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SCNetworkAPI/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SCNetworkAPI/SCNetworkAPI.modulemap";
-				PRODUCT_MODULE_NAME = SCNetworkAPI;
-				PRODUCT_NAME = SCNetworkAPI;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		8B33C5230DE4A9DFA6D8F46505DD7AF7 /* Debug */ = {
+		553022A828EE1991F07D2D73F565AEF8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -606,7 +519,7 @@
 			};
 			name = Debug;
 		};
-		B42B54097A876E8A982CBF5DAA91B1AB /* Release */ = {
+		58CE816B060A41D32CEC095441D0E3E0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -664,11 +577,46 @@
 			};
 			name = Release;
 		};
-		BBDA2D6B2FBC0A4E942CA83E16D2F46C /* Release */ = {
+		763A6BEDEBD5698434B67A0164434BC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 294BA663D1C1ECCA7897827C9BF71C94 /* Pods-SCNetworkAPI_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-SCNetworkAPI_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SCNetworkAPI_Tests/Pods-SCNetworkAPI_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8A8DEF36B0F4A646F79705895A6ADEE6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2228CCA636DCB35A1D7129B022AFE4F9 /* Pods-SCNetworkAPI_Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -698,12 +646,45 @@
 			};
 			name = Release;
 		};
-		F19D1E80E1E0FADE02670C0E14D29CA1 /* Debug */ = {
+		C6EBCBB7B5CCE5E56AAE60EA2EDE1DEB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74BDFF0FBBB0B804D014E791468408E3 /* SCNetworkAPI.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SCNetworkAPI/SCNetworkAPI-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SCNetworkAPI/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SCNetworkAPI/SCNetworkAPI.modulemap";
+				PRODUCT_MODULE_NAME = SCNetworkAPI;
+				PRODUCT_NAME = SCNetworkAPI;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F0F99F867D7757C211C263D10E9F28E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3E001E2C519BF5F6F772C92D067AE42B /* Pods-SCNetworkAPI_Example.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -728,7 +709,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -741,8 +721,8 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8B33C5230DE4A9DFA6D8F46505DD7AF7 /* Debug */,
-				B42B54097A876E8A982CBF5DAA91B1AB /* Release */,
+				553022A828EE1991F07D2D73F565AEF8 /* Debug */,
+				58CE816B060A41D32CEC095441D0E3E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -750,8 +730,8 @@
 		A352791D5E5C1EDD31E9CBFF2335CCE3 /* Build configuration list for PBXNativeTarget "Pods-SCNetworkAPI_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2FD453B6494D71A7BDE018D0E8BC5B57 /* Debug */,
-				BBDA2D6B2FBC0A4E942CA83E16D2F46C /* Release */,
+				763A6BEDEBD5698434B67A0164434BC3 /* Debug */,
+				8A8DEF36B0F4A646F79705895A6ADEE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -759,8 +739,8 @@
 		D877CE1D0FEFC60368653A76A1AE0644 /* Build configuration list for PBXNativeTarget "SCNetworkAPI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7248EDF1E6E4C6F7FFE10FBE359E46BD /* Debug */,
-				2D28BA69364EE425C1CAB99859D12CF8 /* Release */,
+				C6EBCBB7B5CCE5E56AAE60EA2EDE1DEB /* Debug */,
+				24FAE596A8C7E1ED84C0C426CD21645D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -768,8 +748,8 @@
 		F0A56B6EE1EA8F47D2143F18A6E15462 /* Build configuration list for PBXNativeTarget "Pods-SCNetworkAPI_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F19D1E80E1E0FADE02670C0E14D29CA1 /* Debug */,
-				22A329B2A298BFE5F9E1C9879178F36C /* Release */,
+				F0F99F867D7757C211C263D10E9F28E3 /* Debug */,
+				3043307C99BC21E50A149BB18EA6158B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
