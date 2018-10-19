@@ -53,7 +53,6 @@ api.request(GetCat()) { result in
 }
 ```
 
-
 ## Requirements
 
 ## Installation
@@ -67,7 +66,7 @@ pod 'SCNetworkAPI'
 
 ## Author
 
-blensink192@gmail.com, blensink192@gmail.com
+brendan@steamclock.com
 
 ## License
 

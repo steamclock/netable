@@ -8,6 +8,18 @@
 
 import Foundation
 
+public enum HTTPMethod: String {
+    case get = "GET"
+    case post = "POST"
+    case put = "PUT"
+    case patch = "PATCH"
+}
+
+public enum Result<Value> {
+    case success(Value)
+    case failure(NetworkAPI.Error)
+}
+
 public protocol Request {
     associatedtype Parameters: Encodable
     associatedtype Returning: Decodable
