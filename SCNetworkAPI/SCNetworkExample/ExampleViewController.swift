@@ -14,20 +14,24 @@ struct CatImage: Decodable {
 }
 
 struct GetCat: Request {
-    typealias Parameters = Empty
+    typealias Parameters = [String: String]
     typealias Returning = [CatImage]
 
     public var method: HTTPMethod { return .get }
 
     public var path: String {
-        return "images/search?mime_type=jpg,png"
+        return "images/search"
+    }
+
+    public var parameters: [String: String] {
+        return ["mime_type": "jpg,png"]
     }
 }
 
 class ExampleViewController: UIViewController {
     @IBOutlet private var imageView: UIImageView!
 
-    private let api = NetworkAPI(baseURL: URL(string: "https://api.thecatapd.com/v1/")!)
+    private let api = NetworkAPI(baseURL: URL(string: "https://api.thecatapi.com/v1/")!)
 
     override func viewDidLoad() {
         super.viewDidLoad()

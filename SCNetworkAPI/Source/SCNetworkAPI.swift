@@ -10,10 +10,10 @@ import Foundation
 
 open class NetworkAPI {
     public enum Error: Swift.Error {
-        case codingError(Swift.Error)
+        case codingError(Swift.Error?)
         case httpError(Int)
         case malformedURL
-        case networkError(Swift.Error)
+        case requestFailed(Swift.Error)
         case wrongServer
         case noData
     }
@@ -62,8 +62,18 @@ open class NetworkAPI {
         // Encode request parameters
         if T.Parameters.self != Empty.self {
             if request.method == .get {
-                // TODO: SUpport this
-                fatalError("No support for URL encoded parameters on GET requests yet")
+                guard var components = URLComponents(url: finalURL, resolvingAgainstBaseURL: true),
+                        let paramsDict = request.parameters as? [String: Codable] else {
+                    debugLogError("Encoding error: Failed to create url parameters dictionary")
+                    completion(.failure(Error.codingError(nil)))
+                    return
+                }
+
+                components.queryItems = paramsDict.map {
+                    URLQueryItem(name: $0, value: "\($1)")
+                }
+
+                urlRequest.url = components.url
             }
 
             // TODO: maybe support other content types?
@@ -91,7 +101,7 @@ open class NetworkAPI {
 
                 guard let response = response as? HTTPURLResponse else { fatalError("Casting response to HTTPURLResponse failed") }
 
-                if  200...299 ~= response.statusCode {
+                guard 200...299 ~= response.statusCode else {
                     // TODO: possible to pass back error message here if provided?
                     throw Error.httpError(response.statusCode)
                 }
