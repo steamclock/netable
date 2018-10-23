@@ -76,7 +76,6 @@ open class NetworkAPI {
                 urlRequest.url = components.url
             }
 
-            // TODO: maybe support other content types?
             urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
             do {
@@ -102,13 +101,11 @@ open class NetworkAPI {
                 guard let response = response as? HTTPURLResponse else { fatalError("Casting response to HTTPURLResponse failed") }
 
                 guard 200...299 ~= response.statusCode else {
-                    // TODO: possible to pass back error message here if provided?
                     throw Error.httpError(response.statusCode)
                 }
 
                 // Attempt to decode the response if we're expecting one
                 let decoder = JSONDecoder()
-                // TODO: Option to customize decoding strategy here
                 decoder.dateDecodingStrategy = .iso8601
 
                 if T.Returning.self == Empty.self {
