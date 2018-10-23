@@ -119,7 +119,12 @@ open class NetworkAPI {
                 }
             } catch {
                 debugLogError("Decoding error: \(error)")
-                completion(.failure(Error.codingError(error)))
+                guard let networkError = error as? Error else {
+                    completion(.failure(.codingError(error)))
+                    return
+                }
+
+                completion(.failure(networkError))
             }
 
             let userInfo = NetworkAPI.userInfo(forRequest: urlRequest, data: data, response: response, error: error)
