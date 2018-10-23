@@ -186,7 +186,7 @@ open class NetworkAPI {
      *
      * - returns: A fully qualified URL if successful, an `Error` if not.
      */
-    private func fullyQualifiedURLFrom(path: String) -> (URL?, Error?) {
+    internal func fullyQualifiedURLFrom(path: String) -> (URL?, Error?) {
         // Make sure the url is a well formed path
         guard let url = URL(string: path) else {
             return (nil, Error.malformedURL)
