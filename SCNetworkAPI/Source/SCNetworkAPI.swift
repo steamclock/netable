@@ -74,15 +74,15 @@ open class NetworkAPI {
                 }
 
                 urlRequest.url = components.url
-            }
+            } else {
+                urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
-            urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
-            do {
-                urlRequest.httpBody = try JSONEncoder().encode(request.parameters)
-            } catch {
-                debugLogError("Encoding error: \(error)")
-                completion(.failure(Error.codingError(error)))
+                do {
+                    urlRequest.httpBody = try JSONEncoder().encode(request.parameters)
+                } catch {
+                    debugLogError("Encoding error: \(error)")
+                    completion(.failure(Error.codingError(error)))
+                }
             }
         }
 
