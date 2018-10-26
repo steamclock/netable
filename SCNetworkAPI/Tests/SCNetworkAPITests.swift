@@ -26,46 +26,47 @@ class SCNetworkAPIMobileTests: XCTestCase {
     // MARK: fullyQualifiedURLFrom(path: String) Tests
 
     func testFullyQualifiedURLIsUnchanged() {
-        let (url, error) = api.fullyQualifiedURLFrom(path: baseURL)
-        XCTAssert(error == nil)
+        let url = try? api.fullyQualifiedURLFrom(path: baseURL)
         XCTAssert(url?.absoluteString == baseURL)
     }
 
     func testPartialURLToFullyQualifiedWithSlash() {
         let path = "/test"
-        let (url, error) = api.fullyQualifiedURLFrom(path: path)
-        XCTAssert(error == nil)
+        let url = try? api.fullyQualifiedURLFrom(path: path)
         XCTAssert(url?.absoluteString == baseURL + "/test")
     }
 
     func testPartialURLToFullyQualifiedNoSlash() {
         let path = "test"
-        let (url, error) = api.fullyQualifiedURLFrom(path: path)
-        XCTAssert(error == nil)
+        let url = try? api.fullyQualifiedURLFrom(path: path)
         XCTAssert(url?.absoluteString == baseURL + "/test")
     }
 
     func testInvalidURLDelimReturnsError() {
-        let (url, error) = api.fullyQualifiedURLFrom(path: "<")
-        XCTAssert(url == nil)
-        XCTAssert(error != nil)
+        XCTAssertThrowsError(try api.fullyQualifiedURLFrom(path: "<")) { error in
+            //swiftlint:disable:next force_cast
+            XCTAssertEqual(error as! NetworkAPI.Error, NetworkAPI.Error.malformedURL)
+        }
     }
 
     func testInvalidURLControlCharacterReturnsError() {
-        let (url, error) = api.fullyQualifiedURLFrom(path: "\(UnicodeScalar(00)!)")
-        XCTAssert(url == nil)
-        XCTAssert(error != nil)
+        XCTAssertThrowsError(try api.fullyQualifiedURLFrom(path: "\(UnicodeScalar(00)!)")) { error in
+            //swiftlint:disable:next force_cast
+            XCTAssertEqual(error as! NetworkAPI.Error, NetworkAPI.Error.malformedURL)
+        }
     }
 
     func testInvalidURLSpaceReturnsError() {
-        let (url, error) = api.fullyQualifiedURLFrom(path: "\(UnicodeScalar(20)!)")
-        XCTAssert(url == nil)
-        XCTAssert(error != nil)
+        XCTAssertThrowsError(try api.fullyQualifiedURLFrom(path: "\(UnicodeScalar(20)!)")) { error in
+            //swiftlint:disable:next force_cast
+            XCTAssertEqual(error as! NetworkAPI.Error, NetworkAPI.Error.malformedURL)
+        }
     }
 
     func testFullURLBaseDoesntMatchErrors() {
-        let (url, error) = api.fullyQualifiedURLFrom(path: "https://www.google.com")
-        XCTAssert(url == nil)
-        XCTAssert(error != nil)
+        XCTAssertThrowsError(try api.fullyQualifiedURLFrom(path: "https://www.google.com")) { error in
+            //swiftlint:disable:next force_cast
+            XCTAssertEqual(error as! NetworkAPI.Error, NetworkAPI.Error.wrongServer)
+        }
     }
 }

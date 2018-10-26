@@ -9,11 +9,11 @@
 import Foundation
 
 open class NetworkAPI {
-    public enum Error: Swift.Error {
-        case codingError(Swift.Error?)
+    public enum Error: Swift.Error, Equatable {
+        case codingError(String)
         case httpError(Int)
         case malformedURL
-        case requestFailed(Swift.Error)
+        case requestFailed(String)
         case wrongServer
         case noData
     }
@@ -66,8 +66,9 @@ open class NetworkAPI {
             if request.method == .get {
                 guard var components = URLComponents(url: finalURL, resolvingAgainstBaseURL: true),
                         let paramsDict = request.parameters as? [String: Codable] else {
-                    debugLogError("Encoding error: Failed to create url parameters dictionary")
-                    completion(.failure(Error.codingError(nil)))
+                    let message = "Encoding error: Failed to create url parameters dictionary"
+                    debugLogError(message)
+                    completion(.failure(Error.codingError(message)))
                     return
                 }
 
@@ -82,8 +83,9 @@ open class NetworkAPI {
                 do {
                     urlRequest.httpBody = try JSONEncoder().encode(request.parameters)
                 } catch {
-                    debugLogError("Encoding error: \(error)")
-                    completion(.failure(Error.codingError(error)))
+                    let message = "Encoding error: \(error)"
+                    debugLogError(message)
+                    completion(.failure(Error.codingError(message)))
                 }
             }
         }
@@ -97,7 +99,7 @@ open class NetworkAPI {
         let task = urlSession.dataTask(with: urlRequest) { data, response, error in
             do {
                 if let error = error {
-                    throw Error.requestFailed(error)
+                    throw Error.requestFailed(error.localizedDescription)
                 }
 
                 guard let response = response as? HTTPURLResponse else { fatalError("Casting response to HTTPURLResponse failed") }
@@ -120,9 +122,10 @@ open class NetworkAPI {
                     completion(.success(try decoder.decode(T.Returning.self, from: data)))
                 }
             } catch {
-                debugLogError("Decoding error: \(error)")
+                let message = "Decoding error: \(error)"
+                debugLogError(message)
                 guard let networkError = error as? Error else {
-                    completion(.failure(.codingError(error)))
+                    completion(.failure(.codingError(message)))
                     return
                 }
 
