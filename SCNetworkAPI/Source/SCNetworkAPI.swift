@@ -56,6 +56,7 @@ open class NetworkAPI {
         } catch {
             guard let error = error as? NetworkAPI.Error else { fatalError("Failed to unwrap error as NetworkAPI.Error") }
             completion(.failure(error))
+            return
         }
 
         var urlRequest = URLRequest(url: finalURL)
@@ -63,30 +64,11 @@ open class NetworkAPI {
 
         // Encode request parameters
         if T.Parameters.self != Empty.self {
-            if request.method == .get {
-                guard var components = URLComponents(url: finalURL, resolvingAgainstBaseURL: true),
-                        let paramsDict = request.parameters as? [String: Codable] else {
-                    let message = "Encoding error: Failed to create url parameters dictionary"
-                    debugLogError(message)
-                    completion(.failure(Error.codingError(message)))
-                    return
-                }
-
-                components.queryItems = paramsDict.map {
-                    URLQueryItem(name: $0, value: "\($1)")
-                }
-
-                urlRequest.url = components.url
-            } else {
-                urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
-                do {
-                    urlRequest.httpBody = try JSONEncoder().encode(request.parameters)
-                } catch {
-                    let message = "Encoding error: \(error)"
-                    debugLogError(message)
-                    completion(.failure(Error.codingError(message)))
-                }
+            do {
+                try urlRequest.encodeParameters(for: request)
+            } catch {
+                guard let error = error as? NetworkAPI.Error else { fatalError("Failed to unwrap error as NetworkAPI.Error") }
+                completion(.failure(error))
             }
         }
 
