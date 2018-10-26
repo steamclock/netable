@@ -50,10 +50,12 @@ open class NetworkAPI {
         }
 
         // Make sure the provided path is a fully qualified URL, if not try to make it one
-        let (url, error) = fullyQualifiedURLFrom(path: request.path)
-        guard let finalURL = url, error == nil else {
-            completion(.failure(error!))
-            return
+        var finalURL: URL!
+        do {
+            finalURL = try fullyQualifiedURLFrom(path: request.path)
+        } catch {
+            guard let error = error as? NetworkAPI.Error else { fatalError("Failed to unwrap error as NetworkAPI.Error") }
+            completion(.failure(error))
         }
 
         var urlRequest = URLRequest(url: finalURL)
@@ -186,10 +188,10 @@ open class NetworkAPI {
      *
      * - returns: A fully qualified URL if successful, an `Error` if not.
      */
-    internal func fullyQualifiedURLFrom(path: String) -> (URL?, Error?) {
+    internal func fullyQualifiedURLFrom(path: String) throws -> URL {
         // Make sure the url is a well formed path
         guard let url = URL(string: path) else {
-            return (nil, Error.malformedURL)
+            throw Error.malformedURL
         }
 
         let finalURL: URL
@@ -199,18 +201,18 @@ open class NetworkAPI {
             finalURL = url
 
             guard finalURL.absoluteString.hasPrefix(baseURL.absoluteString) else {
-                return (nil, Error.wrongServer)
+                throw Error.wrongServer
             }
         } else {
             // Partially qualified URL, add baseURL
             guard let combinedURL = URL(string: path, relativeTo: baseURL) else {
-                return (nil, Error.malformedURL)
+                throw Error.malformedURL
             }
 
             finalURL = combinedURL
         }
 
-        return (finalURL, nil)
+        return finalURL
     }
 }
 
