@@ -76,16 +76,15 @@ open class NetworkAPI {
                 }
 
                 urlRequest.url = components.url
-            }
+            } else {
+                urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
-            // TODO: maybe support other content types?
-            urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
-            do {
-                urlRequest.httpBody = try JSONEncoder().encode(request.parameters)
-            } catch {
-                debugLogError("Encoding error: \(error)")
-                completion(.failure(Error.codingError(error)))
+                do {
+                    urlRequest.httpBody = try JSONEncoder().encode(request.parameters)
+                } catch {
+                    debugLogError("Encoding error: \(error)")
+                    completion(.failure(Error.codingError(error)))
+                }
             }
         }
 
@@ -104,13 +103,11 @@ open class NetworkAPI {
                 guard let response = response as? HTTPURLResponse else { fatalError("Casting response to HTTPURLResponse failed") }
 
                 guard 200...299 ~= response.statusCode else {
-                    // TODO: possible to pass back error message here if provided?
                     throw Error.httpError(response.statusCode)
                 }
 
                 // Attempt to decode the response if we're expecting one
                 let decoder = JSONDecoder()
-                // TODO: Option to customize decoding strategy here
                 decoder.dateDecodingStrategy = .iso8601
 
                 if T.Returning.self == Empty.self {
@@ -124,7 +121,12 @@ open class NetworkAPI {
                 }
             } catch {
                 debugLogError("Decoding error: \(error)")
-                completion(.failure(Error.codingError(error)))
+                guard let networkError = error as? Error else {
+                    completion(.failure(.codingError(error)))
+                    return
+                }
+
+                completion(.failure(networkError))
             }
 
             let userInfo = NetworkAPI.userInfo(forRequest: urlRequest, data: data, response: response, error: error)
