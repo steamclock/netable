@@ -8,16 +8,17 @@
 
 import Foundation
 
-open class NetworkAPI {
-    public enum Error: Swift.Error, Equatable {
-        case codingError(String)
-        case httpError(Int)
-        case malformedURL
-        case requestFailed(String)
-        case wrongServer
-        case noData
-    }
+public enum NetworkAPIError: Error {
+    case codingError(String)
+    case httpError(Int)
+    case malformedURL
+    case requestFailed(Error)
+    case wrongServer
+    case noData
+    case unknownError(Error)
+}
 
+open class NetworkAPI {
     private var urlSession = URLSession(configuration: .ephemeral)
 
     /// The base URL of your api endpoint.
@@ -50,26 +51,20 @@ open class NetworkAPI {
         }
 
         // Make sure the provided path is a fully qualified URL, if not try to make it one
-        var finalURL: URL!
+        var urlRequest: URLRequest!
         do {
-            finalURL = try fullyQualifiedURLFrom(path: request.path)
-        } catch {
-            guard let error = error as? NetworkAPI.Error else { fatalError("Failed to unwrap error as NetworkAPI.Error") }
-            completion(.failure(error))
-            return
-        }
+            let finalURL = try fullyQualifiedURLFrom(path: request.path)
+            urlRequest = URLRequest(url: finalURL)
+            urlRequest.httpMethod = request.method.rawValue
 
-        var urlRequest = URLRequest(url: finalURL)
-        urlRequest.httpMethod = request.method.rawValue
-
-        // Encode request parameters
-        if T.Parameters.self != Empty.self {
-            do {
+            // Encode request parameters
+            if T.Parameters.self != Empty.self {
                 try urlRequest.encodeParameters(for: request)
-            } catch {
-                guard let error = error as? NetworkAPI.Error else { fatalError("Failed to unwrap error as NetworkAPI.Error") }
-                completion(.failure(error))
             }
+        } catch let error as NetworkAPIError {
+            completion(.failure(error))
+        } catch {
+            completion(.failure(.unknownError(error)))
         }
 
         // Encode headers
@@ -81,13 +76,13 @@ open class NetworkAPI {
         let task = urlSession.dataTask(with: urlRequest) { data, response, error in
             do {
                 if let error = error {
-                    throw Error.requestFailed(error.localizedDescription)
+                    throw NetworkAPIError.requestFailed(error)
                 }
 
                 guard let response = response as? HTTPURLResponse else { fatalError("Casting response to HTTPURLResponse failed") }
 
                 guard 200...299 ~= response.statusCode else {
-                    throw Error.httpError(response.statusCode)
+                    throw NetworkAPIError.httpError(response.statusCode)
                 }
 
                 // Attempt to decode the response if we're expecting one
@@ -98,7 +93,7 @@ open class NetworkAPI {
                     completion(.success(try decoder.decode(T.Returning.self, from: Empty.data)))
                 } else {
                     guard let data = data else {
-                        throw Error.noData
+                        throw NetworkAPIError.noData
                     }
 
                     completion(.success(try decoder.decode(T.Returning.self, from: data)))
@@ -106,7 +101,7 @@ open class NetworkAPI {
             } catch {
                 let message = "Decoding error: \(error)"
                 debugLogError(message)
-                guard let networkError = error as? Error else {
+                guard let networkError = error as? NetworkAPIError else {
                     completion(.failure(.codingError(message)))
                     return
                 }
@@ -178,7 +173,7 @@ open class NetworkAPI {
     internal func fullyQualifiedURLFrom(path: String) throws -> URL {
         // Make sure the url is a well formed path
         guard let url = URL(string: path) else {
-            throw Error.malformedURL
+            throw NetworkAPIError.malformedURL
         }
 
         let finalURL: URL
@@ -188,12 +183,12 @@ open class NetworkAPI {
             finalURL = url
 
             guard finalURL.absoluteString.hasPrefix(baseURL.absoluteString) else {
-                throw Error.wrongServer
+                throw NetworkAPIError.wrongServer
             }
         } else {
             // Partially qualified URL, add baseURL
             guard let combinedURL = URL(string: path, relativeTo: baseURL) else {
-                throw Error.malformedURL
+                throw NetworkAPIError.malformedURL
             }
 
             finalURL = combinedURL

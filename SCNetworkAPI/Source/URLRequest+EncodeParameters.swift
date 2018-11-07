@@ -14,11 +14,11 @@ extension URLRequest {
             guard let url = url,
                     var components = URLComponents(url: url, resolvingAgainstBaseURL: true),
                     let paramsDict = request.parameters as? [String: Codable] else {
-                throw NetworkAPI.Error.codingError("Encoding error: Failed to create url parameters dictionary")
+                throw NetworkAPIError.codingError("Encoding error: Failed to create url parameters dictionary")
             }
 
-            guard !paramsDict.isEmpty else {
-                throw NetworkAPI.Error.codingError("Parameters is empty")
+            if paramsDict.isEmpty {
+                return
             }
 
             components.queryItems = paramsDict.map {
@@ -32,7 +32,7 @@ extension URLRequest {
             do {
                 httpBody = try JSONEncoder().encode(request.parameters)
             } catch {
-                throw NetworkAPI.Error.codingError("Request JSON encoding failed, probably due to an invalid value")
+                throw NetworkAPIError.codingError("Request JSON encoding failed, probably due to an invalid value")
             }
         }
     }

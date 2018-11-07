@@ -6,9 +6,25 @@
 //
 
 import Mockingjay
+import enum SCNetworkAPI.NetworkAPIError
 import enum SCNetworkAPI.HTTPMethod
 @testable import SCNetworkAPI
 import XCTest
+
+extension NetworkAPIError: Equatable {
+    public static func == (lhs: NetworkAPIError, rhs: NetworkAPIError) -> Bool {
+        switch (lhs, rhs) {
+        case (.codingError(let lhsError), .codingError(let rhsError)): return lhsError == rhsError
+        case (.httpError(let lhsCode), .httpError(let rhsCode)): return lhsCode == rhsCode
+        case (.malformedURL, .malformedURL): return true
+        // Note that .requestFailed doesn't check the underlying error
+        case (.requestFailed, .requestFailed): return true
+        case (.wrongServer, .wrongServer): return true
+        case (.noData, .noData): return true
+        default: return false
+        }
+    }
+}
 
 //swiftlint:disable nesting
 class SCNetworkAPIMobileTests: XCTestCase {
@@ -47,28 +63,28 @@ class SCNetworkAPIMobileTests: XCTestCase {
     func testInvalidURLDelimReturnsError() {
         XCTAssertThrowsError(try api.fullyQualifiedURLFrom(path: "<")) { error in
             //swiftlint:disable:next force_cast
-            XCTAssertEqual(error as! NetworkAPI.Error, NetworkAPI.Error.malformedURL)
+            XCTAssertEqual(error as! NetworkAPIError, NetworkAPIError.malformedURL)
         }
     }
 
     func testInvalidURLControlCharacterReturnsError() {
         XCTAssertThrowsError(try api.fullyQualifiedURLFrom(path: "\(UnicodeScalar(00)!)")) { error in
             //swiftlint:disable:next force_cast
-            XCTAssertEqual(error as! NetworkAPI.Error, NetworkAPI.Error.malformedURL)
+            XCTAssertEqual(error as! NetworkAPIError, NetworkAPIError.malformedURL)
         }
     }
 
     func testInvalidURLSpaceReturnsError() {
         XCTAssertThrowsError(try api.fullyQualifiedURLFrom(path: "\(UnicodeScalar(20)!)")) { error in
             //swiftlint:disable:next force_cast
-            XCTAssertEqual(error as! NetworkAPI.Error, NetworkAPI.Error.malformedURL)
+            XCTAssertEqual(error as! NetworkAPIError, NetworkAPIError.malformedURL)
         }
     }
 
     func testFullURLBaseDoesntMatchErrors() {
         XCTAssertThrowsError(try api.fullyQualifiedURLFrom(path: "https://www.google.com")) { error in
             //swiftlint:disable:next force_cast
-            XCTAssertEqual(error as! NetworkAPI.Error, NetworkAPI.Error.wrongServer)
+            XCTAssertEqual(error as! NetworkAPIError, NetworkAPIError.wrongServer)
         }
     }
 
@@ -89,10 +105,13 @@ class SCNetworkAPIMobileTests: XCTestCase {
             }
         }
         var urlRequest = URLRequest(url: URL(string: "https://www.steamclock.com")!)
-        XCTAssertThrowsError(try urlRequest.encodeParameters(for: TestGETRequest())) { error in
-            //swiftlint:disable:next force_cast
-            XCTAssertEqual(error as! NetworkAPI.Error, NetworkAPI.Error.codingError("Parameters is empty"))
+        try? urlRequest.encodeParameters(for: TestGETRequest())
+
+        guard let url = urlRequest.url else {
+            XCTFail("Failed to unwrap url from GET request")
+            return
         }
+        XCTAssert(url.absoluteString == "https://www.steamclock.com")
     }
 
     func testGETEncodesEscapedCharacters() {
@@ -189,7 +208,7 @@ class SCNetworkAPIMobileTests: XCTestCase {
         var urlRequest = URLRequest(url: URL(string: "https://www.steamclock.com")!)
         XCTAssertThrowsError(try urlRequest.encodeParameters(for: TestRequest())) { error in
             //swiftlint:disable:next force_cast
-               XCTAssertEqual(error as! NetworkAPI.Error, NetworkAPI.Error.codingError("Request JSON encoding failed, probably due to an invalid value"))
+               XCTAssertEqual(error as! NetworkAPIError, NetworkAPIError.codingError("Request JSON encoding failed, probably due to an invalid value"))
         }
     }
 
@@ -265,7 +284,7 @@ class SCNetworkAPIMobileTests: XCTestCase {
             case .success:
                 XCTFail("GET request didn't catch 401")
             case .failure(let error):
-                if error == NetworkAPI.Error.httpError(401) {
+                if error == NetworkAPIError.httpError(401) {
                     expect401.fulfill()
                 }
             }
@@ -278,7 +297,7 @@ class SCNetworkAPIMobileTests: XCTestCase {
             case .success:
                 XCTFail("GET request didn't catch 404")
             case .failure(let error):
-                if error == NetworkAPI.Error.httpError(404) {
+                if error == NetworkAPIError.httpError(404) {
                     expect404.fulfill()
                 }
             }
@@ -291,7 +310,7 @@ class SCNetworkAPIMobileTests: XCTestCase {
             case .success:
                 XCTFail("GET request didn't catch 500")
             case .failure(let error):
-                if error == NetworkAPI.Error.httpError(500) {
+                if error == NetworkAPIError.httpError(500) {
                     expect500.fulfill()
                 }
             }
