@@ -14,7 +14,7 @@ import XCTest
 extension NetworkAPIError: Equatable {
     public static func == (lhs: NetworkAPIError, rhs: NetworkAPIError) -> Bool {
         switch (lhs, rhs) {
-        case (.codingError(let lhsError), .codingError(let rhsError)): return lhsError == rhsError
+        case (.codingError, .codingError): return true
         case (.httpError(let lhsCode), .httpError(let rhsCode)): return lhsCode == rhsCode
         case (.malformedURL, .malformedURL): return true
         // Note that .requestFailed doesn't check the underlying error
@@ -90,6 +90,60 @@ class SCNetworkAPIMobileTests: XCTestCase {
 
     // MARK: - Parameter Encoding Tests
 
+    func testGETCatchesArrayParameters() {
+        struct TestGETRequest: Request {
+            typealias Parameters = [String]
+            typealias Returning = Empty
+
+            public var method: HTTPMethod { return .get }
+            public var path: String {
+                return "test"
+            }
+
+            public var parameters: [String] {
+                return ["test"]
+            }
+        }
+        var urlRequest = URLRequest(url: URL(string: "https://www.steamclock.com")!)
+        do {
+            try urlRequest.encodeParameters(for: TestGETRequest())
+
+            XCTFail("Array parameters passed")
+        } catch let error as NetworkAPIError {
+            print(error)
+            XCTAssert(error == NetworkAPIError.codingError(""))
+        } catch {
+            XCTFail("Failed to throw correct coding error")
+        }
+    }
+
+    func testGETCatchesNestedDict() {
+        struct TestGETRequest: Request {
+            typealias Parameters = [String: [String]]
+            typealias Returning = Empty
+
+            public var method: HTTPMethod { return .get }
+            public var path: String {
+                return "test"
+            }
+
+            public var parameters: [String: [String]] {
+                return ["test": ["test"]]
+            }
+        }
+        var urlRequest = URLRequest(url: URL(string: "https://www.steamclock.com")!)
+        do {
+            try urlRequest.encodeParameters(for: TestGETRequest())
+
+            XCTFail("Array parameters passed")
+        } catch let error as NetworkAPIError {
+            print(error)
+            XCTAssert(error == NetworkAPIError.codingError(""))
+        } catch {
+            XCTFail("Failed to throw correct coding error")
+        }
+    }
+
     func testGETCatchesEmptyParameters() {
         struct TestGETRequest: Request {
             typealias Parameters = [String: String]
@@ -138,7 +192,7 @@ class SCNetworkAPIMobileTests: XCTestCase {
         XCTAssert(url.absoluteString == "https://www.steamclock.com?type=!*'();:@%26%3D+$,/?%23%5B%5D%20")
     }
 
-    func testGETRequest() {
+    func testGETRequestString() {
         struct TestGETRequest: Request {
             typealias Parameters = [String: String]
             typealias Returning = Empty
@@ -161,6 +215,63 @@ class SCNetworkAPIMobileTests: XCTestCase {
         }
 
         XCTAssert(url.absoluteString == "https://www.steamclock.com?type=test")
+    }
+
+    func testGETRequestInt() {
+        struct TestGETRequest: Request {
+            typealias Parameters = [String: Int]
+            typealias Returning = Empty
+
+            public var method: HTTPMethod { return .get }
+            public var path: String {
+                return "test"
+            }
+
+            public var parameters: [String: Int] {
+                return ["type": 2]
+            }
+        }
+        var urlRequest = URLRequest(url: URL(string: "https://www.steamclock.com")!)
+        try? urlRequest.encodeParameters(for: TestGETRequest())
+
+        guard let url = urlRequest.url else {
+            XCTFail("Failed to unwrap url from GET request")
+            return
+        }
+
+        print(url.absoluteString)
+        XCTAssert(url.absoluteString == "https://www.steamclock.com?type=2")
+    }
+
+    func testGETRequestCodableParams() {
+        struct MyParams: Codable {
+            var a: String
+            var b: Int
+        }
+
+        struct TestGETRequest: Request {
+            typealias Parameters = MyParams
+            typealias Returning = Empty
+
+            public var method: HTTPMethod { return .get }
+            public var path: String {
+                return "test"
+            }
+
+            public var parameters: MyParams {
+                return MyParams(a: "foo", b: 2)
+            }
+        }
+        var urlRequest = URLRequest(url: URL(string: "https://www.steamclock.com")!)
+        try? urlRequest.encodeParameters(for: TestGETRequest())
+
+        guard let url = urlRequest.url else {
+            XCTFail("Failed to unwrap url from GET request")
+            return
+        }
+
+        print(url.absoluteString)
+        XCTAssert(url.absoluteString == "https://www.steamclock.com?a=foo&b=2")
     }
 
     func testPOSTContentTypeIsJSON() {

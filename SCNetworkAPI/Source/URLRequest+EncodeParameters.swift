@@ -11,21 +11,34 @@ extension URLRequest {
     mutating func encodeParameters<T: Request>(for request: T) throws {
         switch request.method {
         case .get:
-            guard let url = url,
-                    var components = URLComponents(url: url, resolvingAgainstBaseURL: true),
-                    let paramsDict = request.parameters as? [String: Codable] else {
-                throw NetworkAPIError.codingError("Encoding error: Failed to create url parameters dictionary")
+            // Check to make sure parameters aren't any of the disallowed types: Array, nested Dictionaries or SingleValueEncodingContainer
+            // TODO: These currently don't work. Array<String> != Array<Codable>
+            if T.Parameters.self == SingleValueEncodingContainer.self ||
+                T.Parameters.self == [Codable].self ||
+                T.Parameters.self == [String: [Codable]].self {
+                throw NetworkAPIError.codingError("Encoding Error: Can't encode parameters of type \(T.Parameters.self)")
             }
 
-            if paramsDict.isEmpty {
-                return
-            }
+            do {
+                let jsonEncodedParams = try JSONEncoder().encode(request.parameters)
+                guard let url = url,
+                        var components = URLComponents(url: url, resolvingAgainstBaseURL: true),
+                        let paramsDict = try JSONDecoder().decode(AnyDecodable.self, from: jsonEncodedParams).value as? [String: Any] else {
+                    throw NetworkAPIError.codingError("Encoding Error: Failed to unwrap url components")
+                }
 
-            components.queryItems = paramsDict.map {
-                URLQueryItem(name: $0, value: "\($1)")
-            }
+                if paramsDict.isEmpty {
+                    return
+                }
 
-            self.url = components.url
+                components.queryItems = paramsDict.map {
+                    URLQueryItem(name: $0, value: "\($1)")
+                }
+
+                self.url = components.url
+            } catch {
+                throw NetworkAPIError.codingError("Encoding error: Failed to create url parameters: \(error)")
+            }
         default:
             setValue("application/json", forHTTPHeaderField: "Content-Type")
 
