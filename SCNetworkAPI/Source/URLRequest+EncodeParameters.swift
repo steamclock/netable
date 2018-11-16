@@ -11,24 +11,28 @@ extension URLRequest {
     mutating func encodeParameters<T: Request>(for request: T) throws {
         switch request.method {
         case .get:
-            // Check to make sure parameters aren't any of the disallowed types: Array, nested Dictionaries or SingleValueEncodingContainer
-            // TODO: These currently don't work. Array<String> != Array<Codable>
-            if T.Parameters.self == SingleValueEncodingContainer.self ||
-                T.Parameters.self == [Codable].self ||
-                T.Parameters.self == [String: [Codable]].self {
-                throw NetworkAPIError.codingError("Encoding Error: Can't encode parameters of type \(T.Parameters.self)")
-            }
-
             do {
+                /*
+                 While not ideal, the pattern of encode to json then decode to dictionary seems like the simplest way
+                 to encode to dictionary until support is added to the Swift standard library. The goal here is to support passing params in as a variety of types, instead of just Dictionaries.
+                 */
                 let jsonEncodedParams = try JSONEncoder().encode(request.parameters)
                 guard let url = url,
                         var components = URLComponents(url: url, resolvingAgainstBaseURL: true),
-                        let paramsDict = try JSONDecoder().decode(AnyDecodable.self, from: jsonEncodedParams).value as? [String: Any] else {
+                        let params = try? JSONSerialization.jsonObject(with: jsonEncodedParams),
+                        let paramsDict = params as? [String: Any] else {
                     throw NetworkAPIError.codingError("Encoding Error: Failed to unwrap url components")
                 }
 
                 if paramsDict.isEmpty {
                     return
+                }
+
+                // Make sure that our encoded dictionary doesn't contain any nested arrays or dicts
+                for (_, value) in paramsDict where
+                        (value as? [Any]) != nil ||
+                        (value as? [AnyHashable: Any]) != nil {
+                    throw NetworkAPIError.codingError("Encoding Error: Cannot encode nested dictionaries or arrays")
                 }
 
                 components.queryItems = paramsDict.map {

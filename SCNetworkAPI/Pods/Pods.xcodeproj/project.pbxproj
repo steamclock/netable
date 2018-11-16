@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -99,17 +99,17 @@
 		311D5C11E1B3CE118DF663F0ACFA76EA /* Pods-SCNetworkAPIMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SCNetworkAPIMobile.debug.xcconfig"; sourceTree = "<group>"; };
 		32FF0F4A0FBF6F59E6BFF3BFCFFD8217 /* Pods-SCNetworkAPIMobileTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SCNetworkAPIMobileTests-umbrella.h"; sourceTree = "<group>"; };
 		330A80B78F52FBA8C5451DD09B036FAC /* Pods-SCNetworkAPIMobileTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SCNetworkAPIMobileTests-dummy.m"; sourceTree = "<group>"; };
-		367C9C546E27A55871466BF1229F4C2E /* Pods_SCNetworkAPIMobileTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SCNetworkAPIMobileTests.framework; path = "Pods-SCNetworkAPIMobileTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		367C9C546E27A55871466BF1229F4C2E /* Pods_SCNetworkAPIMobileTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCNetworkAPIMobileTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4AE26C8E90CA16A5FB5F4821617DA1 /* Pods-SCNetworkAPIMobile-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SCNetworkAPIMobile-umbrella.h"; sourceTree = "<group>"; };
 		3D89997D57A0780B019D42DC218A8FA8 /* Mockingjay-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Mockingjay-dummy.m"; sourceTree = "<group>"; };
 		47DCEB95073D053A5B3004B821DBA154 /* Pods-SCNetworkExample-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SCNetworkExample-umbrella.h"; sourceTree = "<group>"; };
 		4E4BC90A012C2A0A2172F579376BAEA9 /* Mockingjay.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Mockingjay.h; path = Sources/Mockingjay/Mockingjay.h; sourceTree = "<group>"; };
 		5059566D14872907D0825D0939E17324 /* URITemplate-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "URITemplate-dummy.m"; sourceTree = "<group>"; };
 		5A662D6E32EECB9C0033DA0DEB920390 /* Mockingjay.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Mockingjay.xcconfig; sourceTree = "<group>"; };
-		5B02481A9CD64F4725DD73FA8358A3A2 /* URITemplate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = URITemplate.framework; path = URITemplate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B02481A9CD64F4725DD73FA8358A3A2 /* URITemplate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = URITemplate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60946547A72DF24F70A3E2B3002C8FEB /* Pods-SCNetworkAPIOSXTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SCNetworkAPIOSXTests.debug.xcconfig"; sourceTree = "<group>"; };
 		61180B39B90299C7630E22A76826721F /* Pods-SCNetworkAPIMobile-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SCNetworkAPIMobile-resources.sh"; sourceTree = "<group>"; };
-		620FA550CD480690A61471FA3DE8C95E /* Mockingjay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Mockingjay.framework; path = Mockingjay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		620FA550CD480690A61471FA3DE8C95E /* Mockingjay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mockingjay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		667A60D4E18946DF3855E1968DD85BFA /* Pods-SCNetworkAPIOSX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SCNetworkAPIOSX.release.xcconfig"; sourceTree = "<group>"; };
 		66C8C2D85FF35E46D3B5715C68DDB76F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68FF1B78D44C59E2C27FCDB708C1592F /* Pods-SCNetworkAPIOSXTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SCNetworkAPIOSXTests-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -122,11 +122,11 @@
 		8457AF08A1420676F68F104EC6605FAC /* Pods-SCNetworkAPIOSXTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SCNetworkAPIOSXTests-umbrella.h"; sourceTree = "<group>"; };
 		8A8CBA3282AE15199897C1B8EA0FF5DA /* Pods-SCNetworkAPIMobileTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SCNetworkAPIMobileTests-frameworks.sh"; sourceTree = "<group>"; };
 		8BF27433BFA422FC2876E54998F76700 /* Pods-SCNetworkAPIOSX-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SCNetworkAPIOSX-resources.sh"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		94B5F9E675C7952C21CA657F343693A6 /* URITemplate-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "URITemplate-umbrella.h"; sourceTree = "<group>"; };
-		9918B2D44708FA195714340936CFEFD3 /* Pods_SCNetworkAPIMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SCNetworkAPIMobile.framework; path = "Pods-SCNetworkAPIMobile.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9918B2D44708FA195714340936CFEFD3 /* Pods_SCNetworkAPIMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCNetworkAPIMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9958D6F1AD7787CABAEC3270BE07A2A7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9A208AA4879C24D18DD734A3629CDB4D /* Pods_SCNetworkAPIOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SCNetworkAPIOSX.framework; path = "Pods-SCNetworkAPIOSX.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A208AA4879C24D18DD734A3629CDB4D /* Pods_SCNetworkAPIOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCNetworkAPIOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A237D0F343CB5FCF4EDD2AF60CF48DD8 /* Mockingjay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Mockingjay.swift; path = Sources/Mockingjay/Mockingjay.swift; sourceTree = "<group>"; };
 		A3B950BA051713969C408632A1B2F288 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACCDD20E39986B23EFC393DAECF492CF /* Mockingjay-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Mockingjay-umbrella.h"; sourceTree = "<group>"; };
@@ -138,10 +138,10 @@
 		CEA086E2D8CA845F9C51A49BE410747A /* Pods-SCNetworkExample.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SCNetworkExample.modulemap"; sourceTree = "<group>"; };
 		CF5C490C7809F8EC8E69359D82AF1D4B /* Pods-SCNetworkExample-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SCNetworkExample-acknowledgements.markdown"; sourceTree = "<group>"; };
 		D0F9F1B6041BF0E378B31A7A41197CC0 /* Builders.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Builders.swift; path = Sources/Mockingjay/Builders.swift; sourceTree = "<group>"; };
-		D283059AF6EB0B680F69121E46E3D0A7 /* Pods_SCNetworkExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SCNetworkExample.framework; path = "Pods-SCNetworkExample.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D283059AF6EB0B680F69121E46E3D0A7 /* Pods_SCNetworkExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCNetworkExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D76A3EA0E2478BB8B789EE5B66F54824 /* URITemplate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = URITemplate.swift; path = Sources/URITemplate.swift; sourceTree = "<group>"; };
 		D985F66FCA4CBCEDE5741EC46C99B81F /* Pods-SCNetworkAPIMobileTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SCNetworkAPIMobileTests-resources.sh"; sourceTree = "<group>"; };
-		DA4ECD658C94DB5E24009B694A8AF02B /* Pods_SCNetworkAPIOSXTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SCNetworkAPIOSXTests.framework; path = "Pods-SCNetworkAPIOSXTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA4ECD658C94DB5E24009B694A8AF02B /* Pods_SCNetworkAPIOSXTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCNetworkAPIOSXTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA802D24379B69146CE00BAE5F1D24D5 /* URITemplate-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "URITemplate-prefix.pch"; sourceTree = "<group>"; };
 		DAF07F50A8FF0CC6E7B2A9A7BA1AF1EC /* Pods-SCNetworkAPIMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SCNetworkAPIMobile.release.xcconfig"; sourceTree = "<group>"; };
 		DE982BAF5F0C326E65A249DD480C2DCD /* Pods-SCNetworkAPIMobile.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SCNetworkAPIMobile.modulemap"; sourceTree = "<group>"; };
@@ -229,7 +229,6 @@
 			isa = PBXGroup;
 			children = (
 			);
-			name = SwiftLint;
 			path = SwiftLint;
 			sourceTree = "<group>";
 		};
@@ -280,7 +279,6 @@
 				D76A3EA0E2478BB8B789EE5B66F54824 /* URITemplate.swift */,
 				21BB790B649537FECCA6D531A8E25448 /* Support Files */,
 			);
-			name = URITemplate;
 			path = URITemplate;
 			sourceTree = "<group>";
 		};
@@ -462,7 +460,6 @@
 				D5BC779DF2D41E916145B3D95BC0BF51 /* Support Files */,
 				DEE038388B226F59CD8AEF35E7D9699A /* XCTest */,
 			);
-			name = Mockingjay;
 			path = Mockingjay;
 			sourceTree = "<group>";
 		};
@@ -660,7 +657,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1010;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -804,11 +801,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-SCNetworkExample/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-SCNetworkExample/Pods-SCNetworkExample.modulemap";
 				OTHER_LDFLAGS = "";
@@ -843,11 +836,7 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = "Target Support Files/Pods-SCNetworkAPIOSXTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MODULEMAP_FILE = "Target Support Files/Pods-SCNetworkAPIOSXTests/Pods-SCNetworkAPIOSXTests.modulemap";
@@ -882,11 +871,7 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = "Target Support Files/Pods-SCNetworkAPIOSXTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MODULEMAP_FILE = "Target Support Files/Pods-SCNetworkAPIOSXTests/Pods-SCNetworkAPIOSXTests.modulemap";
@@ -920,11 +905,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-SCNetworkExample/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-SCNetworkExample/Pods-SCNetworkExample.modulemap";
 				OTHER_LDFLAGS = "";
@@ -958,11 +939,7 @@
 				INFOPLIST_FILE = "Target Support Files/URITemplate/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/URITemplate/URITemplate.modulemap";
 				PRODUCT_MODULE_NAME = URITemplate;
 				PRODUCT_NAME = URITemplate;
@@ -995,11 +972,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-SCNetworkAPIMobileTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-SCNetworkAPIMobileTests/Pods-SCNetworkAPIMobileTests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -1072,6 +1045,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
@@ -1093,11 +1067,7 @@
 				INFOPLIST_FILE = "Target Support Files/Mockingjay/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Mockingjay/Mockingjay.modulemap";
 				PRODUCT_MODULE_NAME = Mockingjay;
 				PRODUCT_NAME = Mockingjay;
@@ -1129,11 +1099,7 @@
 				INFOPLIST_FILE = "Target Support Files/URITemplate/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/URITemplate/URITemplate.modulemap";
 				PRODUCT_MODULE_NAME = URITemplate;
 				PRODUCT_NAME = URITemplate;
@@ -1167,11 +1133,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-SCNetworkAPIMobileTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-SCNetworkAPIMobileTests/Pods-SCNetworkAPIMobileTests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -1208,11 +1170,7 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = "Target Support Files/Pods-SCNetworkAPIOSX/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MODULEMAP_FILE = "Target Support Files/Pods-SCNetworkAPIOSX/Pods-SCNetworkAPIOSX.modulemap";
@@ -1246,11 +1204,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-SCNetworkAPIMobile/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-SCNetworkAPIMobile/Pods-SCNetworkAPIMobile.modulemap";
 				OTHER_LDFLAGS = "";
@@ -1283,11 +1237,7 @@
 				INFOPLIST_FILE = "Target Support Files/Mockingjay/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Mockingjay/Mockingjay.modulemap";
 				PRODUCT_MODULE_NAME = Mockingjay;
 				PRODUCT_NAME = Mockingjay;
@@ -1386,11 +1336,7 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = "Target Support Files/Pods-SCNetworkAPIOSX/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MODULEMAP_FILE = "Target Support Files/Pods-SCNetworkAPIOSX/Pods-SCNetworkAPIOSX.modulemap";
@@ -1424,11 +1370,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-SCNetworkAPIMobile/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-SCNetworkAPIMobile/Pods-SCNetworkAPIMobile.modulemap";
 				OTHER_LDFLAGS = "";

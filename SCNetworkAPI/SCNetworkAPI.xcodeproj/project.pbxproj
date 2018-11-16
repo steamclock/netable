@@ -14,7 +14,6 @@
 		98A6568F1FE9E89944D0FE30 /* Pods_SCNetworkExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82AFD6A4B11F4CA3B45E72A /* Pods_SCNetworkExample.framework */; };
 		B332D985217A6C5B00C9E4B3 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B332D984217A6C5B00C9E4B3 /* ExampleViewController.swift */; };
 		B332D987217A6CBF00C9E4B3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B332D986217A6CBF00C9E4B3 /* README.md */; };
-		B3545621219603B4000E1C61 /* AnyDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3545620219603B4000E1C61 /* AnyDecodable.swift */; };
 		B3546265217A465100FC442C /* SCNetworkAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B354625B217A465100FC442C /* SCNetworkAPI.framework */; };
 		B354626A217A465100FC442C /* SCNetworkAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3546269217A465100FC442C /* SCNetworkAPITests.swift */; };
 		B354626C217A465100FC442C /* SCNetworkAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = B354625E217A465100FC442C /* SCNetworkAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -89,7 +88,6 @@
 		AA1E152977926008171EE4FD /* Pods_SCNetworkAPIOSXTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCNetworkAPIOSXTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B332D984217A6C5B00C9E4B3 /* ExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		B332D986217A6CBF00C9E4B3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
-		B3545620219603B4000E1C61 /* AnyDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDecodable.swift; sourceTree = "<group>"; };
 		B354625B217A465100FC442C /* SCNetworkAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SCNetworkAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B354625E217A465100FC442C /* SCNetworkAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCNetworkAPI.h; sourceTree = "<group>"; };
 		B354625F217A465100FC442C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -194,7 +192,6 @@
 		B3546290217A46E600FC442C /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				B3545620219603B4000E1C61 /* AnyDecodable.swift */,
 				B35462AC217A4B4300FC442C /* Notification.swift */,
 				B35462AB217A4B4200FC442C /* Request.swift */,
 				B3546293217A482D00FC442C /* SCNetworkAPI.swift */,
@@ -617,7 +614,6 @@
 				B35462AD217A4B4300FC442C /* Request.swift in Sources */,
 				B35462AE217A4B4300FC442C /* Notification.swift in Sources */,
 				B3F20C4321837E390094CB66 /* URLRequest+EncodeParameters.swift in Sources */,
-				B3545621219603B4000E1C61 /* AnyDecodable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

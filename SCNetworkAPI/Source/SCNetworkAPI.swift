@@ -10,6 +10,7 @@ import Foundation
 
 public enum NetworkAPIError: Error {
     case codingError(String)
+    case decodingError(Error)
     case httpError(Int)
     case malformedURL
     case requestFailed(Error)
@@ -98,15 +99,10 @@ open class NetworkAPI {
 
                     completion(.success(try decoder.decode(T.Returning.self, from: data)))
                 }
+            } catch let error as NetworkAPIError {
+                return completion(.failure(error))
             } catch {
-                let message = "Decoding error: \(error)"
-                debugLogError(message)
-                guard let networkError = error as? NetworkAPIError else {
-                    completion(.failure(.codingError(message)))
-                    return
-                }
-
-                completion(.failure(networkError))
+                completion(.failure(.decodingError(error)))
             }
 
             let userInfo = NetworkAPI.userInfo(forRequest: urlRequest, data: data, response: response, error: error)

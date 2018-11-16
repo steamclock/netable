@@ -110,7 +110,6 @@ class SCNetworkAPIMobileTests: XCTestCase {
 
             XCTFail("Array parameters passed")
         } catch let error as NetworkAPIError {
-            print(error)
             XCTAssert(error == NetworkAPIError.codingError(""))
         } catch {
             XCTFail("Failed to throw correct coding error")
@@ -135,9 +134,54 @@ class SCNetworkAPIMobileTests: XCTestCase {
         do {
             try urlRequest.encodeParameters(for: TestGETRequest())
 
-            XCTFail("Array parameters passed")
+            XCTFail("Nested dict parameters passed")
         } catch let error as NetworkAPIError {
-            print(error)
+            XCTAssert(error == NetworkAPIError.codingError(""))
+        } catch {
+            XCTFail("Failed to throw correct coding error")
+        }
+    }
+
+    func testGETCatchesSingleValueEncodedParameters() {
+        struct SVEC: Codable {
+            let string: String
+
+            init(_ string: String) {
+                self.string = string
+            }
+
+            init(from decoder: Decoder) throws {
+                let container = try decoder.singleValueContainer()
+                let string = try container.decode(String.self)
+                self.init(string)
+            }
+
+            public func encode(to encoder: Encoder) throws {
+                var container = encoder.singleValueContainer()
+                try container.encode(string)
+            }
+        }
+
+        struct TestGETRequest: Request {
+            typealias Parameters = SVEC
+            typealias Returning = Empty
+
+            public var method: HTTPMethod { return .get }
+            public var path: String {
+                return "test"
+            }
+
+            public var parameters: SVEC {
+                return SVEC("test")
+            }
+        }
+
+        var urlRequest = URLRequest(url: URL(string: "https://www.steamclock.com")!)
+        do {
+            try urlRequest.encodeParameters(for: TestGETRequest())
+
+            XCTFail("SVEC parameters passed")
+        } catch let error as NetworkAPIError {
             XCTAssert(error == NetworkAPIError.codingError(""))
         } catch {
             XCTFail("Failed to throw correct coding error")
@@ -239,7 +283,6 @@ class SCNetworkAPIMobileTests: XCTestCase {
             return
         }
 
-        print(url.absoluteString)
         XCTAssert(url.absoluteString == "https://www.steamclock.com?type=2")
     }
 
@@ -271,7 +314,10 @@ class SCNetworkAPIMobileTests: XCTestCase {
         }
 
         print(url.absoluteString)
-        XCTAssert(url.absoluteString == "https://www.steamclock.com?a=foo&b=2")
+        XCTAssert(
+            url.absoluteString == "https://www.steamclock.com?a=foo&b=2" ||
+            url.absoluteString == "https://www.steamclock.com?b=2&a=foo"
+        )
     }
 
     func testPOSTContentTypeIsJSON() {
