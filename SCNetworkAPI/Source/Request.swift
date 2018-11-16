@@ -17,7 +17,7 @@ public enum HTTPMethod: String {
 
 public enum Result<Value> {
     case success(Value)
-    case failure(NetworkAPI.Error)
+    case failure(NetworkAPIError)
 }
 
 public protocol Request {

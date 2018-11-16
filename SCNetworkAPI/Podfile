@@ -11,6 +11,7 @@ target 'SCNetworkAPIMobile' do
   target 'SCNetworkAPIMobileTests' do
     inherit! :search_paths
     # Pods for testing
+	pod 'Mockingjay'
   end
 
 end

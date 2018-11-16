@@ -8,16 +8,18 @@
 
 import Foundation
 
-open class NetworkAPI {
-    public enum Error: Swift.Error {
-        case codingError(Swift.Error?)
-        case httpError(Int)
-        case malformedURL
-        case requestFailed(Swift.Error)
-        case wrongServer
-        case noData
-    }
+public enum NetworkAPIError: Error {
+    case codingError(String)
+    case decodingError(Error)
+    case httpError(Int)
+    case malformedURL
+    case requestFailed(Error)
+    case wrongServer
+    case noData
+    case unknownError(Error)
+}
 
+open class NetworkAPI {
     private var urlSession = URLSession(configuration: .ephemeral)
 
     /// The base URL of your api endpoint.
@@ -50,40 +52,20 @@ open class NetworkAPI {
         }
 
         // Make sure the provided path is a fully qualified URL, if not try to make it one
-        let (url, error) = fullyQualifiedURLFrom(path: request.path)
-        guard let finalURL = url, error == nil else {
-            completion(.failure(error!))
-            return
-        }
+        var urlRequest: URLRequest!
+        do {
+            let finalURL = try fullyQualifiedURLFrom(path: request.path)
+            urlRequest = URLRequest(url: finalURL)
+            urlRequest.httpMethod = request.method.rawValue
 
-        var urlRequest = URLRequest(url: finalURL)
-        urlRequest.httpMethod = request.method.rawValue
-
-        // Encode request parameters
-        if T.Parameters.self != Empty.self {
-            if request.method == .get {
-                guard var components = URLComponents(url: finalURL, resolvingAgainstBaseURL: true),
-                        let paramsDict = request.parameters as? [String: Codable] else {
-                    debugLogError("Encoding error: Failed to create url parameters dictionary")
-                    completion(.failure(Error.codingError(nil)))
-                    return
-                }
-
-                components.queryItems = paramsDict.map {
-                    URLQueryItem(name: $0, value: "\($1)")
-                }
-
-                urlRequest.url = components.url
-            } else {
-                urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
-                do {
-                    urlRequest.httpBody = try JSONEncoder().encode(request.parameters)
-                } catch {
-                    debugLogError("Encoding error: \(error)")
-                    completion(.failure(Error.codingError(error)))
-                }
+            // Encode request parameters
+            if T.Parameters.self != Empty.self {
+                try urlRequest.encodeParameters(for: request)
             }
+        } catch let error as NetworkAPIError {
+            completion(.failure(error))
+        } catch {
+            completion(.failure(.unknownError(error)))
         }
 
         // Encode headers
@@ -95,13 +77,13 @@ open class NetworkAPI {
         let task = urlSession.dataTask(with: urlRequest) { data, response, error in
             do {
                 if let error = error {
-                    throw Error.requestFailed(error)
+                    throw NetworkAPIError.requestFailed(error)
                 }
 
                 guard let response = response as? HTTPURLResponse else { fatalError("Casting response to HTTPURLResponse failed") }
 
                 guard 200...299 ~= response.statusCode else {
-                    throw Error.httpError(response.statusCode)
+                    throw NetworkAPIError.httpError(response.statusCode)
                 }
 
                 // Attempt to decode the response if we're expecting one
@@ -112,19 +94,15 @@ open class NetworkAPI {
                     completion(.success(try decoder.decode(T.Returning.self, from: Empty.data)))
                 } else {
                     guard let data = data else {
-                        throw Error.noData
+                        throw NetworkAPIError.noData
                     }
 
                     completion(.success(try decoder.decode(T.Returning.self, from: data)))
                 }
+            } catch let error as NetworkAPIError {
+                return completion(.failure(error))
             } catch {
-                debugLogError("Decoding error: \(error)")
-                guard let networkError = error as? Error else {
-                    completion(.failure(.codingError(error)))
-                    return
-                }
-
-                completion(.failure(networkError))
+                completion(.failure(.decodingError(error)))
             }
 
             let userInfo = NetworkAPI.userInfo(forRequest: urlRequest, data: data, response: response, error: error)
@@ -188,10 +166,10 @@ open class NetworkAPI {
      *
      * - returns: A fully qualified URL if successful, an `Error` if not.
      */
-    private func fullyQualifiedURLFrom(path: String) -> (URL?, Error?) {
+    internal func fullyQualifiedURLFrom(path: String) throws -> URL {
         // Make sure the url is a well formed path
         guard let url = URL(string: path) else {
-            return (nil, Error.malformedURL)
+            throw NetworkAPIError.malformedURL
         }
 
         let finalURL: URL
@@ -201,18 +179,18 @@ open class NetworkAPI {
             finalURL = url
 
             guard finalURL.absoluteString.hasPrefix(baseURL.absoluteString) else {
-                return (nil, Error.wrongServer)
+                throw NetworkAPIError.wrongServer
             }
         } else {
             // Partially qualified URL, add baseURL
             guard let combinedURL = URL(string: path, relativeTo: baseURL) else {
-                return (nil, Error.malformedURL)
+                throw NetworkAPIError.malformedURL
             }
 
             finalURL = combinedURL
         }
 
-        return (finalURL, nil)
+        return finalURL
     }
 }
 

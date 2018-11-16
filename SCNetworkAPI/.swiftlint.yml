@@ -23,10 +23,6 @@ large_tuple:
 warning: 3
 error: 4
 
-identifier_name:
-excluded:
-- id
-
 opt_in_rules:
 - closure_end_indentation
 - closure_spacing
