@@ -36,6 +36,7 @@
 		B3EE114E217A6C150063634A /* SCNetworkAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B354625B217A465100FC442C /* SCNetworkAPI.framework */; };
 		B3EE114F217A6C150063634A /* SCNetworkAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B354625B217A465100FC442C /* SCNetworkAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B3F20C4321837E390094CB66 /* URLRequest+EncodeParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F20C4221837E390094CB66 /* URLRequest+EncodeParameters.swift */; };
+		B827B2AB225BD8D2005B0D91 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = B827B2AA225BD8D2005B0D91 /* Error.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		B3EE113E217A6B950063634A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3EE1140217A6B950063634A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3F20C4221837E390094CB66 /* URLRequest+EncodeParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+EncodeParameters.swift"; sourceTree = "<group>"; };
+		B827B2AA225BD8D2005B0D91 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		C7C0D828E0D3D7905BFA9CF3 /* Pods-SCNetworkAPIMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCNetworkAPIMobile.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SCNetworkAPIMobile/Pods-SCNetworkAPIMobile.debug.xcconfig"; sourceTree = "<group>"; };
 		CA50095A6EE1D506CEC10468 /* Pods-SCNetworkAPIOSX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCNetworkAPIOSX.release.xcconfig"; path = "Pods/Target Support Files/Pods-SCNetworkAPIOSX/Pods-SCNetworkAPIOSX.release.xcconfig"; sourceTree = "<group>"; };
 		D3C9576427984D08FEF6F184 /* Pods-SCNetworkAPIOSX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCNetworkAPIOSX.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SCNetworkAPIOSX/Pods-SCNetworkAPIOSX.debug.xcconfig"; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				B35462AC217A4B4300FC442C /* Notification.swift */,
 				B35462AB217A4B4200FC442C /* Request.swift */,
 				B3546293217A482D00FC442C /* SCNetworkAPI.swift */,
+				B827B2AA225BD8D2005B0D91 /* Error.swift */,
 				B3F20C4221837E390094CB66 /* URLRequest+EncodeParameters.swift */,
 			);
 			path = Source;
@@ -613,6 +616,7 @@
 				B3546294217A482D00FC442C /* SCNetworkAPI.swift in Sources */,
 				B35462AD217A4B4300FC442C /* Request.swift in Sources */,
 				B35462AE217A4B4300FC442C /* Notification.swift in Sources */,
+				B827B2AB225BD8D2005B0D91 /* Error.swift in Sources */,
 				B3F20C4321837E390094CB66 /* URLRequest+EncodeParameters.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

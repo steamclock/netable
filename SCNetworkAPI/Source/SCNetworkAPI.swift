@@ -8,17 +8,6 @@
 
 import Foundation
 
-public enum NetworkAPIError: Error {
-    case codingError(String)
-    case decodingError(Error)
-    case httpError(Int)
-    case malformedURL
-    case requestFailed(Error)
-    case wrongServer
-    case noData
-    case unknownError(Error)
-}
-
 open class NetworkAPI {
     private var urlSession = URLSession(configuration: .ephemeral)
 
