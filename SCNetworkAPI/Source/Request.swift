@@ -15,11 +15,6 @@ public enum HTTPMethod: String {
     case patch = "PATCH"
 }
 
-public enum Result<Value> {
-    case success(Value)
-    case failure(NetworkAPIError)
-}
-
 public protocol Request {
     associatedtype Parameters: Encodable
     associatedtype Returning: Decodable

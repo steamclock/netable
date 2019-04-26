@@ -32,9 +32,9 @@ open class NetworkAPI {
      * - parameter request: The request to send, this has to extend `Request`.
      * - parameter completion: Your completion handler for the request.
      */
-    public func request<T: Request>(_ request: T, completion unsafeCompletion: @escaping (Result<T.Returning>) -> Void) {
+    public func request<T: Request>(_ request: T, completion unsafeCompletion: @escaping (Result<T.Returning, NetworkAPIError>) -> Void) {
         // Make sure the completion is dispatched on the main thread
-        let completion: (Result<T.Returning>) -> Void = { result in
+        let completion: (Result<T.Returning, NetworkAPIError>) -> Void = { result in
             DispatchQueue.main.async {
                 unsafeCompletion(result)
             }
