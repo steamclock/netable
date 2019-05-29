@@ -64,6 +64,21 @@ open class NetworkAPI {
 
         // Send the request
         let task = urlSession.dataTask(with: urlRequest) { data, response, error in
+            defer {
+                let userInfo = NetworkAPI.userInfo(
+                    forRequest: urlRequest,
+                    data: data,
+                    response: response,
+                    error: error
+                )
+
+                NotificationCenter.default.post(
+                    name: Notification.Name.NetworkAPIRequestDidComplete,
+                    object: self,
+                    userInfo: userInfo
+                )
+            }
+
             do {
                 if let error = error {
                     throw NetworkAPIError.requestFailed(error)
@@ -93,9 +108,6 @@ open class NetworkAPI {
             } catch {
                 completion(.failure(.decodingError(error)))
             }
-
-            let userInfo = NetworkAPI.userInfo(forRequest: urlRequest, data: data, response: response, error: error)
-            NotificationCenter.default.post(name: Notification.Name.NetworkAPIRequestDidComplete, object: self, userInfo: userInfo)
         }
 
         task.resume()
