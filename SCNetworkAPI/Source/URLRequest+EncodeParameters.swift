@@ -43,6 +43,28 @@ extension URLRequest {
             } catch {
                 throw NetworkAPIError.codingError("Encoding error: Failed to create url parameters: \(error)")
             }
+        case .post:
+            if request is MultipartFormData {
+                do {
+                    let jsonEncodedParams = try JSONEncoder().encode(request.parameters)
+                    let params = try? JSONSerialization.jsonObject(with: jsonEncodedParams)
+                    let formData = params as? [String: String]
+                    try setMultipartFormData(formData!, encoding: .utf8)
+                } catch {
+                    throw NetworkAPIError.codingError("Encoding error: Failed to create multipart form data: \(error.localizedDescription)")
+                }
+            } else if request is UrlEncodedFormData {
+                do {
+                    let jsonEncodedParams = try JSONEncoder().encode(request.parameters)
+                    let params = try? JSONSerialization.jsonObject(with: jsonEncodedParams)
+                    let formData = params as? [String: String]
+                    setUrlEncodedFormData(formData!)
+                } catch {
+                    throw NetworkAPIError.codingError("Encoding error: Failed to create url encoded form data: \(error.localizedDescription)")
+                }
+            } else {
+                fallthrough
+            }
         default:
             setValue("application/json", forHTTPHeaderField: "Content-Type")
 
