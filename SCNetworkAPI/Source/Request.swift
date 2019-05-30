@@ -52,7 +52,6 @@ extension URLRequest {
      - Seealso: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#multipart-form-data
      */
     public mutating func setMultipartFormData(_ parameters: [String: String], encoding: String.Encoding) throws {
-
         let makeRandom = { UInt32.random(in: (.min)...(.max)) }
         let boundary = String(format: "------------------------%08X%08X", makeRandom(), makeRandom())
 
@@ -114,13 +113,13 @@ extension URLRequest {
             .replacingOccurrences(of: " ", with: "+", options: [], range: nil)
     }
 
-    public mutating func setUrlEncodedFormData(_ parameters: [String : String]) {
+    public mutating func setUrlEncodedFormData(_ parameters: [String: String]) {
         httpMethod = "POST"
 
         addValue("application/json, text/plain, */*", forHTTPHeaderField: "Accept")
         addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
 
-        let parameterArray = parameters.map { (arg) -> String in
+        let parameterArray = parameters.map { arg -> String in
             let (key, value) = arg
             return "\(key)=\(self.percentEscapeString(value))"
         }
