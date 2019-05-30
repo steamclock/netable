@@ -7,63 +7,72 @@
 
 import Foundation
 
+extension Encodable {
+    func toParameterDictionary() throws -> [String: String] {
+        do {
+            let paramsData = try JSONEncoder().encode(self)
+
+            guard
+                let params = try? JSONSerialization.jsonObject(with: paramsData),
+                let paramsDictionary = params as? [String: Any]
+                else {
+                    throw NetworkAPIError.codingError("Failed to unwrap parameter dictionary")
+            }
+
+            // Make sure that our encoded dictionary doesn't contain any nested collections
+            for (_, value) in paramsDictionary where
+                (value as? [Any]) != nil ||
+                    (value as? [AnyHashable: Any]) != nil {
+                        throw NetworkAPIError.codingError("Cannot encode nested collections")
+            }
+
+            // Convert anything that isn't a string to a string
+            let stringsOnlyDictionary: [String: String] = paramsDictionary.mapValues { value -> String in
+                "\(value)"
+            }
+
+            return stringsOnlyDictionary
+        } catch {
+            throw NetworkAPIError.codingError(error.localizedDescription)
+        }
+    }
+}
+
 extension URLRequest {
     mutating func encodeParameters<T: Request>(for request: T) throws {
         switch request.method {
         case .get:
             do {
-                /*
-                 While not ideal, the pattern of encode to json then decode to dictionary seems like the simplest way
-                 to encode to dictionary until support is added to the Swift standard library. The goal here is to support passing params in as a variety of types, instead of just Dictionaries.
-                 */
-                let jsonEncodedParams = try JSONEncoder().encode(request.parameters)
-                guard let url = url,
-                        var components = URLComponents(url: url, resolvingAgainstBaseURL: true),
-                        let params = try? JSONSerialization.jsonObject(with: jsonEncodedParams),
-                        let paramsDict = params as? [String: Any] else {
-                    throw NetworkAPIError.codingError("Encoding Error: Failed to unwrap url components")
+                guard
+                    let url = url,
+                    var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
+                    else {
+                        throw NetworkAPIError.codingError("Encoding Error: Failed to unwrap url components")
                 }
 
-                if paramsDict.isEmpty {
-                    return
-                }
+                let paramsDictionary = try request.parameters.toParameterDictionary()
 
-                // Make sure that our encoded dictionary doesn't contain any nested arrays or dicts
-                for (_, value) in paramsDict where
-                        (value as? [Any]) != nil ||
-                        (value as? [AnyHashable: Any]) != nil {
-                    throw NetworkAPIError.codingError("Encoding Error: Cannot encode nested dictionaries or arrays")
-                }
-
-                components.queryItems = paramsDict.map {
-                    URLQueryItem(name: $0, value: "\($1)")
+                components.queryItems = paramsDictionary.map {
+                    URLQueryItem(name: $0, value: $1)
                 }
 
                 self.url = components.url
             } catch {
-                throw NetworkAPIError.codingError("Encoding error: Failed to create url parameters: \(error)")
+                throw NetworkAPIError.codingError("Encoding Error: Failed to create url parameters: \(error)")
             }
         case .post:
-            if request is MultipartFormData {
-                do {
-                    let jsonEncodedParams = try JSONEncoder().encode(request.parameters)
-                    let params = try? JSONSerialization.jsonObject(with: jsonEncodedParams)
-                    let formData = params as? [String: String]
-                    try setMultipartFormData(formData!, encoding: .utf8)
-                } catch {
-                    throw NetworkAPIError.codingError("Encoding error: Failed to create multipart form data: \(error.localizedDescription)")
+            do {
+                let paramsDictionary = try request.parameters.toParameterDictionary()
+
+                if request is MultipartFormData {
+                    try setMultipartFormData(paramsDictionary, encoding: .utf8)
+                } else if request is UrlEncodedFormData {
+                    setUrlEncodedFormData(paramsDictionary)
+                } else {
+                    fallthrough
                 }
-            } else if request is UrlEncodedFormData {
-                do {
-                    let jsonEncodedParams = try JSONEncoder().encode(request.parameters)
-                    let params = try? JSONSerialization.jsonObject(with: jsonEncodedParams)
-                    let formData = params as? [String: String]
-                    setUrlEncodedFormData(formData!)
-                } catch {
-                    throw NetworkAPIError.codingError("Encoding error: Failed to create url encoded form data: \(error.localizedDescription)")
-                }
-            } else {
-                fallthrough
+            } catch {
+                throw NetworkAPIError.codingError("Encoding Error: Failed to create request body: \(error.localizedDescription)")
             }
         default:
             setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -71,7 +80,7 @@ extension URLRequest {
             do {
                 httpBody = try JSONEncoder().encode(request.parameters)
             } catch {
-                throw NetworkAPIError.codingError("Request JSON encoding failed, probably due to an invalid value")
+                throw NetworkAPIError.codingError("Encoding Error: Failed to create request body: \(error.localizedDescription)")
             }
         }
     }
