@@ -9,7 +9,7 @@ import Foundation
 
 public enum NetworkAPIError: Error {
     case codingError(String)
-    case decodingError(Error)
+    case decodingError(Error, Data?)
     case httpError(Int)
     case malformedURL
     case requestFailed(Error)
@@ -23,7 +23,7 @@ extension NetworkAPIError: LocalizedError {
         switch self {
         case .codingError(let message):
             return "Coding error: \(message)"
-        case .decodingError(let error):
+        case .decodingError(let error, _):
             return "Decoding error: \(error.localizedDescription)"
         case .httpError(let statusCode):
             return "HTTP status code: \(statusCode)"

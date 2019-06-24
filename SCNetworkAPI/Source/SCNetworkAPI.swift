@@ -106,7 +106,7 @@ open class NetworkAPI {
             } catch let error as NetworkAPIError {
                 return completion(.failure(error))
             } catch {
-                completion(.failure(.decodingError(error)))
+                completion(.failure(.decodingError(error, data)))
             }
         }
 
