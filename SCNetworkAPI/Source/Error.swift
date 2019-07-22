@@ -10,7 +10,7 @@ import Foundation
 public enum NetworkAPIError: Error {
     case codingError(String)
     case decodingError(Error, Data?)
-    case httpError(Int)
+    case httpError(Int, Data?)
     case malformedURL
     case requestFailed(Error)
     case wrongServer
@@ -25,7 +25,7 @@ extension NetworkAPIError: LocalizedError {
             return "Coding error: \(message)"
         case .decodingError(let error, _):
             return "Decoding error: \(error.localizedDescription)"
-        case .httpError(let statusCode):
+        case .httpError(let statusCode, _):
             return "HTTP status code: \(statusCode)"
         case .malformedURL:
             return "Malformed URL"
