@@ -87,7 +87,7 @@ open class NetworkAPI {
                 guard let response = response as? HTTPURLResponse else { fatalError("Casting response to HTTPURLResponse failed") }
 
                 guard 200...299 ~= response.statusCode else {
-                    throw NetworkAPIError.httpError(response.statusCode)
+                    throw NetworkAPIError.httpError(response.statusCode, data)
                 }
 
                 // Attempt to decode the response if we're expecting one
