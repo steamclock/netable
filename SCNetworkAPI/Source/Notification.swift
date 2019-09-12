@@ -18,5 +18,6 @@ extension Notification {
         public static let response = "com.steamclock.scNetworkAPI.key.response"
         public static let responseData = "com.steamclock.scNetworkAPI.key.responseData"
         public static let responseError = "com.steamclock.scNetworkAPI.key.responseError"
+        public static let duration = "com.steamclock.scNetworkAPI.key.duration"
     }
 }
