@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'SCNetworkAPI'
-  s.version          = '0.4.0'
+  s.version          = '0.4.1'
   s.summary          = 'Networking library.'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
