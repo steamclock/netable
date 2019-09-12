@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import QuartzCore
 
 open class NetworkAPI {
     private var urlSession = URLSession(configuration: .ephemeral)
@@ -63,12 +64,17 @@ open class NetworkAPI {
         }
 
         // Send the request
+        let startTimestamp = CACurrentMediaTime() * 1000
+
         let task = urlSession.dataTask(with: urlRequest) { data, response, error in
             defer {
+                let endTimestamp = CACurrentMediaTime() * 1000
+
                 let userInfo = NetworkAPI.userInfo(
                     forRequest: urlRequest,
                     data: data,
                     response: response,
+                    duration: endTimestamp - startTimestamp,
                     error: error
                 )
 
@@ -136,7 +142,7 @@ open class NetworkAPI {
      *
      * - returns: The user info encoded as a `Dictionary<String, Any>`
      */
-    static func userInfo(forRequest request: URLRequest?, data: Data?, response: URLResponse?, error: Swift.Error?) -> [String: Any] {
+    static func userInfo(forRequest request: URLRequest?, data: Data?, response: URLResponse?, duration: CFTimeInterval?, error: Swift.Error?) -> [String: Any] {
         var userInfo: [String: Any] = [:]
 
         if let request = request {
@@ -149,6 +155,10 @@ open class NetworkAPI {
 
         if let response = response {
             userInfo[Notification.NetworkAPI.response] = response
+        }
+
+        if let duration = duration {
+            userInfo[Notification.NetworkAPI.duration] = duration
         }
 
         if let error = error {
