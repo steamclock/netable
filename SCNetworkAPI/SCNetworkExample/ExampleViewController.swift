@@ -13,9 +13,10 @@ struct CatImage: Decodable {
     let url: String
 }
 
-struct GetCat: Request {
+struct GetCatImageURL: Request {
     typealias Parameters = [String: String]
     typealias Returning = [CatImage]
+    typealias FinalResource = URL?
 
     public var method: HTTPMethod { return .get }
 
@@ -25,6 +26,11 @@ struct GetCat: Request {
 
     public var parameters: [String: String] {
         return ["mime_type": "jpg,png"]
+    }
+
+    func finalize(raw: [CatImage]) -> URL? {
+        guard let cat = raw.first else { return nil }
+        return URL(string: cat.url)
     }
 }
 
@@ -36,16 +42,15 @@ class ExampleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        api.request(GetCat()) { result in
+        api.request(GetCatImageURL()) { result in
             switch result {
-            case .success(let cats):
-                guard let cat = cats.first,
-                    let url = URL(string: cat.url),
-                    let data = try? Data(contentsOf: url) else {
-                        return
+            case .success(let catUrl):
+                guard let url = catUrl,
+                      let imageData = try? Data(contentsOf: url) else {
+                    return
                 }
 
-                self.imageView.image = UIImage(data: data)
+                self.imageView.image = UIImage(data: imageData)
             case .failure(let error):
                 let alert = UIAlertController(title: "Uh oh!", message: "Get cats request failed with error: \(error)", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel))
