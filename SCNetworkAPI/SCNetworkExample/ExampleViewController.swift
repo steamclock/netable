@@ -16,7 +16,7 @@ struct CatImage: Decodable {
 struct GetCatImageURL: Request {
     typealias Parameters = [String: String]
     typealias Returning = [CatImage]
-    typealias FinalResource = URL?
+    typealias FinalResource = URL
 
     public var method: HTTPMethod { return .get }
 
@@ -28,9 +28,16 @@ struct GetCatImageURL: Request {
         return ["mime_type": "jpg,png"]
     }
 
-    func finalize(raw: [CatImage]) -> URL? {
-        guard let cat = raw.first else { return nil }
-        return URL(string: cat.url)
+    func finalize(raw: [CatImage]) -> Result<URL, NetworkAPIError> {
+        guard let catImage = raw.first else {
+            return .failure(NetworkAPIError.resourceExtractionError("The CatImage array is empty"))
+        }
+
+        guard let url = URL(string: catImage.url) else {
+            return .failure(NetworkAPIError.resourceExtractionError("Could not build URL from CatImage url string"))
+        }
+
+        return .success(url)
     }
 }
 
@@ -45,8 +52,7 @@ class ExampleViewController: UIViewController {
         api.request(GetCatImageURL()) { result in
             switch result {
             case .success(let catUrl):
-                guard let url = catUrl,
-                      let imageData = try? Data(contentsOf: url) else {
+                guard let imageData = try? Data(contentsOf: catUrl) else {
                     return
                 }
 

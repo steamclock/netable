@@ -102,18 +102,14 @@ open class NetworkAPI {
 
                 if T.Returning.self == Empty.self {
                     let raw = try decoder.decode(T.Returning.self, from: Empty.data)
-                    let finalResource = request.finalize(raw: raw)
-
-                    completion(.success(finalResource))
+                    completion(request.finalize(raw: raw))
                 } else {
                     guard let data = data else {
                         throw NetworkAPIError.noData
                     }
 
                     let raw = try decoder.decode(T.Returning.self, from: data)
-                    let finalResource = request.finalize(raw: raw)
-
-                    completion(.success(finalResource))
+                    completion(request.finalize(raw: raw))
                 }
             } catch let error as NetworkAPIError {
                 return completion(.failure(error))

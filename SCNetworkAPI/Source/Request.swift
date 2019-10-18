@@ -24,7 +24,7 @@ public protocol Request {
     var path: String { get }
     var parameters: Parameters { get }
 
-    func finalize(raw: Returning) -> FinalResource
+    func finalize(raw: Returning) -> Result<FinalResource, NetworkAPIError>
 }
 
 public protocol MultipartFormData { }
