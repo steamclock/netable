@@ -33,9 +33,9 @@ open class NetworkAPI {
      * - parameter request: The request to send, this has to extend `Request`.
      * - parameter completion: Your completion handler for the request.
      */
-    public func request<T: Request>(_ request: T, completion unsafeCompletion: @escaping (Result<T.Returning, NetworkAPIError>) -> Void) {
+    public func request<T: Request>(_ request: T, completion unsafeCompletion: @escaping (Result<T.FinalResource, NetworkAPIError>) -> Void) {
         // Make sure the completion is dispatched on the main thread
-        let completion: (Result<T.Returning, NetworkAPIError>) -> Void = { result in
+        let completion: (Result<T.FinalResource, NetworkAPIError>) -> Void = { result in
             DispatchQueue.main.async {
                 unsafeCompletion(result)
             }
@@ -101,13 +101,19 @@ open class NetworkAPI {
                 decoder.dateDecodingStrategy = .iso8601
 
                 if T.Returning.self == Empty.self {
-                    completion(.success(try decoder.decode(T.Returning.self, from: Empty.data)))
+                    let raw = try decoder.decode(T.Returning.self, from: Empty.data)
+                    let finalResource = request.finalize(raw: raw)
+
+                    completion(.success(finalResource))
                 } else {
                     guard let data = data else {
                         throw NetworkAPIError.noData
                     }
 
-                    completion(.success(try decoder.decode(T.Returning.self, from: data)))
+                    let raw = try decoder.decode(T.Returning.self, from: data)
+                    let finalResource = request.finalize(raw: raw)
+
+                    completion(.success(finalResource))
                 }
             } catch let error as NetworkAPIError {
                 return completion(.failure(error))
