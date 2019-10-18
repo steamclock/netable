@@ -18,10 +18,13 @@ public enum HTTPMethod: String {
 public protocol Request {
     associatedtype Parameters: Encodable
     associatedtype Returning: Decodable
+    associatedtype FinalResource
 
     var method: HTTPMethod { get }
     var path: String { get }
     var parameters: Parameters { get }
+
+    func finalize(raw: Returning) -> FinalResource
 }
 
 public protocol MultipartFormData { }
