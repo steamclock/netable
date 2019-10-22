@@ -6,14 +6,14 @@ let package = Package(
   platforms: [
     .iOS(.v12), .macOS(.v10_14)
   ],
-  dependencies: [
-    .package(url: "https://github.com/kylef/Mockingjay", .exact("3.0.0-alpha.1"))
-  ],
   products: [
     .library(
       name: "SCNetworkAPI",
       targets: ["SCNetworkAPIMobile"]
     )
+  ],
+  dependencies: [
+    .package(url: "https://github.com/kylef/Mockingjay", .exact("3.0.0-alpha.1"))
   ],
   targets: [
     .target(
@@ -22,10 +22,10 @@ let package = Package(
     ),
     .testTarget(
       name: "SCNetworkAPIMobileTests",
-      path: "SCNetworkAPI/Tests",
       dependencies: [
         "SCNetworkAPIMobile",
         "Mockingjay"
-      ])
+      ]),
+      path: "SCNetworkAPI/Tests"
   ]
 )
