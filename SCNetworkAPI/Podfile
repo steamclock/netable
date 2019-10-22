@@ -2,6 +2,8 @@
 # platform :ios, '9.0'
 
 target 'SCNetworkAPIMobile' do
+  platform :ios, '12.0'
+
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
@@ -11,12 +13,14 @@ target 'SCNetworkAPIMobile' do
   target 'SCNetworkAPIMobileTests' do
     inherit! :search_paths
     # Pods for testing
-	pod 'Mockingjay'
+	  pod 'Mockingjay', '3.0.0-alpha.1'
   end
 
 end
 
 target 'SCNetworkAPIOSX' do
+  platform :osx, '10.14'
+
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
@@ -26,11 +30,14 @@ target 'SCNetworkAPIOSX' do
   target 'SCNetworkAPIOSXTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Mockingjay', '3.0.0-alpha.1'
   end
 
 end
 
 target 'SCNetworkExample' do
+  platform :ios, '12.0'
+
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 

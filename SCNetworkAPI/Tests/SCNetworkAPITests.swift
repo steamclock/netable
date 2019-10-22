@@ -209,7 +209,7 @@ class SCNetworkAPIMobileTests: XCTestCase {
             XCTFail("Failed to unwrap url from GET request")
             return
         }
-        XCTAssert(url.absoluteString == "https://www.steamclock.com")
+        XCTAssert(url.absoluteString == "https://www.steamclock.com?")
     }
 
     func testGETEncodesEscapedCharacters() {
@@ -441,9 +441,13 @@ class SCNetworkAPIMobileTests: XCTestCase {
             case .success:
                 XCTFail("GET request didn't catch 401")
             case .failure(let error):
-                if error == NetworkAPIError.httpError(401) {
-                    expect401.fulfill()
+                if case let NetworkAPIError.httpError(statusCode, _) = error {
+                    if statusCode == 401 {
+                        expect401.fulfill()
+                        return
+                    }
                 }
+                XCTFail("GET request didn't catch 401")
             }
         }
 
@@ -454,9 +458,13 @@ class SCNetworkAPIMobileTests: XCTestCase {
             case .success:
                 XCTFail("GET request didn't catch 404")
             case .failure(let error):
-                if error == NetworkAPIError.httpError(404) {
-                    expect404.fulfill()
+               if case let NetworkAPIError.httpError(statusCode, _) = error {
+                    if statusCode == 404 {
+                        expect404.fulfill()
+                        return
+                    }
                 }
+                XCTFail("GET request didn't catch 404")
             }
         }
 
@@ -467,9 +475,13 @@ class SCNetworkAPIMobileTests: XCTestCase {
             case .success:
                 XCTFail("GET request didn't catch 500")
             case .failure(let error):
-                if error == NetworkAPIError.httpError(500) {
-                    expect500.fulfill()
+                if case let NetworkAPIError.httpError(statusCode, _) = error {
+                    if statusCode == 500 {
+                        expect500.fulfill()
+                        return
+                    }
                 }
+                XCTFail("GET request didn't catch 500")
             }
         }
 
