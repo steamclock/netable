@@ -13,7 +13,7 @@ let package = Package(
     )
   ],
   dependencies: [
-    .package(url: "https://github.com/kylef/Mockingjay", .exact("3.0.0-alpha.1"))
+    .package(url: "https://github.com/kylef/Mockingjay.git", .exact("3.0.0-alpha.1"))
   ],
   targets: [
     .target(
