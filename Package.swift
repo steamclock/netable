@@ -19,7 +19,7 @@ let package = Package(
     ),
     .testTarget(
       name: "SCNetworkAPIMobileTests",
-      path: "SCNetworkAPI/Tests",
+      path: "SCNetworkAPI",
       dependencies: [
         "SCNetworkAPIMobile",
         .package(url: "https://github.com/kylef/Mockingjay", .exact("3.0.0-alpha.1"))
