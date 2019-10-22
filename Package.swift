@@ -25,7 +25,8 @@ let package = Package(
       dependencies: [
         "SCNetworkAPIMobile",
         "Mockingjay"
-      ]),
+      ],
       path: "SCNetworkAPI/Tests"
+    )
   ]
 )
