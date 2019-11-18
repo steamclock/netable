@@ -51,9 +51,10 @@ extension URLRequest {
                 }
 
                 let paramsDictionary = try request.parameters.toParameterDictionary()
-
-                components.queryItems = paramsDictionary.map {
-                    URLQueryItem(name: $0, value: $1)
+                if !paramsDictionary.isEmpty {
+                    components.queryItems = paramsDictionary.compactMap {
+                        return URLQueryItem(name: $0, value: $1)
+                    }
                 }
 
                 self.url = components.url

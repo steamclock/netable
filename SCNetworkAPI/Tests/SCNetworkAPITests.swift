@@ -441,7 +441,7 @@ class SCNetworkAPIMobileTests: XCTestCase {
             case .success:
                 XCTFail("GET request didn't catch 401")
             case .failure(let error):
-                if error == NetworkAPIError.httpError(401) {
+                if error == NetworkAPIError.httpError(401, Data()) {
                     expect401.fulfill()
                 }
             }
@@ -454,7 +454,7 @@ class SCNetworkAPIMobileTests: XCTestCase {
             case .success:
                 XCTFail("GET request didn't catch 404")
             case .failure(let error):
-                if error == NetworkAPIError.httpError(404) {
+                if error == NetworkAPIError.httpError(404, Data()) {
                     expect404.fulfill()
                 }
             }
@@ -467,7 +467,7 @@ class SCNetworkAPIMobileTests: XCTestCase {
             case .success:
                 XCTFail("GET request didn't catch 500")
             case .failure(let error):
-                if error == NetworkAPIError.httpError(500) {
+                if error == NetworkAPIError.httpError(500, Data()) {
                     expect500.fulfill()
                 }
             }
