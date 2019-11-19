@@ -18,6 +18,9 @@ open class NetworkAPI {
     /// Headers to be sent with each request.
     public var headers: [String: String] = [:]
 
+    /// Encoding type to use while decoding error responses
+    public var stringEncodingType: String.Encoding = .utf8
+
     /**
      * Create a new instance of `NetworkAPI` with a base URL.
      *
@@ -93,7 +96,7 @@ open class NetworkAPI {
                 guard let response = response as? HTTPURLResponse else { fatalError("Casting response to HTTPURLResponse failed") }
 
                 guard 200...299 ~= response.statusCode else {
-                    throw NetworkAPIError.httpError(response.statusCode, data)
+                    throw self.decodeNetworkError(response.statusCode, data: data)
                 }
 
                 // Attempt to decode the response if we're expecting one
@@ -202,6 +205,21 @@ open class NetworkAPI {
         }
 
         return finalURL
+    }
+
+    private let jsonDecoder = JSONDecoder()
+
+    private func decodeNetworkError(_ statusCode: Int, data: Data?) -> NetworkAPIError {
+        guard let data = data, !data.isEmpty else {
+            return NetworkAPIError.httpError(statusCode, nil)
+        }
+
+        if let jsonInfo = (try? self.jsonDecoder.decode([String: String].self, from: data)) {
+            return NetworkAPIError.httpError(statusCode, jsonInfo)
+        } else if let stringData = String(data: data, encoding: stringEncodingType) {
+            return NetworkAPIError.httpError(statusCode, ["message": stringData])
+        }
+        return NetworkAPIError.httpError(statusCode, nil)
     }
 }
 

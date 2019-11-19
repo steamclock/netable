@@ -10,7 +10,7 @@ import Foundation
 public enum NetworkAPIError: Error {
     case codingError(String)
     case decodingError(Error, Data?)
-    case httpError(Int, Data?)
+    case httpError(Int, [String: String]?)
     case malformedURL
     case requestFailed(Error)
     case wrongServer

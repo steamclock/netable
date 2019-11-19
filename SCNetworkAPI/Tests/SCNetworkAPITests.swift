@@ -15,7 +15,7 @@ extension NetworkAPIError: Equatable {
     public static func == (lhs: NetworkAPIError, rhs: NetworkAPIError) -> Bool {
         switch (lhs, rhs) {
         case (.codingError, .codingError): return true
-        case (.httpError(let lhsCode), .httpError(let rhsCode)): return lhsCode == rhsCode
+        case (.httpError(let lhsCode, let lhsData), .httpError(let rhsCode, let rhsData)): return lhsCode == rhsCode && lhsData == rhsData
         case (.malformedURL, .malformedURL): return true
         // Note that .requestFailed doesn't check the underlying error
         case (.requestFailed, .requestFailed): return true
@@ -313,7 +313,6 @@ class SCNetworkAPIMobileTests: XCTestCase {
             return
         }
 
-        print(url.absoluteString)
         XCTAssert(
             url.absoluteString == "https://www.steamclock.com?a=foo&b=2" ||
             url.absoluteString == "https://www.steamclock.com?b=2&a=foo"
@@ -421,6 +420,62 @@ class SCNetworkAPIMobileTests: XCTestCase {
 
     // MARK: - Server Response Tests
 
+    func testUnwrappingCommonErrorMessageFormats() {
+        struct TestGETRequest: Request {
+            typealias Parameters = Empty
+            typealias Returning = Empty
+
+            public var method: HTTPMethod { return .get }
+            public var path: String
+
+            init(path: String) {
+                self.path = path
+            }
+        }
+
+        let errorString = "Test message, please ignore"
+        let expectStringError = XCTestExpectation(description: "Caught string error message")
+        stub(everything, http(400, download: .content(errorString.data(using: .utf8)!)))
+        api.request(TestGETRequest(path: "400")) { result in
+            switch result {
+            case .success:
+                XCTFail("GET request didn't properly decode string error message")
+            case .failure(let error):
+                if case let .httpError(code, messageJSON) = error {
+                    XCTAssert(code == 400)
+                    XCTAssert(messageJSON == ["message": errorString])
+                    expectStringError.fulfill()
+                } else {
+                    XCTFail("Failed to decode string error message")
+                }
+            }
+        }
+
+        guard let jsonData = try? JSONEncoder().encode(["message": errorString]) else {
+            XCTFail("Failed to encode test json")
+            return
+        }
+
+        let expectJSONError = XCTestExpectation(description: "Caught JSON error message")
+        stub(everything, http(400, download: .content(jsonData)))
+        api.request(TestGETRequest(path: "400")) { result in
+            switch result {
+            case .success:
+                XCTFail("GET request didn't properly decode string error message")
+            case .failure(let error):
+                if case let .httpError(code, messageJSON) = error {
+                    XCTAssert(code == 400)
+                    XCTAssert(messageJSON == ["message": errorString])
+                    expectJSONError.fulfill()
+                } else {
+                    XCTFail("Failed to decode string error message")
+                }
+            }
+        }
+
+        wait(for: [expectStringError, expectJSONError], timeout: 10.0)
+    }
+
     func testRequestCommonErrorCodesReturnHTTPError() {
         struct TestGETRequest: Request {
             typealias Parameters = Empty
@@ -441,8 +496,10 @@ class SCNetworkAPIMobileTests: XCTestCase {
             case .success:
                 XCTFail("GET request didn't catch 401")
             case .failure(let error):
-                if error == NetworkAPIError.httpError(401, Data()) {
+                if error == NetworkAPIError.httpError(401, nil) {
                     expect401.fulfill()
+                } else {
+                    XCTFail("Failed to match http error type for 401 error catch")
                 }
             }
         }
@@ -454,8 +511,10 @@ class SCNetworkAPIMobileTests: XCTestCase {
             case .success:
                 XCTFail("GET request didn't catch 404")
             case .failure(let error):
-                if error == NetworkAPIError.httpError(404, Data()) {
+                if error == NetworkAPIError.httpError(404, nil) {
                     expect404.fulfill()
+                } else {
+                    XCTFail("Failed to match http error type for 404 error catch")
                 }
             }
         }
@@ -467,8 +526,10 @@ class SCNetworkAPIMobileTests: XCTestCase {
             case .success:
                 XCTFail("GET request didn't catch 500")
             case .failure(let error):
-                if error == NetworkAPIError.httpError(500, Data()) {
+                if error == NetworkAPIError.httpError(500, nil) {
                     expect500.fulfill()
+                } else {
+                    XCTFail("Failed to match http error type for 500 error catch")
                 }
             }
         }
