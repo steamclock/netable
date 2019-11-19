@@ -100,15 +100,15 @@ open class NetworkAPI {
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .iso8601
 
-                if T.Returning.self == Empty.self {
-                    let raw = try decoder.decode(T.Returning.self, from: Empty.data)
+                if T.RawResource.self == Empty.self {
+                    let raw = try decoder.decode(T.RawResource.self, from: Empty.data)
                     completion(request.finalize(raw: raw))
                 } else {
                     guard let data = data else {
                         throw NetworkAPIError.noData
                     }
 
-                    let raw = try decoder.decode(T.Returning.self, from: data)
+                    let raw = try decoder.decode(T.RawResource.self, from: data)
                     completion(request.finalize(raw: raw))
                 }
             } catch let error as NetworkAPIError {

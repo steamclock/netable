@@ -17,14 +17,20 @@ public enum HTTPMethod: String {
 
 public protocol Request {
     associatedtype Parameters: Encodable
-    associatedtype Returning: Decodable
-    associatedtype FinalResource
+    associatedtype RawResource: Decodable
+    associatedtype FinalResource: Any = RawResource
 
     var method: HTTPMethod { get }
     var path: String { get }
     var parameters: Parameters { get }
 
-    func finalize(raw: Returning) -> Result<FinalResource, NetworkAPIError>
+    func finalize(raw: RawResource) -> Result<FinalResource, NetworkAPIError>
+}
+
+extension Request where FinalResource == RawResource {
+    public func finalize(raw: RawResource) -> Result<FinalResource, NetworkAPIError> {
+        return .success(raw)
+    }
 }
 
 public protocol MultipartFormData { }
