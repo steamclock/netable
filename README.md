@@ -11,44 +11,124 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Usage
 
-Make a new instance of `NetworkAPI`, and pass in your base URL:
-```
+### Standard Usage
+
+#### Make a new instance of `NetworkAPI`, and pass in your base URL:
+```swift
 let api = NetworkAPI(baseURL: URL(string: "https://api.thecatapi.com/v1/")!)
 ```
 
-Extend `Request`:
-```
+#### Extend `Request`
+```swift
 struct CatImage: Decodable {
     let id: String
     let url: String
 }
 
-struct GetCat: Request {
-    typealias Parameters = Empty
-    typealias Returning = [CatImage]
+struct GetCatImages: Request {
+    typealias Parameters = [String: String]
+    typealias RawResource = [CatImage]
 
     public var method: HTTPMethod { return .get }
 
     public var path: String {
-        return "images/search?mime_type=jpg,png"
+        return "images/search"
+    }
+
+    public var parameters: [String: String] {
+        return ["mime_type": "jpg,png", "limit": "2"]
     }
 }
 ```
 
-Make your request and handle the result:
-```
-api.request(GetCat()) { result in
+#### Make your request and handle the result:
+```swift
+api.request(GetCatImages()) { result in
     switch result {
-    case .success(let cats):
-        guard let cat = cats.first,
-                let url = URL(string: cat.url),
-                let data = try? Data(contentsOf: url) else {
+    case .success(let catImages):
+        if let firstCat = catImages.first,
+           let url = URL(string: firstCat.url),
+           let imageData = try? Data(contentsOf: url) {
+            self.catsImageView1.image = UIImage(data: imageData)
+        }
+
+        if let lastCat = catImages.last,
+           let url = URL(string: lastCat.url),
+           let imageData = try? Data(contentsOf: url) {
+            self.catsImageView2.image = UIImage(data: imageData)
+        }
+    case .failure(let error):
+        let alert = UIAlertController(
+            title: "Uh oh!",
+            message: "Get cats request failed with error: \(error)",
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        self.present(alert, animated: true, completion: nil)
+    }
+}
+```
+
+### Resource Extraction
+
+#### Have your request object handle extracting a usable object from the raw resource:
+
+```swift
+struct CatImage: Decodable {
+    let id: String
+    let url: String
+}
+
+struct GetCatImageURL: Request {
+    typealias Parameters = [String: String]
+    typealias RawResource = [CatImage]
+    typealias FinalResource = URL
+
+    public var method: HTTPMethod { return .get }
+
+    public var path: String {
+        return "images/search"
+    }
+
+    public var parameters: [String: String] {
+        return ["mime_type": "jpg,png"]
+    }
+
+    func finalize(raw: RawResource) -> Result<FinalResource, NetworkAPIError> {
+        guard let catImage = raw.first else {
+            return .failure(NetworkAPIError.resourceExtractionError("The CatImage array is empty"))
+        }
+
+        guard let url = URL(string: catImage.url) else {
+            return .failure(NetworkAPIError.resourceExtractionError("Could not build URL from CatImage url string"))
+        }
+
+        return .success(url)
+    }
+}
+```
+
+#### This can simplify your networking code:
+
+```swift
+api.request(GetCatImageURL()) { result in
+    switch result {
+    case .success(let catUrl):
+        guard let imageData = try? Data(contentsOf: catUrl) else {
             return
         }
 
-        self.imageView.image = UIImage(data: data)
+        self.imageView.image = UIImage(data: imageData)
     case .failure(let error):
-        debugPrint("Get cats request failed with error: \(error)")
+        let alert = UIAlertController(
+            title: "Uh oh!",
+            message: "Get cat url request failed with error: \(error)",
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 ```

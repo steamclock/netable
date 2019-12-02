@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.5.0] - 2019-02-12
+### Changed
+- Updated Request to support a final resource type
+- Updated example
+
+### Added
+- Included a final resource and finalize default implementations
+- Added resourceExtractionError type to NetworkAPIError
+
 ## [0.4.0] - 2019-22-07
 - Included response data in a http error (can allow clients to display server messages)
 
