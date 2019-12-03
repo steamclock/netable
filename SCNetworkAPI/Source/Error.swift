@@ -15,6 +15,7 @@ public enum NetworkAPIError: Error {
     case requestFailed(Error)
     case wrongServer
     case noData
+    case resourceExtractionError(String)
     case unknownError(Error)
 }
 
@@ -35,6 +36,8 @@ extension NetworkAPIError: LocalizedError {
             return "Wrong server"
         case .noData:
             return "No data"
+        case .resourceExtractionError(let message):
+            return "Resource Extraction Error: The raw result could not be turned into the final resource: \(message)"
         case .unknownError(let error):
             return "Unknown error: \(error.localizedDescription)"
         }
