@@ -93,7 +93,7 @@ class SCNetworkAPIMobileTests: XCTestCase {
     func testGETCatchesArrayParameters() {
         struct TestGETRequest: Request {
             typealias Parameters = [String]
-            typealias Returning = Empty
+            typealias RawResource = Empty
 
             public var method: HTTPMethod { return .get }
             public var path: String {
@@ -119,7 +119,7 @@ class SCNetworkAPIMobileTests: XCTestCase {
     func testGETCatchesNestedDict() {
         struct TestGETRequest: Request {
             typealias Parameters = [String: [String]]
-            typealias Returning = Empty
+            typealias RawResource = Empty
 
             public var method: HTTPMethod { return .get }
             public var path: String {
@@ -164,7 +164,7 @@ class SCNetworkAPIMobileTests: XCTestCase {
 
         struct TestGETRequest: Request {
             typealias Parameters = SVEC
-            typealias Returning = Empty
+            typealias RawResource = Empty
 
             public var method: HTTPMethod { return .get }
             public var path: String {
@@ -191,7 +191,7 @@ class SCNetworkAPIMobileTests: XCTestCase {
     func testGETCatchesEmptyParameters() {
         struct TestGETRequest: Request {
             typealias Parameters = [String: String]
-            typealias Returning = Empty
+            typealias RawResource = Empty
 
             public var method: HTTPMethod { return .get }
             public var path: String {
@@ -209,13 +209,14 @@ class SCNetworkAPIMobileTests: XCTestCase {
             XCTFail("Failed to unwrap url from GET request")
             return
         }
-        XCTAssert(url.absoluteString == "https://www.steamclock.com")
+        print(url)
+        XCTAssert(url.absoluteString == "https://www.steamclock.com?")
     }
 
     func testGETEncodesEscapedCharacters() {
         struct TestGETRequest: Request {
             typealias Parameters = [String: String]
-            typealias Returning = Empty
+            typealias RawResource = Empty
 
             public var method: HTTPMethod { return .get }
             public var path: String {
@@ -239,7 +240,7 @@ class SCNetworkAPIMobileTests: XCTestCase {
     func testGETRequestString() {
         struct TestGETRequest: Request {
             typealias Parameters = [String: String]
-            typealias Returning = Empty
+            typealias RawResource = Empty
 
             public var method: HTTPMethod { return .get }
             public var path: String {
@@ -264,7 +265,7 @@ class SCNetworkAPIMobileTests: XCTestCase {
     func testGETRequestInt() {
         struct TestGETRequest: Request {
             typealias Parameters = [String: Int]
-            typealias Returning = Empty
+            typealias RawResource = Empty
 
             public var method: HTTPMethod { return .get }
             public var path: String {
@@ -294,7 +295,7 @@ class SCNetworkAPIMobileTests: XCTestCase {
 
         struct TestGETRequest: Request {
             typealias Parameters = MyParams
-            typealias Returning = Empty
+            typealias RawResource = Empty
 
             public var method: HTTPMethod { return .get }
             public var path: String {
@@ -323,7 +324,7 @@ class SCNetworkAPIMobileTests: XCTestCase {
     func testPOSTContentTypeIsJSON() {
         struct TestPOSTRequest: Request {
             typealias Parameters = [String: String]
-            typealias Returning = Empty
+            typealias RawResource = Empty
 
             public var method: HTTPMethod { return .post }
             public var path: String {
@@ -350,7 +351,7 @@ class SCNetworkAPIMobileTests: XCTestCase {
     func testPOSTEncodingCatchesEncodingError() {
         struct TestRequest: Request {
             typealias Parameters = [String: Double]
-            typealias Returning = Empty
+            typealias RawResource = Empty
 
             public var method: HTTPMethod { return .post }
             public var path: String {
@@ -372,7 +373,7 @@ class SCNetworkAPIMobileTests: XCTestCase {
     func testPOSTEncodesString() {
         struct TestRequest: Request {
             typealias Parameters = [String: String]
-            typealias Returning = Empty
+            typealias RawResource = Empty
 
             public var method: HTTPMethod { return .post }
             public var path: String {
@@ -397,7 +398,7 @@ class SCNetworkAPIMobileTests: XCTestCase {
     func testPOSTEncodesInt() {
         struct TestRequest: Request {
             typealias Parameters = [String: Int]
-            typealias Returning = Empty
+            typealias RawResource = Empty
 
             public var method: HTTPMethod { return .post }
             public var path: String {
@@ -424,7 +425,7 @@ class SCNetworkAPIMobileTests: XCTestCase {
     func testRequestCommonErrorCodesReturnHTTPError() {
         struct TestGETRequest: Request {
             typealias Parameters = Empty
-            typealias Returning = Empty
+            typealias RawResource = Empty
 
             public var method: HTTPMethod { return .get }
             public var path: String
@@ -441,7 +442,7 @@ class SCNetworkAPIMobileTests: XCTestCase {
             case .success:
                 XCTFail("GET request didn't catch 401")
             case .failure(let error):
-                if error == NetworkAPIError.httpError(401) {
+                if error == NetworkAPIError.httpError(401, Data()) {
                     expect401.fulfill()
                 }
             }
@@ -454,7 +455,7 @@ class SCNetworkAPIMobileTests: XCTestCase {
             case .success:
                 XCTFail("GET request didn't catch 404")
             case .failure(let error):
-                if error == NetworkAPIError.httpError(404) {
+                if error == NetworkAPIError.httpError(404, Data()) {
                     expect404.fulfill()
                 }
             }
@@ -467,7 +468,7 @@ class SCNetworkAPIMobileTests: XCTestCase {
             case .success:
                 XCTFail("GET request didn't catch 500")
             case .failure(let error):
-                if error == NetworkAPIError.httpError(500) {
+                if error == NetworkAPIError.httpError(500, Data()) {
                     expect500.fulfill()
                 }
             }

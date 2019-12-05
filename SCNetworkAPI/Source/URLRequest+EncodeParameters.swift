@@ -16,14 +16,18 @@ extension Encodable {
                 let params = try? JSONSerialization.jsonObject(with: paramsData),
                 let paramsDictionary = params as? [String: Any]
                 else {
-                    throw NetworkAPIError.codingError("Failed to unwrap parameter dictionary")
+                    let message = "Request encoding failed: Failed to unwrap parameter dictionary."
+                    log.error(message)
+                    throw NetworkAPIError.codingError(message)
             }
 
             // Make sure that our encoded dictionary doesn't contain any nested collections
             for (_, value) in paramsDictionary where
                 (value as? [Any]) != nil ||
                     (value as? [AnyHashable: Any]) != nil {
-                        throw NetworkAPIError.codingError("Cannot encode nested collections")
+                        let message = "Request encoding failed: Cannot encode nested collections."
+                        log.error(message)
+                        throw NetworkAPIError.codingError(message)
             }
 
             // Convert anything that isn't a string to a string
@@ -33,7 +37,9 @@ extension Encodable {
 
             return stringsOnlyDictionary
         } catch {
-            throw NetworkAPIError.codingError(error.localizedDescription)
+            let message = "Request encoding failed: \(error.localizedDescription)"
+            log.error(message)
+            throw NetworkAPIError.codingError(message)
         }
     }
 }
@@ -47,7 +53,8 @@ extension URLRequest {
                     let url = url,
                     var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
                     else {
-                        throw NetworkAPIError.codingError("Encoding Error: Failed to unwrap url components")
+                        try throwCodingError("Request encoding failed: Failed to unwrap url components.")
+                        return
                 }
 
                 let paramsDictionary = try request.parameters.toParameterDictionary()
@@ -58,7 +65,7 @@ extension URLRequest {
 
                 self.url = components.url
             } catch {
-                throw NetworkAPIError.codingError("Encoding Error: Failed to create url parameters: \(error)")
+                try throwCodingError("Request encoding failed: Failed to create url parameters: \(error).")
             }
         case .post:
             do {
@@ -72,7 +79,7 @@ extension URLRequest {
                     fallthrough
                 }
             } catch {
-                throw NetworkAPIError.codingError("Encoding Error: Failed to create request body: \(error.localizedDescription)")
+                try throwCodingError("Encoding Error: Failed to create request body: \(error.localizedDescription)")
             }
         default:
             setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -80,8 +87,13 @@ extension URLRequest {
             do {
                 httpBody = try JSONEncoder().encode(request.parameters)
             } catch {
-                throw NetworkAPIError.codingError("Encoding Error: Failed to create request body: \(error.localizedDescription)")
+                try throwCodingError("Encoding Error: Failed to create request body: \(error.localizedDescription)")
             }
         }
+    }
+
+    private func throwCodingError(_ message: String) throws {
+        log.error(message)
+        throw NetworkAPIError.codingError(message)
     }
 }

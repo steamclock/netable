@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import os
 import QuartzCore
 
 open class NetworkAPI {
@@ -18,13 +19,24 @@ open class NetworkAPI {
     /// Headers to be sent with each request.
     public var headers: [String: String] = [:]
 
+    /// Toggle output of detailed logs via `NSLog`
+    public var consoleLogLevel: NetworkLogLevel {
+        didSet {
+            log.info("Log level set to \(consoleLogLevel.name).")
+            log.logLevel = consoleLogLevel
+        }
+    }
+
     /**
      * Create a new instance of `NetworkAPI` with a base URL.
      *
      * - parameter baseURL: The base URL of your endpoint.
+     * - parameter logLabel: Optional log level to subscribe to. Defaults to `.none`.
      */
-    public init(baseURL: URL) {
+    public init(baseURL: URL, logLevel: NetworkLogLevel = .none) {
         self.baseURL = baseURL
+        self.consoleLogLevel = logLevel
+        log.info("Created. BaseURL: \(baseURL.absoluteString). Log Level: \(logLevel.name).")
     }
 
     /**
@@ -53,8 +65,10 @@ open class NetworkAPI {
                 try urlRequest.encodeParameters(for: request)
             }
         } catch let error as NetworkAPIError {
+            log.info("Request parameter encoding failed: \(error)")
             completion(.failure(error))
         } catch {
+            log.info("Request parameter encoding failed: \(error)")
             completion(.failure(.unknownError(error)))
         }
 
@@ -65,6 +79,16 @@ open class NetworkAPI {
 
         // Send the request
         let startTimestamp = CACurrentMediaTime() * 1000
+
+        if let urlString = urlRequest.url?.absoluteString {
+            log.info("Request: \(urlString)")
+        }
+
+        if let headers = urlRequest.allHTTPHeaderFields {
+            log.info("Request headers: \(headers)")
+        }
+
+        log.info("Request method: \(request.method.rawValue).")
 
         let task = urlSession.dataTask(with: urlRequest) { data, response, error in
             defer {
@@ -83,14 +107,26 @@ open class NetworkAPI {
                     object: self,
                     userInfo: userInfo
                 )
+                log.info(userInfo.description)
             }
 
             do {
                 if let error = error {
+                    log.info("Request failed: \(error)")
                     throw NetworkAPIError.requestFailed(error)
                 }
 
-                guard let response = response as? HTTPURLResponse else { fatalError("Casting response to HTTPURLResponse failed") }
+                guard let responseURLString = response?.url?.absoluteString,
+                        let response = response as? HTTPURLResponse else {
+                    fatalError("Casting response to HTTPURLResponse failed")
+                }
+
+                // TODO: decode response heads from anyhashable nonsense or emit entirely
+                var debugString = "Response URL: \(responseURLString). Status code: \(response.statusCode)."
+                if let headers = response.allHeaderFields as? [String: Any] {
+                    debugString += " Headers: \(headers)"
+                }
+                log.info(debugString)
 
                 guard 200...299 ~= response.statusCode else {
                     throw NetworkAPIError.httpError(response.statusCode, data)
@@ -102,18 +138,25 @@ open class NetworkAPI {
 
                 if T.RawResource.self == Empty.self {
                     let raw = try decoder.decode(T.RawResource.self, from: Empty.data)
-                    completion(request.finalize(raw: raw))
+                    let finalized = request.finalize(raw: raw)
+                    log.info("Request returned: \(finalized)")
+                    completion(finalized)
                 } else {
                     guard let data = data else {
                         throw NetworkAPIError.noData
                     }
 
                     let raw = try decoder.decode(T.RawResource.self, from: data)
-                    completion(request.finalize(raw: raw))
+                    let finalized = request.finalize(raw: raw)
+
+                    log.info("Request returned: \(finalized)")
+                    completion(finalized)
                 }
             } catch let error as NetworkAPIError {
+                log.info("Request failed: \(error)")
                 return completion(.failure(error))
             } catch {
+                log.info("Request failed decoding: \(error)")
                 completion(.failure(.decodingError(error, data)))
             }
         }
@@ -125,8 +168,10 @@ open class NetworkAPI {
      * Cancel any ongoing requests
      */
     open func cancelAllTasks() {
+        log.info("Cancelling all requests.")
         urlSession.getAllTasks { tasks in
             for task in tasks {
+                log.info("Cancelled \(task.currentRequest?.url?.absoluteString ?? " an ongoing task")")
                 task.cancel()
             }
         }
@@ -182,6 +227,7 @@ open class NetworkAPI {
     internal func fullyQualifiedURLFrom(path: String) throws -> URL {
         // Make sure the url is a well formed path
         guard let url = URL(string: path) else {
+            log.error("Request failed: URL was malformed.")
             throw NetworkAPIError.malformedURL
         }
 
@@ -192,11 +238,13 @@ open class NetworkAPI {
             finalURL = url
 
             guard finalURL.absoluteString.hasPrefix(baseURL.absoluteString) else {
+                log.error("Request failed: wrong server.")
                 throw NetworkAPIError.wrongServer
             }
         } else {
             // Partially qualified URL, add baseURL
             guard let combinedURL = URL(string: path, relativeTo: baseURL) else {
+                log.error("Request failed: URL was malformed.")
                 throw NetworkAPIError.malformedURL
             }
 
@@ -205,19 +253,4 @@ open class NetworkAPI {
 
         return finalURL
     }
-}
-
-/**
- * Log an error to the console for debugging.
- *
- * - parameter closure: The error message to log.
- * - parameter functionName: The name of the function that this was called from.
- * - parameter filename: The name of the file this was called from.
- * - parameter lineNumber: The line number this was called from.
- */
-private func debugLogError(_ closure: @autoclosure () -> Any?, functionName: StaticString = #function, fileName: StaticString = #file, lineNumber: Int = #line) {
-    #if DEBUG
-    let message = closure() ?? ""
-    NSLog("\(fileName):\(lineNumber) \(functionName) \(message)")
-    #endif
 }
