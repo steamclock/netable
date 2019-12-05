@@ -133,6 +133,29 @@ api.request(GetCatImageURL()) { result in
 }
 ```
 
+### Error Handling
+
+// TODO
+
+### Logging
+
+While creating your NetworkAPI object, you can optionally specify a log level to have some additional information be printed to the console while developing:
+
+```
+
+let api = NetworkAPI(baseURL: URL(string: "https://api.thecatapi.com/v1/")!, logLevel: .info)
+```
+
+There are 3 log levels provided, depending on what information you want to see:
+
+| Level | Default | Description |
+| --- | --- | --- |
+| Info | Off | Request progress, responses & status |
+| Error | Off | Something's gone wrong while trying to send a request. |
+| None | On | Don't output any logs to the console. |
+
+Logs are printed using `NSLog`  *without any redaction*.
+
 ## Requirements
 
 ## Installation
