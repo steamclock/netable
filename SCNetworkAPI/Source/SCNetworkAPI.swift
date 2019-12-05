@@ -121,7 +121,6 @@ open class NetworkAPI {
                     fatalError("Casting response to HTTPURLResponse failed")
                 }
 
-                // TODO: decode response heads from anyhashable nonsense or emit entirely
                 var debugString = "Response URL: \(responseURLString). Status code: \(response.statusCode)."
                 if let headers = response.allHeaderFields as? [String: Any] {
                     debugString += " Headers: \(headers)"
