@@ -206,7 +206,7 @@ class SCNetworkAPIMobileTests: XCTestCase {
             XCTFail("Failed to unwrap url from GET request")
             return
         }
-        print(url)
+
         XCTAssert(url.absoluteString == "https://www.steamclock.com?")
     }
 
@@ -441,6 +441,7 @@ class SCNetworkAPIMobileTests: XCTestCase {
                 if error == NetworkAPIError.httpError(401, Data()) {
                     expect401.fulfill()
                 }
+                XCTFail("GET request didn't catch 401")
             }
         }
 
@@ -454,6 +455,7 @@ class SCNetworkAPIMobileTests: XCTestCase {
                 if error == NetworkAPIError.httpError(404, Data()) {
                     expect404.fulfill()
                 }
+                XCTFail("GET request didn't catch 404")
             }
         }
 
@@ -467,6 +469,7 @@ class SCNetworkAPIMobileTests: XCTestCase {
                 if error == NetworkAPIError.httpError(500, Data()) {
                     expect500.fulfill()
                 }
+                XCTFail("GET request didn't catch 500")
             }
         }
 

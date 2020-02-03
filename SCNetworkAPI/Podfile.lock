@@ -1,16 +1,16 @@
 PODS:
-  - Mockingjay (2.0.1):
-    - Mockingjay/Core (= 2.0.1)
-    - Mockingjay/XCTest (= 2.0.1)
-  - Mockingjay/Core (2.0.1):
-    - URITemplate (~> 2.0)
-  - Mockingjay/XCTest (2.0.1):
+  - Mockingjay (3.0.0-alpha.1):
+    - Mockingjay/Core (= 3.0.0-alpha.1)
+    - Mockingjay/XCTest (= 3.0.0-alpha.1)
+  - Mockingjay/Core (3.0.0-alpha.1):
+    - URITemplate (~> 3.0)
+  - Mockingjay/XCTest (3.0.0-alpha.1):
     - Mockingjay/Core
   - SwiftLint (0.27.0)
-  - URITemplate (2.0.3)
+  - URITemplate (3.0.0)
 
 DEPENDENCIES:
-  - Mockingjay
+  - Mockingjay (= 3.0.0-alpha.1)
   - SwiftLint
 
 SPEC REPOS:
@@ -20,10 +20,10 @@ SPEC REPOS:
     - URITemplate
 
 SPEC CHECKSUMS:
-  Mockingjay: 11a621880d2887f1775bdcf824341eb68f218450
+  Mockingjay: 0f7c5aa49c7f1b95621cee3c79b557141f5a225c
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
-  URITemplate: ace0c4c46dcf8afe6e89b4060621852886b15c3b
+  URITemplate: 58e0d47f967006c5d59888af5356c4a8ed3b197d
 
-PODFILE CHECKSUM: cc186c01e2769e11750042d767aeb6f6086b5d1e
+PODFILE CHECKSUM: bc646f41b665415b3f8b18aac6e7d4cae865217a
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.7.0.rc.1

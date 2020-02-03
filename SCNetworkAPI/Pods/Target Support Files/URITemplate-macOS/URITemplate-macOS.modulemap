@@ -1,5 +1,5 @@
 framework module URITemplate {
-  umbrella header "URITemplate-umbrella.h"
+  umbrella header "URITemplate-macOS-umbrella.h"
 
   export *
   module * { export * }
