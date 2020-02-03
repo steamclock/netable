@@ -10,7 +10,7 @@ import Foundation
 import QuartzCore
 
 open class NetworkAPI {
-    private var urlSession = URLSession(configuration: .ephemeral)
+    private let urlSession: URLSession
 
     /// The base URL of your api endpoint.
     public var baseURL: URL
@@ -22,9 +22,12 @@ open class NetworkAPI {
      * Create a new instance of `NetworkAPI` with a base URL.
      *
      * - parameter baseURL: The base URL of your endpoint.
+     * - parameter configuration: Configuration such as timeouts and caching policies for the underlying url session.
+     *
      */
-    public init(baseURL: URL) {
+    public init(baseURL: URL, configuration: URLSessionConfiguration = .ephemeral) {
         self.baseURL = baseURL
+        self.urlSession = URLSession(configuration: configuration)
     }
 
     /**
