@@ -144,6 +144,13 @@ it, simply add the following line to your Podfile:
 pod 'SCNetworkAPI'
 ```
 
+SCNetworkAPI is also available through [Swift Package Manager](https://swift.org/package-manager/). To install it, follow these steps:
+
+1. In Xcode, click **File**, then **Swift Package Manager**, then **Add Package Dependency**
+2. Choose your project
+3. Enter this URL in the search bar `https://github.com/steamclock/networkAPI.git`
+4. Choose **branch** and make sure **master** is selected
+
 ## Author
 
 brendan@steamclock.com
