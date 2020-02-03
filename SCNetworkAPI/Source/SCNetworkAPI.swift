@@ -22,18 +22,11 @@ open class NetworkAPI {
      * Create a new instance of `NetworkAPI` with a base URL.
      *
      * - parameter baseURL: The base URL of your endpoint.
-     * - parameter defaultTimeout: Time out for request and resource in seconds.
+     * - parameter configuration: Configuration such as timeouts and caching policies for the underlying url session.
      *
      */
-    public init(baseURL: URL, defaultTimeout: TimeInterval? = nil) {
+    public init(baseURL: URL, configuration: URLSessionConfiguration = .ephemeral) {
         self.baseURL = baseURL
-
-        let configuration = URLSessionConfiguration.ephemeral
-        if let defaultTimeout = defaultTimeout {
-            configuration.timeoutIntervalForRequest = defaultTimeout
-            configuration.timeoutIntervalForResource = defaultTimeout
-        }
-
         self.urlSession = URLSession(configuration: configuration)
     }
 
