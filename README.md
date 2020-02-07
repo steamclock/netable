@@ -1,4 +1,4 @@
-# SCNetworkAPI
+# Netable
 
 [![CI Status](https://img.shields.io/travis/blensink192@gmail.com/SCNetworkAPI.svg?style=flat)](https://travis-ci.org/blensink192@gmail.com/SCNetworkAPI)
 [![Version](https://img.shields.io/cocoapods/v/SCNetworkAPI.svg?style=flat)](https://cocoapods.org/pods/SCNetworkAPI)

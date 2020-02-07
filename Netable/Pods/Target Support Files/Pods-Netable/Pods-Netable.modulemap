@@ -1,0 +1,6 @@
+framework module Pods_Netable {
+  umbrella header "Pods-Netable-umbrella.h"
+
+  export *
+  module * { export * }
+}
