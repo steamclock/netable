@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		406DB41E401784B816949BFF /* Pods_Netable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89D265881BF0A6AE048845C4 /* Pods_Netable.framework */; };
 		79DA0013BECA85CC3B7FA919 /* Pods_Netable_NetableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 496CA1236FEDA2FDF8121747 /* Pods_Netable_NetableTests.framework */; };
+		B822C8EE23F20E8900D7BDAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B822C8ED23F20E8900D7BDAD /* AppDelegate.swift */; };
+		B822C8F023F20E8900D7BDAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B822C8EF23F20E8900D7BDAD /* SceneDelegate.swift */; };
+		B822C8F223F20E8900D7BDAD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B822C8F123F20E8900D7BDAD /* ViewController.swift */; };
+		B822C8F523F20E8900D7BDAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B822C8F323F20E8900D7BDAD /* Main.storyboard */; };
+		B822C8F723F20E8B00D7BDAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B822C8F623F20E8B00D7BDAD /* Assets.xcassets */; };
+		B822C8FA23F20E8B00D7BDAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B822C8F823F20E8B00D7BDAD /* LaunchScreen.storyboard */; };
+		B822C90023F210D800D7BDAD /* CatImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B822C8FF23F210D800D7BDAD /* CatImage.swift */; };
 		B888FD4B23ECD20800026A7F /* OHHTTPStubs in Frameworks */ = {isa = PBXBuildFile; productRef = B888FD4A23ECD20800026A7F /* OHHTTPStubs */; };
 		B888FD4D23ECD20800026A7F /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B888FD4C23ECD20800026A7F /* OHHTTPStubsSwift */; };
 		B8C9288A23E9F68000DB2B37 /* Netable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C9288023E9F68000DB2B37 /* Netable.framework */; };
@@ -41,6 +48,15 @@
 		496CA1236FEDA2FDF8121747 /* Pods_Netable_NetableTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Netable_NetableTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		579C42EA97DAEED7B928FF71 /* Pods-Netable-NetableTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Netable-NetableTests.debug.xcconfig"; path = "Target Support Files/Pods-Netable-NetableTests/Pods-Netable-NetableTests.debug.xcconfig"; sourceTree = "<group>"; };
 		89D265881BF0A6AE048845C4 /* Pods_Netable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Netable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B822C8EB23F20E8900D7BDAD /* NetableiOSExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetableiOSExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B822C8ED23F20E8900D7BDAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B822C8EF23F20E8900D7BDAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		B822C8F123F20E8900D7BDAD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B822C8F423F20E8900D7BDAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B822C8F623F20E8B00D7BDAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B822C8F923F20E8B00D7BDAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B822C8FB23F20E8B00D7BDAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B822C8FF23F210D800D7BDAD /* CatImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatImage.swift; sourceTree = "<group>"; };
 		B8C9288023E9F68000DB2B37 /* Netable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Netable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8C9288323E9F68000DB2B37 /* Netable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Netable.h; sourceTree = "<group>"; };
 		B8C9288423E9F68000DB2B37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,6 +74,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B822C8E823F20E8900D7BDAD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B8C9287D23E9F68000DB2B37 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -80,11 +103,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B822C8EC23F20E8900D7BDAD /* NetableiOSExample */ = {
+			isa = PBXGroup;
+			children = (
+				B822C8ED23F20E8900D7BDAD /* AppDelegate.swift */,
+				B822C8EF23F20E8900D7BDAD /* SceneDelegate.swift */,
+				B822C8F123F20E8900D7BDAD /* ViewController.swift */,
+				B822C8FF23F210D800D7BDAD /* CatImage.swift */,
+				B822C8F323F20E8900D7BDAD /* Main.storyboard */,
+				B822C8F623F20E8B00D7BDAD /* Assets.xcassets */,
+				B822C8F823F20E8B00D7BDAD /* LaunchScreen.storyboard */,
+				B822C8FB23F20E8B00D7BDAD /* Info.plist */,
+			);
+			path = NetableiOSExample;
+			sourceTree = "<group>";
+		};
 		B8C9287623E9F68000DB2B37 = {
 			isa = PBXGroup;
 			children = (
 				B8C9288223E9F68000DB2B37 /* Netable */,
 				B8C9288D23E9F68000DB2B37 /* NetableTests */,
+				B822C8EC23F20E8900D7BDAD /* NetableiOSExample */,
 				B8C9288123E9F68000DB2B37 /* Products */,
 				E670F3A3E320C28D82338D75 /* Pods */,
 				E342B75270EAABDF461EA814 /* Frameworks */,
@@ -96,6 +135,7 @@
 			children = (
 				B8C9288023E9F68000DB2B37 /* Netable.framework */,
 				B8C9288923E9F68000DB2B37 /* NetableTests.xctest */,
+				B822C8EB23F20E8900D7BDAD /* NetableiOSExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -160,6 +200,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		B822C8EA23F20E8900D7BDAD /* NetableiOSExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B822C8FE23F20E8B00D7BDAD /* Build configuration list for PBXNativeTarget "NetableiOSExample" */;
+			buildPhases = (
+				B822C8E723F20E8900D7BDAD /* Sources */,
+				B822C8E823F20E8900D7BDAD /* Frameworks */,
+				B822C8E923F20E8900D7BDAD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NetableiOSExample;
+			productName = NetableiOSExample;
+			productReference = B822C8EB23F20E8900D7BDAD /* NetableiOSExample.app */;
+			productType = "com.apple.product-type.application";
+		};
 		B8C9287F23E9F68000DB2B37 /* Netable */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B8C9289423E9F68000DB2B37 /* Build configuration list for PBXNativeTarget "Netable" */;
@@ -212,6 +269,9 @@
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Steamclock Software";
 				TargetAttributes = {
+					B822C8EA23F20E8900D7BDAD = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
 					B8C9287F23E9F68000DB2B37 = {
 						CreatedOnToolsVersion = 11.3.1;
 						LastSwiftMigration = 1130;
@@ -239,11 +299,22 @@
 			targets = (
 				B8C9287F23E9F68000DB2B37 /* Netable */,
 				B8C9288823E9F68000DB2B37 /* NetableTests */,
+				B822C8EA23F20E8900D7BDAD /* NetableiOSExample */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B822C8E923F20E8900D7BDAD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B822C8FA23F20E8B00D7BDAD /* LaunchScreen.storyboard in Resources */,
+				B822C8F723F20E8B00D7BDAD /* Assets.xcassets in Resources */,
+				B822C8F523F20E8900D7BDAD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B8C9287E23E9F68000DB2B37 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -308,6 +379,17 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B822C8E723F20E8900D7BDAD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B822C90023F210D800D7BDAD /* CatImage.swift in Sources */,
+				B822C8F223F20E8900D7BDAD /* ViewController.swift in Sources */,
+				B822C8EE23F20E8900D7BDAD /* AppDelegate.swift in Sources */,
+				B822C8F023F20E8900D7BDAD /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B8C9287C23E9F68000DB2B37 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -341,7 +423,62 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		B822C8F323F20E8900D7BDAD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B822C8F423F20E8900D7BDAD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B822C8F823F20E8B00D7BDAD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B822C8F923F20E8B00D7BDAD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		B822C8FC23F20E8B00D7BDAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GH868RP95T;
+				INFOPLIST_FILE = NetableiOSExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.steamclock.NetableiOSExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B822C8FD23F20E8B00D7BDAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GH868RP95T;
+				INFOPLIST_FILE = NetableiOSExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.steamclock.NetableiOSExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		B8C9289223E9F68000DB2B37 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -564,6 +701,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B822C8FE23F20E8B00D7BDAD /* Build configuration list for PBXNativeTarget "NetableiOSExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B822C8FC23F20E8B00D7BDAD /* Debug */,
+				B822C8FD23F20E8B00D7BDAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B8C9287A23E9F68000DB2B37 /* Build configuration list for PBXProject "Netable" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
