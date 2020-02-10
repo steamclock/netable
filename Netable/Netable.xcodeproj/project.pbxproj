@@ -18,6 +18,8 @@
 		B822C90023F210D800D7BDAD /* CatImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B822C8FF23F210D800D7BDAD /* CatImage.swift */; };
 		B888FD4B23ECD20800026A7F /* OHHTTPStubs in Frameworks */ = {isa = PBXBuildFile; productRef = B888FD4A23ECD20800026A7F /* OHHTTPStubs */; };
 		B888FD4D23ECD20800026A7F /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B888FD4C23ECD20800026A7F /* OHHTTPStubsSwift */; };
+		B8A18C0D23F2201000941EA6 /* Netable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C9288023E9F68000DB2B37 /* Netable.framework */; };
+		B8A18C0E23F2201000941EA6 /* Netable.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B8C9288023E9F68000DB2B37 /* Netable.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B8C9288A23E9F68000DB2B37 /* Netable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C9288023E9F68000DB2B37 /* Netable.framework */; };
 		B8C9288F23E9F68000DB2B37 /* NetableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C9288E23E9F68000DB2B37 /* NetableTests.swift */; };
 		B8C9289123E9F68000DB2B37 /* Netable.h in Headers */ = {isa = PBXBuildFile; fileRef = B8C9288323E9F68000DB2B37 /* Netable.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -32,6 +34,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		B8A18C0F23F2201000941EA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B8C9287723E9F68000DB2B37 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8C9287F23E9F68000DB2B37;
+			remoteInfo = Netable;
+		};
 		B8C9288B23E9F68000DB2B37 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B8C9287723E9F68000DB2B37 /* Project object */;
@@ -40,6 +49,20 @@
 			remoteInfo = Netable;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B8A18C1123F2201000941EA6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B8A18C0E23F2201000941EA6 /* Netable.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0584C1E36C4FF9FA06464DD4 /* Pods-Netable.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Netable.debug.xcconfig"; path = "Target Support Files/Pods-Netable/Pods-Netable.debug.xcconfig"; sourceTree = "<group>"; };
@@ -57,6 +80,7 @@
 		B822C8F923F20E8B00D7BDAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B822C8FB23F20E8B00D7BDAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B822C8FF23F210D800D7BDAD /* CatImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatImage.swift; sourceTree = "<group>"; };
+		B8A18C0C23F21FFE00941EA6 /* NetableiOSExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NetableiOSExample.entitlements; sourceTree = "<group>"; };
 		B8C9288023E9F68000DB2B37 /* Netable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Netable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8C9288323E9F68000DB2B37 /* Netable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Netable.h; sourceTree = "<group>"; };
 		B8C9288423E9F68000DB2B37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -78,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8A18C0D23F2201000941EA6 /* Netable.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +131,7 @@
 		B822C8EC23F20E8900D7BDAD /* NetableiOSExample */ = {
 			isa = PBXGroup;
 			children = (
+				B8A18C0C23F21FFE00941EA6 /* NetableiOSExample.entitlements */,
 				B822C8ED23F20E8900D7BDAD /* AppDelegate.swift */,
 				B822C8EF23F20E8900D7BDAD /* SceneDelegate.swift */,
 				B822C8F123F20E8900D7BDAD /* ViewController.swift */,
@@ -207,10 +233,12 @@
 				B822C8E723F20E8900D7BDAD /* Sources */,
 				B822C8E823F20E8900D7BDAD /* Frameworks */,
 				B822C8E923F20E8900D7BDAD /* Resources */,
+				B8A18C1123F2201000941EA6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B8A18C1023F2201000941EA6 /* PBXTargetDependency */,
 			);
 			name = NetableiOSExample;
 			productName = NetableiOSExample;
@@ -416,6 +444,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		B8A18C1023F2201000941EA6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8C9287F23E9F68000DB2B37 /* Netable */;
+			targetProxy = B8A18C0F23F2201000941EA6 /* PBXContainerItemProxy */;
+		};
 		B8C9288C23E9F68000DB2B37 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B8C9287F23E9F68000DB2B37 /* Netable */;
@@ -447,7 +480,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = NetableiOSExample/NetableiOSExample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = GH868RP95T;
 				INFOPLIST_FILE = NetableiOSExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -456,6 +491,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.steamclock.NetableiOSExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -465,7 +501,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = NetableiOSExample/NetableiOSExample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = GH868RP95T;
 				INFOPLIST_FILE = NetableiOSExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -474,6 +512,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.steamclock.NetableiOSExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -606,6 +645,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DEVELOPMENT_TEAM = GH868RP95T;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -622,7 +662,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.steamclock.Netable;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -636,6 +676,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DEVELOPMENT_TEAM = GH868RP95T;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -652,7 +693,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.steamclock.Netable;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
