@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  NetableiOSExample
+//  NetableExample
 //
 //  Created by Jeremy Chiang on 2020-02-10.
 //  Copyright © 2020 Steamclock Software. All rights reserved.
