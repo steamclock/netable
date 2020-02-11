@@ -2,22 +2,22 @@
 import PackageDescription
 
 let package = Package(
-  name: "SCNetworkAPI",
+  name: "Netable",
   platforms: [
     .iOS(.v12), .macOS(.v10_14)
   ],
   products: [
     .library(
-      name: "SCNetworkAPI",
-      targets: ["SCNetworkAPIMobile"]
+      name: "Netable",
+      targets: ["Netable"]
     )
   ],
   dependencies: [
   ],
   targets: [
     .target(
-      name: "SCNetworkAPIMobile",
-      path: "SCNetworkAPI/Source"
+      name: "Netable",
+      path: "Netable/Netable"
     )
   ]
 )

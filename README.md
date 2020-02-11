@@ -1,9 +1,9 @@
-# SCNetworkAPI
+# Netable
 
-[![CI Status](https://img.shields.io/travis/blensink192@gmail.com/SCNetworkAPI.svg?style=flat)](https://travis-ci.org/blensink192@gmail.com/SCNetworkAPI)
-[![Version](https://img.shields.io/cocoapods/v/SCNetworkAPI.svg?style=flat)](https://cocoapods.org/pods/SCNetworkAPI)
-[![License](https://img.shields.io/cocoapods/l/SCNetworkAPI.svg?style=flat)](https://cocoapods.org/pods/SCNetworkAPI)
-[![Platform](https://img.shields.io/cocoapods/p/SCNetworkAPI.svg?style=flat)](https://cocoapods.org/pods/SCNetworkAPI)
+[![CI Status](https://img.shields.io/travis/blensink192@gmail.com/Netable.svg?style=flat)](https://travis-ci.org/blensink192@gmail.com/Netable)
+[![Version](https://img.shields.io/cocoapods/v/Netable.svg?style=flat)](https://cocoapods.org/pods/Netable)
+[![License](https://img.shields.io/cocoapods/l/Netable.svg?style=flat)](https://cocoapods.org/pods/Netable)
+[![Platform](https://img.shields.io/cocoapods/p/Netable.svg?style=flat)](https://cocoapods.org/pods/Netable)
 
 ## Example
 
@@ -13,9 +13,9 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ### Standard Usage
 
-#### Make a new instance of `NetworkAPI`, and pass in your base URL:
+#### Make a new instance of `Netable`, and pass in your base URL:
 ```swift
-let api = NetworkAPI(baseURL: URL(string: "https://api.thecatapi.com/v1/")!)
+let netable = Netable(baseURL: URL(string: "https://api.thecatapi.com/v1/")!)
 ```
 
 #### Extend `Request`
@@ -43,7 +43,7 @@ struct GetCatImages: Request {
 
 #### Make your request and handle the result:
 ```swift
-api.request(GetCatImages()) { result in
+netable.request(GetCatImages()) { result in
     switch result {
     case .success(let catImages):
         if let firstCat = catImages.first,
@@ -95,13 +95,13 @@ struct GetCatImageURL: Request {
         return ["mime_type": "jpg,png"]
     }
 
-    func finalize(raw: RawResource) -> Result<FinalResource, NetworkAPIError> {
+    func finalize(raw: RawResource) -> Result<FinalResource, NetableError> {
         guard let catImage = raw.first else {
-            return .failure(NetworkAPIError.resourceExtractionError("The CatImage array is empty"))
+            return .failure(NetableError.resourceExtractionError("The CatImage array is empty"))
         }
 
         guard let url = URL(string: catImage.url) else {
-            return .failure(NetworkAPIError.resourceExtractionError("Could not build URL from CatImage url string"))
+            return .failure(NetableError.resourceExtractionError("Could not build URL from CatImage url string"))
         }
 
         return .success(url)
@@ -112,7 +112,7 @@ struct GetCatImageURL: Request {
 #### This can simplify your networking code:
 
 ```swift
-api.request(GetCatImageURL()) { result in
+netable.request(GetCatImageURL()) { result in
     switch result {
     case .success(let catUrl):
         guard let imageData = try? Data(contentsOf: catUrl) else {
@@ -137,19 +137,18 @@ api.request(GetCatImageURL()) { result in
 
 ## Installation
 
-SCNetworkAPI is available through [CocoaPods](https://cocoapods.org). To install
+Netable is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'SCNetworkAPI'
+pod 'Netable'
 ```
 
-SCNetworkAPI is also available through [Swift Package Manager](https://swift.org/package-manager/). To install it, follow these steps:
+Netable is also available through [Swift Package Manager](https://swift.org/package-manager/). To install it, follow these steps:
 
 1. In Xcode, click **File**, then **Swift Package Manager**, then **Add Package Dependency**
 2. Choose your project
-3. Enter this URL in the search bar `https://github.com/steamclock/networkAPI.git`
-4. Choose **branch** and make sure **master** is selected
+3. Enter this URL in the search bar `https://github.com/steamclock/netable.git`
 
 ## Author
 
@@ -157,4 +156,4 @@ brendan@steamclock.com
 
 ## License
 
-SCNetworkAPI is available under the MIT license. See the LICENSE file for more info.
+Netable is available under the MIT license. See the LICENSE file for more info.
