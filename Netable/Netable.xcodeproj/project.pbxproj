@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		406DB41E401784B816949BFF /* Pods_Netable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89D265881BF0A6AE048845C4 /* Pods_Netable.framework */; };
-		79DA0013BECA85CC3B7FA919 /* Pods_Netable_NetableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 496CA1236FEDA2FDF8121747 /* Pods_Netable_NetableTests.framework */; };
 		B822C8EE23F20E8900D7BDAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B822C8ED23F20E8900D7BDAD /* AppDelegate.swift */; };
 		B822C8F023F20E8900D7BDAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B822C8EF23F20E8900D7BDAD /* SceneDelegate.swift */; };
 		B822C8F223F20E8900D7BDAD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B822C8F123F20E8900D7BDAD /* ViewController.swift */; };
@@ -16,8 +14,8 @@
 		B822C8F723F20E8B00D7BDAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B822C8F623F20E8B00D7BDAD /* Assets.xcassets */; };
 		B822C8FA23F20E8B00D7BDAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B822C8F823F20E8B00D7BDAD /* LaunchScreen.storyboard */; };
 		B822C90023F210D800D7BDAD /* CatImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B822C8FF23F210D800D7BDAD /* CatImage.swift */; };
-		B888FD4B23ECD20800026A7F /* OHHTTPStubs in Frameworks */ = {isa = PBXBuildFile; productRef = B888FD4A23ECD20800026A7F /* OHHTTPStubs */; };
-		B888FD4D23ECD20800026A7F /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B888FD4C23ECD20800026A7F /* OHHTTPStubsSwift */; };
+		B888FD4B23ECD20800026A7F /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = B888FD4A23ECD20800026A7F /* SwiftPackageProductDependency */; };
+		B888FD4D23ECD20800026A7F /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = B888FD4C23ECD20800026A7F /* SwiftPackageProductDependency */; };
 		B8A18C0D23F2201000941EA6 /* Netable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C9288023E9F68000DB2B37 /* Netable.framework */; };
 		B8A18C0E23F2201000941EA6 /* Netable.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B8C9288023E9F68000DB2B37 /* Netable.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B8C9288A23E9F68000DB2B37 /* Netable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C9288023E9F68000DB2B37 /* Netable.framework */; };
@@ -65,12 +63,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0584C1E36C4FF9FA06464DD4 /* Pods-Netable.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Netable.debug.xcconfig"; path = "Target Support Files/Pods-Netable/Pods-Netable.debug.xcconfig"; sourceTree = "<group>"; };
-		0D3DC349C6C338259B11192A /* Pods-Netable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Netable.release.xcconfig"; path = "Target Support Files/Pods-Netable/Pods-Netable.release.xcconfig"; sourceTree = "<group>"; };
-		1DB9B3C3D9B6C8AEE45003BC /* Pods-Netable-NetableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Netable-NetableTests.release.xcconfig"; path = "Target Support Files/Pods-Netable-NetableTests/Pods-Netable-NetableTests.release.xcconfig"; sourceTree = "<group>"; };
-		496CA1236FEDA2FDF8121747 /* Pods_Netable_NetableTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Netable_NetableTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		579C42EA97DAEED7B928FF71 /* Pods-Netable-NetableTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Netable-NetableTests.debug.xcconfig"; path = "Target Support Files/Pods-Netable-NetableTests/Pods-Netable-NetableTests.debug.xcconfig"; sourceTree = "<group>"; };
-		89D265881BF0A6AE048845C4 /* Pods_Netable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Netable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B822C8EB23F20E8900D7BDAD /* NetableExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetableExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B822C8ED23F20E8900D7BDAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B822C8EF23F20E8900D7BDAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,9 +102,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				406DB41E401784B816949BFF /* Pods_Netable.framework in Frameworks */,
-				B888FD4D23ECD20800026A7F /* OHHTTPStubsSwift in Frameworks */,
-				B888FD4B23ECD20800026A7F /* OHHTTPStubs in Frameworks */,
+				B888FD4D23ECD20800026A7F /* BuildFile in Frameworks */,
+				B888FD4B23ECD20800026A7F /* BuildFile in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,7 +112,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8C9288A23E9F68000DB2B37 /* Netable.framework in Frameworks */,
-				79DA0013BECA85CC3B7FA919 /* Pods_Netable_NetableTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,7 +142,6 @@
 				B822C8EC23F20E8900D7BDAD /* NetableExample */,
 				B8C9288123E9F68000DB2B37 /* Products */,
 				E670F3A3E320C28D82338D75 /* Pods */,
-				E342B75270EAABDF461EA814 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -192,22 +181,9 @@
 			path = NetableTests;
 			sourceTree = "<group>";
 		};
-		E342B75270EAABDF461EA814 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				89D265881BF0A6AE048845C4 /* Pods_Netable.framework */,
-				496CA1236FEDA2FDF8121747 /* Pods_Netable_NetableTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		E670F3A3E320C28D82338D75 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0584C1E36C4FF9FA06464DD4 /* Pods-Netable.debug.xcconfig */,
-				0D3DC349C6C338259B11192A /* Pods-Netable.release.xcconfig */,
-				579C42EA97DAEED7B928FF71 /* Pods-Netable-NetableTests.debug.xcconfig */,
-				1DB9B3C3D9B6C8AEE45003BC /* Pods-Netable-NetableTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -249,7 +225,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B8C9289423E9F68000DB2B37 /* Build configuration list for PBXNativeTarget "Netable" */;
 			buildPhases = (
-				94905FE008807113C28DEB06 /* [CP] Check Pods Manifest.lock */,
 				B8C9287B23E9F68000DB2B37 /* Headers */,
 				B8C9287C23E9F68000DB2B37 /* Sources */,
 				B8C9287D23E9F68000DB2B37 /* Frameworks */,
@@ -261,8 +236,8 @@
 			);
 			name = Netable;
 			packageProductDependencies = (
-				B888FD4A23ECD20800026A7F /* OHHTTPStubs */,
-				B888FD4C23ECD20800026A7F /* OHHTTPStubsSwift */,
+				B888FD4A23ECD20800026A7F /* SwiftPackageProductDependency */,
+				B888FD4C23ECD20800026A7F /* SwiftPackageProductDependency */,
 			);
 			productName = Netable;
 			productReference = B8C9288023E9F68000DB2B37 /* Netable.framework */;
@@ -274,7 +249,6 @@
 			buildPhases = (
 				B8C9288623E9F68000DB2B37 /* Frameworks */,
 				B8C9288523E9F68000DB2B37 /* Sources */,
-				7E7C26DCB15C17940F335606 /* [CP] Check Pods Manifest.lock */,
 				B8C9288723E9F68000DB2B37 /* Resources */,
 			);
 			buildRules = (
@@ -319,7 +293,7 @@
 			);
 			mainGroup = B8C9287623E9F68000DB2B37;
 			packageReferences = (
-				B888FD4923ECD20800026A7F /* XCRemoteSwiftPackageReference "OHHTTPStubs" */,
+				B888FD4923ECD20800026A7F /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = B8C9288123E9F68000DB2B37 /* Products */;
 			projectDirPath = "";
@@ -358,53 +332,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		7E7C26DCB15C17940F335606 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Netable-NetableTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		94905FE008807113C28DEB06 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Netable-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B822C8E723F20E8900D7BDAD /* Sources */ = {
@@ -640,7 +567,6 @@
 		};
 		B8C9289523E9F68000DB2B37 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0584C1E36C4FF9FA06464DD4 /* Pods-Netable.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -671,7 +597,6 @@
 		};
 		B8C9289623E9F68000DB2B37 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0D3DC349C6C338259B11192A /* Pods-Netable.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -701,7 +626,6 @@
 		};
 		B8C9289823E9F68000DB2B37 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 579C42EA97DAEED7B928FF71 /* Pods-Netable-NetableTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -721,7 +645,6 @@
 		};
 		B8C9289923E9F68000DB2B37 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1DB9B3C3D9B6C8AEE45003BC /* Pods-Netable-NetableTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -781,7 +704,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		B888FD4923ECD20800026A7F /* XCRemoteSwiftPackageReference "OHHTTPStubs" */ = {
+		B888FD4923ECD20800026A7F /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AliSoftware/OHHTTPStubs.git";
 			requirement = {
@@ -792,14 +715,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B888FD4A23ECD20800026A7F /* OHHTTPStubs */ = {
+		B888FD4A23ECD20800026A7F /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B888FD4923ECD20800026A7F /* XCRemoteSwiftPackageReference "OHHTTPStubs" */;
+			package = B888FD4923ECD20800026A7F /* RemoteSwiftPackageReference */;
 			productName = OHHTTPStubs;
 		};
-		B888FD4C23ECD20800026A7F /* OHHTTPStubsSwift */ = {
+		B888FD4C23ECD20800026A7F /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B888FD4923ECD20800026A7F /* XCRemoteSwiftPackageReference "OHHTTPStubs" */;
+			package = B888FD4923ECD20800026A7F /* RemoteSwiftPackageReference */;
 			productName = OHHTTPStubsSwift;
 		};
 /* End XCSwiftPackageProductDependency section */

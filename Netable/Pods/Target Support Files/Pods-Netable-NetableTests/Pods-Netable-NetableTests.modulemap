@@ -1,6 +1,0 @@
-framework module Pods_Netable_NetableTests {
-  umbrella header "Pods-Netable-NetableTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
