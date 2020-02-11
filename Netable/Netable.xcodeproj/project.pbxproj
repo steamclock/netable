@@ -241,7 +241,7 @@
 				B8A18C1023F2201000941EA6 /* PBXTargetDependency */,
 			);
 			name = NetableExample;
-			productName = NetableiOSExample;
+			productName = NetableExample;
 			productReference = B822C8EB23F20E8900D7BDAD /* NetableExample.app */;
 			productType = "com.apple.product-type.application";
 		};
