@@ -12,6 +12,7 @@ import XCTest
 @testable import OHHTTPStubsSwift
 
 class NetableTests: XCTestCase {
+    let testTimeout: TimeInterval = 15
     let baseURL = "https://www.steamclock.com"
     var netable: Netable!
 
@@ -22,6 +23,7 @@ class NetableTests: XCTestCase {
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        super.tearDown()
         HTTPStubs.removeAllStubs()
     }
 
@@ -422,7 +424,7 @@ class NetableTests: XCTestCase {
             return HTTPStubsResponse(data: Data(), statusCode: 401, headers: nil)
         }
 
-        let expect401 = XCTestExpectation(description: "401 error caught")
+        let expect401 = expectation(description: "401 error caught")
 
         netable.request(TestGETRequest(path: "401")) { result in
             switch result {
@@ -431,10 +433,13 @@ class NetableTests: XCTestCase {
             case .failure(let error):
                 if error == NetableError.httpError(401, Data()) {
                     expect401.fulfill()
+                } else {
+                    XCTFail("GET request didn't catch 401")
                 }
-                XCTFail("GET request didn't catch 401")
             }
         }
+
+        waitForExpectations(timeout: testTimeout)
     }
 
     func test404() {
@@ -442,7 +447,7 @@ class NetableTests: XCTestCase {
             return HTTPStubsResponse(data: Data(), statusCode: 404, headers: nil)
         }
 
-        let expect404 = XCTestExpectation(description: "404 error caught")
+        let expect404 = expectation(description: "404 error caught")
 
         netable.request(TestGETRequest(path: "404")) { result in
             switch result {
@@ -451,10 +456,13 @@ class NetableTests: XCTestCase {
             case .failure(let error):
                 if error == NetableError.httpError(404, Data()) {
                     expect404.fulfill()
+                } else {
+                    XCTFail("GET request didn't catch 404")
                 }
-                XCTFail("GET request didn't catch 404")
             }
         }
+
+        waitForExpectations(timeout: testTimeout)
     }
 
     func test500() {
@@ -462,7 +470,7 @@ class NetableTests: XCTestCase {
             return HTTPStubsResponse(data: Data(), statusCode: 500, headers: nil)
         }
 
-        let expect500 = XCTestExpectation(description: "500 error caught")
+        let expect500 = expectation(description: "500 error caught")
 
         netable.request(TestGETRequest(path: "500")) { result in
             switch result {
@@ -471,9 +479,12 @@ class NetableTests: XCTestCase {
             case .failure(let error):
                 if error == NetableError.httpError(500, Data()) {
                     expect500.fulfill()
+                } else {
+                    XCTFail("GET request didn't catch 500")
                 }
-                XCTFail("GET request didn't catch 500")
             }
         }
+
+        waitForExpectations(timeout: testTimeout)
     }
 }
