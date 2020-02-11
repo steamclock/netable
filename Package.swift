@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
   name: "Netable",
   platforms: [
-    .iOS(.v12), .macOS(.v10_14)
+    .iOS(.v11), .macOS(.v10_14)
   ],
   products: [
     .library(
