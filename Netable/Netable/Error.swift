@@ -28,7 +28,7 @@ extension NetableError: LocalizedError {
         case .decodingError:
             return 1
         case .httpError(let statusCode, _):
-            return statusCode
+            return statusCode < 100 ? 2 : statusCode
         case .malformedURL:
             return 3
         case .requestFailed:
