@@ -21,6 +21,29 @@ public enum NetableError: Error {
 }
 
 extension NetableError: LocalizedError {
+    public var errorCode: Int? {
+        switch self {
+        case .codingError:
+            return 0
+        case .decodingError:
+            return 1
+        case .httpError(let statusCode, _):
+            return statusCode < 100 ? 2 : statusCode
+        case .malformedURL:
+            return 3
+        case .requestFailed:
+            return 4
+        case .wrongServer:
+            return 5
+        case .noData:
+            return 6
+        case .resourceExtractionError:
+            return 7
+        case .unknownError:
+            return 8
+        }
+    }
+
     public var errorDescription: String? {
         switch self {
         case .codingError(let message):
