@@ -72,7 +72,7 @@ open class Netable {
         }
 
         // Send the request
-        let startTimestamp = CACurrentMediaTime() * 1000
+        let startTimestamp = CACurrentMediaTime()
 
         logDestination?.log("\(request.method.rawValue) request...", severity: .debug)
         logDestination?.log("URL: \(urlRequest.url?.absoluteString ?? "UNDEFINED")", severity: .debug)
@@ -83,7 +83,7 @@ open class Netable {
 
         let task = urlSession.dataTask(with: urlRequest) { data, response, error in
             defer {
-                let endTimestamp = CACurrentMediaTime() * 1000
+                let endTimestamp = CACurrentMediaTime()
 
                 let userInfo = NetableNotification.userInfo(
                     forRequest: urlRequest,
