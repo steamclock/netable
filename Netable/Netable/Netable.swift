@@ -32,7 +32,11 @@ open class Netable {
         self.urlSession = URLSession(configuration: configuration)
         self.logDestination = logDestination
 
-        logDestination?.log("Netable instance intiated. Here we go!", severity: .verbose)
+        logDestination?.log(message: "[NETABLE] instance intiated. Here we go!")
+        logDestination?.log(message: "    Base URL: \(baseURL.absoluteString)")
+        if let logDest = logDestination {
+            logDestination?.log(message: "    Log Destination: \(logDest)")
+        }
     }
 
     /**
@@ -74,12 +78,12 @@ open class Netable {
         // Send the request
         let startTimestamp = CACurrentMediaTime()
 
-        logDestination?.log("\(request.method.rawValue) request...", severity: .debug)
-        logDestination?.log("URL: \(urlRequest.url?.absoluteString ?? "UNDEFINED")", severity: .debug)
-        logDestination?.log("HEADERS: \(urlRequest.allHTTPHeaderFields ?? [:])", severity: .debug)
-        if request.method != .get, let params = try? request.parameters.toParameterDictionary() {
-            logDestination?.log("PARAMETERS: \(params)", severity: .debug)
-        }
+        logDestination?.log(requestStarted: .init(
+            urlString: urlRequest.url?.absoluteString ?? "Undefined",
+            method: request.method,
+            headers: urlRequest.allHTTPHeaderFields ?? [:],
+            params: try? request.parameters.toParameterDictionary()
+        ))
 
         let task = urlSession.dataTask(with: urlRequest) { data, response, error in
             defer {
@@ -102,14 +106,14 @@ open class Netable {
 
             do {
                 if let error = error {
-                    self.logDestination?.log("FAILED: \(error)", severity: .warn)
+                    self.logDestination?.log(requestFailed: NetableLogEvent.RequestFailed(error: NetableError.requestFailed(error)))
                     throw NetableError.requestFailed(error)
                 }
 
                 guard let response = response as? HTTPURLResponse else { fatalError("Casting response to HTTPURLResponse failed") }
 
                 guard 200...299 ~= response.statusCode else {
-                    self.logDestination?.log("HTTP ERROR: \(response.statusCode) \(String(describing: data))", severity: .warn)
+                    self.logDestination?.log(requestCompleted: .init(statusCode: response.statusCode, message: "", responseData: data, finalizedResult: nil))
                     throw NetableError.httpError(response.statusCode, data)
                 }
 
@@ -122,21 +126,26 @@ open class Netable {
                     completion(request.finalize(raw: raw))
                 } else {
                     guard let data = data else {
-                        self.logDestination?.log("FAILED: Response was expecting data but none was provided", severity: .warn)
+                        self.logDestination?.log(requestFailed: .init(error: NetableError.noData))
                         throw NetableError.noData
                     }
 
                     let raw = try decoder.decode(T.RawResource.self, from: data)
                     let finalizedData = request.finalize(raw: raw)
-                    self.logDestination?.log("SUCCESS: raw data: \(raw)", severity: .debug)
-                    self.logDestination?.log("    Finalized data: \(finalizedData)", severity: .debug)
+                    
+                    self.logDestination?.log(requestCompleted: .init(
+                        statusCode: response.statusCode,
+                        message: "",
+                        responseData: data,
+                        finalizedResult: finalizedData
+                    ))
                     completion(finalizedData)
                 }
             } catch let error as NetableError {
-                self.logDestination?.log("FAILED: \(error)", severity: .warn)
+                self.logDestination?.log(requestFailed: .init(error: NetableError.noData))
                 return completion(.failure(error))
             } catch {
-                self.logDestination?.log("FAILED, decoding error: \(error)", severity: .warn)
+                self.logDestination?.log(requestFailed: .init(error: NetableError.noData))
                 completion(.failure(.decodingError(error, data)))
             }
         }
