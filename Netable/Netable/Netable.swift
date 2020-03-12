@@ -18,6 +18,8 @@ open class Netable {
     /// Headers to be sent with each request.
     public var headers: [String: String] = [:]
 
+    public var logDestination: NetableLoggingDestination?
+
     /**
      * Create a new instance of `Netable` with a base URL.
      *
@@ -25,9 +27,12 @@ open class Netable {
      * - parameter configuration: Configuration such as timeouts and caching policies for the underlying url session.
      *
      */
-    public init(baseURL: URL, configuration: URLSessionConfiguration = .ephemeral) {
+    public init(baseURL: URL, configuration: URLSessionConfiguration = .ephemeral, logDestination: NetableLoggingDestination? = nil) {
         self.baseURL = baseURL
         self.urlSession = URLSession(configuration: configuration)
+        self.logDestination = logDestination
+
+        logDestination?.log("Netable instance intiated. Here we go!", severity: .verbose)
     }
 
     /**
@@ -69,6 +74,13 @@ open class Netable {
         // Send the request
         let startTimestamp = CACurrentMediaTime() * 1000
 
+        logDestination?.log("\(request.method.rawValue) request...", severity: .debug)
+        logDestination?.log("URL: \(urlRequest.url?.absoluteString ?? "UNDEFINED")", severity: .debug)
+        logDestination?.log("HEADERS: \(urlRequest.allHTTPHeaderFields ?? [:])", severity: .debug)
+        if request.method != .get, let params = try? request.parameters.toParameterDictionary() {
+            logDestination?.log("PARAMETERS: \(params)", severity: .debug)
+        }
+
         let task = urlSession.dataTask(with: urlRequest) { data, response, error in
             defer {
                 let endTimestamp = CACurrentMediaTime() * 1000
@@ -90,12 +102,14 @@ open class Netable {
 
             do {
                 if let error = error {
+                    self.logDestination?.log("FAILED: \(error)", severity: .warn)
                     throw NetableError.requestFailed(error)
                 }
 
                 guard let response = response as? HTTPURLResponse else { fatalError("Casting response to HTTPURLResponse failed") }
 
                 guard 200...299 ~= response.statusCode else {
+                    self.logDestination?.log("HTTP ERROR: \(response.statusCode) \(String(describing: data))", severity: .warn)
                     throw NetableError.httpError(response.statusCode, data)
                 }
 
@@ -108,15 +122,21 @@ open class Netable {
                     completion(request.finalize(raw: raw))
                 } else {
                     guard let data = data else {
+                        self.logDestination?.log("FAILED: Response was expecting data but none was provided", severity: .warn)
                         throw NetableError.noData
                     }
 
                     let raw = try decoder.decode(T.RawResource.self, from: data)
-                    completion(request.finalize(raw: raw))
+                    let finalizedData = request.finalize(raw: raw)
+                    self.logDestination?.log("SUCCESS: raw data: \(raw)", severity: .debug)
+                    self.logDestination?.log("    Finalized data: \(finalizedData)", severity: .debug)
+                    completion(finalizedData)
                 }
             } catch let error as NetableError {
+                self.logDestination?.log("FAILED: \(error)", severity: .warn)
                 return completion(.failure(error))
             } catch {
+                self.logDestination?.log("FAILED, decoding error: \(error)", severity: .warn)
                 completion(.failure(.decodingError(error, data)))
             }
         }

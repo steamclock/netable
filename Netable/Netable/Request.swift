@@ -12,7 +12,6 @@ public protocol Request {
     associatedtype Parameters: Encodable
     associatedtype RawResource: Decodable
     associatedtype FinalResource: Any = RawResource
-
     var method: HTTPMethod { get }
     var path: String { get }
     var parameters: Parameters { get }
