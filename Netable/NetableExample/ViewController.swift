@@ -13,7 +13,14 @@ class ViewController: UIViewController {
 
     @IBOutlet private var catImageView: UIImageView!
 
+    /// Create a Netable instance using the default log destination
     private let netable = Netable(baseURL: URL(string: "https://api.thecatapi.com/v1/")!)
+
+    // Create a Netable instance that won't record logs to anywhere
+    private let silentNetable = Netable(baseURL: URL(string: "https://api.thecatapi.com/v1/")!, logDestination: EmptyLogDestination())
+
+    /// Create a Netable instance that implements a custom log destination
+    private let customNetable = Netable(baseURL: URL(string: "https://api.thecatapi.com/v1/")!, logDestination: EmptyLogDestination())
 
     override func viewDidLoad() {
         super.viewDidLoad()

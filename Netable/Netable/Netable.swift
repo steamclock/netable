@@ -65,8 +65,10 @@ open class Netable {
                 try urlRequest.encodeParameters(for: request)
             }
         } catch let error as NetableError {
+            logDestination.log(event: .requestFailed(error: error))
             completion(.failure(error))
         } catch {
+            logDestination.log(event: .requestFailed(error: .unknownError(error)))
             completion(.failure(.unknownError(error)))
         }
 
@@ -77,7 +79,12 @@ open class Netable {
 
         // Send the request
         let startTimestamp = CACurrentMediaTime()
-        logDestination.log(event: .requestStarted(urlString:  urlRequest.url?.absoluteString ?? "Undefined", method: request.method, headers: urlRequest.allHTTPHeaderFields ?? [:], params: try? request.parameters.toParameterDictionary()))
+        logDestination.log(event: .requestStarted(
+            urlString:  urlRequest.url?.absoluteString ?? "Undefined",
+            method: request.method,
+            headers: urlRequest.allHTTPHeaderFields ?? [:],
+            params: try? request.parameters.toParameterDictionary())
+        )
 
         let task = urlSession.dataTask(with: urlRequest) { data, response, error in
             defer {
@@ -149,6 +156,7 @@ open class Netable {
      */
     open func cancelAllTasks() {
         urlSession.getAllTasks { tasks in
+            self.logDestination.log(event: .message("Cancelling all \(tasks.count) ongoing tasks."))
             for task in tasks {
                 task.cancel()
             }
@@ -190,19 +198,4 @@ open class Netable {
 
         return finalURL
     }
-}
-
-/**
- * Log an error to the console for debugging.
- *
- * - parameter closure: The error message to log.
- * - parameter functionName: The name of the function that this was called from.
- * - parameter filename: The name of the file this was called from.
- * - parameter lineNumber: The line number this was called from.
- */
-private func debugLogError(_ closure: @autoclosure () -> Any?, functionName: StaticString = #function, fileName: StaticString = #file, lineNumber: Int = #line) {
-    #if DEBUG
-    let message = closure() ?? ""
-    NSLog("\(fileName):\(lineNumber) \(functionName) \(message)")
-    #endif
 }

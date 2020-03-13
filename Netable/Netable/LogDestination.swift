@@ -17,7 +17,7 @@ public enum LogEvent: CustomDebugStringConvertible {
     public var debugDescription: String {
         switch self {
         case .message(let message): return message
-        case .requestStarted(let urlString, let method,let headers, let params):
+        case .requestStarted(let urlString, let method, let headers, let params):
             return """
                 Started \(method.rawValue) request...
                     URL: \(urlString)
