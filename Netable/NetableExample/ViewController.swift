@@ -13,7 +13,7 @@ class ViewController: UIViewController {
 
     @IBOutlet private var catImageView: UIImageView!
 
-    private let netable = Netable(baseURL: URL(string: "https://api.thecatapi.com/v1/")!, logDestination: NetableLog())
+    private let netable = Netable(baseURL: URL(string: "https://api.thecatapi.com/v1/")!)
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -18,7 +18,7 @@ open class Netable {
     /// Headers to be sent with each request.
     public var headers: [String: String] = [:]
 
-    public var logDestination: NetableLoggingDestination?
+    public var logDestination: LogDestination
 
     /**
      * Create a new instance of `Netable` with a base URL.
@@ -27,16 +27,16 @@ open class Netable {
      * - parameter configuration: Configuration such as timeouts and caching policies for the underlying url session.
      *
      */
-    public init(baseURL: URL, configuration: URLSessionConfiguration = .ephemeral, logDestination: NetableLoggingDestination? = nil) {
+    public init(baseURL: URL, configuration: URLSessionConfiguration = .ephemeral, logDestination: LogDestination = DefaultLogDestination()) {
         self.baseURL = baseURL
         self.urlSession = URLSession(configuration: configuration)
         self.logDestination = logDestination
 
-        logDestination?.log(message: "[NETABLE] instance intiated. Here we go!")
-        logDestination?.log(message: "    Base URL: \(baseURL.absoluteString)")
-        if let logDest = logDestination {
-            logDestination?.log(message: "    Log Destination: \(logDest)")
-        }
+        logDestination.log(event: .message("""
+            Netable instance initiated. Here we go!
+                Base URL: Base URL: \(baseURL.absoluteString)
+                Log Destination: \(logDestination)
+        """))
     }
 
     /**
@@ -77,13 +77,7 @@ open class Netable {
 
         // Send the request
         let startTimestamp = CACurrentMediaTime()
-
-        logDestination?.log(requestStarted: .init(
-            urlString: urlRequest.url?.absoluteString ?? "Undefined",
-            method: request.method,
-            headers: urlRequest.allHTTPHeaderFields ?? [:],
-            params: try? request.parameters.toParameterDictionary()
-        ))
+        logDestination.log(event: .requestStarted(urlString:  urlRequest.url?.absoluteString ?? "Undefined", method: request.method, headers: urlRequest.allHTTPHeaderFields ?? [:], params: try? request.parameters.toParameterDictionary()))
 
         let task = urlSession.dataTask(with: urlRequest) { data, response, error in
             defer {
@@ -106,14 +100,14 @@ open class Netable {
 
             do {
                 if let error = error {
-                    self.logDestination?.log(requestFailed: NetableLogEvent.RequestFailed(error: NetableError.requestFailed(error)))
+                    self.logDestination.log(event: .requestFailed(error: NetableError.requestFailed(error)))
                     throw NetableError.requestFailed(error)
                 }
 
                 guard let response = response as? HTTPURLResponse else { fatalError("Casting response to HTTPURLResponse failed") }
 
                 guard 200...299 ~= response.statusCode else {
-                    self.logDestination?.log(requestCompleted: .init(statusCode: response.statusCode, message: "", responseData: data, finalizedResult: nil))
+                    self.logDestination.log(event: .requestCompleted(statusCode: response.statusCode, responseData: data, finalizedResult: nil))
                     throw NetableError.httpError(response.statusCode, data)
                 }
 
@@ -126,27 +120,24 @@ open class Netable {
                     completion(request.finalize(raw: raw))
                 } else {
                     guard let data = data else {
-                        self.logDestination?.log(requestFailed: .init(error: NetableError.noData))
+                        self.logDestination.log(event: .requestFailed(error: .noData))
                         throw NetableError.noData
                     }
 
                     let raw = try decoder.decode(T.RawResource.self, from: data)
                     let finalizedData = request.finalize(raw: raw)
-                    
-                    self.logDestination?.log(requestCompleted: .init(
-                        statusCode: response.statusCode,
-                        message: "",
-                        responseData: data,
-                        finalizedResult: finalizedData
-                    ))
+
+                    self.logDestination.log(event: .requestCompleted(statusCode: response.statusCode, responseData: data, finalizedResult: finalizedData))
+
                     completion(finalizedData)
                 }
             } catch let error as NetableError {
-                self.logDestination?.log(requestFailed: .init(error: NetableError.noData))
+                self.logDestination.log(event: .requestFailed(error: error))
                 return completion(.failure(error))
             } catch {
-                self.logDestination?.log(requestFailed: .init(error: NetableError.noData))
-                completion(.failure(.decodingError(error, data)))
+                let error = NetableError.decodingError(error, data)
+                self.logDestination.log(event: .requestFailed(error: error))
+                completion(.failure(error))
             }
         }
 
