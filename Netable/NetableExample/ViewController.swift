@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     private let silentNetable = Netable(baseURL: URL(string: "https://api.thecatapi.com/v1/")!, logDestination: EmptyLogDestination())
 
     /// Create a Netable instance that implements a custom log destination
-    private let customNetable = Netable(baseURL: URL(string: "https://api.thecatapi.com/v1/")!, logDestination: EmptyLogDestination())
+    private let customNetable = Netable(baseURL: URL(string: "https://api.thecatapi.com/v1/")!, logDestination: CustomLogDestination())
 
     override func viewDidLoad() {
         super.viewDidLoad()
