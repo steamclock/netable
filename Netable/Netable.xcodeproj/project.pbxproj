@@ -9,11 +9,10 @@
 /* Begin PBXBuildFile section */
 		B822C8EE23F20E8900D7BDAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B822C8ED23F20E8900D7BDAD /* AppDelegate.swift */; };
 		B822C8F023F20E8900D7BDAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B822C8EF23F20E8900D7BDAD /* SceneDelegate.swift */; };
-		B822C8F223F20E8900D7BDAD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B822C8F123F20E8900D7BDAD /* ViewController.swift */; };
+		B822C8F223F20E8900D7BDAD /* SampleGetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B822C8F123F20E8900D7BDAD /* SampleGetViewController.swift */; };
 		B822C8F523F20E8900D7BDAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B822C8F323F20E8900D7BDAD /* Main.storyboard */; };
-		B822C8F723F20E8B00D7BDAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B822C8F623F20E8B00D7BDAD /* Assets.xcassets */; };
 		B822C8FA23F20E8B00D7BDAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B822C8F823F20E8B00D7BDAD /* LaunchScreen.storyboard */; };
-		B822C90023F210D800D7BDAD /* CatImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B822C8FF23F210D800D7BDAD /* CatImage.swift */; };
+		B822C90023F210D800D7BDAD /* GetCatRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B822C8FF23F210D800D7BDAD /* GetCatRequest.swift */; };
 		B888FD4B23ECD20800026A7F /* OHHTTPStubs in Frameworks */ = {isa = PBXBuildFile; productRef = B888FD4A23ECD20800026A7F /* OHHTTPStubs */; };
 		B888FD4D23ECD20800026A7F /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B888FD4C23ECD20800026A7F /* OHHTTPStubsSwift */; };
 		B8A18C0D23F2201000941EA6 /* Netable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C9288023E9F68000DB2B37 /* Netable.framework */; };
@@ -31,6 +30,9 @@
 		B8C928A923E9FDCC00DB2B37 /* Netable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C928A823E9FDCC00DB2B37 /* Netable.swift */; };
 		C64F8590241FE4670028E0E9 /* Netable.podspec in Resources */ = {isa = PBXBuildFile; fileRef = C64F858F241FE4670028E0E9 /* Netable.podspec */; };
 		C64F8592241FE4870028E0E9 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = C64F8591241FE4870028E0E9 /* CHANGELOG.md */; };
+		C64F8594241FE70E0028E0E9 /* ExamplesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64F8593241FE70E0028E0E9 /* ExamplesTableViewController.swift */; };
+		C64F859C241FF09D0028E0E9 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64F859B241FF09D0028E0E9 /* LoginRequest.swift */; };
+		C64F859E241FF8E60028E0E9 /* PostLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64F859D241FF8E60028E0E9 /* PostLoginViewController.swift */; };
 		C66901AF241C1B0A002954C5 /* CustomLogDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66901AE241C1B0A002954C5 /* CustomLogDestination.swift */; };
 		C6953F42241A95830044D278 /* LogDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6953F41241A95830044D278 /* LogDestination.swift */; };
 /* End PBXBuildFile section */
@@ -70,12 +72,11 @@
 		B822C8EB23F20E8900D7BDAD /* NetableExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetableExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B822C8ED23F20E8900D7BDAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B822C8EF23F20E8900D7BDAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B822C8F123F20E8900D7BDAD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B822C8F123F20E8900D7BDAD /* SampleGetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleGetViewController.swift; sourceTree = "<group>"; };
 		B822C8F423F20E8900D7BDAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B822C8F623F20E8B00D7BDAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B822C8F923F20E8B00D7BDAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B822C8FB23F20E8B00D7BDAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B822C8FF23F210D800D7BDAD /* CatImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatImage.swift; sourceTree = "<group>"; };
+		B822C8FF23F210D800D7BDAD /* GetCatRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCatRequest.swift; sourceTree = "<group>"; };
 		B8A18C0C23F21FFE00941EA6 /* NetableExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NetableExample.entitlements; sourceTree = "<group>"; };
 		B8C9288023E9F68000DB2B37 /* Netable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Netable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8C9288323E9F68000DB2B37 /* Netable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Netable.h; sourceTree = "<group>"; };
@@ -93,6 +94,9 @@
 		B8C928A823E9FDCC00DB2B37 /* Netable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Netable.swift; sourceTree = "<group>"; };
 		C64F858F241FE4670028E0E9 /* Netable.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Netable.podspec; path = ../../Netable.podspec; sourceTree = "<group>"; };
 		C64F8591241FE4870028E0E9 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../../CHANGELOG.md; sourceTree = "<group>"; };
+		C64F8593241FE70E0028E0E9 /* ExamplesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplesTableViewController.swift; sourceTree = "<group>"; };
+		C64F859B241FF09D0028E0E9 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		C64F859D241FF8E60028E0E9 /* PostLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLoginViewController.swift; sourceTree = "<group>"; };
 		C66901AE241C1B0A002954C5 /* CustomLogDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLogDestination.swift; sourceTree = "<group>"; };
 		C6953F41241A95830044D278 /* LogDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDestination.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,16 +133,10 @@
 		B822C8EC23F20E8900D7BDAD /* NetableExample */ = {
 			isa = PBXGroup;
 			children = (
-				B8A18C0C23F21FFE00941EA6 /* NetableExample.entitlements */,
-				B822C8ED23F20E8900D7BDAD /* AppDelegate.swift */,
-				B822C8EF23F20E8900D7BDAD /* SceneDelegate.swift */,
-				B822C8F123F20E8900D7BDAD /* ViewController.swift */,
-				B822C8FF23F210D800D7BDAD /* CatImage.swift */,
-				B822C8F323F20E8900D7BDAD /* Main.storyboard */,
-				B822C8F623F20E8B00D7BDAD /* Assets.xcassets */,
-				B822C8F823F20E8B00D7BDAD /* LaunchScreen.storyboard */,
-				B822C8FB23F20E8B00D7BDAD /* Info.plist */,
-				C66901AE241C1B0A002954C5 /* CustomLogDestination.swift */,
+				C64F8597241FED610028E0E9 /* Helpers */,
+				C64F8596241FED3F0028E0E9 /* Requests */,
+				C64F8595241FECD40028E0E9 /* Resources */,
+				C64F8598241FED6C0028E0E9 /* View Controllers */,
 			);
 			path = NetableExample;
 			sourceTree = "<group>";
@@ -191,6 +189,46 @@
 				B8C9289023E9F68000DB2B37 /* Info.plist */,
 			);
 			path = NetableTests;
+			sourceTree = "<group>";
+		};
+		C64F8595241FECD40028E0E9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B822C8ED23F20E8900D7BDAD /* AppDelegate.swift */,
+				B822C8FB23F20E8B00D7BDAD /* Info.plist */,
+				B822C8F823F20E8B00D7BDAD /* LaunchScreen.storyboard */,
+				B822C8F323F20E8900D7BDAD /* Main.storyboard */,
+				B8A18C0C23F21FFE00941EA6 /* NetableExample.entitlements */,
+				B822C8EF23F20E8900D7BDAD /* SceneDelegate.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C64F8596241FED3F0028E0E9 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				B822C8FF23F210D800D7BDAD /* GetCatRequest.swift */,
+				C64F859B241FF09D0028E0E9 /* LoginRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		C64F8597241FED610028E0E9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C66901AE241C1B0A002954C5 /* CustomLogDestination.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		C64F8598241FED6C0028E0E9 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B822C8F123F20E8900D7BDAD /* SampleGetViewController.swift */,
+				C64F8593241FE70E0028E0E9 /* ExamplesTableViewController.swift */,
+				C64F859D241FF8E60028E0E9 /* PostLoginViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		E670F3A3E320C28D82338D75 /* Pods */ = {
@@ -324,7 +362,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B822C8FA23F20E8B00D7BDAD /* LaunchScreen.storyboard in Resources */,
-				B822C8F723F20E8B00D7BDAD /* Assets.xcassets in Resources */,
 				B822C8F523F20E8900D7BDAD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,9 +390,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C66901AF241C1B0A002954C5 /* CustomLogDestination.swift in Sources */,
-				B822C90023F210D800D7BDAD /* CatImage.swift in Sources */,
-				B822C8F223F20E8900D7BDAD /* ViewController.swift in Sources */,
+				B822C90023F210D800D7BDAD /* GetCatRequest.swift in Sources */,
+				C64F8594241FE70E0028E0E9 /* ExamplesTableViewController.swift in Sources */,
+				B822C8F223F20E8900D7BDAD /* SampleGetViewController.swift in Sources */,
 				B822C8EE23F20E8900D7BDAD /* AppDelegate.swift in Sources */,
+				C64F859C241FF09D0028E0E9 /* LoginRequest.swift in Sources */,
+				C64F859E241FF8E60028E0E9 /* PostLoginViewController.swift in Sources */,
 				B822C8F023F20E8900D7BDAD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,7 +467,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = GH868RP95T;
-				INFOPLIST_FILE = NetableExample/Info.plist;
+				INFOPLIST_FILE = NetableExample/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -449,7 +489,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = GH868RP95T;
-				INFOPLIST_FILE = NetableExample/Info.plist;
+				INFOPLIST_FILE = NetableExample/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
