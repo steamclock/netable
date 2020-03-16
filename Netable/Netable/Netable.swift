@@ -18,6 +18,8 @@ open class Netable {
     /// Headers to be sent with each request.
     public var headers: [String: String] = [:]
 
+    public var logDestination: LogDestination
+
     /**
      * Create a new instance of `Netable` with a base URL.
      *
@@ -25,9 +27,16 @@ open class Netable {
      * - parameter configuration: Configuration such as timeouts and caching policies for the underlying url session.
      *
      */
-    public init(baseURL: URL, configuration: URLSessionConfiguration = .ephemeral) {
+    public init(baseURL: URL, configuration: URLSessionConfiguration = .ephemeral, logDestination: LogDestination = DefaultLogDestination()) {
         self.baseURL = baseURL
         self.urlSession = URLSession(configuration: configuration)
+        self.logDestination = logDestination
+
+        logDestination.log(event: .message("""
+            Netable instance initiated. Here we go!
+                Base URL: Base URL: \(baseURL.absoluteString)
+                Log Destination: \(logDestination)
+        """))
     }
 
     /**
@@ -56,8 +65,10 @@ open class Netable {
                 try urlRequest.encodeParameters(for: request)
             }
         } catch let error as NetableError {
+            logDestination.log(event: .requestFailed(error: error))
             completion(.failure(error))
         } catch {
+            logDestination.log(event: .requestFailed(error: .unknownError(error)))
             completion(.failure(.unknownError(error)))
         }
 
@@ -68,6 +79,12 @@ open class Netable {
 
         // Send the request
         let startTimestamp = CACurrentMediaTime()
+        logDestination.log(event: .requestStarted(
+            urlString:  urlRequest.url?.absoluteString ?? "Undefined",
+            method: request.method,
+            headers: urlRequest.allHTTPHeaderFields ?? [:],
+            params: try? request.parameters.toParameterDictionary())
+        )
 
         let task = urlSession.dataTask(with: urlRequest) { data, response, error in
             defer {
@@ -90,12 +107,14 @@ open class Netable {
 
             do {
                 if let error = error {
+                    self.logDestination.log(event: .requestFailed(error: NetableError.requestFailed(error)))
                     throw NetableError.requestFailed(error)
                 }
 
                 guard let response = response as? HTTPURLResponse else { fatalError("Casting response to HTTPURLResponse failed") }
 
                 guard 200...299 ~= response.statusCode else {
+                    self.logDestination.log(event: .requestCompleted(statusCode: response.statusCode, responseData: data, finalizedResult: nil))
                     throw NetableError.httpError(response.statusCode, data)
                 }
 
@@ -108,16 +127,24 @@ open class Netable {
                     completion(request.finalize(raw: raw))
                 } else {
                     guard let data = data else {
+                        self.logDestination.log(event: .requestFailed(error: .noData))
                         throw NetableError.noData
                     }
 
                     let raw = try decoder.decode(T.RawResource.self, from: data)
-                    completion(request.finalize(raw: raw))
+                    let finalizedData = request.finalize(raw: raw)
+
+                    self.logDestination.log(event: .requestCompleted(statusCode: response.statusCode, responseData: data, finalizedResult: finalizedData))
+
+                    completion(finalizedData)
                 }
             } catch let error as NetableError {
+                self.logDestination.log(event: .requestFailed(error: error))
                 return completion(.failure(error))
             } catch {
-                completion(.failure(.decodingError(error, data)))
+                let error = NetableError.decodingError(error, data)
+                self.logDestination.log(event: .requestFailed(error: error))
+                completion(.failure(error))
             }
         }
 
@@ -129,6 +156,7 @@ open class Netable {
      */
     open func cancelAllTasks() {
         urlSession.getAllTasks { tasks in
+            self.logDestination.log(event: .message("Cancelling all \(tasks.count) ongoing tasks."))
             for task in tasks {
                 task.cancel()
             }
@@ -170,19 +198,4 @@ open class Netable {
 
         return finalURL
     }
-}
-
-/**
- * Log an error to the console for debugging.
- *
- * - parameter closure: The error message to log.
- * - parameter functionName: The name of the function that this was called from.
- * - parameter filename: The name of the file this was called from.
- * - parameter lineNumber: The line number this was called from.
- */
-private func debugLogError(_ closure: @autoclosure () -> Any?, functionName: StaticString = #function, fileName: StaticString = #file, lineNumber: Int = #line) {
-    #if DEBUG
-    let message = closure() ?? ""
-    NSLog("\(fileName):\(lineNumber) \(functionName) \(message)")
-    #endif
 }
