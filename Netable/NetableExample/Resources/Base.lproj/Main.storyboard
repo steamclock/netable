@@ -36,10 +36,10 @@
             </objects>
             <point key="canvasLocation" x="610.14492753623188" y="-94.419642857142847"/>
         </scene>
-        <!--Sample Get View Controller-->
+        <!--GET Cat-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="SampleGetViewController" id="BYZ-38-t0r" customClass="SampleGetViewController" customModule="NetableExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SampleGetViewController" title="GET Cat" id="BYZ-38-t0r" customClass="SampleGetViewController" customModule="NetableExample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -67,10 +67,10 @@
             </objects>
             <point key="canvasLocation" x="1479.7101449275362" y="-81.026785714285708"/>
         </scene>
-        <!--Post Login View Controller-->
+        <!--POST Login-->
         <scene sceneID="bXm-Mi-ql1">
             <objects>
-                <viewController storyboardIdentifier="PostLoginViewController" id="Fop-Sp-MGW" customClass="PostLoginViewController" customModule="NetableExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostLoginViewController" title="POST Login" id="Fop-Sp-MGW" customClass="PostLoginViewController" customModule="NetableExample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TIT-Ua-GWn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
