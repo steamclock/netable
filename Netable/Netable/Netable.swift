@@ -115,7 +115,7 @@ open class Netable {
 
                 guard 200...299 ~= response.statusCode else {
                     self.logDestination.log(event: .requestCompleted(statusCode: response.statusCode, responseData: data, finalizedResult: nil))
-                    throw NetableError.httpError(response.statusCode, data)
+                    throw NetableError.httpError(response.statusCode, HttpErrorResult(rawData: data))
                 }
 
                 // Attempt to decode the response if we're expecting one

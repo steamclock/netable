@@ -8,10 +8,30 @@
 
 import Foundation
 
+public struct HTTPLocalizedError: LocalizedError {
+    
+}
+
+public struct HttpErrorResult: Equatable {
+    let rawData: Data?
+
+    public static func == (lhs: HttpErrorResult, rhs: HttpErrorResult) -> Bool {
+        return lhs.rawData == rhs.rawData
+    }
+
+    var localizedError: HTTPLocalizedError? {
+        return nil // TODO...
+    }
+
+    var dictionary: [String: Any]? {
+        return nil // TODO...
+    }
+}
+
 public enum NetableError: Error {
     case codingError(String)
     case decodingError(Error, Data?)
-    case httpError(Int, Data?)
+    case httpError(Int, HttpErrorResult?)
     case malformedURL
     case requestFailed(Error)
     case wrongServer
