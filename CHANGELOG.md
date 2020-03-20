@@ -4,10 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+### Added
+- Added a new post example
+
+### Changed
+- Reworked the example project to allow for more examples to be added
+
 ## [0.8.4] - 2020-03-16
 ### Added
 - Added support for built in logging
-
 
 ## [0.8.3] - 2020-03-10
 ### Changed
