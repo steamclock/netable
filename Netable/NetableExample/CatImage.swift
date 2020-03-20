@@ -14,7 +14,7 @@ struct CatImage: Decodable {
     let url: String
 }
 
-struct GetCatImage: Request {
+struct GetCatImage: Request {    
     typealias Parameters = [String: String]
     typealias RawResource = [CatImage]
     typealias FinalResource = UIImage

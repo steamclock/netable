@@ -15,12 +15,19 @@ public protocol Request {
     var method: HTTPMethod { get }
     var path: String { get }
     var parameters: Parameters { get }
+    var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy { get }
 
     func finalize(raw: RawResource) -> Result<FinalResource, NetableError>
 }
 
-extension Request where FinalResource == RawResource {
-    public func finalize(raw: RawResource) -> Result<FinalResource, NetableError> {
+public extension Request {
+    var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy {
+        return .useDefaultKeys
+    }
+}
+
+public extension Request where FinalResource == RawResource {
+    func finalize(raw: RawResource) -> Result<FinalResource, NetableError> {
         return .success(raw)
     }
 }

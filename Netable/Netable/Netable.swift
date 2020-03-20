@@ -18,6 +18,7 @@ open class Netable {
     /// Headers to be sent with each request.
     public var headers: [String: String] = [:]
 
+    /// Destination that logs will be printed to during network requests.
     public var logDestination: LogDestination
 
     /**
@@ -121,6 +122,7 @@ open class Netable {
                 // Attempt to decode the response if we're expecting one
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .iso8601
+                decoder.keyDecodingStrategy = request.jsonKeyDecodingStrategy
 
                 if T.RawResource.self == Empty.self {
                     let raw = try decoder.decode(T.RawResource.self, from: Empty.data)
