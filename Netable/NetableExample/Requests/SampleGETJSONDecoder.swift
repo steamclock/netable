@@ -28,9 +28,7 @@ struct SampleGetJSON: Request {
         return "api/users/2"
     }
 
-    var parameters: [String : String] {
-        return ["sample_param": "1a2a3a4a"]
-    }
-
+    var parameters: [String : String]
+    
     var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .convertFromSnakeCase
 }

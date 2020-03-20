@@ -16,8 +16,7 @@ class CustomLogDestination: LogDestination {
         case .requestFailed(let error):
             os_log("Request failed: %s", error.localizedDescription)
         default:
-            // Don't log anything except failed requests
-            break
+            os_log("%s", event.debugDescription)
         }
     }
 }
