@@ -20,7 +20,16 @@ class ExamplesTableViewController: UITableViewController {
     }
 
     private let contents: [RequestSet] = [
-        RequestSet(sectionTitle: "GET", requestRows: [RequestRow(title: "GET Cat Image", vcIdentifier: "SampleGetViewController")]),
+        RequestSet(
+            sectionTitle: "GET",
+            requestRows: [
+                RequestRow(title: "GET Cat Image", vcIdentifier: "SampleGetViewController"),
+                RequestRow(title: "Custom Logger Example", vcIdentifier: "CustomLoggerViewController"),
+                RequestRow(title: "Empty Logger Example", vcIdentifier: "EmptyLoggerViewController"),
+                RequestRow(title: "Decode_snake_case", vcIdentifier: "DecodeSnakeCaseViewController")
+
+            ]
+        ),
         RequestSet(sectionTitle: "POST", requestRows: [RequestRow(title: "POST Sample Login", vcIdentifier: "PostLoginViewController")]),
     ]
 
