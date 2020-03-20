@@ -1,5 +1,5 @@
 //
-//  CatImage.swift
+//  GetCatRequest.swift
 //  NetableExample
 //
 //  Created by Jeremy Chiang on 2020-02-10.
@@ -14,7 +14,7 @@ struct CatImage: Decodable {
     let url: String
 }
 
-struct GetCatImage: Request {
+struct GetCatRequest: Request {
     typealias Parameters = [String: String]
     typealias RawResource = [CatImage]
     typealias FinalResource = UIImage

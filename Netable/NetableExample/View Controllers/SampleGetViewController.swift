@@ -9,7 +9,7 @@
 import Netable
 import UIKit
 
-class ViewController: UIViewController {
+class SampleGetViewController: UIViewController {
 
     @IBOutlet private var catImageView: UIImageView!
 
@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        netable.request(GetCatImage()) { [weak self] result in
+        netable.request(GetCatRequest()) { [weak self] result in
             guard let self = self else { return }
 
             switch result {

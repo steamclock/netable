@@ -112,12 +112,11 @@ open class Netable {
                 }
 
                 guard let response = response as? HTTPURLResponse else { fatalError("Casting response to HTTPURLResponse failed") }
-
                 guard 200...299 ~= response.statusCode else {
                     self.logDestination.log(event: .requestCompleted(statusCode: response.statusCode, responseData: data, finalizedResult: nil))
                     throw NetableError.httpError(response.statusCode, data)
                 }
-
+                    print(String(data: data!, encoding:.utf8))
                 // Attempt to decode the response if we're expecting one
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .iso8601
