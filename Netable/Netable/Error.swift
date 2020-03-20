@@ -8,15 +8,35 @@
 
 import Foundation
 
+/// All errors return by Netable are NetableErrors.
 public enum NetableError: Error {
+    /// Something went wrong while encoding request parameters.
     case codingError(String)
+
+    /// Something went wrong while decoding the response.
     case decodingError(Error, Data?)
+
+    /// The request was successful, but returned a non-200 status code.
     case httpError(Int, Data?)
+
+    /// The URL provided isn't properly formatted.
     case malformedURL
+
+    /// Request failed to complete, usually due to a connectivity problem.
     case requestFailed(Error)
+
+    /// The fully qualified URL's server does not match the base URL.
+    /// Something's gone wrong while validating the URL.
     case wrongServer
+
+    /// The server response was expected to contain data but is instead empty.
     case noData
+
+    /// Something went wrong while trying to parse response data.
+    /// Throw this error if something goes wrong while calling Request.finalize().
     case resourceExtractionError(String)
+
+    /// We're not sure what went wrong, but something did.
     case unknownError(Error)
 }
 

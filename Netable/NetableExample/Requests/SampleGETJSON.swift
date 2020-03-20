@@ -1,5 +1,5 @@
 //
-//  SampleGETJSONDecoder.swift
+//  SampleGETJSON.swift
 //  NetableExample
 //
 //  Created by Brendan on 2020-03-19.

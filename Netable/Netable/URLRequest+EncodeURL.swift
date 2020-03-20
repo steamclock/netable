@@ -11,6 +11,13 @@ import Foundation
 public protocol UrlEncodedFormData { }
 
 extension URLRequest {
+    /**
+     * Escape any unsafe characters within the given string bit percent encoding.
+     *
+     * - Parameter string: The string to encode.
+     *
+     * - Returns: The string with all dangerous characters percent encoded.
+     */
     private func percentEscapeString(_ string: String) -> String {
         var characterSet = CharacterSet.alphanumerics
         characterSet.insert(charactersIn: "-._* ")
@@ -21,6 +28,11 @@ extension URLRequest {
             .replacingOccurrences(of: " ", with: "+", options: [], range: nil)
     }
 
+    /**
+     * Encodes the given parameters into the request.
+     *
+     * - Parameter parameters: The parameters to be encoded into the URLRequest.
+     */
     public mutating func setUrlEncodedFormData(_ parameters: [String: String]) {
         httpMethod = "POST"
 
