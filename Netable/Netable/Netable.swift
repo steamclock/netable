@@ -114,6 +114,19 @@ open class Netable {
 
                 guard let response = response as? HTTPURLResponse else { fatalError("Casting response to HTTPURLResponse failed") }
                 guard 200...299 ~= response.statusCode else {
+                    let expectedErrorHandlers = request.expectedErrorResponses.filter { $0.code == response.statusCode }
+
+                    if expectedErrorHandlers.count > 1 {
+                        fatalError("Set two error handlers for status code \(response.statusCode), something's gone wrong.")
+                    }
+
+                    if let expectedError = expectedErrorHandlers.first {
+                        DispatchQueue.main.async {
+                            expectedError.handler(data)
+                        }
+                        return
+                    }
+
                     self.logDestination.log(event: .requestCompleted(statusCode: response.statusCode, responseData: data, finalizedResult: nil))
                     throw NetableError.httpError(response.statusCode, data)
                 }

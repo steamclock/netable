@@ -28,6 +28,13 @@
 		B8C928A523E9FC3E00DB2B37 /* URLRequest+Multipart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C928A423E9FC3E00DB2B37 /* URLRequest+Multipart.swift */; };
 		B8C928A723E9FC8D00DB2B37 /* URLRequest+EncodeURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C928A623E9FC8D00DB2B37 /* URLRequest+EncodeURL.swift */; };
 		B8C928A923E9FDCC00DB2B37 /* Netable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C928A823E9FDCC00DB2B37 /* Netable.swift */; };
+		C602DFE924291D25005E3980 /* ExpectedErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C602DFE824291D25005E3980 /* ExpectedErrorResponse.swift */; };
+		C602DFED24291E23005E3980 /* Error404ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C602DFEC24291E23005E3980 /* Error404ViewController.swift */; };
+		C602DFEF24291ED7005E3980 /* Error404Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = C602DFEE24291ED7005E3980 /* Error404Request.swift */; };
+		C602DFF324292003005E3980 /* CustomLoggerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C602DFF024292003005E3980 /* CustomLoggerViewController.swift */; };
+		C602DFF424292003005E3980 /* EmptyLoggerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C602DFF124292003005E3980 /* EmptyLoggerViewController.swift */; };
+		C602DFF524292003005E3980 /* DecodeSnakeCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C602DFF224292003005E3980 /* DecodeSnakeCaseViewController.swift */; };
+		C602DFF72429206D005E3980 /* SampleGETJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C602DFF62429206D005E3980 /* SampleGETJSONDecoder.swift */; };
 		C64F8590241FE4670028E0E9 /* Netable.podspec in Resources */ = {isa = PBXBuildFile; fileRef = C64F858F241FE4670028E0E9 /* Netable.podspec */; };
 		C64F8592241FE4870028E0E9 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = C64F8591241FE4870028E0E9 /* CHANGELOG.md */; };
 		C64F8594241FE70E0028E0E9 /* ExamplesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64F8593241FE70E0028E0E9 /* ExamplesTableViewController.swift */; };
@@ -92,6 +99,13 @@
 		B8C928A423E9FC3E00DB2B37 /* URLRequest+Multipart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Multipart.swift"; sourceTree = "<group>"; };
 		B8C928A623E9FC8D00DB2B37 /* URLRequest+EncodeURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+EncodeURL.swift"; sourceTree = "<group>"; };
 		B8C928A823E9FDCC00DB2B37 /* Netable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Netable.swift; sourceTree = "<group>"; };
+		C602DFE824291D25005E3980 /* ExpectedErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpectedErrorResponse.swift; sourceTree = "<group>"; };
+		C602DFEC24291E23005E3980 /* Error404ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error404ViewController.swift; sourceTree = "<group>"; };
+		C602DFEE24291ED7005E3980 /* Error404Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error404Request.swift; sourceTree = "<group>"; };
+		C602DFF024292003005E3980 /* CustomLoggerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLoggerViewController.swift; sourceTree = "<group>"; };
+		C602DFF124292003005E3980 /* EmptyLoggerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyLoggerViewController.swift; sourceTree = "<group>"; };
+		C602DFF224292003005E3980 /* DecodeSnakeCaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodeSnakeCaseViewController.swift; sourceTree = "<group>"; };
+		C602DFF62429206D005E3980 /* SampleGETJSONDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleGETJSONDecoder.swift; sourceTree = "<group>"; };
 		C64F858F241FE4670028E0E9 /* Netable.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Netable.podspec; path = ../../Netable.podspec; sourceTree = "<group>"; };
 		C64F8591241FE4870028E0E9 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../../CHANGELOG.md; sourceTree = "<group>"; };
 		C64F8593241FE70E0028E0E9 /* ExamplesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplesTableViewController.swift; sourceTree = "<group>"; };
@@ -178,6 +192,7 @@
 				B8C9289A23E9F97B00DB2B37 /* Notification.swift */,
 				B8C9288423E9F68000DB2B37 /* Info.plist */,
 				C6953F41241A95830044D278 /* LogDestination.swift */,
+				C602DFE824291D25005E3980 /* ExpectedErrorResponse.swift */,
 			);
 			path = Netable;
 			sourceTree = "<group>";
@@ -207,6 +222,8 @@
 		C64F8596241FED3F0028E0E9 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				C602DFF62429206D005E3980 /* SampleGETJSONDecoder.swift */,
+				C602DFEE24291ED7005E3980 /* Error404Request.swift */,
 				B822C8FF23F210D800D7BDAD /* GetCatRequest.swift */,
 				C64F859B241FF09D0028E0E9 /* LoginRequest.swift */,
 			);
@@ -224,9 +241,13 @@
 		C64F8598241FED6C0028E0E9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B822C8F123F20E8900D7BDAD /* SampleGetViewController.swift */,
+				C602DFF024292003005E3980 /* CustomLoggerViewController.swift */,
+				C602DFF224292003005E3980 /* DecodeSnakeCaseViewController.swift */,
+				C602DFF124292003005E3980 /* EmptyLoggerViewController.swift */,
+				C602DFEC24291E23005E3980 /* Error404ViewController.swift */,
 				C64F8593241FE70E0028E0E9 /* ExamplesTableViewController.swift */,
 				C64F859D241FF8E60028E0E9 /* PostLoginViewController.swift */,
+				B822C8F123F20E8900D7BDAD /* SampleGetViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -389,11 +410,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C602DFF424292003005E3980 /* EmptyLoggerViewController.swift in Sources */,
+				C602DFF72429206D005E3980 /* SampleGETJSONDecoder.swift in Sources */,
 				C66901AF241C1B0A002954C5 /* CustomLogDestination.swift in Sources */,
+				C602DFEF24291ED7005E3980 /* Error404Request.swift in Sources */,
 				B822C90023F210D800D7BDAD /* GetCatRequest.swift in Sources */,
 				C64F8594241FE70E0028E0E9 /* ExamplesTableViewController.swift in Sources */,
+				C602DFED24291E23005E3980 /* Error404ViewController.swift in Sources */,
 				B822C8F223F20E8900D7BDAD /* SampleGetViewController.swift in Sources */,
 				B822C8EE23F20E8900D7BDAD /* AppDelegate.swift in Sources */,
+				C602DFF524292003005E3980 /* DecodeSnakeCaseViewController.swift in Sources */,
+				C602DFF324292003005E3980 /* CustomLoggerViewController.swift in Sources */,
 				C64F859C241FF09D0028E0E9 /* LoginRequest.swift in Sources */,
 				C64F859E241FF8E60028E0E9 /* PostLoginViewController.swift in Sources */,
 				B822C8F023F20E8900D7BDAD /* SceneDelegate.swift in Sources */,
@@ -409,6 +436,7 @@
 				B8C9289F23E9FB1500DB2B37 /* URLRequest+EncodeParameters.swift in Sources */,
 				B8C928A123E9FBA100DB2B37 /* Request.swift in Sources */,
 				C6953F42241A95830044D278 /* LogDestination.swift in Sources */,
+				C602DFE924291D25005E3980 /* ExpectedErrorResponse.swift in Sources */,
 				B8C9289D23E9FA0E00DB2B37 /* Error.swift in Sources */,
 				B8C928A323E9FBEC00DB2B37 /* HTTPMethod.swift in Sources */,
 				B8C9289B23E9F97B00DB2B37 /* Notification.swift in Sources */,

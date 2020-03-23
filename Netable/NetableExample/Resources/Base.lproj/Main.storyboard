@@ -67,6 +67,37 @@
             </objects>
             <point key="canvasLocation" x="1479.7101449275362" y="-81.026785714285708"/>
         </scene>
+        <!--Error404 View Controller-->
+        <scene sceneID="yoH-RX-N6v">
+            <objects>
+                <viewController storyboardIdentifier="Error404ViewController" id="0Ag-uX-3Xr" customClass="Error404ViewController" customModule="NetableExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MRe-7q-05G">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocB-1R-j1m">
+                                <rect key="frame" x="50" y="438" width="314" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ocB-1R-j1m" firstAttribute="centerY" secondItem="MRe-7q-05G" secondAttribute="centerY" id="5yb-W7-XlR"/>
+                            <constraint firstItem="ocB-1R-j1m" firstAttribute="leading" secondItem="9un-93-43H" secondAttribute="leading" constant="50" id="cJy-PH-Ib0"/>
+                            <constraint firstItem="9un-93-43H" firstAttribute="trailing" secondItem="ocB-1R-j1m" secondAttribute="trailing" constant="50" id="gnU-B8-fgr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9un-93-43H"/>
+                    </view>
+                    <connections>
+                        <outlet property="errorLabel" destination="ocB-1R-j1m" id="wf8-h9-zLU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wHp-aZ-7LZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2241" y="-85"/>
+        </scene>
         <!--POST Login-->
         <scene sceneID="bXm-Mi-ql1">
             <objects>

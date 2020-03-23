@@ -16,6 +16,7 @@ public protocol Request {
     var path: String { get }
     var parameters: Parameters { get }
     var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy { get }
+    var expectedErrorResponses: [ExpectedErrorResponse] { get }
 
     func finalize(raw: RawResource) -> Result<FinalResource, NetableError>
 }
@@ -23,6 +24,10 @@ public protocol Request {
 public extension Request {
     var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy {
         return .useDefaultKeys
+    }
+
+    var expectedErrorResponses: [ExpectedErrorResponse] {
+        return [ExpectedErrorResponse]()
     }
 }
 
