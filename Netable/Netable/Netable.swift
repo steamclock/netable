@@ -26,7 +26,6 @@ open class Netable {
      *
      * - parameter baseURL: The base URL of your endpoint.
      * - parameter configuration: Configuration such as timeouts and caching policies for the underlying url session.
-     *
      */
     public init(baseURL: URL, configuration: URLSessionConfiguration = .ephemeral, logDestination: LogDestination = DefaultLogDestination()) {
         self.baseURL = baseURL
@@ -45,23 +44,23 @@ open class Netable {
      *
      * - parameter request: The request to send, this has to extend `Request`.
      * - parameter completion: Your completion handler for the request.
+     *
+     * - Throws: `NetableError` An error will be thrown for any non-200 status code, as well as for failed requests.
      */
     public func request<T: Request>(_ request: T, completion unsafeCompletion: @escaping (Result<T.FinalResource, NetableError>) -> Void) {
-        // Make sure the completion is dispatched on the main thread
+        // Make sure the completion is dispatched on the main thread.
         let completion: (Result<T.FinalResource, NetableError>) -> Void = { result in
             DispatchQueue.main.async {
                 unsafeCompletion(result)
             }
         }
 
-        // Make sure the provided path is a fully qualified URL, if not try to make it one
         var urlRequest: URLRequest!
         do {
             let finalURL = try fullyQualifiedURLFrom(path: request.path)
             urlRequest = URLRequest(url: finalURL)
             urlRequest.httpMethod = request.method.rawValue
 
-            // Encode request parameters
             if T.Parameters.self != Empty.self {
                 try urlRequest.encodeParameters(for: request)
             }
@@ -69,19 +68,18 @@ open class Netable {
             logDestination.log(event: .requestFailed(error: error))
             completion(.failure(error))
         } catch {
-            logDestination.log(event: .requestFailed(error: .unknownError(error)))
-            completion(.failure(.unknownError(error)))
+            let unknownError = NetableError.unknownError(error)
+            logDestination.log(event: .requestFailed(error: unknownError))
+            completion(.failure(unknownError))
         }
 
-        // Encode headers
         headers.forEach { key, value in
             urlRequest.setValue(value, forHTTPHeaderField: key)
         }
 
-        // Send the request
         let startTimestamp = CACurrentMediaTime()
         logDestination.log(event: .requestStarted(
-            urlString:  urlRequest.url?.absoluteString ?? "Undefined",
+            urlString:  urlRequest.url?.absoluteString ?? "UNDEFINED",
             method: request.method,
             headers: urlRequest.allHTTPHeaderFields ?? [:],
             params: try? request.parameters.toParameterDictionary())
@@ -118,7 +116,6 @@ open class Netable {
                     throw NetableError.httpError(response.statusCode, data)
                 }
 
-                // Attempt to decode the response if we're expecting one
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .iso8601
                 decoder.keyDecodingStrategy = request.jsonKeyDecodingStrategy
@@ -126,18 +123,16 @@ open class Netable {
                 if T.RawResource.self == Empty.self {
                     let raw = try decoder.decode(T.RawResource.self, from: Empty.data)
                     completion(request.finalize(raw: raw))
-                } else {
-                    guard let data = data else {
-                        self.logDestination.log(event: .requestFailed(error: .noData))
-                        throw NetableError.noData
-                    }
-
+                } else if let data = data {
                     let raw = try decoder.decode(T.RawResource.self, from: data)
                     let finalizedData = request.finalize(raw: raw)
 
                     self.logDestination.log(event: .requestCompleted(statusCode: response.statusCode, responseData: data, finalizedResult: finalizedData))
 
                     completion(finalizedData)
+                } else {
+                    self.logDestination.log(event: .requestFailed(error: .noData))
+                    throw NetableError.noData
                 }
             } catch let error as NetableError {
                 self.logDestination.log(event: .requestFailed(error: error))
@@ -153,7 +148,7 @@ open class Netable {
     }
 
     /**
-     * Cancel any ongoing requests
+     * Cancel any ongoing requests.
      */
     open func cancelAllTasks() {
         urlSession.getAllTasks { tasks in
@@ -171,10 +166,12 @@ open class Netable {
      *
      * - parameter path: The request path to qualify.
      *
+     * - Throws: `NetableError` if the provided URL is invalid and unable to be corrected.
+     *
      * - returns: A fully qualified URL if successful, an `Error` if not.
      */
     internal func fullyQualifiedURLFrom(path: String) throws -> URL {
-        // Make sure the url is a well formed path
+        // Make sure the url is a well formed path.
         guard let url = URL(string: path) else {
             throw NetableError.malformedURL
         }
@@ -182,14 +179,14 @@ open class Netable {
         let finalURL: URL
 
         if url.scheme != nil {
-            // Fully qualified URL, check it's okay
+            // Fully qualified URL, check it's okay.
             finalURL = url
 
             guard finalURL.absoluteString.hasPrefix(baseURL.absoluteString) else {
                 throw NetableError.wrongServer
             }
         } else {
-            // Partially qualified URL, add baseURL
+            // Partially qualified URL, add baseURL.
             guard let combinedURL = URL(string: path, relativeTo: baseURL) else {
                 throw NetableError.malformedURL
             }

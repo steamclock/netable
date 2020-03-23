@@ -50,7 +50,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Included a final resource and finalize default implementations
 - Added resourceExtractionError type to NetworkAPIError
 
-## [0.4.0] - 2019-22-07
+## [UNRELEASED]
+- Update documentation
+
+## [0.8.4] - 2019-22-07
 - Included response data in a http error (can allow clients to display server messages)
 
 ## [0.3.0] - 2019-24-06
