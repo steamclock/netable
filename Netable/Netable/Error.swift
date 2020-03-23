@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// All errors return by Netable are NetableErrors.
+/// All errors returned by Netable are NetableErrors.
 public enum NetableError: Error {
     /// Something went wrong while encoding request parameters.
     case codingError(String)
