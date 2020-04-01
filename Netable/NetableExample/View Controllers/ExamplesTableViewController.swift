@@ -24,6 +24,7 @@ class ExamplesTableViewController: UITableViewController {
             sectionTitle: "GET",
             requestRows: [
                 RequestRow(title: "GET Cat Image", vcIdentifier: "SampleGetViewController"),
+                RequestRow(title: "Download Cat Image", vcIdentifier: "SampleDownloadViewController"),
                 RequestRow(title: "Custom Logger Example", vcIdentifier: "CustomLoggerViewController"),
                 RequestRow(title: "Empty Logger Example", vcIdentifier: "EmptyLoggerViewController"),
                 RequestRow(title: "Decode_snake_case", vcIdentifier: "DecodeSnakeCaseViewController")
