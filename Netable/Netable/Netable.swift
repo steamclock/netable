@@ -41,13 +41,16 @@ open class Netable {
 
     /**
      * Create and send a new request.
+
+    /**
+     * Create and send a new JsonRequest. Wrapper around requestInternally
      *
      * - parameter request: The request to send, this has to extend `Request`.
      * - parameter completion: Your completion handler for the request.
      *
      * - Throws: `NetableError` An error will be thrown for any non-200 status code, as well as for failed requests.
      */
-    public func request<T: Request>(_ request: T, completion unsafeCompletion: @escaping (Result<T.FinalResource, NetableError>) -> Void) {
+    public func request<T: JsonRequest>(_ request: T, completion unsafeCompletion: @escaping (Result<T.FinalResource, NetableError>) -> Void) {
         // Make sure the completion is dispatched on the main thread.
         let completion: (Result<T.FinalResource, NetableError>) -> Void = { result in
             DispatchQueue.main.async {
@@ -55,9 +58,63 @@ open class Netable {
             }
         }
 
+        requestInternally(request, enforceServerRequirement: true) { result in
+            switch result {
+            case .success(let data, let response):
+                do {
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .iso8601
+                    decoder.keyDecodingStrategy = request.jsonKeyDecodingStrategy
+
+                    if T.RawResource.self == Empty.self {
+                        let raw = try decoder.decode(T.RawResource.self, from: Empty.data)
+                        completion(request.finalize(raw: raw))
+                    } else if let data = data {
+                        let raw = try decoder.decode(T.RawResource.self, from: data)
+                        let finalizedData = request.finalize(raw: raw)
+
+                        self.logDestination.log(event: .requestCompleted(statusCode: response.statusCode, responseData: data, finalizedResult: finalizedData))
+
+                        completion(finalizedData)
+                    } else {
+                        self.logDestination.log(event: .requestFailed(error: .noData))
+                        throw NetableError.noData
+                    }
+                } catch {
+                    let error = NetableError.decodingError(error, data)
+                    self.logDestination.log(event: .requestFailed(error: error))
+                    unsafeCompletion(.failure(error))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    /**
+     * Cancel any ongoing requests.
+     */
+    open func cancelAllTasks() {
+        urlSession.getAllTasks { tasks in
+            self.logDestination.log(event: .message("Cancelling all \(tasks.count) ongoing tasks."))
+            for task in tasks {
+                task.cancel()
+            }
+        }
+    }
+
+    // MARK: Private Helper Functions
+
+    /**
+     * Create and send a new request.
+     *
+     * - parameter request: The request to send, this has to extend `Request`.
+     * - parameter completion: Your completion handler for the request.
+     */
+    private func requestInternally<T: _Request>(_ request: T, enforceServerRequirement: Bool, completion unsafeCompletion: @escaping (Result<(Data?, HTTPURLResponse), NetableError>) -> Void) {
         var urlRequest: URLRequest!
         do {
-            let finalURL = try fullyQualifiedURLFrom(path: request.path)
+            let finalURL = try fullyQualifiedURLFrom(path: request.path, enforceServerRequirement: enforceServerRequirement)
             urlRequest = URLRequest(url: finalURL)
             urlRequest.httpMethod = request.method.rawValue
 
@@ -66,11 +123,13 @@ open class Netable {
             }
         } catch let error as NetableError {
             logDestination.log(event: .requestFailed(error: error))
-            completion(.failure(error))
+            unsafeCompletion(.failure(error))
+            return
         } catch {
             let unknownError = NetableError.unknownError(error)
             logDestination.log(event: .requestFailed(error: unknownError))
-            completion(.failure(unknownError))
+            unsafeCompletion(.failure(unknownError))
+            return
         }
 
         headers.forEach { key, value in
@@ -116,31 +175,15 @@ open class Netable {
                     throw NetableError.httpError(response.statusCode, data)
                 }
 
-                let decoder = JSONDecoder()
-                decoder.dateDecodingStrategy = .iso8601
-                decoder.keyDecodingStrategy = request.jsonKeyDecodingStrategy
-
-                if T.RawResource.self == Empty.self {
-                    let raw = try decoder.decode(T.RawResource.self, from: Empty.data)
-                    completion(request.finalize(raw: raw))
-                } else if let data = data {
-                    let raw = try decoder.decode(T.RawResource.self, from: data)
-                    let finalizedData = request.finalize(raw: raw)
-
-                    self.logDestination.log(event: .requestCompleted(statusCode: response.statusCode, responseData: data, finalizedResult: finalizedData))
-
-                    completion(finalizedData)
-                } else {
-                    self.logDestination.log(event: .requestFailed(error: .noData))
-                    throw NetableError.noData
-                }
+                // pass this up
+                unsafeCompletion(.success((data, response)))
             } catch let error as NetableError {
                 self.logDestination.log(event: .requestFailed(error: error))
-                return completion(.failure(error))
+                return unsafeCompletion(.failure(error))
             } catch {
                 let error = NetableError.decodingError(error, data)
                 self.logDestination.log(event: .requestFailed(error: error))
-                completion(.failure(error))
+                unsafeCompletion(.failure(error))
             }
         }
 
@@ -148,29 +191,16 @@ open class Netable {
     }
 
     /**
-     * Cancel any ongoing requests.
-     */
-    open func cancelAllTasks() {
-        urlSession.getAllTasks { tasks in
-            self.logDestination.log(event: .message("Cancelling all \(tasks.count) ongoing tasks."))
-            for task in tasks {
-                task.cancel()
-            }
-        }
-    }
-
-    // MARK: Private Helper Functions
-
-    /**
      * Make the provided path into a fully qualified URL. It may be invalid or partially qualified.
      *
      * - parameter path: The request path to qualify.
+     * - parameter enforceServerRequirement: Will cause this function to throw a `wrongServer` error if the path doesn't match the base URL. Defaults to true
      *
      * - Throws: `NetableError` if the provided URL is invalid and unable to be corrected.
      *
      * - returns: A fully qualified URL if successful, an `Error` if not.
      */
-    internal func fullyQualifiedURLFrom(path: String) throws -> URL {
+    internal func fullyQualifiedURLFrom(path: String, enforceServerRequirement: Bool = true) throws -> URL {
         // Make sure the url is a well formed path.
         guard let url = URL(string: path) else {
             throw NetableError.malformedURL
@@ -182,7 +212,7 @@ open class Netable {
             // Fully qualified URL, check it's okay.
             finalURL = url
 
-            guard finalURL.absoluteString.hasPrefix(baseURL.absoluteString) else {
+            if enforceServerRequirement && !finalURL.absoluteString.hasPrefix(baseURL.absoluteString) {
                 throw NetableError.wrongServer
             }
         } else {

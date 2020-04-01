@@ -8,8 +8,12 @@
 
 import Foundation
 
-/// The Request protocol defines the structure for any network requests run through Netable.
-public protocol Request {
+/// Adds a deprecated Request for compatability with older clients
+@available(*, deprecated, message: "Please use JsonRequest instead of Request")
+public typealias Request = JsonRequest
+
+/// The base _Request protocol defines the structure for any network requests run through Netable.
+public protocol _Request {
     /// Parameters will be encoded and sent along with the request.
     associatedtype Parameters: Encodable
 
@@ -28,7 +32,10 @@ public protocol Request {
 
     /// Parameters to be encoded and sent with the request.
     var parameters: Parameters { get }
+}
 
+// The JsonRequest protocol defines additional structure on top of _Request for use with JSON data
+public protocol JsonRequest: _Request {
     /// Optional: The key decoding strategy to be used when decoding return JSON.
     var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy { get }
 
@@ -36,21 +43,21 @@ public protocol Request {
     func finalize(raw: RawResource) -> Result<FinalResource, NetableError>
 }
 
-public extension Request {
+public extension JsonRequest {
     /// Set the default key decoding strategy.
     var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy {
         return .useDefaultKeys
     }
 }
 
-public extension Request where FinalResource == RawResource {
+public extension JsonRequest where FinalResource == RawResource {
     /// By default, `finalize` just returns the RawResource.
     func finalize(raw: RawResource) -> Result<FinalResource, NetableError> {
         return .success(raw)
     }
 }
 
-public extension Request where Parameters == Empty {
+public extension _Request where Parameters == Empty {
     /// Don't require filling in parameters for requests that don't send any.
     var parameters: Parameters {
         return Empty()
