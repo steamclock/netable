@@ -19,7 +19,7 @@ At [Steamclock](https://steamclock.com/), we interact with a lot of different AP
 
 ## Features
 
-Netable is designed with the core philosophy of ensuring that developers can write simple code for simple APIS, but providing lots of options for wrangling strange or non-standard APIs.
+Netable is designed with a core philosophy of ensuring that developers can write simple code for simple APIS, but providing lots of options for wrangling strange or non-standard APIs.
 - Every request is an independent type
     - Facilitates breaking up requests into separate files, avoiding monolithic networking classes
 - Codable-based `Result` return types
@@ -141,7 +141,7 @@ netable.request(GetCatImageURL()) { result in
 
 ### Full Documentation
 
-[In-depth documentation]() is provided through Jazzy and inline documentation.  
+[In-depth documentation]() is provided through Jazzy.  
 
 ## Example
 
