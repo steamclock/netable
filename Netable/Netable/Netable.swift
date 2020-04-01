@@ -40,7 +40,45 @@ open class Netable {
     }
 
     /**
-     * Create and send a new request.
+     * Create and send a new DownloadRequest for raw data. Wrapper around requestInternally
+     *
+     * - parameter request: The request to send, this has to extend `DownloadRequest`.
+     * - parameter completion: Your completion handler for the request.
+     *
+     * - Throws: `NetableError` An error will be thrown for any non-200 status code, as well as for failed requests.
+     */
+    public func download<T: DownloadRequest>(_ request: T, completion unsafeCompletion: @escaping (Result<T.FinalResource, NetableError>) -> Void) {
+        let completion: (Result<T.FinalResource, NetableError>) -> Void = { result in
+            DispatchQueue.main.async {
+                unsafeCompletion(result)
+            }
+        }
+
+        requestInternally(request, enforceServerRequirement: request.enforceBaseApi) { result in
+            switch result {
+            case .success(let data, let response):
+                do {
+                    if let data = data {
+                        let finalizedData = request.finalize(data: data)
+                        self.logDestination.log(event: .requestCompleted(statusCode: response.statusCode, responseData: data, finalizedResult: finalizedData))
+                        completion(finalizedData)
+                    } else {
+                        self.logDestination.log(event: .requestFailed(error: .noData))
+                        throw NetableError.noData
+                    }
+                } catch let error as NetableError {
+                    self.logDestination.log(event: .requestFailed(error: error))
+                    return completion(.failure(error))
+                } catch {
+                    let error = NetableError.decodingError(error, data)
+                    self.logDestination.log(event: .requestFailed(error: error))
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 
     /**
      * Create and send a new JsonRequest. Wrapper around requestInternally

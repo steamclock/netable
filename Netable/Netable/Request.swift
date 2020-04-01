@@ -43,6 +43,15 @@ public protocol JsonRequest: _Request {
     func finalize(raw: RawResource) -> Result<FinalResource, NetableError>
 }
 
+// The DownloadRequest protocol defines additional structure on top of _Request for use with raw Data
+public protocol DownloadRequest: _Request where RawResource == Data {
+    /// Optional: The method to convert Data returned by the server to FinalResource.
+    func finalize(data: Data) -> Result<FinalResource, NetableError>
+
+    /// Optional: Allow downloading from outside of the BaseUrl
+    var enforceBaseApi: Bool { get }
+}
+
 public extension JsonRequest {
     /// Set the default key decoding strategy.
     var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy {
@@ -54,6 +63,18 @@ public extension JsonRequest where FinalResource == RawResource {
     /// By default, `finalize` just returns the RawResource.
     func finalize(raw: RawResource) -> Result<FinalResource, NetableError> {
         return .success(raw)
+    }
+}
+
+public extension DownloadRequest {
+    var enforceBaseApi: Bool {
+        return true
+    }
+}
+
+public extension DownloadRequest where FinalResource == Data {
+    func finalize(data: Data) -> Result<FinalResource, NetableError> {
+        return .success(data)
     }
 }
 
