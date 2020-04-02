@@ -14,7 +14,7 @@ class SampleDownloadViewController: UIViewController {
     @IBOutlet private var catImageView: UIImageView!
 
     /// Create a Netable instance using the default log destination
-    private let netable = Netable(baseURL: URL(string: "https://api.thecatapi.com/v1/")!)
+    private let netable = Netable(baseURL: URL(string: "https://cdn2.thecatapi.com/")!)
 
     override func viewDidLoad() {
         super.viewDidLoad()
