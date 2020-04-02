@@ -34,6 +34,17 @@ public protocol _Request {
     var parameters: Parameters { get }
 }
 
+public extension _Request where Parameters == Empty {
+    /// Don't require filling in parameters for requests that don't send any.
+    var parameters: Parameters {
+        return Empty()
+    }
+}
+
+public struct Empty: Codable {
+    public static let data = "{}".data(using: .utf8)!
+}
+
 // The JsonRequest protocol defines additional structure on top of _Request for use with JSON data
 public protocol JsonRequest: _Request {
     /// Optional: The key decoding strategy to be used when decoding return JSON.
@@ -41,15 +52,6 @@ public protocol JsonRequest: _Request {
 
     /// Optional: The method to convert your RawResource returned by the server to FinalResource.
     func finalize(raw: RawResource) -> Result<FinalResource, NetableError>
-}
-
-// The DownloadRequest protocol defines additional structure on top of _Request for use with raw Data
-public protocol DownloadRequest: _Request where RawResource == Data {
-    /// Optional: The method to convert Data returned by the server to FinalResource.
-    func finalize(data: Data) -> Result<FinalResource, NetableError>
-
-    /// Optional: Allow downloading from outside of the BaseUrl
-    var enforceBaseURL: Bool { get }
 }
 
 public extension JsonRequest {
@@ -66,6 +68,15 @@ public extension JsonRequest where FinalResource == RawResource {
     }
 }
 
+// The DownloadRequest protocol defines additional structure on top of _Request for use with raw Data
+public protocol DownloadRequest: _Request where RawResource == Data {
+    /// Optional: The method to convert Data returned by the server to FinalResource.
+    func finalize(data: Data) -> Result<FinalResource, NetableError>
+
+    /// Optional: Allow downloading from outside of the BaseUrl
+    var enforceBaseURL: Bool { get }
+}
+
 public extension DownloadRequest {
     var enforceBaseURL: Bool {
         return true
@@ -76,15 +87,4 @@ public extension DownloadRequest where FinalResource == Data {
     func finalize(data: Data) -> Result<FinalResource, NetableError> {
         return .success(data)
     }
-}
-
-public extension _Request where Parameters == Empty {
-    /// Don't require filling in parameters for requests that don't send any.
-    var parameters: Parameters {
-        return Empty()
-    }
-}
-
-public struct Empty: Codable {
-    public static let data = "{}".data(using: .utf8)!
 }
