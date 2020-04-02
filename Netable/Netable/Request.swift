@@ -8,6 +8,8 @@
 
 import Foundation
 
+public protocol RequestBase: class {}
+
 /// The Request protocol defines the structure for any network requests run through Netable.
 public protocol Request {
     /// Parameters will be encoded and sent along with the request.

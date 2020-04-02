@@ -67,6 +67,21 @@
             </objects>
             <point key="canvasLocation" x="1479.7101449275362" y="-81.026785714285708"/>
         </scene>
+        <!--Queue Requests View Controller-->
+        <scene sceneID="enX-Ly-Ny3">
+            <objects>
+                <viewController storyboardIdentifier="QueueRequestsViewController" id="RK8-ZE-l7S" customClass="QueueRequestsViewController" customModule="NetableExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YaF-XX-qfr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="9eh-Ca-LvX"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v7m-ft-fKw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2148" y="-84"/>
+        </scene>
         <!--POST Login-->
         <scene sceneID="bXm-Mi-ql1">
             <objects>

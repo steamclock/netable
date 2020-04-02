@@ -21,6 +21,8 @@ open class Netable {
     /// Destination that logs will be printed to during network requests.
     public var logDestination: LogDestination
 
+    public var queue = RequestQueue()
+
     /**
      * Create a new instance of `Netable` with a base URL.
      *
@@ -37,6 +39,16 @@ open class Netable {
                 Base URL: Base URL: \(baseURL.absoluteString)
                 Log Destination: \(logDestination)
         """))
+    }
+
+    public func queue<T: Request>(_ request: T) {
+        queue.enqueue(request)
+    }
+
+    public func asd() {
+        if let request = queue.queue.next as? Request {
+            request(request) { _ in print("sdf") }
+        }
     }
 
     /**
