@@ -34,6 +34,11 @@
 		C64F859C241FF09D0028E0E9 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64F859B241FF09D0028E0E9 /* LoginRequest.swift */; };
 		C64F859E241FF8E60028E0E9 /* PostLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64F859D241FF8E60028E0E9 /* PostLoginViewController.swift */; };
 		C66901AF241C1B0A002954C5 /* CustomLogDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66901AE241C1B0A002954C5 /* CustomLogDestination.swift */; };
+		C66A8BF72436619F0052A1AF /* CancelRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66A8BF62436619F0052A1AF /* CancelRequestViewController.swift */; };
+		C66A8BFD24367E910052A1AF /* DecodeSnakeCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66A8BFA24367E910052A1AF /* DecodeSnakeCaseViewController.swift */; };
+		C66A8BFE24367E910052A1AF /* CustomLoggerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66A8BFB24367E910052A1AF /* CustomLoggerViewController.swift */; };
+		C66A8BFF24367E910052A1AF /* EmptyLoggerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66A8BFC24367E910052A1AF /* EmptyLoggerViewController.swift */; };
+		C66A8C0224367EBA0052A1AF /* SampleGETJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66A8C0124367EBA0052A1AF /* SampleGETJSON.swift */; };
 		C6953F42241A95830044D278 /* LogDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6953F41241A95830044D278 /* LogDestination.swift */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +103,11 @@
 		C64F859B241FF09D0028E0E9 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		C64F859D241FF8E60028E0E9 /* PostLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLoginViewController.swift; sourceTree = "<group>"; };
 		C66901AE241C1B0A002954C5 /* CustomLogDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLogDestination.swift; sourceTree = "<group>"; };
+		C66A8BF62436619F0052A1AF /* CancelRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelRequestViewController.swift; sourceTree = "<group>"; };
+		C66A8BFA24367E910052A1AF /* DecodeSnakeCaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodeSnakeCaseViewController.swift; sourceTree = "<group>"; };
+		C66A8BFB24367E910052A1AF /* CustomLoggerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLoggerViewController.swift; sourceTree = "<group>"; };
+		C66A8BFC24367E910052A1AF /* EmptyLoggerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyLoggerViewController.swift; sourceTree = "<group>"; };
+		C66A8C0124367EBA0052A1AF /* SampleGETJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleGETJSON.swift; sourceTree = "<group>"; };
 		C6953F41241A95830044D278 /* LogDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDestination.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -207,6 +217,7 @@
 		C64F8596241FED3F0028E0E9 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				C66A8C0124367EBA0052A1AF /* SampleGETJSON.swift */,
 				B822C8FF23F210D800D7BDAD /* GetCatRequest.swift */,
 				C64F859B241FF09D0028E0E9 /* LoginRequest.swift */,
 			);
@@ -224,9 +235,13 @@
 		C64F8598241FED6C0028E0E9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B822C8F123F20E8900D7BDAD /* SampleGetViewController.swift */,
+				C66A8BFB24367E910052A1AF /* CustomLoggerViewController.swift */,
+				C66A8BFA24367E910052A1AF /* DecodeSnakeCaseViewController.swift */,
+				C66A8BFC24367E910052A1AF /* EmptyLoggerViewController.swift */,
+				C66A8BF62436619F0052A1AF /* CancelRequestViewController.swift */,
 				C64F8593241FE70E0028E0E9 /* ExamplesTableViewController.swift */,
 				C64F859D241FF8E60028E0E9 /* PostLoginViewController.swift */,
+				B822C8F123F20E8900D7BDAD /* SampleGetViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -389,11 +404,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C66A8BFF24367E910052A1AF /* EmptyLoggerViewController.swift in Sources */,
 				C66901AF241C1B0A002954C5 /* CustomLogDestination.swift in Sources */,
 				B822C90023F210D800D7BDAD /* GetCatRequest.swift in Sources */,
 				C64F8594241FE70E0028E0E9 /* ExamplesTableViewController.swift in Sources */,
+				C66A8C0224367EBA0052A1AF /* SampleGETJSON.swift in Sources */,
+				C66A8BFD24367E910052A1AF /* DecodeSnakeCaseViewController.swift in Sources */,
+				C66A8BF72436619F0052A1AF /* CancelRequestViewController.swift in Sources */,
 				B822C8F223F20E8900D7BDAD /* SampleGetViewController.swift in Sources */,
 				B822C8EE23F20E8900D7BDAD /* AppDelegate.swift in Sources */,
+				C66A8BFE24367E910052A1AF /* CustomLoggerViewController.swift in Sources */,
 				C64F859C241FF09D0028E0E9 /* LoginRequest.swift in Sources */,
 				C64F859E241FF8E60028E0E9 /* PostLoginViewController.swift in Sources */,
 				B822C8F023F20E8900D7BDAD /* SceneDelegate.swift in Sources */,

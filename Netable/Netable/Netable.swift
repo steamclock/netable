@@ -10,6 +10,7 @@ import Foundation
 import QuartzCore
 
 open class Netable {
+    /// The URL session requests are run through.
     private let urlSession: URLSession
 
     /// The base URL of your api endpoint.
@@ -145,6 +146,33 @@ open class Netable {
         }
 
         task.resume()
+    }
+
+    /**
+     * Cancel a specific ongoing request.
+     *
+     * - parameter request: The request to cancel.
+     */
+    open func cancel<T: Request>(_ request: T) {
+        do {
+            let requestURL = try fullyQualifiedURLFrom(path: request.path)
+            var urlRequest = URLRequest(url: requestURL)
+
+            if T.Parameters.self != Empty.self {
+                try urlRequest.encodeParameters(for: request)
+            }
+            
+            self.logDestination.log(event: .message("Cancelling request to \(requestURL)."))
+            urlSession.getAllTasks { tasks in
+                guard let task = tasks.first(where: { $0.originalRequest?.url == urlRequest.url?.absoluteURL }) else {
+                    self.logDestination.log(event: .message("Could not find an active request to \(requestURL)"))
+                    return
+                }
+                task.cancel()
+            }
+        } catch {
+            self.logDestination.log(event: .message("Failed to cancel request, the request was invalid."))
+        }
     }
 
     /**
