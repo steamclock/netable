@@ -60,7 +60,7 @@ public extension Request where FinalResource == RawResource {
     }
 }
 
-extension Request where RawResource: Decodable {
+public extension Request where RawResource: Decodable {
     func decode(_ data: Data?) -> Result<RawResource, NetableError> {
         do {
             let decoder = JSONDecoder()
@@ -83,7 +83,7 @@ extension Request where RawResource: Decodable {
     }
 }
 
-extension Request where RawResource == Data {
+public extension Request where RawResource == Data {
     func decode(_ data : Data?) -> Result<RawResource, NetableError> {
         if let data = data {
             return .success(data)
