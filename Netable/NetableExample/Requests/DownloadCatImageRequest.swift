@@ -9,9 +9,10 @@
 import Netable
 import UIKit
 
-struct DownloadCatImageRequest: DownloadRequest {
+struct DownloadCatImageRequest: Request {
     typealias Parameters = Empty
     typealias FinalResource = UIImage
+    typealias RawResource = Data
 
     let imageUrl: String
 
@@ -23,8 +24,16 @@ struct DownloadCatImageRequest: DownloadRequest {
         return imageUrl
     }
 
-    func finalize(data: Data) -> Result<FinalResource, NetableError> {
-        if let image = UIImage(data: data) {
+    func decode(_ data: Data?) -> Result<Data, NetableError> {
+        if let data = data {
+            return .success(data)
+        } else {
+            return .failure(.noData)
+        }
+    }
+
+    func finalize(raw: Data) -> Result<UIImage, NetableError> {
+        if let image = UIImage(data: raw) {
             return .success(image)
         } else {
             return .failure(NetableError.resourceExtractionError("Could not create image from the cat image data"))
