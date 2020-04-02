@@ -55,7 +55,7 @@ extension URLRequest {
      *
      * - Throws: `NetableError` if parameter encoding fails.
      */
-    mutating func encodeParameters<T: _Request>(for request: T) throws {
+    mutating func encodeParameters<T: BaseRequest>(for request: T) throws {
         switch request.method {
         case .get:
             do {

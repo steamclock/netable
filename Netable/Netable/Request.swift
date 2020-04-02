@@ -12,8 +12,8 @@ import Foundation
 @available(*, deprecated, message: "Please use JSONRequest instead of Request")
 public typealias Request = JSONRequest
 
-/// The base _Request protocol defines the structure for any network requests run through Netable.
-public protocol _Request {
+/// The base BaseRequest protocol defines the structure for any network requests run through Netable.
+public protocol BaseRequest {
     /// Parameters will be encoded and sent along with the request.
     associatedtype Parameters: Encodable
 
@@ -34,7 +34,7 @@ public protocol _Request {
     var parameters: Parameters { get }
 }
 
-public extension _Request where Parameters == Empty {
+public extension BaseRequest where Parameters == Empty {
     /// Don't require filling in parameters for requests that don't send any.
     var parameters: Parameters {
         return Empty()
@@ -45,8 +45,8 @@ public struct Empty: Codable {
     public static let data = "{}".data(using: .utf8)!
 }
 
-// The JSONRequest protocol defines additional structure on top of _Request for use with JSON data
-public protocol JSONRequest: _Request {
+// The JSONRequest protocol defines additional structure on top of BaseRequest for use with JSON data
+public protocol JSONRequest: BaseRequest {
     /// Optional: The key decoding strategy to be used when decoding return JSON.
     var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy { get }
 
@@ -68,8 +68,8 @@ public extension JSONRequest where FinalResource == RawResource {
     }
 }
 
-// The DownloadRequest protocol defines additional structure on top of _Request for use with raw Data
-public protocol DownloadRequest: _Request where RawResource == Data {
+// The DownloadRequest protocol defines additional structure on top of BaseRequest for use with raw Data
+public protocol DownloadRequest: BaseRequest where RawResource == Data {
     /// Optional: The method to convert Data returned by the server to FinalResource.
     func finalize(data: Data) -> Result<FinalResource, NetableError>
 

@@ -149,7 +149,7 @@ open class Netable {
      * - parameter request: The request to send, this has to extend `Request`.
      * - parameter completion: Your completion handler for the request.
      */
-    private func rawRequest<T: _Request>(_ request: T, enforceServerRequirement: Bool, completion backgroundThreadCompletion: @escaping (Result<(Data?, HTTPURLResponse), NetableError>) -> Void) {
+    private func rawRequest<T: BaseRequest>(_ request: T, enforceServerRequirement: Bool, completion backgroundThreadCompletion: @escaping (Result<(Data?, HTTPURLResponse), NetableError>) -> Void) {
         var urlRequest: URLRequest!
         do {
             let finalURL = try fullyQualifiedURLFrom(path: request.path, enforceServerRequirement: enforceServerRequirement)
