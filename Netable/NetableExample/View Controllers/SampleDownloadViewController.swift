@@ -23,7 +23,7 @@ class SampleDownloadViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        netable.download(DownloadCatImageRequest(imageUrl: "https://cdn2.thecatapi.com/images/se.jpg")) { [weak self] result in
+        netable.request(DownloadCatImageRequest(imageUrl: "https://cdn2.thecatapi.com/images/se.jpg")) { [weak self] result in
             guard let self = self else { return }
 
             switch result {

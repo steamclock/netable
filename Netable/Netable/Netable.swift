@@ -47,19 +47,19 @@ open class Netable {
      *
      * - Throws: `NetableError` An error will be thrown for any non-200 status code, as well as for failed requests.
      */
-    public func download<T: DownloadRequest>(_ request: T, completion unsafeCompletion: @escaping (Result<T.FinalResource, NetableError>) -> Void) {
+    public func request<T: DownloadRequest>(_ download: T, completion unsafeCompletion: @escaping (Result<T.FinalResource, NetableError>) -> Void) {
         let completion: (Result<T.FinalResource, NetableError>) -> Void = { result in
             DispatchQueue.main.async {
                 unsafeCompletion(result)
             }
         }
 
-        rawRequest(request, enforceServerRequirement: request.enforceBaseApi) { result in
+        rawRequest(download, enforceServerRequirement: download.enforceBaseApi) { result in
             switch result {
             case .success(let data, let response):
                 do {
                     if let data = data {
-                        let finalizedData = request.finalize(data: data)
+                        let finalizedData = download.finalize(data: data)
                         self.logDestination.log(event: .requestCompleted(statusCode: response.statusCode, responseData: data, finalizedResult: finalizedData))
                         completion(finalizedData)
                     } else {
