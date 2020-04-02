@@ -81,14 +81,14 @@ open class Netable {
     }
 
     /**
-     * Create and send a new JsonRequest. Wrapper around requestInternally
+     * Create and send a new JSONRequest. Wrapper around requestInternally
      *
      * - parameter request: The request to send, this has to extend `Request`.
      * - parameter completion: Your completion handler for the request.
      *
      * - Throws: `NetableError` An error will be thrown for any non-200 status code, as well as for failed requests.
      */
-    public func request<T: JsonRequest>(_ request: T, completion unsafeCompletion: @escaping (Result<T.FinalResource, NetableError>) -> Void) {
+    public func request<T: JSONRequest>(_ request: T, completion unsafeCompletion: @escaping (Result<T.FinalResource, NetableError>) -> Void) {
         // Make sure the completion is dispatched on the main thread.
         let completion: (Result<T.FinalResource, NetableError>) -> Void = { result in
             DispatchQueue.main.async {

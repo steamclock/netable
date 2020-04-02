@@ -9,8 +9,8 @@
 import Foundation
 
 /// Adds a deprecated Request for compatability with older clients
-@available(*, deprecated, message: "Please use JsonRequest instead of Request")
-public typealias Request = JsonRequest
+@available(*, deprecated, message: "Please use JSONRequest instead of Request")
+public typealias Request = JSONRequest
 
 /// The base _Request protocol defines the structure for any network requests run through Netable.
 public protocol _Request {
@@ -45,8 +45,8 @@ public struct Empty: Codable {
     public static let data = "{}".data(using: .utf8)!
 }
 
-// The JsonRequest protocol defines additional structure on top of _Request for use with JSON data
-public protocol JsonRequest: _Request {
+// The JSONRequest protocol defines additional structure on top of _Request for use with JSON data
+public protocol JSONRequest: _Request {
     /// Optional: The key decoding strategy to be used when decoding return JSON.
     var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy { get }
 
@@ -54,14 +54,14 @@ public protocol JsonRequest: _Request {
     func finalize(raw: RawResource) -> Result<FinalResource, NetableError>
 }
 
-public extension JsonRequest {
+public extension JSONRequest {
     /// Set the default key decoding strategy.
     var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy {
         return .useDefaultKeys
     }
 }
 
-public extension JsonRequest where FinalResource == RawResource {
+public extension JSONRequest where FinalResource == RawResource {
     /// By default, `finalize` just returns the RawResource.
     func finalize(raw: RawResource) -> Result<FinalResource, NetableError> {
         return .success(raw)
