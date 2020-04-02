@@ -54,7 +54,7 @@ open class Netable {
             }
         }
 
-        requestInternally(request, enforceServerRequirement: request.enforceBaseApi) { result in
+        rawRequest(request, enforceServerRequirement: request.enforceBaseApi) { result in
             switch result {
             case .success(let data, let response):
                 do {
@@ -96,7 +96,7 @@ open class Netable {
             }
         }
 
-        requestInternally(request, enforceServerRequirement: true) { result in
+        rawRequest(request, enforceServerRequirement: true) { result in
             switch result {
             case .success(let data, let response):
                 do {
@@ -149,7 +149,7 @@ open class Netable {
      * - parameter request: The request to send, this has to extend `Request`.
      * - parameter completion: Your completion handler for the request.
      */
-    private func requestInternally<T: _Request>(_ request: T, enforceServerRequirement: Bool, completion unsafeCompletion: @escaping (Result<(Data?, HTTPURLResponse), NetableError>) -> Void) {
+    private func rawRequest<T: _Request>(_ request: T, enforceServerRequirement: Bool, completion unsafeCompletion: @escaping (Result<(Data?, HTTPURLResponse), NetableError>) -> Void) {
         var urlRequest: URLRequest!
         do {
             let finalURL = try fullyQualifiedURLFrom(path: request.path, enforceServerRequirement: enforceServerRequirement)
