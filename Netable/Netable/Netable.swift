@@ -46,6 +46,7 @@ open class Netable {
      * - parameter completion: Your completion handler for the request.
      */
     public func request<T: Request>(_ request: T, completion unsafeCompletion: @escaping (Result<T.FinalResource, NetableError>) -> Void) {
+        // Make sure the completion is dispatched on the main thread.
         let completion: (Result<T.FinalResource, NetableError>) -> Void = { result in
             DispatchQueue.main.async {
                 unsafeCompletion(result)
@@ -156,13 +157,12 @@ open class Netable {
      * Make the provided path into a fully qualified URL. It may be invalid or partially qualified.
      *
      * - parameter path: The request path to qualify.
-     * - parameter enforceServerRequirement: Will cause this function to throw a `wrongServer` error if the path doesn't match the base URL. Defaults to true
      *
      * - Throws: `NetableError` if the provided URL is invalid and unable to be corrected.
      *
      * - returns: A fully qualified URL if successful, an `Error` if not.
      */
-    internal func fullyQualifiedURLFrom(path: String, enforceServerRequirement: Bool = true) throws -> URL {
+    internal func fullyQualifiedURLFrom(path: String) throws -> URL {
         // Make sure the url is a well formed path.
         guard let url = URL(string: path) else {
             throw NetableError.malformedURL
@@ -174,7 +174,7 @@ open class Netable {
             // Fully qualified URL, check it's okay.
             finalURL = url
 
-            if enforceServerRequirement && !finalURL.absoluteString.hasPrefix(baseURL.absoluteString) {
+            guard finalURL.absoluteString.hasPrefix(baseURL.absoluteString) else {
                 throw NetableError.wrongServer
             }
         } else {

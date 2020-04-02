@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// The base Request protocol defines the structure for any network requests run through Netable.
+/// The Request protocol defines the structure for any network requests run through Netable.
 public protocol Request {
     /// Parameters will be encoded and sent along with the request.
     associatedtype Parameters: Encodable
