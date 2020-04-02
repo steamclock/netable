@@ -17,7 +17,7 @@ struct DownloadCatImageRequest: DownloadRequest {
 
     public var method: HTTPMethod { return .get }
 
-    var enforceBaseApi: Bool { return false }
+    var enforceBaseURL: Bool { return false }
 
     public var path: String {
         return imageUrl

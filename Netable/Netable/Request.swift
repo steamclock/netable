@@ -49,7 +49,7 @@ public protocol DownloadRequest: _Request where RawResource == Data {
     func finalize(data: Data) -> Result<FinalResource, NetableError>
 
     /// Optional: Allow downloading from outside of the BaseUrl
-    var enforceBaseApi: Bool { get }
+    var enforceBaseURL: Bool { get }
 }
 
 public extension JsonRequest {
@@ -67,7 +67,7 @@ public extension JsonRequest where FinalResource == RawResource {
 }
 
 public extension DownloadRequest {
-    var enforceBaseApi: Bool {
+    var enforceBaseURL: Bool {
         return true
     }
 }

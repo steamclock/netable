@@ -54,7 +54,7 @@ open class Netable {
             }
         }
 
-        rawRequest(download, enforceServerRequirement: download.enforceBaseApi) { result in
+        rawRequest(download, enforceServerRequirement: download.enforceBaseURL) { result in
             switch result {
             case .success(let data, let response):
                 do {
