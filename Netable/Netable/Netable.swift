@@ -213,7 +213,6 @@ open class Netable {
                     throw NetableError.httpError(response.statusCode, data)
                 }
 
-                // pass this up
                 backgroundThreadCompletion(.success((data, response)))
             } catch let error as NetableError {
                 self.logDestination.log(event: .requestFailed(error: error))
