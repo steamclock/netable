@@ -149,7 +149,7 @@ open class Netable {
      * - parameter request: The request to send, this has to extend `Request`.
      * - parameter completion: Your completion handler for the request.
      */
-    private func rawRequest<T: _Request>(_ request: T, enforceServerRequirement: Bool, completion unsafeCompletion: @escaping (Result<(Data?, HTTPURLResponse), NetableError>) -> Void) {
+    private func rawRequest<T: _Request>(_ request: T, enforceServerRequirement: Bool, completion backgroundThreadCompletion: @escaping (Result<(Data?, HTTPURLResponse), NetableError>) -> Void) {
         var urlRequest: URLRequest!
         do {
             let finalURL = try fullyQualifiedURLFrom(path: request.path, enforceServerRequirement: enforceServerRequirement)
@@ -161,12 +161,12 @@ open class Netable {
             }
         } catch let error as NetableError {
             logDestination.log(event: .requestFailed(error: error))
-            unsafeCompletion(.failure(error))
+            backgroundThreadCompletion(.failure(error))
             return
         } catch {
             let unknownError = NetableError.unknownError(error)
             logDestination.log(event: .requestFailed(error: unknownError))
-            unsafeCompletion(.failure(unknownError))
+            backgroundThreadCompletion(.failure(unknownError))
             return
         }
 
@@ -214,14 +214,14 @@ open class Netable {
                 }
 
                 // pass this up
-                unsafeCompletion(.success((data, response)))
+                backgroundThreadCompletion(.success((data, response)))
             } catch let error as NetableError {
                 self.logDestination.log(event: .requestFailed(error: error))
-                return unsafeCompletion(.failure(error))
+                return backgroundThreadCompletion(.failure(error))
             } catch {
                 let error = NetableError.decodingError(error, data)
                 self.logDestination.log(event: .requestFailed(error: error))
-                unsafeCompletion(.failure(error))
+                backgroundThreadCompletion(.failure(error))
             }
         }
 
