@@ -16,11 +16,8 @@ class CancelRequestViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Store a reference to the request
-        let request = GetCatRequest()
-
-        // Make your request as you normally would...
-        netable.request(request) { [weak self] result in
+        // Make your request as you normally would, but store the `RequestIdentifier` provided by `Request`
+        let taskId = netable.request(GetCatRequest()) { [weak self] result in
             guard let self = self else { return }
 
             switch result {
@@ -39,6 +36,7 @@ class CancelRequestViewController: UIViewController {
             }
         }
 
-        netable.cancel(request)
+        // Use that `RequestIdentifier` to cancel your request
+        netable.cancel(byId: taskId)
     }
 }

@@ -48,7 +48,7 @@ open class Netable {
      *
      * - Throws: `NetableError` An error will be thrown for any non-200 status code, as well as for failed requests.
      */
-    public func request<T: Request>(_ request: T, completion unsafeCompletion: @escaping (Result<T.FinalResource, NetableError>) -> Void) {
+    @discardableResult public func request<T: Request>(_ request: T, completion unsafeCompletion: @escaping (Result<T.FinalResource, NetableError>) -> Void) -> RequestIdentifier {
         // Make sure the completion is dispatched on the main thread.
         let completion: (Result<T.FinalResource, NetableError>) -> Void = { result in
             DispatchQueue.main.async {
@@ -146,6 +146,7 @@ open class Netable {
         }
 
         task.resume()
+        return RequestIdentifier(id: task.taskIdentifier)
     }
 
     /**
@@ -153,25 +154,15 @@ open class Netable {
      *
      * - parameter request: The request to cancel.
      */
-    open func cancel<T: Request>(_ request: T) {
-        do {
-            let requestURL = try fullyQualifiedURLFrom(path: request.path)
-            var urlRequest = URLRequest(url: requestURL)
-
-            if T.Parameters.self != Empty.self {
-                try urlRequest.encodeParameters(for: request)
+    open func cancel(byId taskId: RequestIdentifier) {
+        self.logDestination.log(event: .message("Cancelling request with taskIdentifier: \(taskId)"))
+        urlSession.getAllTasks { tasks in
+            guard let task = tasks.first(where: { $0.taskIdentifier == taskId.id }) else {
+                self.logDestination.log(event: .message("Failed to cancel request, no request with that id was found."))
+                return
             }
-            
-            self.logDestination.log(event: .message("Cancelling request to \(requestURL)."))
-            urlSession.getAllTasks { tasks in
-                guard let task = tasks.first(where: { $0.originalRequest?.url == urlRequest.url?.absoluteURL }) else {
-                    self.logDestination.log(event: .message("Could not find an active request to \(requestURL)"))
-                    return
-                }
-                task.cancel()
-            }
-        } catch {
-            self.logDestination.log(event: .message("Failed to cancel request, the request was invalid."))
+            self.logDestination.log(event: .message("Task cancelled."))
+            task.cancel()
         }
     }
 
