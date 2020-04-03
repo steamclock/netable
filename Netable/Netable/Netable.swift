@@ -146,7 +146,7 @@ open class Netable {
         }
 
         task.resume()
-        return RequestIdentifier(id: task.taskIdentifier)
+        return RequestIdentifier(id: task.taskIdentifier, session: self)
     }
 
     /**
@@ -155,6 +155,10 @@ open class Netable {
      * - parameter request: The request to cancel.
      */
     open func cancel(byId taskId: RequestIdentifier) {
+        guard taskId.session == self else {
+          fatalError("Attempted to cancel a task from a different Netable session")
+        }
+
         self.logDestination.log(event: .message("Cancelling request with taskIdentifier: \(taskId)"))
         urlSession.getAllTasks { tasks in
             guard let task = tasks.first(where: { $0.taskIdentifier == taskId.id }) else {
@@ -214,5 +218,11 @@ open class Netable {
         }
 
         return finalURL
+    }
+}
+
+extension Netable: Equatable {
+    public static func == (lhs: Netable, rhs: Netable) -> Bool {
+        lhs.urlSession == rhs.urlSession
     }
 }

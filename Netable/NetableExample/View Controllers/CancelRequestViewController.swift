@@ -38,5 +38,8 @@ class CancelRequestViewController: UIViewController {
 
         // Use that `RequestIdentifier` to cancel your request
         netable.cancel(byId: taskId)
+
+        // Or cancel using the `RequestIdentifier`, if you don't want to store a reference to your `Netable` object.
+        // taskId.cancel()
     }
 }
