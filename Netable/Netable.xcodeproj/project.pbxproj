@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23B627082435329800BD888D /* DownloadCatImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B627072435329800BD888D /* DownloadCatImageRequest.swift */; };
+		23B6270A2435332200BD888D /* SampleDownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B627092435332200BD888D /* SampleDownloadViewController.swift */; };
 		B822C8EE23F20E8900D7BDAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B822C8ED23F20E8900D7BDAD /* AppDelegate.swift */; };
 		B822C8F023F20E8900D7BDAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B822C8EF23F20E8900D7BDAD /* SceneDelegate.swift */; };
 		B822C8F223F20E8900D7BDAD /* SampleGetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B822C8F123F20E8900D7BDAD /* SampleGetViewController.swift */; };
@@ -69,6 +71,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		23B627072435329800BD888D /* DownloadCatImageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadCatImageRequest.swift; sourceTree = "<group>"; };
+		23B627092435332200BD888D /* SampleDownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleDownloadViewController.swift; sourceTree = "<group>"; };
 		B822C8EB23F20E8900D7BDAD /* NetableExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetableExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B822C8ED23F20E8900D7BDAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B822C8EF23F20E8900D7BDAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -209,6 +213,7 @@
 			children = (
 				B822C8FF23F210D800D7BDAD /* GetCatRequest.swift */,
 				C64F859B241FF09D0028E0E9 /* LoginRequest.swift */,
+				23B627072435329800BD888D /* DownloadCatImageRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -227,6 +232,7 @@
 				B822C8F123F20E8900D7BDAD /* SampleGetViewController.swift */,
 				C64F8593241FE70E0028E0E9 /* ExamplesTableViewController.swift */,
 				C64F859D241FF8E60028E0E9 /* PostLoginViewController.swift */,
+				23B627092435332200BD888D /* SampleDownloadViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -393,10 +399,12 @@
 				B822C90023F210D800D7BDAD /* GetCatRequest.swift in Sources */,
 				C64F8594241FE70E0028E0E9 /* ExamplesTableViewController.swift in Sources */,
 				B822C8F223F20E8900D7BDAD /* SampleGetViewController.swift in Sources */,
+				23B6270A2435332200BD888D /* SampleDownloadViewController.swift in Sources */,
 				B822C8EE23F20E8900D7BDAD /* AppDelegate.swift in Sources */,
 				C64F859C241FF09D0028E0E9 /* LoginRequest.swift in Sources */,
 				C64F859E241FF8E60028E0E9 /* PostLoginViewController.swift in Sources */,
 				B822C8F023F20E8900D7BDAD /* SceneDelegate.swift in Sources */,
+				23B627082435329800BD888D /* DownloadCatImageRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,7 +650,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.8.4;
+				MARKETING_VERSION = 0.8.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.steamclock.Netable;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -672,7 +680,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.8.4;
+				MARKETING_VERSION = 0.8.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.steamclock.Netable;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
