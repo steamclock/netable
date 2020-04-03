@@ -1,29 +1,31 @@
 //
-//  SampleCustomLoggerViewController.swift
+//  ViewController.swift
 //  NetableExample
 //
-//  Created by Brendan on 2020-03-20.
+//  Created by Jeremy Chiang on 2020-02-10.
 //  Copyright © 2020 Steamclock Software. All rights reserved.
 //
 
 import Netable
 import UIKit
 
-class CustomLoggerViewController: UIViewController {
-    @IBOutlet weak var imageView: UIImageView!
+class SampleDownloadViewController: UIViewController {
 
-    /// Create a Netable instance that won't record any logs
-    private let netable = Netable(baseURL: URL(string: "https://api.thecatapi.com/v1/")!, logDestination: CustomLogDestination())
+    @IBOutlet private var catImageView: UIImageView!
+
+    /// Create a Netable instance using the default log destination
+    private let netable = Netable(baseURL: URL(string: "https://cdn2.thecatapi.com/")!)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        netable.request(GetCatRequest()) { [weak self] result in
+        // Do any additional setup after loading the view.
+
+        netable.request(DownloadCatImageRequest(imageUrl: "https://cdn2.thecatapi.com/images/se.jpg")) { [weak self] result in
             guard let self = self else { return }
-            print(result)
+
             switch result {
             case .success(let image):
-                self.imageView.image = image
+                self.catImageView.image = image
             case .failure(let error):
                 let alert = UIAlertController(
                     title: "Uh oh!",
@@ -37,3 +39,4 @@ class CustomLoggerViewController: UIViewController {
         }
     }
 }
+

@@ -45,8 +45,6 @@ open class Netable {
      *
      * - parameter request: The request to send, this has to extend `Request`.
      * - parameter completion: Your completion handler for the request.
-     *
-     * - Throws: `NetableError` An error will be thrown for any non-200 status code, as well as for failed requests.
      */
     @discardableResult public func request<T: Request>(_ request: T, completion unsafeCompletion: @escaping (Result<T.FinalResource, NetableError>) -> Void) -> RequestIdentifier {
         // Make sure the completion is dispatched on the main thread.
@@ -68,10 +66,12 @@ open class Netable {
         } catch let error as NetableError {
             logDestination.log(event: .requestFailed(error: error))
             completion(.failure(error))
+            return RequestIdentifier(id: 0, session: self)
         } catch {
             let unknownError = NetableError.unknownError(error)
             logDestination.log(event: .requestFailed(error: unknownError))
             completion(.failure(unknownError))
+            return RequestIdentifier(id: 0, session: self)
         }
 
         headers.forEach { key, value in
@@ -117,27 +117,19 @@ open class Netable {
                     throw NetableError.httpError(response.statusCode, data)
                 }
 
-                let decoder = JSONDecoder()
-                decoder.dateDecodingStrategy = .iso8601
-                decoder.keyDecodingStrategy = request.jsonKeyDecodingStrategy
-
-                if T.RawResource.self == Empty.self {
-                    let raw = try decoder.decode(T.RawResource.self, from: Empty.data)
-                    completion(request.finalize(raw: raw))
-                } else if let data = data {
-                    let raw = try decoder.decode(T.RawResource.self, from: data)
+                let decoded = request.decode(data)
+                switch decoded {
+                case .success(let raw):
                     let finalizedData = request.finalize(raw: raw)
-
                     self.logDestination.log(event: .requestCompleted(statusCode: response.statusCode, responseData: data, finalizedResult: finalizedData))
-
                     completion(finalizedData)
-                } else {
-                    self.logDestination.log(event: .requestFailed(error: .noData))
-                    throw NetableError.noData
+                case .failure(let error):
+                    self.logDestination.log(event: .requestFailed(error: error))
+                    completion(.failure(error))
                 }
             } catch let error as NetableError {
                 self.logDestination.log(event: .requestFailed(error: error))
-                return completion(.failure(error))
+                completion(.failure(error))
             } catch {
                 let error = NetableError.decodingError(error, data)
                 self.logDestination.log(event: .requestFailed(error: error))
