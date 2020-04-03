@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - Added a new post example
+- Added ability to customize the decode method for requests
 
 ### Changed
 - Reworked the example project to allow for more examples to be added
