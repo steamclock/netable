@@ -17,7 +17,7 @@ class CustomLoggerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         netable.request(GetCatRequest()) { [weak self] result in
             guard let self = self else { return }
             print(result)

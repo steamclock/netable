@@ -10,6 +10,7 @@ import Foundation
 import QuartzCore
 
 open class Netable {
+    /// The URL session requests are run through.
     private let urlSession: URLSession
 
     /// The base URL of your api endpoint.
@@ -45,7 +46,7 @@ open class Netable {
      * - parameter request: The request to send, this has to extend `Request`.
      * - parameter completion: Your completion handler for the request.
      */
-    public func request<T: Request>(_ request: T, completion unsafeCompletion: @escaping (Result<T.FinalResource, NetableError>) -> Void) {
+    @discardableResult public func request<T: Request>(_ request: T, completion unsafeCompletion: @escaping (Result<T.FinalResource, NetableError>) -> Void) -> RequestIdentifier {
         // Make sure the completion is dispatched on the main thread.
         let completion: (Result<T.FinalResource, NetableError>) -> Void = { result in
             DispatchQueue.main.async {
@@ -65,12 +66,12 @@ open class Netable {
         } catch let error as NetableError {
             logDestination.log(event: .requestFailed(error: error))
             completion(.failure(error))
-            return
+            return RequestIdentifier(id: 0, session: self)
         } catch {
             let unknownError = NetableError.unknownError(error)
             logDestination.log(event: .requestFailed(error: unknownError))
             completion(.failure(unknownError))
-            return
+            return RequestIdentifier(id: 0, session: self)
         }
 
         headers.forEach { key, value in
@@ -137,6 +138,28 @@ open class Netable {
         }
 
         task.resume()
+        return RequestIdentifier(id: task.taskIdentifier, session: self)
+    }
+
+    /**
+     * Cancel a specific ongoing request.
+     *
+     * - parameter request: The request to cancel.
+     */
+    open func cancel(byId taskId: RequestIdentifier) {
+        guard taskId.session == self else {
+          fatalError("Attempted to cancel a task from a different Netable session")
+        }
+
+        self.logDestination.log(event: .message("Cancelling request with taskIdentifier: \(taskId)"))
+        urlSession.getAllTasks { tasks in
+            guard let task = tasks.first(where: { $0.taskIdentifier == taskId.id }) else {
+                self.logDestination.log(event: .message("Failed to cancel request, no request with that id was found."))
+                return
+            }
+            self.logDestination.log(event: .message("Task cancelled."))
+            task.cancel()
+        }
     }
 
     /**
@@ -187,5 +210,11 @@ open class Netable {
         }
 
         return finalURL
+    }
+}
+
+extension Netable: Equatable {
+    public static func == (lhs: Netable, rhs: Netable) -> Bool {
+        lhs.urlSession == rhs.urlSession
     }
 }

@@ -27,8 +27,8 @@ class ExamplesTableViewController: UITableViewController {
                 RequestRow(title: "Download Cat Image", vcIdentifier: "SampleDownloadViewController"),
                 RequestRow(title: "Custom Logger Example", vcIdentifier: "CustomLoggerViewController"),
                 RequestRow(title: "Empty Logger Example", vcIdentifier: "EmptyLoggerViewController"),
-                RequestRow(title: "Decode_snake_case", vcIdentifier: "DecodeSnakeCaseViewController")
-
+                RequestRow(title: "Decode_snake_case", vcIdentifier: "DecodeSnakeCaseViewController"),
+                RequestRow(title: "Cancel Request", vcIdentifier: "CancelRequestViewController")
             ]
         ),
         RequestSet(sectionTitle: "POST", requestRows: [RequestRow(title: "POST Sample Login", vcIdentifier: "PostLoginViewController")]),
