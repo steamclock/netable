@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Netable  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="Netable  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">Netable Docs</a> (75% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">Netable Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Netable  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/Netable.html">Netable</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/HTTPMethod.html">HTTPMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/LogEvent.html">LogEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/MultipartFormDataEncodingError.html">MultipartFormDataEncodingError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/NetableError.html">NetableError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/Notification.html">Notification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Notification/Name.html">– Name</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Notification/Netable.html">– Netable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/URLRequest.html">URLRequest</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Instance%20Methods.html">Instance Methods</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Instance%20Methods.html#/s:7Netable14LogDestinationP3log5eventyAA0B5EventO_tF">log(event:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols.html#/s:7Netable14LogDestinationP">LogDestination</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/s:7Netable17MultipartFormDataP">MultipartFormData</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/Request.html">Request</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/s:7Netable18UrlEncodedFormDataP">UrlEncodedFormData</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/Empty.html">Empty</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <p><img src="header.png" alt=""></p>
+
+<p>[![Swift Version][swift-image]][swift-url]
+[![Build Status][travis-image]][travis-url]
+[![License][license-image]][license-url]
+<a href="https://img.shields.io/cocoapods/v/LFAlertController.svg"><img src="https://img.shields.io/cocoapods/v/EZSwiftExtensions.svg" alt="CocoaPods Compatible"></a><br>
+<a href="http://cocoapods.org/pods/Netable"><img src="https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat" alt="Platform"></a>
+<a href="http://makeapullrequest.com"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"></a></p>
+
+<p>At <a href="https://steamclock.com/">Steamclock</a>, we interact with a lot of different APIs. Netable makes that easier for us by providing a simple interface for using those APIs to drive high quality iOS and MacOS apps.</p>
+
+<ul>
+<li><a href="#features">Features</a></li>
+<li><a href="#usage">Usage</a></li>
+<li><a href="#example">Example</a></li>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#contributing">Contributing</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+<h2 id='features' class='heading'>Features</h2>
+
+<p>Netable is designed with the core philosophy of ensuring that developers can write simple code for simple APIS, but providing lots of options for wrangling strange or non-standard APIs.</p>
+
+<ul>
+<li>Every request is an independent type
+
+<ul>
+<li>Facilitates breaking up requests into separate files, avoiding monolithic networking classes</li>
+</ul></li>
+<li>Codable-based <code>Result</code> return types
+
+<ul>
+<li>Easy interfacing between model and controller layers</li>
+<li>Reduces need for wrapper types<br></li>
+</ul></li>
+<li>Have your request automatically convert responses to usable objects</li>
+<li>Easily integrates with your existing logging library, or logs to <code>debugPrint</code> by default</li>
+<li>Comprehensive (Robust?) error types make handling expected and unexpected errors painless</li>
+</ul>
+<h2 id='usage' class='heading'>Usage</h2>
+<h3 id='standard-usage' class='heading'>Standard Usage</h3>
+<h4 id='make-a-new-instance-of-code-netable-code-and-pass-in-your-base-url' class='heading'>Make a new instance of <code><a href="Classes/Netable.html">Netable</a></code>, and pass in your base URL:</h4>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">netable</span> <span class="o">=</span> <span class="kt">Netable</span><span class="p">(</span><span class="nv">baseURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://api.thecatapi.com/v1/"</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
+</code></pre>
+<h4 id='extend-code-request-code' class='heading'>Extend <code><a href="Protocols/Request.html">Request</a></code></h4>
+<pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">CatImage</span><span class="p">:</span> <span class="kt">Decodable</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="k">let</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">String</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">GetCatImages</span><span class="p">:</span> <span class="kt">Request</span> <span class="p">{</span>
+    <span class="kd">typealias</span> <span class="kt">Parameters</span> <span class="o">=</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">String</span><span class="p">]</span>
+    <span class="kd">typealias</span> <span class="kt">RawResource</span> <span class="o">=</span> <span class="p">[</span><span class="kt">CatImage</span><span class="p">]</span>
+
+    <span class="kd">public</span> <span class="k">var</span> <span class="nv">method</span><span class="p">:</span> <span class="kt">HTTPMethod</span> <span class="p">{</span> <span class="k">return</span> <span class="o">.</span><span class="k">get</span> <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="k">var</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"images/search"</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="k">var</span> <span class="nv">parameters</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">String</span><span class="p">]</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s">"mime_type"</span><span class="p">:</span> <span class="s">"jpg,png"</span><span class="p">,</span> <span class="s">"limit"</span><span class="p">:</span> <span class="s">"2"</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<h4 id='make-your-request-and-handle-the-result' class='heading'>Make your request and handle the result:</h4>
+<pre class="highlight swift"><code><span class="n">netable</span><span class="o">.</span><span class="nf">request</span><span class="p">(</span><span class="kt">GetCatImages</span><span class="p">())</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+    <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">catImages</span><span class="p">):</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="nv">firstCat</span> <span class="o">=</span> <span class="n">catImages</span><span class="o">.</span><span class="n">first</span><span class="p">,</span>
+           <span class="k">let</span> <span class="nv">url</span> <span class="o">=</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="n">firstCat</span><span class="o">.</span><span class="n">url</span><span class="p">),</span>
+           <span class="k">let</span> <span class="nv">imageData</span> <span class="o">=</span> <span class="k">try</span><span class="p">?</span> <span class="kt">Data</span><span class="p">(</span><span class="nv">contentsOf</span><span class="p">:</span> <span class="n">url</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">self</span><span class="o">.</span><span class="n">catsImageView1</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="n">imageData</span><span class="p">)</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="k">let</span> <span class="nv">lastCat</span> <span class="o">=</span> <span class="n">catImages</span><span class="o">.</span><span class="n">last</span><span class="p">,</span>
+           <span class="k">let</span> <span class="nv">url</span> <span class="o">=</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="n">lastCat</span><span class="o">.</span><span class="n">url</span><span class="p">),</span>
+           <span class="k">let</span> <span class="nv">imageData</span> <span class="o">=</span> <span class="k">try</span><span class="p">?</span> <span class="kt">Data</span><span class="p">(</span><span class="nv">contentsOf</span><span class="p">:</span> <span class="n">url</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">self</span><span class="o">.</span><span class="n">catsImageView2</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="n">imageData</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="k">let</span> <span class="nv">alert</span> <span class="o">=</span> <span class="kt">UIAlertController</span><span class="p">(</span>
+            <span class="nv">title</span><span class="p">:</span> <span class="s">"Uh oh!"</span><span class="p">,</span>
+            <span class="nv">message</span><span class="p">:</span> <span class="s">"Get cats request failed with error: </span><span class="se">\(</span><span class="n">error</span><span class="se">)</span><span class="s">"</span><span class="p">,</span>
+            <span class="nv">preferredStyle</span><span class="p">:</span> <span class="o">.</span><span class="n">alert</span>
+        <span class="p">)</span>
+
+        <span class="n">alert</span><span class="o">.</span><span class="nf">addAction</span><span class="p">(</span><span class="kt">UIAlertAction</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"OK"</span><span class="p">,</span> <span class="nv">style</span><span class="p">:</span> <span class="o">.</span><span class="n">cancel</span><span class="p">))</span>
+        <span class="k">self</span><span class="o">.</span><span class="nf">present</span><span class="p">(</span><span class="n">alert</span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<h3 id='resource-extraction' class='heading'>Resource Extraction</h3>
+<h4 id='have-your-request-object-handle-extracting-a-usable-object-from-the-raw-resource' class='heading'>Have your request object handle extracting a usable object from the raw resource</h4>
+<pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">CatImage</span><span class="p">:</span> <span class="kt">Decodable</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="k">let</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">String</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">GetCatImageURL</span><span class="p">:</span> <span class="kt">Request</span> <span class="p">{</span>
+    <span class="kd">typealias</span> <span class="kt">Parameters</span> <span class="o">=</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">String</span><span class="p">]</span>
+    <span class="kd">typealias</span> <span class="kt">RawResource</span> <span class="o">=</span> <span class="p">[</span><span class="kt">CatImage</span><span class="p">]</span>
+    <span class="kd">typealias</span> <span class="kt">FinalResource</span> <span class="o">=</span> <span class="kt">URL</span>
+
+     <span class="c1">// ...</span>
+
+    <span class="kd">func</span> <span class="nf">finalize</span><span class="p">(</span><span class="nv">raw</span><span class="p">:</span> <span class="kt">RawResource</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">FinalResource</span><span class="p">,</span> <span class="kt">NetableError</span><span class="o">&gt;</span> <span class="p">{</span>
+        <span class="k">guard</span> <span class="k">let</span> <span class="nv">catImage</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">first</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="kt">NetableError</span><span class="o">.</span><span class="nf">resourceExtractionError</span><span class="p">(</span><span class="s">"The CatImage array is empty"</span><span class="p">))</span>
+        <span class="p">}</span>
+
+        <span class="k">guard</span> <span class="k">let</span> <span class="nv">url</span> <span class="o">=</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="n">catImage</span><span class="o">.</span><span class="n">url</span><span class="p">)</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="kt">NetableError</span><span class="o">.</span><span class="nf">resourceExtractionError</span><span class="p">(</span><span class="s">"Could not build URL from CatImage url string"</span><span class="p">))</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<h4 id='leaving-your-network-code-to-deal-with-the-important-stuff' class='heading'>Leaving your network code to deal with the important stuff</h4>
+<pre class="highlight swift"><code><span class="n">netable</span><span class="o">.</span><span class="nf">request</span><span class="p">(</span><span class="kt">GetCatImageURL</span><span class="p">())</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+    <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">catUrl</span><span class="p">):</span>
+        <span class="k">guard</span> <span class="k">let</span> <span class="nv">imageData</span> <span class="o">=</span> <span class="k">try</span><span class="p">?</span> <span class="kt">Data</span><span class="p">(</span><span class="nv">contentsOf</span><span class="p">:</span> <span class="n">catUrl</span><span class="p">)</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span>
+        <span class="p">}</span>
+
+        <span class="k">self</span><span class="o">.</span><span class="n">imageView</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="n">imageData</span><span class="p">)</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<h3 id='full-documentation' class='heading'>Full Documentation</h3>
+
+<p><a href="">In-depth documentation</a> is provided through Jazzy and inline documentation.  </p>
+<h2 id='example' class='heading'>Example</h2>
+
+<p>To run the example project, clone the repo, and run <code>pod install</code> from inside the Example directory first.</p>
+<h2 id='requirements' class='heading'>Requirements</h2>
+
+<ul>
+<li>iOS 10.0+</li>
+<li>MacOS 10.15+</li>
+<li>Xcode 11.0+</li>
+</ul>
+<h2 id='installation' class='heading'>Installation</h2>
+
+<p>Netable is available through <a href="https://swift.org/package-manager/">Swift Package Manager</a>. To install it, follow these steps:</p>
+
+<ol>
+<li>In Xcode, click <strong>File</strong>, then <strong>Swift Package Manager</strong>, then <strong>Add Package Dependency</strong></li>
+<li>Choose your project</li>
+<li>Enter this URL in the search bar <code>https://github.com/steamclock/netable.git</code></li>
+</ol>
+
+<p>Netable is available through <a href="https://cocoapods.org">CocoaPods</a>. To install
+it, simply add the following line to your Podfile:</p>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'Netable'</span>
+</code></pre>
+
+<p>Then run <code>pod install</code>.</p>
+<h2 id='license' class='heading'>License</h2>
+
+<p>Netable is available under the MIT license. See the <a href="https://github.com/steamclock/netable/blob/master/LICENSE.md">License.md</a> for more info.</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2020 <a class="link" href="https://github.com/steamclock/netable/" target="_blank" rel="external">Brendan Lensink</a>. All rights reserved. (Last updated: 2020-04-01)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

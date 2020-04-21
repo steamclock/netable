@@ -1,13 +1,28 @@
-# Netable
+![](header.png)
 
-[![CI Status](https://img.shields.io/travis/blensink192@gmail.com/Netable.svg?style=flat)](https://travis-ci.org/blensink192@gmail.com/Netable)
-[![Version](https://img.shields.io/cocoapods/v/Netable.svg?style=flat)](https://cocoapods.org/pods/Netable)
-[![License](https://img.shields.io/cocoapods/l/Netable.svg?style=flat)](https://cocoapods.org/pods/Netable)
-[![Platform](https://img.shields.io/cocoapods/p/Netable.svg?style=flat)](https://cocoapods.org/pods/Netable)
+[![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Netable.svg)](https://img.shields.io/cocoapods/v/Netable.svg) [![Platform](https://img.shields.io/cocoapods/p/Netable.svg?style=flat)](http://cocoapods.org/pods/Netable)
 
-## Example
+At [Steamclock](https://steamclock.com/), we interact with a lot of different APIs. Netable makes that easier for us by providing a simple interface for using those APIs to drive high quality iOS and MacOS apps.
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+- [Features](#features)
+- [Usage](#usage)
+- [Example](#example)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Features
+
+Netable is designed with a core philosophy of ensuring that developers can write simple code for simple APIS, but providing lots of options for wrangling strange or non-standard APIs.
+- Every request is an independent type
+    - Facilitates breaking up requests into separate files, avoiding monolithic networking classes
+- Codable-based `Result` return types
+    - Easy interfacing between model and controller layers
+    - Reduces need for wrapper types  
+- Have your request automatically convert responses to usable objects
+- Easily integrates with your existing logging library, or logs to `debugPrint` by default
+- Comprehensive (Robust?) error types make handling expected and unexpected errors painless
 
 ## Usage
 
@@ -42,6 +57,7 @@ struct GetCatImages: Request {
 ```
 
 #### Make your request and handle the result:
+
 ```swift
 netable.request(GetCatImages()) { result in
     switch result {
@@ -72,7 +88,7 @@ netable.request(GetCatImages()) { result in
 
 ### Resource Extraction
 
-#### Have your request object handle extracting a usable object from the raw resource:
+#### Have your request object handle extracting a usable object from the raw resource
 
 ```swift
 struct CatImage: Decodable {
@@ -85,15 +101,7 @@ struct GetCatImageURL: Request {
     typealias RawResource = [CatImage]
     typealias FinalResource = URL
 
-    public var method: HTTPMethod { return .get }
-
-    public var path: String {
-        return "images/search"
-    }
-
-    public var parameters: [String: String] {
-        return ["mime_type": "jpg,png"]
-    }
+     // ...
 
     func finalize(raw: RawResource) -> Result<FinalResource, NetableError> {
         guard let catImage = raw.first else {
@@ -109,7 +117,7 @@ struct GetCatImageURL: Request {
 }
 ```
 
-#### This can simplify your networking code:
+#### Leaving your network code to deal with the important stuff
 
 ```swift
 netable.request(GetCatImageURL()) { result in
@@ -121,21 +129,32 @@ netable.request(GetCatImageURL()) { result in
 
         self.imageView.image = UIImage(data: imageData)
     case .failure(let error):
-        let alert = UIAlertController(
-            title: "Uh oh!",
-            message: "Get cat url request failed with error: \(error)",
-            preferredStyle: .alert
-        )
-
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
-        self.present(alert, animated: true, completion: nil)
+        // ...
     }
 }
 ```
 
+### Full Documentation
+
+[In-depth documentation]() is provided through Jazzy.  
+
+## Example
+
+To run the example project, clone the repo, and run `pod install` from inside the Example directory first.
+
 ## Requirements
 
+- iOS 10.0+
+- MacOS 10.15+
+- Xcode 11.0+
+
 ## Installation
+
+Netable is available through [Swift Package Manager](https://swift.org/package-manager/). To install it, follow these steps:
+
+1. In Xcode, click **File**, then **Swift Package Manager**, then **Add Package Dependency**
+2. Choose your project
+3. Enter this URL in the search bar `https://github.com/steamclock/netable.git`
 
 Netable is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
@@ -143,17 +162,8 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod 'Netable'
 ```
-
-Netable is also available through [Swift Package Manager](https://swift.org/package-manager/). To install it, follow these steps:
-
-1. In Xcode, click **File**, then **Swift Package Manager**, then **Add Package Dependency**
-2. Choose your project
-3. Enter this URL in the search bar `https://github.com/steamclock/netable.git`
-
-## Author
-
-brendan@steamclock.com
+Then run `pod install`.
 
 ## License
 
-Netable is available under the MIT license. See the LICENSE file for more info.
+Netable is available under the MIT license. See the [License.md](https://github.com/steamclock/netable/blob/master/LICENSE.md) for more info.
