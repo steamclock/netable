@@ -2,7 +2,7 @@
 
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Netable.svg)](https://img.shields.io/cocoapods/v/Netable.svg) [![Platform](https://img.shields.io/cocoapods/p/Netable.svg?style=flat)](http://cocoapods.org/pods/Netable)
 
-At [Steamclock](https://steamclock.com/), we interact with a lot of different APIs. Netable makes that easier for us by providing a simple interface for using those APIs to drive high quality iOS and MacOS apps.
+Modern apps interact with a lot of different APIs. Netable makes that easier by providing a simple interface for using those APIs to drive high quality iOS and MacOS apps, built on Swift `Codable`, while still supporting non-standard and unusual APIs when need be.
 
 - [Features](#features)
 - [Usage](#usage)
@@ -14,15 +14,15 @@ At [Steamclock](https://steamclock.com/), we interact with a lot of different AP
 
 ## Features
 
-Netable is designed with a core philosophy of ensuring that developers can write simple code for simple APIS, but providing lots of options for wrangling strange or non-standard APIs.
-- Every request is an independent type
-    - Facilitates breaking up requests into separate files, avoiding monolithic networking classes
-- Codable-based `Result` return types
-    - Easy interfacing between model and controller layers
-    - Reduces need for wrapper types  
-- Have your request automatically convert responses to usable objects
-- Easily integrates with your existing logging library, or logs to `debugPrint` by default
-- Comprehensive (Robust?) error types make handling expected and unexpected errors painless
+Netable's core philosophy is to ensure that developers can write simple code for simple APIS, while providing various options for wrangling strange or non-standard APIs.
+1. Every request is an independent type
+    1. Facilitates breaking up requests into separate files, avoiding monolithic networking classes
+1. `Codable`-based `Result` return types
+    1. Easy interfacing between model and controller layers
+    1. Reduces need for wrapper types  
+1. Can automatically convert request responses into usable objects
+1. Easily integrates with existing logging libraries, or logs to `debugPrint` by default
+1. Comprehensive error types make handling expected and unexpected errors painless
 
 ## Usage
 
@@ -117,7 +117,7 @@ struct GetCatImageURL: Request {
 }
 ```
 
-#### Leaving your network code to deal with the important stuff
+#### Leave your network code to deal with the important stuff
 
 ```swift
 netable.request(GetCatImageURL()) { result in
@@ -150,13 +150,13 @@ To run the example project, clone the repo, and run `pod install` from inside th
 
 ## Installation
 
-Netable is available through [Swift Package Manager](https://swift.org/package-manager/). To install it, follow these steps:
+Netable is available through **[Swift Package Manager](https://swift.org/package-manager/)**. To install it, follow these steps:
 
 1. In Xcode, click **File**, then **Swift Package Manager**, then **Add Package Dependency**
 2. Choose your project
 3. Enter this URL in the search bar `https://github.com/steamclock/netable.git`
 
-Netable is available through [CocoaPods](https://cocoapods.org). To install
+Netable is also available through **[CocoaPods](https://cocoapods.org)**. To install
 it, simply add the following line to your Podfile:
 
 ```ruby
