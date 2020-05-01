@@ -12,7 +12,7 @@ import UIKit
 class CustomLoggerViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
 
-    /// Create a Netable instance that won't record any logs
+    /// Create a Netable instance that won't record any logs and pass it in with the Netable constructor.
     private let netable = Netable(baseURL: URL(string: "https://api.thecatapi.com/v1/")!, logDestination: CustomLogDestination())
 
     override func viewDidLoad() {
@@ -20,7 +20,6 @@ class CustomLoggerViewController: UIViewController {
         
         netable.request(GetCatRequest()) { [weak self] result in
             guard let self = self else { return }
-            print(result)
             switch result {
             case .success(let image):
                 self.imageView.image = image
