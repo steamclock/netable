@@ -13,7 +13,7 @@
     <a title="Netable  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Netable Docs</a> (75% documented)</p>
+        <p><a href="index.html">Netable 0.8.5 Docs</a> (75% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -99,6 +99,9 @@
               <li class="nav-group-task">
                 <a href="Structs/Empty.html">Empty</a>
               </li>
+              <li class="nav-group-task">
+                <a href="Structs/RequestIdentifier.html">RequestIdentifier</a>
+              </li>
             </ul>
           </li>
         </ul>
@@ -109,14 +112,9 @@
             
             <p><img src="header.png" alt=""></p>
 
-<p>[![Swift Version][swift-image]][swift-url]
-[![Build Status][travis-image]][travis-url]
-[![License][license-image]][license-url]
-<a href="https://img.shields.io/cocoapods/v/LFAlertController.svg"><img src="https://img.shields.io/cocoapods/v/EZSwiftExtensions.svg" alt="CocoaPods Compatible"></a><br>
-<a href="http://cocoapods.org/pods/Netable"><img src="https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat" alt="Platform"></a>
-<a href="http://makeapullrequest.com"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"></a></p>
+<p><a href="https://github.com/apple/swift-package-manager"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg" alt="Swift Package Manager compatible"></a><a href="http://makeapullrequest.com"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"></a><a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a><a href="https://img.shields.io/cocoapods/v/Netable.svg"><img src="https://img.shields.io/cocoapods/v/Netable.svg" alt="CocoaPods Compatible"></a> <a href="http://cocoapods.org/pods/Netable"><img src="https://img.shields.io/cocoapods/p/Netable.svg?style=flat" alt="Platform"></a></p>
 
-<p>At <a href="https://steamclock.com/">Steamclock</a>, we interact with a lot of different APIs. Netable makes that easier for us by providing a simple interface for using those APIs to drive high quality iOS and MacOS apps.</p>
+<p>Modern apps interact with a lot of different APIs. Netable makes that easier by providing a simple interface for using those APIs to drive high quality iOS and MacOS apps, built on Swift <code>Codable</code>, while still supporting non-standard and unusual APIs when need be.</p>
 
 <ul>
 <li><a href="#features">Features</a></li>
@@ -124,29 +122,28 @@
 <li><a href="#example">Example</a></li>
 <li><a href="#requirements">Requirements</a></li>
 <li><a href="#installation">Installation</a></li>
-<li><a href="#contributing">Contributing</a></li>
 <li><a href="#license">License</a></li>
 </ul>
 <h2 id='features' class='heading'>Features</h2>
 
-<p>Netable is designed with the core philosophy of ensuring that developers can write simple code for simple APIS, but providing lots of options for wrangling strange or non-standard APIs.</p>
+<p>Netable&rsquo;s core philosophy is to ensure that developers can write simple code for simple APIS, while providing various options for wrangling strange or non-standard APIs.</p>
 
-<ul>
+<ol>
 <li>Every request is an independent type
 
-<ul>
+<ol>
 <li>Facilitates breaking up requests into separate files, avoiding monolithic networking classes</li>
-</ul></li>
-<li>Codable-based <code>Result</code> return types
+</ol></li>
+<li><code>Codable</code>-based <code>Result</code> return types
 
-<ul>
+<ol>
 <li>Easy interfacing between model and controller layers</li>
 <li>Reduces need for wrapper types<br></li>
-</ul></li>
-<li>Have your request automatically convert responses to usable objects</li>
-<li>Easily integrates with your existing logging library, or logs to <code>debugPrint</code> by default</li>
-<li>Comprehensive (Robust?) error types make handling expected and unexpected errors painless</li>
-</ul>
+</ol></li>
+<li>Can automatically convert request responses into usable objects</li>
+<li>Easily integrates with existing logging libraries, or logs to <code>debugPrint</code> by default</li>
+<li>Comprehensive error types make handling expected and unexpected errors painless</li>
+</ol>
 <h2 id='usage' class='heading'>Usage</h2>
 <h3 id='standard-usage' class='heading'>Standard Usage</h3>
 <h4 id='make-a-new-instance-of-code-netable-code-and-pass-in-your-base-url' class='heading'>Make a new instance of <code><a href="Classes/Netable.html">Netable</a></code>, and pass in your base URL:</h4>
@@ -227,7 +224,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
-<h4 id='leaving-your-network-code-to-deal-with-the-important-stuff' class='heading'>Leaving your network code to deal with the important stuff</h4>
+<h4 id='leave-your-network-code-to-deal-with-the-important-stuff' class='heading'>Leave your network code to deal with the important stuff</h4>
 <pre class="highlight swift"><code><span class="n">netable</span><span class="o">.</span><span class="nf">request</span><span class="p">(</span><span class="kt">GetCatImageURL</span><span class="p">())</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
     <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
     <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">catUrl</span><span class="p">):</span>
@@ -243,7 +240,7 @@
 </code></pre>
 <h3 id='full-documentation' class='heading'>Full Documentation</h3>
 
-<p><a href="">In-depth documentation</a> is provided through Jazzy and inline documentation.  </p>
+<p><a href="">In-depth documentation</a> is provided through Jazzy.  </p>
 <h2 id='example' class='heading'>Example</h2>
 
 <p>To run the example project, clone the repo, and run <code>pod install</code> from inside the Example directory first.</p>
@@ -256,7 +253,7 @@
 </ul>
 <h2 id='installation' class='heading'>Installation</h2>
 
-<p>Netable is available through <a href="https://swift.org/package-manager/">Swift Package Manager</a>. To install it, follow these steps:</p>
+<p>Netable is available through <strong><a href="https://swift.org/package-manager/">Swift Package Manager</a></strong>. To install it, follow these steps:</p>
 
 <ol>
 <li>In Xcode, click <strong>File</strong>, then <strong>Swift Package Manager</strong>, then <strong>Add Package Dependency</strong></li>
@@ -264,7 +261,7 @@
 <li>Enter this URL in the search bar <code>https://github.com/steamclock/netable.git</code></li>
 </ol>
 
-<p>Netable is available through <a href="https://cocoapods.org">CocoaPods</a>. To install
+<p>Netable is also available through <strong><a href="https://cocoapods.org">CocoaPods</a></strong>. To install
 it, simply add the following line to your Podfile:</p>
 <pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'Netable'</span>
 </code></pre>
@@ -277,8 +274,8 @@ it, simply add the following line to your Podfile:</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="https://github.com/steamclock/netable/" target="_blank" rel="external">Brendan Lensink</a>. All rights reserved. (Last updated: 2020-04-01)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2020 <a class="link" href="https://github.com/steamclock/netable/" target="_blank" rel="external">Brendan Lensink</a>. All rights reserved. (Last updated: 2020-05-01)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

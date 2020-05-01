@@ -9,7 +9,6 @@ Modern apps interact with a lot of different APIs. Netable makes that easier by 
 - [Example](#example)
 - [Requirements](#requirements)
 - [Installation](#installation)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Features

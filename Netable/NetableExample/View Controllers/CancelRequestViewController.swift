@@ -11,12 +11,13 @@ import UIKit
 
 class CancelRequestViewController: UIViewController {
 
-    /// Create a Netable instance using the default log destination
+    /// Create a Netable instance using the default log destination.
     private let netable = Netable(baseURL: URL(string: "https://api.thecatapi.com/v1/")!)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Make your request as you normally would, but store the `RequestIdentifier` provided by `Request`
+
+        // Make your request as you normally would, but store the `RequestIdentifier` provided by `Request` to refer to later.
         let taskId = netable.request(GetCatRequest()) { [weak self] result in
             guard let self = self else { return }
 

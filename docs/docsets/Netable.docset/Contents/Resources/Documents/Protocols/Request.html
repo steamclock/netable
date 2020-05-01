@@ -14,7 +14,7 @@
     <a title="Request Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Netable Docs</a> (75% documented)</p>
+        <p><a href="../index.html">Netable 0.8.5 Docs</a> (75% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -100,6 +100,9 @@
               <li class="nav-group-task">
                 <a href="../Structs/Empty.html">Empty</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RequestIdentifier.html">RequestIdentifier</a>
+              </li>
             </ul>
           </li>
         </ul>
@@ -167,7 +170,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">associatedtype</span> <span class="kt">RawResource</span> <span class="p">:</span> <span class="kt">Decodable</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">associatedtype</span> <span class="kt">RawResource</span></code></pre>
 
                         </div>
                       </div>
@@ -321,9 +324,36 @@ See <code>GetCatRequest</code> for a demonstration of this in action.</p>
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:7Netable7RequestP6decodeys6ResultOy11RawResourceQzAA0A5ErrorOG10Foundation4DataVSgF"></a>
+                    <a name="//apple_ref/swift/Method/decode(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Netable7RequestP6decodeys6ResultOy11RawResourceQzAA0A5ErrorOG10Foundation4DataVSgF">decode(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Optional: The method to decode Data into your RawResource</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">decode</span><span class="p">(</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">Data</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/Request.html#/s:7Netable7RequestP11RawResourceQa">RawResource</a></span><span class="p">,</span> <span class="kt"><a href="../Enums/NetableError.html">NetableError</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:7Netable7RequestP8finalize3raws6ResultOy13FinalResourceQzAA0A5ErrorOG03RawG0Qz_tF"></a>
                     <a name="//apple_ref/swift/Method/finalize(raw:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7Netable7RequestP8finalize3raws6ResultOy13FinalResourceQzAA0A5ErrorOG03RawG0Qz_tF">finalize(raw:)</a>
+                    <a class="token" href="#/s:7Netable7RequestP8finalize3raws6ResultOy13FinalResourceQzAA0A5ErrorOG03RawG0Qz_tF">finalize(raw:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -332,53 +362,6 @@ See <code>GetCatRequest</code> for a demonstration of this in action.</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Optional: The method to convert your RawResource returned by the server to FinalResource.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">finalize</span><span class="p">(</span><span class="nv">raw</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Request.html#/s:7Netable7RequestP11RawResourceQa">RawResource</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/Request.html#/s:7Netable7RequestP13FinalResourceQa">FinalResource</a></span><span class="p">,</span> <span class="kt"><a href="../Enums/NetableError.html">NetableError</a></span><span class="o">&gt;</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Available%20where%20%60FinalResource%60%20==%20%60RawResource%60"></a>
-                <a name="//apple_ref/swift/Section/Available where `FinalResource` == `RawResource`" class="dashAnchor"></a>
-                <div class="section-name-container">
-                  <a class="section-name-link" href="#/Available%20where%20%60FinalResource%60%20==%20%60RawResource%60"></a>
-                  <h3 class="section-name"><p>Available where <code><a href="../Protocols/Request.html#/s:7Netable7RequestP13FinalResourceQa">FinalResource</a></code> == <code><a href="../Protocols/Request.html#/s:7Netable7RequestP11RawResourceQa">RawResource</a></code></p>
-</h3>
-                </div>
-              </div>
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:7Netable7RequestPAA11RawResourceQz05FinalD0RtzrlE8finalize3raws6ResultOyAgA0A5ErrorOGAG_tF"></a>
-                    <a name="//apple_ref/swift/Method/finalize(raw:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7Netable7RequestPAA11RawResourceQz05FinalD0RtzrlE8finalize3raws6ResultOyAgA0A5ErrorOGAG_tF">finalize(raw:)</a>
-                    </code>
-                      <span class="declaration-note">
-                        Default implementation
-                      </span>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                      <h4>Default Implementation</h4>
-                      <div class="default_impl abstract">
-                        <p>By default, <code>finalize</code> just returns the RawResource.</p>
 
                       </div>
                       <div class="declaration">
@@ -441,11 +424,58 @@ See <code>GetCatRequest</code> for a demonstration of this in action.</p>
                 </li>
               </ul>
             </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Available%20where%20%60FinalResource%60%20==%20%60RawResource%60"></a>
+                <a name="//apple_ref/swift/Section/Available where `FinalResource` == `RawResource`" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Available%20where%20%60FinalResource%60%20==%20%60RawResource%60"></a>
+                  <h3 class="section-name"><p>Available where <code><a href="../Protocols/Request.html#/s:7Netable7RequestP13FinalResourceQa">FinalResource</a></code> == <code><a href="../Protocols/Request.html#/s:7Netable7RequestP11RawResourceQa">RawResource</a></code></p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Netable7RequestPAA11RawResourceQz05FinalD0RtzrlE8finalize3raws6ResultOyAgA0A5ErrorOGAG_tF"></a>
+                    <a name="//apple_ref/swift/Method/finalize(raw:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Netable7RequestPAA11RawResourceQz05FinalD0RtzrlE8finalize3raws6ResultOyAgA0A5ErrorOGAG_tF">finalize(raw:<wbr>)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p>By default, <code>finalize</code> just returns the RawResource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">finalize</span><span class="p">(</span><span class="nv">raw</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Request.html#/s:7Netable7RequestP11RawResourceQa">RawResource</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/Request.html#/s:7Netable7RequestP13FinalResourceQa">FinalResource</a></span><span class="p">,</span> <span class="kt"><a href="../Enums/NetableError.html">NetableError</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="https://github.com/steamclock/netable/" target="_blank" rel="external">Brendan Lensink</a>. All rights reserved. (Last updated: 2020-04-01)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2020 <a class="link" href="https://github.com/steamclock/netable/" target="_blank" rel="external">Brendan Lensink</a>. All rights reserved. (Last updated: 2020-05-01)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

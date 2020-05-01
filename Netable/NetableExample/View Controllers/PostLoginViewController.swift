@@ -27,15 +27,19 @@ class PostLoginViewController: UIViewController {
     @IBAction func submitPressed(_ sender: Any) {
         guard let username = usernameField.text,
                 let password = passwordField.text else {
-            fatalError("Managed to pres submit without a username or password, something's gone wrong.")
+            fatalError("Managed to press submit without a username or password, something's gone wrong.")
         }
 
+        // Bundle your login params up to pass into your request.
         let params = LoginParams(username: username, password: password)
+
+        // Call `request()`, passing in your parameters.
         netable.request(LoginRequest(parameters: params)) { [weak self] result in
             guard let self = self else { return }
 
             switch result {
             case .success(_):
+                // Login was a success! Store the user's credentials and redirect to your home screen. 
                 self.resultLabel.text = "Success!"
             case .failure(let error):
                 let alert = UIAlertController(

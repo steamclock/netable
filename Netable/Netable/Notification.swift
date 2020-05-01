@@ -3,7 +3,7 @@
 //  Netable
 //
 //  Created by Brendan Lensink on 2018-10-18.
-//  Copyright © 2018 steamclock. All rights reserved.
+//  Copyright © 2018 Steamclock Software. All rights reserved.
 //
 
 import Foundation
