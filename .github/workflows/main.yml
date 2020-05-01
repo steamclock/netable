@@ -1,0 +1,20 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  deploy_docs:
+    runs-on: macOS-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Publish Jazzy Docs
+      uses: steven0351/publish-jazzy-docs@v1
+      with:
+        personal_access_token: ${{ secrets.ACCESS_TOKEN }}
+        config: .jazzy.yaml
