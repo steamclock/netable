@@ -135,7 +135,7 @@ netable.request(GetCatImageURL()) { result in
 
 ### Full Documentation
 
-[In-depth documentation]() is provided through Jazzy.  
+[In-depth documentation](https://steamclock.github.io/netable/) is provided through Jazzy and GitHub Pages.  
 
 ## Example
 
