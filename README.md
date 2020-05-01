@@ -155,7 +155,7 @@ Netable is available through **[Swift Package Manager](https://swift.org/package
 2. Choose your project
 3. Enter this URL in the search bar `https://github.com/steamclock/netable.git`
 
-Netable is also available through **[CocoaPods](https://cocoapods.org)**. To install
+Netable is also available through **[CocoaPods](https://cocoapods.org/pods/Netable)**. To install
 it, simply add the following line to your Podfile:
 
 ```ruby
