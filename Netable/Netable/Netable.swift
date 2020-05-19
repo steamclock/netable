@@ -33,7 +33,7 @@ open class Netable {
         self.urlSession = URLSession(configuration: configuration)
         self.logDestination = logDestination
 
-        logDestination.log(event: .message("Netable instance initiated. Here we go!"))
+        logDestination.log(event: .startupInfo(baseURL: baseURL, logDestination: logDestination))
     }
 
     /**
