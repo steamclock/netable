@@ -1,6 +1,6 @@
  Pod::Spec.new do |s|
   s.name             = 'Netable'
-  s.version          = '0.8.5'
+  s.version          = '0.8.6'
   s.summary          = 'A simple and swifty networking library.'
   s.description      = 'Netable is a simple Swift framework for working with both simple and non-REST-compliant HTTP endpoints.'
   s.homepage         = 'https://github.com/steamclock/netable/'
