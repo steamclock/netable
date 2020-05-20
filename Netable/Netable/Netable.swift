@@ -56,6 +56,11 @@ open class Netable {
             urlRequest = URLRequest(url: finalURL)
             urlRequest.httpMethod = request.method.rawValue
 
+            guard finalURL.scheme == "https" || finalURL.scheme == "http" else {
+                self.logDestination.log(event: .message("Only HTTP and HTTPS request are supported currently."))
+                throw NetableError.malformedURL
+            }
+
             if T.Parameters.self != Empty.self {
                 try urlRequest.encodeParameters(for: request)
             }
@@ -107,7 +112,7 @@ open class Netable {
                     throw NetableError.requestFailed(error)
                 }
 
-                guard let response = response as? HTTPURLResponse else { throw NetableError.codingError("Casting response to HTTPURLResponse failed") }
+                guard let response = response as? HTTPURLResponse else { fatalError("Casting response to HTTPURLResponse failed") }
                 guard 200...299 ~= response.statusCode else {
                     self.logDestination.log(event: .requestCompleted(statusCode: response.statusCode, responseData: data, finalizedResult: nil))
                     throw NetableError.httpError(response.statusCode, data)
