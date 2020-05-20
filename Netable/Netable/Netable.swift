@@ -56,7 +56,7 @@ open class Netable {
             urlRequest = URLRequest(url: finalURL)
             urlRequest.httpMethod = request.method.rawValue
 
-            guard finalURL.scheme == "https" || finalURL.scheme == "http" else {
+            guard finalURL.scheme?.lowercased() == "https" || finalURL.scheme?.lowercased() == "http" else {
                 self.logDestination.log(event: .message("Only HTTP and HTTPS request are supported currently."))
                 throw NetableError.malformedURL
             }
