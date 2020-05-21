@@ -10,8 +10,12 @@ import Foundation
 
 /// Wrapper class for log events emitted by Netable.
 public enum LogEvent: CustomDebugStringConvertible {
+
+    /// Print up some debugging info at start.
+    case startupInfo(baseURL: URL, logDestination: LogDestination)
+
     /// A generic message, not tied to request state.
-    case message(String)
+    case message(StaticString)
 
     /// Request has been successfully initiated.
     case requestStarted(urlString: String, method: HTTPMethod, headers: [String: Any], params: [String: Any]?)
@@ -25,20 +29,14 @@ public enum LogEvent: CustomDebugStringConvertible {
     /// Default overrides, used by the default logging destination.
     public var debugDescription: String {
         switch self {
-        case .message(let message): return message
+        case .startupInfo(let baseURL, let logDestination):
+            return "Netable instance initiated. Here we go! Base URL: \(baseURL.absoluteString). Log Destination: \(logDestination)"
+        case .message(let message):
+            return message.description
         case .requestStarted(let urlString, let method, let headers, let params):
-            return """
-                Started \(method.rawValue) request...
-                    URL: \(urlString)
-                    Headers: \(headers)
-                    Params: \(params ?? [:])
-            """
+            return "Started \(method.rawValue) request... URL: \(urlString) Headers: \(headers) Params: \(params ?? [:])"
         case .requestCompleted(let statusCode, let responseData, let finalizedResult):
-            return """
-                Request completed with status code \(statusCode)
-                    Data: \(responseData ?? Data())
-                    Finalized data: \(String(describing: finalizedResult))
-            """
+            return "Request completed with status code \(statusCode) Data: \(responseData ?? Data()) Finalized data: \(String(describing: finalizedResult))"
         case .requestFailed(let error):
             return "Request failed: \(error.localizedDescription)"
         }

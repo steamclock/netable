@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.8.6] - UNRELEASED
+### Added
+- Added `LogEvent.startupInfo`  to keep track of some debugging info while booting.
+
+### Changed
+- Changed multi-line logs that weren't printing to the console properly to single liners.
+- Changed `LogEvent.message` to accept a `StaticString` instead of a `String`.
+
 ## [0.8.5] - 2020-05-01
 ### Added
 - Added a new post example

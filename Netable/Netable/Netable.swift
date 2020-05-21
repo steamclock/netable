@@ -33,11 +33,7 @@ open class Netable {
         self.urlSession = URLSession(configuration: configuration)
         self.logDestination = logDestination
 
-        logDestination.log(event: .message("""
-            Netable instance initiated. Here we go!
-                Base URL: Base URL: \(baseURL.absoluteString)
-                Log Destination: \(logDestination)
-        """))
+        logDestination.log(event: .startupInfo(baseURL: baseURL, logDestination: logDestination))
     }
 
     /**
@@ -59,6 +55,11 @@ open class Netable {
             let finalURL = try fullyQualifiedURLFrom(path: request.path)
             urlRequest = URLRequest(url: finalURL)
             urlRequest.httpMethod = request.method.rawValue
+
+            guard finalURL.scheme?.lowercased() == "https" || finalURL.scheme?.lowercased() == "http" else {
+                self.logDestination.log(event: .message("Only HTTP and HTTPS request are supported currently."))
+                throw NetableError.malformedURL
+            }
 
             if T.Parameters.self != Empty.self {
                 try urlRequest.encodeParameters(for: request)
@@ -151,7 +152,7 @@ open class Netable {
           fatalError("Attempted to cancel a task from a different Netable session")
         }
 
-        self.logDestination.log(event: .message("Cancelling request with taskIdentifier: \(taskId)"))
+        self.logDestination.log(event: .message("Request cancelled by task identifier."))
         urlSession.getAllTasks { tasks in
             guard let task = tasks.first(where: { $0.taskIdentifier == taskId.id }) else {
                 self.logDestination.log(event: .message("Failed to cancel request, no request with that id was found."))
@@ -167,7 +168,7 @@ open class Netable {
      */
     open func cancelAllTasks() {
         urlSession.getAllTasks { tasks in
-            self.logDestination.log(event: .message("Cancelling all \(tasks.count) ongoing tasks."))
+            self.logDestination.log(event: .message("Cancelling all ongoing tasks."))
             for task in tasks {
                 task.cancel()
             }
