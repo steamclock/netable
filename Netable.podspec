@@ -6,7 +6,7 @@
   s.homepage         = 'https://github.com/steamclock/netable/'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Brendan Lensink' => 'brendan@steamclock.com' }
-  s.source           = { :git => 'https://github.com/steamclock/netable.git', :tag => 'v0.8.5' }
+  s.source           = { :git => 'https://github.com/steamclock/netable.git', :tag => 'v0.8.6' }
   s.ios.deployment_target = '11.0'
   s.osx.deployment_target  = '10.14'
   s.source_files = 'Netable/Netable/*.{swift,h,m}'
