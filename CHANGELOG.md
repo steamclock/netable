@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Changed multi-line logs that weren't printing to the console properly to single liners.
 - Changed `LogEvent.message` to accept a `StaticString` instead of a `String`.
+- Changed when parameters are checked for nested objects.
 
 ## [0.8.5] - 2020-05-01
 ### Added

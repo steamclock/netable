@@ -75,12 +75,10 @@ extension URLRequest {
             }
         case .post:
             do {
-                let paramsDictionary = try request.parameters.toParameterDictionary()
-
                 if request is MultipartFormData {
-                    try setMultipartFormData(paramsDictionary, encoding: .utf8)
+                    try setMultipartFormData(try request.parameters.toParameterDictionary(), encoding: .utf8)
                 } else if request is UrlEncodedFormData {
-                    setUrlEncodedFormData(paramsDictionary)
+                    setUrlEncodedFormData(try request.parameters.toParameterDictionary())
                 } else {
                     fallthrough
                 }
