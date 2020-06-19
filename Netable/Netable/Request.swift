@@ -32,6 +32,9 @@ public protocol Request {
     /// Optional: The key decoding strategy to be used when decoding return JSON.
     var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy { get }
 
+    /// Optional: The key encoding strategy to be used when encoding JSON parameters.
+    var jsonKeyEncodingStrategy: JSONEncoder.KeyEncodingStrategy { get }
+
     /// Optional: The method to decode Data into your RawResource
     func decode(_ data: Data?) -> Result<RawResource, NetableError>
 
@@ -49,6 +52,11 @@ public extension Request where Parameters == Empty {
 public extension Request {
     /// Set the default key decoding strategy.
     var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy {
+        return .useDefaultKeys
+    }
+
+    /// Set the default key encoding strategy.
+    var jsonKeyEncodingStrategy: JSONEncoder.KeyEncodingStrategy {
         return .useDefaultKeys
     }
 }
