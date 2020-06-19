@@ -15,11 +15,15 @@ extension Encodable {
      *
      * - Throws: `NetableError` if the parameters can't be unwrapped or there are nested collections.
      *
+     * - parameter encodingStrategy: The key encoding strategy to use while encoding parameters
+     *
      * - Returns: A [String: String] dictionary of the parameters.
      */
-    func toParameterDictionary() throws -> [String: String] {
+    func toParameterDictionary(encodingStrategy: JSONEncoder.KeyEncodingStrategy) throws -> [String: String] {
         do {
-            let paramsData = try JSONEncoder().encode(self)
+            let encoder = JSONEncoder()
+            encoder.keyEncodingStrategy = encodingStrategy
+            let paramsData = try encoder.encode(self)
 
             guard
                 let params = try? JSONSerialization.jsonObject(with: paramsData),
@@ -27,6 +31,7 @@ extension Encodable {
                 else {
                     throw NetableError.codingError("Failed to unwrap parameter dictionary")
             }
+            print(params)
 
             // Make sure that our encoded dictionary doesn't contain any nested collections.
             for (_, value) in paramsDictionary where
@@ -64,7 +69,7 @@ extension URLRequest {
                         throw NetableError.codingError("Encoding Error: Failed to unwrap url components")
                 }
 
-                let paramsDictionary = try request.parameters.toParameterDictionary()
+                let paramsDictionary = try request.parameters.toParameterDictionary(encodingStrategy: request.jsonKeyEncodingStrategy)
                 components.queryItems = paramsDictionary.map {
                     URLQueryItem(name: $0, value: $1)
                 }
@@ -76,9 +81,9 @@ extension URLRequest {
         case .post:
             do {
                 if request is MultipartFormData {
-                    try setMultipartFormData(try request.parameters.toParameterDictionary(), encoding: .utf8)
+                    try setMultipartFormData(try request.parameters.toParameterDictionary(encodingStrategy: request.jsonKeyEncodingStrategy), encoding: .utf8)
                 } else if request is UrlEncodedFormData {
-                    setUrlEncodedFormData(try request.parameters.toParameterDictionary())
+                    setUrlEncodedFormData(try request.parameters.toParameterDictionary(encodingStrategy: request.jsonKeyEncodingStrategy))
                 } else {
                     fallthrough
                 }

@@ -11,6 +11,7 @@ import Netable
 struct LoginParams: Encodable {
     let username: String
     let password: String
+    let firstName: String
 }
 
 struct LoginResponse: Decodable {
@@ -22,7 +23,10 @@ struct LoginRequest: Request {
     typealias RawResource = LoginResponse
 
    public var method: HTTPMethod { return .post }
-
+    public var jsonKeyEncodingStrategy: JSONEncoder.KeyEncodingStrategy {
+        return .convertToSnakeCase
+    }
+    
    public var path: String {
        return "/post"
    }

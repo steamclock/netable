@@ -31,7 +31,7 @@ class PostLoginViewController: UIViewController {
         }
 
         // Bundle your login params up to pass into your request.
-        let params = LoginParams(username: username, password: password)
+        let params = LoginParams(username: username, password: password, firstName: "Beep boop")
 
         // Call `request()`, passing in your parameters.
         netable.request(LoginRequest(parameters: params)) { [weak self] result in

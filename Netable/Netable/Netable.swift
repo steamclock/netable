@@ -84,7 +84,7 @@ open class Netable {
             urlString:  urlRequest.url?.absoluteString ?? "UNDEFINED",
             method: request.method,
             headers: urlRequest.allHTTPHeaderFields ?? [:],
-            params: try? request.parameters.toParameterDictionary())
+            params: try? request.parameters.toParameterDictionary(encodingStrategy: request.jsonKeyEncodingStrategy))
         )
 
         let task = urlSession.dataTask(with: urlRequest) { data, response, error in
