@@ -31,7 +31,6 @@ extension Encodable {
                 else {
                     throw NetableError.codingError("Failed to unwrap parameter dictionary")
             }
-            print(params)
 
             // Make sure that our encoded dictionary doesn't contain any nested collections.
             for (_, value) in paramsDictionary where
