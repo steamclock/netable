@@ -7,7 +7,16 @@
 //
 
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
+#if canImport(QuartzCore)
 import QuartzCore
+#else
+func CACurrentMediaTime() -> TimeInterval {
+    return Date.timeIntervalSinceReferenceDate
+}
+#endif
 
 open class Netable {
     /// The URL session requests are run through.

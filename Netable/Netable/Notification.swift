@@ -7,6 +7,9 @@
 //
 
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 
 extension Notification.Name {
     public static let NetableRequestDidComplete = Notification.Name(rawValue: "com.steamclock.netable.notification.name.requestDidComplete")
@@ -33,7 +36,7 @@ class NetableNotification {
      *
      * - returns: The user info encoded as a `Dictionary<String, Any>`
      */
-    static func userInfo(forRequest request: URLRequest?, data: Data?, response: URLResponse?, duration: CFTimeInterval?, error: Swift.Error?) -> [String: Any] {
+    static func userInfo(forRequest request: URLRequest?, data: Data?, response: URLResponse?, duration: TimeInterval?, error: Swift.Error?) -> [String: Any] {
         var userInfo: [String: Any] = [:]
 
         if let request = request {
