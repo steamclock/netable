@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.9.1] - 24-06-20
+### Changed
+- Fixed build on non-Apple platforms (note: only basic compliation has been tested, still might not work properly)
+- Use TimeInterval instead of CFTimeInterval in public interface (shouldn't actually change API, since they are both just Double typedefs)
+- Remove not-publically-exposed-and-probably-not-working capability to use encodings other than UTF8 for multipart form requests.
+
 ## [0.9.0] - 19-06-20
 ### Added
 - Added `jsonKeyEncodingStrategy` to `Request`s, allowing custom encoding strategies for request params.

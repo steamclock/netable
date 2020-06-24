@@ -7,6 +7,9 @@
 //
 
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 
 extension Encodable {
     /**
@@ -80,7 +83,7 @@ extension URLRequest {
         case .post:
             do {
                 if request is MultipartFormData {
-                    try setMultipartFormData(try request.parameters.toParameterDictionary(encodingStrategy: request.jsonKeyEncodingStrategy), encoding: .utf8)
+                    try setMultipartFormData(try request.parameters.toParameterDictionary(encodingStrategy: request.jsonKeyEncodingStrategy))
                 } else if request is UrlEncodedFormData {
                     setUrlEncodedFormData(try request.parameters.toParameterDictionary(encodingStrategy: request.jsonKeyEncodingStrategy))
                 } else {

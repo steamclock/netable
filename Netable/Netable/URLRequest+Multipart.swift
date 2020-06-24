@@ -7,12 +7,12 @@
 //
 
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 
 /// Any errors thrown while encoding `multipart/form-data` infomation will conform to this.
 public enum MultipartFormDataEncodingError: Error {
-    /// Failed to unwrap character set name from encoding type.
-    case characterSetName
-
     /// Failed to encode a name.
     case name(String)
 
@@ -36,16 +36,11 @@ extension URLRequest {
      *
      * - Seealso: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#multipart-form-data
      */
-    public mutating func setMultipartFormData(_ parameters: [String: String], encoding: String.Encoding) throws {
+    public mutating func setMultipartFormData(_ parameters: [String: String]) throws {
         let makeRandom = { UInt32.random(in: (.min)...(.max)) }
         let boundary = String(format: "------------------------%08X%08X", makeRandom(), makeRandom())
 
-        let contentType: String = try {
-            guard let charset = CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(encoding.rawValue)) else {
-                throw MultipartFormDataEncodingError.characterSetName
-            }
-            return "multipart/form-data; charset=\(charset); boundary=\(boundary)"
-            }()
+        let contentType = "multipart/form-data; charset=utf-8; boundary=\(boundary)"
         addValue(contentType, forHTTPHeaderField: "Content-Type")
 
         httpBody = try {
@@ -59,15 +54,15 @@ extension URLRequest {
                 body.append("--\(boundary)\r\n".data(using: .utf8)!)
 
                 guard
-                    rawName.canBeConverted(to: encoding),
-                    let disposition = "Content-Disposition: form-data; name=\"\(rawName)\"\r\n".data(using: encoding) else {
+                    rawName.canBeConverted(to: .utf8),
+                    let disposition = "Content-Disposition: form-data; name=\"\(rawName)\"\r\n".data(using: .utf8) else {
                         throw MultipartFormDataEncodingError.name(rawName)
                 }
                 body.append(disposition)
 
                 body.append("\r\n".data(using: .utf8)!)
 
-                guard let value = rawValue.data(using: encoding) else {
+                guard let value = rawValue.data(using: .utf8) else {
                     throw MultipartFormDataEncodingError.value(rawValue, name: rawName)
                 }
 

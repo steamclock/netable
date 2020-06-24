@@ -9,6 +9,9 @@
 import Foundation
 
 public protocol UrlEncodedFormData { }
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 
 extension URLRequest {
     /**
