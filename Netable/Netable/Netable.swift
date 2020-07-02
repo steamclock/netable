@@ -217,8 +217,12 @@ open class Netable {
      *
      */
     internal func log(_ event: LogEvent) {
-        DispatchQueue.main.async {
+        if Thread.isMainThread {
             self.logDestination.log(event: event)
+        } else {
+            DispatchQueue.main.async {
+                self.logDestination.log(event: event)
+            }
         }
     }
 
