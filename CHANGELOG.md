@@ -9,13 +9,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Requests are now automatically retried for (some) failures. The new RetryConfiguration struct controls the exact mechanisms for retrying.
 
 ### Removed
-- The NotificationCenter events for request completion have been removed. For globally snooping on requests, use a custom LogDestination.
+- The NotificationCenter events for request completion have been removed. For global snooping on requests, use a custom LogDestination.
 
 ### Changed
 - The names and payload of some of the request related LogEvents have changed, generally to include more data on requests.
 - LogEvent.requestCompleted is no longer sent for requests that fail based on non 2xx HTTP codes, just LogEvent.requestFailure. You can check for a NetableError.httpError payload if you want to log the status code or raw data.
 - LogDestination is now always called on the main thread
-- Default logging now logs URLs on request compeltion, and logs HTTP status codes for HTTP failures
+- Default logging now logs URLs on request completion, and logs HTTP status codes for HTTP failures
 - Change RequestIdentifier to be opaque
 
 ## [0.9.1] - 24-06-20

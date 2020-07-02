@@ -29,7 +29,8 @@ public enum LogEvent: CustomDebugStringConvertible {
     /// Request has been successfully initiated.
     case requestStarted(request: RequestInfo)
 
-    /// Request has sucessfully completed. Note: taskTime only cover the time it took the current network request to run, in retry scenarios the time for the whole request may be longer.
+    /// Request has sucessfully completed. 
+    /// Note: taskTime only covers the time it took the current network request to run, in retry scenarios the time for the whole request may be longer.
     case requestSuccess(request: RequestInfo, taskTime: TimeInterval, statusCode: Int, responseData: Data?, finalizedResult: Any?)
 
     /// Sent when a request fails but will be retried. Note: taskTime only cover the time it took the current network request to run, in retry scenarios the time for the whole request may be longer.

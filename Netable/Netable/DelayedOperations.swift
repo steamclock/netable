@@ -9,7 +9,7 @@
 import Foundation
 
 // Utility class for scheduling future operations that can easily be identified and cancelled later
-// Used to hold in flight requests that are waiting for a retry.
+// Used to hold in-flight requests that are waiting for a retry.
 internal class DelayedOperations {
     private var operations: [(timer: Timer, id: String)] = []
 
