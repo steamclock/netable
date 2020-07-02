@@ -11,30 +11,41 @@ import Foundation
 // Utility class for scheduling future operations that can easily be identified and cancelled later
 // Used to hold in-flight requests that are waiting for a retry.
 internal class DelayedOperations {
-    private var operations: [(timer: Timer, id: String)] = []
+    private var localQueue = DispatchQueue(label: "Netable DelayedOperations")
+    private var actionQueue: DispatchQueue
+    private var operations: [(timer: DispatchSourceTimer, id: String)] = []
+
+    init(dispatchOn: DispatchQueue = DispatchQueue.main) {
+        actionQueue = dispatchOn
+    }
 
     func delay(_ delay: TimeInterval, withID id: String, doAction action: @escaping () -> Void) {
-        self.operations.append((timer: Timer.scheduledTimer(withTimeInterval: delay, repeats: false, block: { timer in
+        let timer = DispatchSource.makeTimerSource(queue: actionQueue)
+        timer.schedule(deadline: .now() + delay)
+        timer.setEventHandler {
             self.cancel(id)
             action()
-        }), id: id))
+        }
+
+        localQueue.sync {
+            operations.append((timer: timer, id: id))
+        }
+
+        timer.resume()
     }
 
     @discardableResult
     func cancel(_ id: String) -> Bool {
-        if let toCancel = operations.first(where: { $0.id == id }) {
-            toCancel.timer.invalidate()
+        self.localQueue.sync {
+            let origCount = operations.count
             operations.removeAll { $0.id == id }
-            return true
+            return operations.count != origCount
         }
-        return false
     }
 
     func cancelAll() {
-        for operation in operations {
-            operation.timer.invalidate()
+        self.localQueue.sync {
+            operations.removeAll()
         }
-
-        operations.removeAll()
     }
 }

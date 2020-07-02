@@ -49,7 +49,7 @@ open class Netable {
         self.logDestination = logDestination
         self.retryConfiguration = retryConfiguration
 
-        logDestination.log(event: .startupInfo(baseURL: baseURL, logDestination: logDestination))
+        log(.startupInfo(baseURL: baseURL, logDestination: logDestination))
     }
 
     /**
@@ -73,7 +73,7 @@ open class Netable {
             urlRequest.httpMethod = request.method.rawValue
 
             guard finalURL.scheme?.lowercased() == "https" || finalURL.scheme?.lowercased() == "http" else {
-                self.logDestination.log(event: .message("Only HTTP and HTTPS request are supported currently."))
+                self.log(.message("Only HTTP and HTTPS request are supported currently."))
                 throw NetableError.malformedURL
             }
 
@@ -82,7 +82,7 @@ open class Netable {
             }
         } catch {
             let netableError = (error as? NetableError) ?? NetableError.unknownError(error)
-            logDestination.log(event: .requestCreationFailed(urlString: request.path, error: netableError))
+            log(.requestCreationFailed(urlString: request.path, error: netableError))
             completion(.failure(netableError))
             return RequestIdentifier(id: "invalid", session: self)
         }
@@ -103,13 +103,7 @@ open class Netable {
             headers: urlRequest.allHTTPHeaderFields ?? [:],
             params: try? request.parameters.toParameterDictionary(encodingStrategy: request.jsonKeyEncodingStrategy))
 
-        logDestination.log(event: .requestStarted(request: requestInfo))
-
-        func mainThreadLog(_ event: LogEvent) {
-            DispatchQueue.main.async {
-                self.logDestination.log(event: event)
-            }
-        }
+        log(.requestStarted(request: requestInfo))
 
         let retryConfiguration = self.retryConfiguration
 
@@ -131,7 +125,7 @@ open class Netable {
                 switch decoded {
                 case .success(let raw):
                     let finalizedData = request.finalize(raw: raw)
-                    mainThreadLog(.requestSuccess(request: requestInfo, taskTime: time, statusCode: response.statusCode, responseData: data, finalizedResult: finalizedData))
+                    self.log(.requestSuccess(request: requestInfo, taskTime: time, statusCode: response.statusCode, responseData: data, finalizedResult: finalizedData))
                     completion(finalizedData)
                 case .failure(let error):
                     throw error
@@ -154,15 +148,13 @@ open class Netable {
                 }
 
                 if allowRetry && retryConfiguration.enabled && retriesLeft > 0 && retryConfiguration.errors.shouldRetry(netableError) {
-                    mainThreadLog(.requestRetrying(request: requestInfo, taskTime: time, error: netableError))
-                    DispatchQueue.main.async {
-                        self.delayedOperations.delay(retryConfiguration.delay, withID: id) {
-                            _ = self.startRequestTask(request, urlRequest: urlRequest, id: id, retriesLeft: retriesLeft - 1, completion: completion)
-                        }
+                    self.log(.requestRetrying(request: requestInfo, taskTime: time, error: netableError))
+                    self.delayedOperations.delay(retryConfiguration.delay, withID: id) {
+                        _ = self.startRequestTask(request, urlRequest: urlRequest, id: id, retriesLeft: retriesLeft - 1, completion: completion)
                     }
                 }
                 else {
-                    mainThreadLog(.requestFailed(request: requestInfo, taskTime: time, error: netableError))
+                    self.log(.requestFailed(request: requestInfo, taskTime: time, error: netableError))
                     completion(.failure(netableError))
                 }
             }
@@ -184,19 +176,19 @@ open class Netable {
           fatalError("Attempted to cancel a task from a different Netable session")
         }
 
-        self.logDestination.log(event: .message("Cancelling request by task identifier."))
+        self.log(.message("Cancelling request by task identifier."))
 
         if delayedOperations.cancel(taskId.id) {
-            self.logDestination.log(event: .message("Cancelled delayed retry task."))
+            self.log(.message("Cancelled delayed retry task."))
             return
         }
 
         urlSession.getAllTasks { tasks in
             guard let task = tasks.first(where: { $0.taskDescription == taskId.id }) else {
-                self.logDestination.log(event: .message("Failed to cancel request, no request with that id was found."))
+                self.log(.message("Failed to cancel request, no request with that id was found."))
                 return
             }
-            self.logDestination.log(event: .message("Task cancelled."))
+            self.log(.message("Task cancelled."))
             task.cancel()
         }
     }
@@ -208,7 +200,7 @@ open class Netable {
         delayedOperations.cancelAll()
         
         urlSession.getAllTasks { tasks in
-            self.logDestination.log(event: .message("Cancelling all ongoing tasks."))
+            self.log(.message("Cancelling all ongoing tasks."))
             for task in tasks {
                 task.cancel()
             }
@@ -216,6 +208,19 @@ open class Netable {
     }
 
     // MARK: Private Helper Functions
+
+    /**
+     * Helper function for logging, to avoid having to reference the log destination everywhere and so we can possibly change the semantics of,
+     * for example, what thread these are dispatched on later.
+     *
+     * - parameter event: The event to log
+     *
+     */
+    internal func log(_ event: LogEvent) {
+        DispatchQueue.main.async {
+            self.logDestination.log(event: event)
+        }
+    }
 
     /**
      * Make the provided path into a fully qualified URL. It may be invalid or partially qualified.
