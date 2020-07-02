@@ -14,13 +14,13 @@ public struct RetryConfiguration {
         /// No retries will happen
         case none
 
-        /// Retry all errors that occur as part of a attempted network request (failures like malformed URLs, as well as intentional cancellations, will still not be retried)
+        /// Retry all errors that occur as part of a attempted network request, including network failures and all non-200 HTTP responses (failures like malformed URLs, as well as intentional cancellations, and network timeouts will still not be retried)
         case all
 
-        /// Retry any physical networking errors, plus 5xx server errors (since those most commonly come from proxies. load balancers, etc. not the actual server)
+        /// Retry any physical networking errors, other than timeouts
         case transport
 
-        /// Test the errors with a user supplied closure. Custom errors are limited in the same way that ".all" is, there are certain types of errors (request formatting errors, cancellation) that this will NOT be called for and there is no option to retry. Note: will be called on a background thread so closure must be thread safe
+        /// Test the errors with a user supplied closure. Custom errors are limited in the same way that ".all" is, there are certain types of errors (request formatting errors, cancellation, network timeouts) that this will NOT be called for and there is no option to retry. Note: will be called on a background thread so closure must be thread safe
         case custom(retryTest: (NetableError) -> Bool)
 
         internal func shouldRetry(_ error: NetableError) -> Bool {
@@ -31,8 +31,6 @@ public struct RetryConfiguration {
                 return true
             case .transport:
                 switch error {
-                case .httpError(let statusCode, _):
-                    return statusCode / 100 == 5
                 case .requestFailed:
                     return true
                 default:
@@ -47,13 +45,13 @@ public struct RetryConfiguration {
     /// Which networking errors should be retried
     public let errors: Errors
 
-    /// How many times to rety befor giving up ad failing for good
+    /// How many times to rety before giving up and failing for good
     public let count: UInt
 
     /// Delay time between retry attempts
     public let delay: TimeInterval
 
-    public init(errors: Errors = .transport, count: UInt = 4, delay: TimeInterval = 5.0 ) {
+    public init(errors: Errors = .transport, count: UInt = 2, delay: TimeInterval = 5.0 ) {
         self.errors = errors
         self.count = count
         self.delay = delay

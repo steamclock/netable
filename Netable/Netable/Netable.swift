@@ -131,7 +131,7 @@ open class Netable {
                 switch decoded {
                 case .success(let raw):
                     let finalizedData = request.finalize(raw: raw)
-                    mainThreadLog(.requestCompleted(request: requestInfo, taskTime: time, statusCode: response.statusCode, responseData: data, finalizedResult: finalizedData))
+                    mainThreadLog(.requestSuccess(request: requestInfo, taskTime: time, statusCode: response.statusCode, responseData: data, finalizedResult: finalizedData))
                     completion(finalizedData)
                 case .failure(let error):
                     throw error
@@ -139,16 +139,21 @@ open class Netable {
             } catch {
                 let netableError = (error as? NetableError) ?? NetableError.unknownError(error)
 
-                var isCancellation = false
+                var allowRetry = true
 
+                // We totally supress retrying cancels (becasue then it would be impossible to cancel a request at all)
+                // and timeouts (becasue they generally take so long to fail that allowing retries would cause enormous waits,
+                // might want to relax this eventually if we know a shorter timeout is in use)
                 if case .requestFailed(let error) = netableError {
                     let nsError = error as NSError
-                    if nsError.domain == NSURLErrorDomain && nsError.code == NSURLErrorCancelled {
-                        isCancellation = true
+                    if nsError.domain == NSURLErrorDomain {
+                        if (nsError.code == NSURLErrorCancelled) || (nsError.code == NSURLErrorTimedOut) {
+                            allowRetry = false
+                        }
                     }
                 }
 
-                if !isCancellation && retriesLeft > 0 && retryConfiguration.enabled && retryConfiguration.errors.shouldRetry(netableError) {
+                if allowRetry && retryConfiguration.enabled && retriesLeft > 0 && retryConfiguration.errors.shouldRetry(netableError) {
                     mainThreadLog(.requestRetrying(request: requestInfo, taskTime: time, error: netableError))
                     DispatchQueue.main.async {
                         self.delayedOperations.delay(retryConfiguration.delay, withID: id) {
