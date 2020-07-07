@@ -10,12 +10,12 @@ import Foundation
 
 /// Wrapper for `taskIdentifier` used to manage active requests.
 public struct RequestIdentifier {
-    /// Task id assigned by the URLSession for a request.
-    let id: Int
+    /// Unique task id to identify a request
+    internal let id: String
 
     /// A reference to the Netable session that started the request.
     /// Keep track of this to prevent accidental misuse of `Netable.cancel`.
-    weak var session: Netable?
+    internal weak var session: Netable?
 
     /*
      * Cancel an ongoing request without needing to store a reference to the `Netable` instance.

@@ -31,18 +31,25 @@ open class Netable {
     /// Destination that logs will be printed to during network requests.
     public var logDestination: LogDestination
 
+    /// Settings for if / how retries will be handled
+    public var retryConfiguration: RetryConfiguration
+
+    /// Settings for if / how retries will be handled
+    private var delayedOperations = DelayedOperations()
+
     /**
      * Create a new instance of `Netable` with a base URL.
      *
      * - parameter baseURL: The base URL of your endpoint.
      * - parameter configuration: Configuration such as timeouts and caching policies for the underlying url session.
      */
-    public init(baseURL: URL, configuration: URLSessionConfiguration = .ephemeral, logDestination: LogDestination = DefaultLogDestination()) {
+    public init(baseURL: URL, configuration: URLSessionConfiguration = .ephemeral, logDestination: LogDestination = DefaultLogDestination(), retryConfiguration: RetryConfiguration = RetryConfiguration()) {
         self.baseURL = baseURL
         self.urlSession = URLSession(configuration: configuration)
         self.logDestination = logDestination
+        self.retryConfiguration = retryConfiguration
 
-        logDestination.log(event: .startupInfo(baseURL: baseURL, logDestination: logDestination))
+        log(.startupInfo(baseURL: baseURL, logDestination: logDestination))
     }
 
     /**
@@ -66,64 +73,51 @@ open class Netable {
             urlRequest.httpMethod = request.method.rawValue
 
             guard finalURL.scheme?.lowercased() == "https" || finalURL.scheme?.lowercased() == "http" else {
-                self.logDestination.log(event: .message("Only HTTP and HTTPS request are supported currently."))
+                self.log(.message("Only HTTP and HTTPS request are supported currently."))
                 throw NetableError.malformedURL
             }
 
             if T.Parameters.self != Empty.self {
                 try urlRequest.encodeParameters(for: request)
             }
-        } catch let error as NetableError {
-            logDestination.log(event: .requestFailed(error: error))
-            completion(.failure(error))
-            return RequestIdentifier(id: 0, session: self)
         } catch {
-            let unknownError = NetableError.unknownError(error)
-            logDestination.log(event: .requestFailed(error: unknownError))
-            completion(.failure(unknownError))
-            return RequestIdentifier(id: 0, session: self)
+            let netableError = (error as? NetableError) ?? NetableError.unknownError(error)
+            log(.requestCreationFailed(urlString: request.path, error: netableError))
+            completion(.failure(netableError))
+            return RequestIdentifier(id: "invalid", session: self)
         }
 
         headers.forEach { key, value in
             urlRequest.setValue(value, forHTTPHeaderField: key)
         }
 
+        return startRequestTask(request, urlRequest: urlRequest, id: UUID().uuidString, retriesLeft: retryConfiguration.count, completion: completion)
+    }
+
+    private func startRequestTask<T: Request>(_ request: T, urlRequest: URLRequest, id: String, retriesLeft: UInt, completion: @escaping (Result<T.FinalResource, NetableError>) -> Void) -> RequestIdentifier {
         let startTimestamp = CACurrentMediaTime()
-        logDestination.log(event: .requestStarted(
+
+        let requestInfo = LogEvent.RequestInfo(
             urlString:  urlRequest.url?.absoluteString ?? "UNDEFINED",
             method: request.method,
             headers: urlRequest.allHTTPHeaderFields ?? [:],
             params: try? request.parameters.toParameterDictionary(encodingStrategy: request.jsonKeyEncodingStrategy))
-        )
+
+        log(.requestStarted(request: requestInfo))
+
+        let retryConfiguration = self.retryConfiguration
 
         let task = urlSession.dataTask(with: urlRequest) { data, response, error in
-            defer {
-                let endTimestamp = CACurrentMediaTime()
-
-                let userInfo = NetableNotification.userInfo(
-                    forRequest: urlRequest,
-                    data: data,
-                    response: response,
-                    duration: endTimestamp - startTimestamp,
-                    error: error
-                )
-
-                NotificationCenter.default.post(
-                    name: Notification.Name.NetableRequestDidComplete,
-                    object: self,
-                    userInfo: userInfo
-                )
-            }
+            let time = CACurrentMediaTime() - startTimestamp
 
             do {
                 if let error = error {
-                    self.logDestination.log(event: .requestFailed(error: NetableError.requestFailed(error)))
                     throw NetableError.requestFailed(error)
                 }
 
                 guard let response = response as? HTTPURLResponse else { fatalError("Casting response to HTTPURLResponse failed") }
+
                 guard 200...299 ~= response.statusCode else {
-                    self.logDestination.log(event: .requestCompleted(statusCode: response.statusCode, responseData: data, finalizedResult: nil))
                     throw NetableError.httpError(response.statusCode, data)
                 }
 
@@ -131,24 +125,45 @@ open class Netable {
                 switch decoded {
                 case .success(let raw):
                     let finalizedData = request.finalize(raw: raw)
-                    self.logDestination.log(event: .requestCompleted(statusCode: response.statusCode, responseData: data, finalizedResult: finalizedData))
+                    self.log(.requestSuccess(request: requestInfo, taskTime: time, statusCode: response.statusCode, responseData: data, finalizedResult: finalizedData))
                     completion(finalizedData)
                 case .failure(let error):
-                    self.logDestination.log(event: .requestFailed(error: error))
-                    completion(.failure(error))
+                    throw error
                 }
-            } catch let error as NetableError {
-                self.logDestination.log(event: .requestFailed(error: error))
-                completion(.failure(error))
             } catch {
-                let error = NetableError.decodingError(error, data)
-                self.logDestination.log(event: .requestFailed(error: error))
-                completion(.failure(error))
+                let netableError = (error as? NetableError) ?? NetableError.unknownError(error)
+
+                var allowRetry = true
+
+                // We totally supress retrying cancels (becasue then it would be impossible to cancel a request at all)
+                // and timeouts (becasue they generally take so long to fail that allowing retries would cause enormous waits,
+                // might want to relax this eventually if we know a shorter timeout is in use)
+                if case .requestFailed(let error) = netableError {
+                    let nsError = error as NSError
+                    if nsError.domain == NSURLErrorDomain {
+                        if (nsError.code == NSURLErrorCancelled) || (nsError.code == NSURLErrorTimedOut) {
+                            allowRetry = false
+                        }
+                    }
+                }
+
+                if allowRetry && retryConfiguration.enabled && retriesLeft > 0 && retryConfiguration.errors.shouldRetry(netableError) {
+                    self.log(.requestRetrying(request: requestInfo, taskTime: time, error: netableError))
+                    self.delayedOperations.delay(retryConfiguration.delay, withID: id) {
+                        _ = self.startRequestTask(request, urlRequest: urlRequest, id: id, retriesLeft: retriesLeft - 1, completion: completion)
+                    }
+                }
+                else {
+                    self.log(.requestFailed(request: requestInfo, taskTime: time, error: netableError))
+                    completion(.failure(netableError))
+                }
             }
         }
 
+        task.taskDescription = id
         task.resume()
-        return RequestIdentifier(id: task.taskIdentifier, session: self)
+
+        return RequestIdentifier(id: id, session: self)
     }
 
     /**
@@ -161,13 +176,19 @@ open class Netable {
           fatalError("Attempted to cancel a task from a different Netable session")
         }
 
-        self.logDestination.log(event: .message("Request cancelled by task identifier."))
+        self.log(.message("Cancelling request by task identifier."))
+
+        if delayedOperations.cancel(taskId.id) {
+            self.log(.message("Cancelled delayed retry task."))
+            return
+        }
+
         urlSession.getAllTasks { tasks in
-            guard let task = tasks.first(where: { $0.taskIdentifier == taskId.id }) else {
-                self.logDestination.log(event: .message("Failed to cancel request, no request with that id was found."))
+            guard let task = tasks.first(where: { $0.taskDescription == taskId.id }) else {
+                self.log(.message("Failed to cancel request, no request with that id was found."))
                 return
             }
-            self.logDestination.log(event: .message("Task cancelled."))
+            self.log(.message("Task cancelled."))
             task.cancel()
         }
     }
@@ -176,8 +197,10 @@ open class Netable {
      * Cancel any ongoing requests.
      */
     open func cancelAllTasks() {
+        delayedOperations.cancelAll()
+        
         urlSession.getAllTasks { tasks in
-            self.logDestination.log(event: .message("Cancelling all ongoing tasks."))
+            self.log(.message("Cancelling all ongoing tasks."))
             for task in tasks {
                 task.cancel()
             }
@@ -185,6 +208,23 @@ open class Netable {
     }
 
     // MARK: Private Helper Functions
+
+    /**
+     * Helper function for logging, to avoid having to reference the log destination everywhere and so we can possibly change the semantics of,
+     * for example, what thread these are dispatched on later.
+     *
+     * - parameter event: The event to log
+     *
+     */
+    internal func log(_ event: LogEvent) {
+        if Thread.isMainThread {
+            self.logDestination.log(event: event)
+        } else {
+            DispatchQueue.main.async {
+                self.logDestination.log(event: event)
+            }
+        }
+    }
 
     /**
      * Make the provided path into a fully qualified URL. It may be invalid or partially qualified.

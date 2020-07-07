@@ -10,6 +10,12 @@ import Foundation
 
 /// Wrapper class for log events emitted by Netable.
 public enum LogEvent: CustomDebugStringConvertible {
+    public struct RequestInfo {
+        let urlString: String
+        let method: HTTPMethod
+        let headers: [String: Any]
+        let params: [String: Any]?
+    }
 
     /// Print up some debugging info at start.
     case startupInfo(baseURL: URL, logDestination: LogDestination)
@@ -17,14 +23,21 @@ public enum LogEvent: CustomDebugStringConvertible {
     /// A generic message, not tied to request state.
     case message(StaticString)
 
+    /// Request has failed prior to sucessfully starting a network task for the request
+    case requestCreationFailed(urlString: String, error: NetableError)
+
     /// Request has been successfully initiated.
-    case requestStarted(urlString: String, method: HTTPMethod, headers: [String: Any], params: [String: Any]?)
+    case requestStarted(request: RequestInfo)
 
-    /// Request has completed, this will be send regardless of the HTTP status code.
-    case requestCompleted(statusCode: Int, responseData: Data?, finalizedResult: Any?)
+    /// Request has sucessfully completed. 
+    /// Note: taskTime only covers the time it took the current network request to run, in retry scenarios the time for the whole request may be longer.
+    case requestSuccess(request: RequestInfo, taskTime: TimeInterval, statusCode: Int, responseData: Data?, finalizedResult: Any?)
 
-    /// Sent when a request fails for any reason.
-    case requestFailed(error: NetableError)
+    /// Sent when a request fails but will be retried. Note: taskTime only cover the time it took the current network request to run, in retry scenarios the time for the whole request may be longer.
+    case requestRetrying(request: RequestInfo, taskTime: TimeInterval, error: NetableError)
+
+    /// Sent when a request fails (and all retries have been compelted, if retries are enabled)
+    case requestFailed(request: RequestInfo, taskTime: TimeInterval, error: NetableError)
 
     /// Default overrides, used by the default logging destination.
     public var debugDescription: String {
@@ -33,12 +46,21 @@ public enum LogEvent: CustomDebugStringConvertible {
             return "Netable instance initiated. Here we go! Base URL: \(baseURL.absoluteString). Log Destination: \(logDestination)"
         case .message(let message):
             return message.description
-        case .requestStarted(let urlString, let method, let headers, let params):
-            return "Started \(method.rawValue) request... URL: \(urlString) Headers: \(headers) Params: \(params ?? [:])"
-        case .requestCompleted(let statusCode, let responseData, let finalizedResult):
-            return "Request completed with status code \(statusCode) Data: \(responseData ?? Data()) Finalized data: \(String(describing: finalizedResult))"
-        case .requestFailed(let error):
-            return "Request failed: \(error.localizedDescription)"
+        case .requestCreationFailed(let urlString, let error):
+            return "Request (\(urlString)) failed: \(error.localizedDescription)"
+        case .requestStarted(let request):
+            return "Started \(request.method.rawValue) request... URL: \(request.urlString) Headers: \(request.headers) Params: \(request.params ?? [:])"
+        case .requestSuccess(let request, _, let statusCode, let responseData, let finalizedResult):
+            return "Request (\(request.urlString)) completed with status code \(statusCode) Data: \(responseData ?? Data()) Finalized data: \(String(describing: finalizedResult))"
+        case .requestRetrying(let request, _, let error):
+            return "Request (\(request.urlString)) retrying: \(error.localizedDescription)"
+        case .requestFailed(let request, _, let error):
+            switch error {
+            case .httpError(let statusCode, let data):
+                return "Request (\(request.urlString)) failed with status code \(statusCode) Data: \(data ?? Data())"
+            default:
+                return "Request (\(request.urlString)) failed: \(error.localizedDescription)"
+            }
         }
     }
 }

@@ -14,7 +14,7 @@ import os
 class CustomLogDestination: LogDestination {
     func log(event: LogEvent) {
         switch event {
-        case .requestFailed(let error):
+        case .requestFailed(_, _, let error):
             os_log("Request failed: %s", error.localizedDescription)
         default:
             os_log("%s", event.debugDescription)
