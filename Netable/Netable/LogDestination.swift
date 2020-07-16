@@ -11,10 +11,10 @@ import Foundation
 /// Wrapper class for log events emitted by Netable.
 public enum LogEvent: CustomDebugStringConvertible {
     public struct RequestInfo {
-        let urlString: String
-        let method: HTTPMethod
-        let headers: [String: Any]
-        let params: [String: Any]?
+        public let urlString: String
+        public let method: HTTPMethod
+        public let headers: [String: Any]
+        public let params: [String: Any]?
     }
 
     /// Print up some debugging info at start.
