@@ -44,6 +44,8 @@
 		C66A8C0224367EBA0052A1AF /* SampleGETJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66A8C0124367EBA0052A1AF /* SampleGETJSON.swift */; };
 		C66FC07424379A990047D864 /* RequestIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66FC07324379A990047D864 /* RequestIdentifier.swift */; };
 		C6953F42241A95830044D278 /* LogDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6953F41241A95830044D278 /* LogDestination.swift */; };
+		C6D5C2F624E206C800A543CB /* DeleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D5C2F524E206C800A543CB /* DeleteRequest.swift */; };
+		C6D5C2F824E2085900A543CB /* SampleDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D5C2F724E2085900A543CB /* SampleDeleteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +119,8 @@
 		C66A8C0124367EBA0052A1AF /* SampleGETJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleGETJSON.swift; sourceTree = "<group>"; };
 		C66FC07324379A990047D864 /* RequestIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestIdentifier.swift; sourceTree = "<group>"; };
 		C6953F41241A95830044D278 /* LogDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDestination.swift; sourceTree = "<group>"; };
+		C6D5C2F524E206C800A543CB /* DeleteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteRequest.swift; sourceTree = "<group>"; };
+		C6D5C2F724E2085900A543CB /* SampleDeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleDeleteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +235,7 @@
 				B822C8FF23F210D800D7BDAD /* GetCatRequest.swift */,
 				C64F859B241FF09D0028E0E9 /* LoginRequest.swift */,
 				23B627072435329800BD888D /* DownloadCatImageRequest.swift */,
+				C6D5C2F524E206C800A543CB /* DeleteRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -246,12 +251,13 @@
 		C64F8598241FED6C0028E0E9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C66A8BF62436619F0052A1AF /* CancelRequestViewController.swift */,
 				C66A8BFB24367E910052A1AF /* CustomLoggerViewController.swift */,
 				C66A8BFA24367E910052A1AF /* DecodeSnakeCaseViewController.swift */,
 				C66A8BFC24367E910052A1AF /* EmptyLoggerViewController.swift */,
-				C66A8BF62436619F0052A1AF /* CancelRequestViewController.swift */,
 				C64F8593241FE70E0028E0E9 /* ExamplesTableViewController.swift */,
 				C64F859D241FF8E60028E0E9 /* PostLoginViewController.swift */,
+				C6D5C2F724E2085900A543CB /* SampleDeleteViewController.swift */,
 				23B627092435332200BD888D /* SampleDownloadViewController.swift */,
 				B822C8F123F20E8900D7BDAD /* SampleGetViewController.swift */,
 			);
@@ -426,8 +432,10 @@
 				B822C8F223F20E8900D7BDAD /* SampleGetViewController.swift in Sources */,
 				23B6270A2435332200BD888D /* SampleDownloadViewController.swift in Sources */,
 				B822C8EE23F20E8900D7BDAD /* AppDelegate.swift in Sources */,
+				C6D5C2F624E206C800A543CB /* DeleteRequest.swift in Sources */,
 				C66A8BFE24367E910052A1AF /* CustomLoggerViewController.swift in Sources */,
 				C64F859C241FF09D0028E0E9 /* LoginRequest.swift in Sources */,
+				C6D5C2F824E2085900A543CB /* SampleDeleteViewController.swift in Sources */,
 				C64F859E241FF8E60028E0E9 /* PostLoginViewController.swift in Sources */,
 				B822C8F023F20E8900D7BDAD /* SceneDelegate.swift in Sources */,
 				23B627082435329800BD888D /* DownloadCatImageRequest.swift in Sources */,
@@ -678,7 +686,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.0;
+				MARKETING_VERSION = 0.10.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.steamclock.Netable;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -708,7 +716,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.0;
+				MARKETING_VERSION = 0.10.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.steamclock.Netable;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
