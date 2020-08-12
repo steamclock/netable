@@ -10,6 +10,7 @@ import Foundation
 
 /// Type representing all supported HTTP methods.
 public enum HTTPMethod: String {
+    case delete = "DELETE"
     case get = "GET"
     case post = "POST"
     case put = "PUT"

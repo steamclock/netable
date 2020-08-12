@@ -4,9 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.10.2] - 10-08-20
+### Added
+- Added support for `DELETE` requests.
+
 ## [0.10.1] - 16-07-20
 ### Changed
-- Fixed some properties in the new logging not being marked as "public"
+- Fixed some properties in the new logging not being marked as "public".
 
 ## [0.10.0] - 16-07-20
 ### Added
