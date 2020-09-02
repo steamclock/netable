@@ -13,7 +13,7 @@ Modern apps interact with a lot of different APIs. Netable makes that easier by 
 
 ## Features
 
-Netable's core philosophy is to ensure that developers can write simple code for simple APIS, while providing various options for wrangling strange or non-standard APIs.
+Netable's core philosophy is to ensure that developers can write simple code for simple APIs, while providing various options for wrangling strange or non-standard APIs.
 1. Every request is an independent type
     1. Facilitates breaking up requests into separate files, avoiding monolithic networking classes
 1. `Codable`-based `Result` return types
