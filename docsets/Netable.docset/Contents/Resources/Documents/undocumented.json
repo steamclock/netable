@@ -1,0 +1,138 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/brendan/repos/netable/Netable/Netable/Error.swift",
+      "line": 44,
+      "symbol": "NetableError.errorCode",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/brendan/repos/netable/Netable/Netable/HTTPMethod.swift",
+      "line": 13,
+      "symbol": "HTTPMethod.get",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/brendan/repos/netable/Netable/Netable/HTTPMethod.swift",
+      "line": 14,
+      "symbol": "HTTPMethod.post",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/brendan/repos/netable/Netable/Netable/HTTPMethod.swift",
+      "line": 15,
+      "symbol": "HTTPMethod.put",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/brendan/repos/netable/Netable/Netable/HTTPMethod.swift",
+      "line": 16,
+      "symbol": "HTTPMethod.patch",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/brendan/repos/netable/Netable/Netable/Netable.swift",
+      "line": 12,
+      "symbol": "Netable",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/brendan/repos/netable/Netable/Netable/Netable.swift",
+      "line": 216,
+      "symbol": "Netable",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/brendan/repos/netable/Netable/Netable/Notification.swift",
+      "line": 12,
+      "symbol": "Notification.Name.NetableRequestDidComplete",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/brendan/repos/netable/Netable/Netable/Notification.swift",
+      "line": 16,
+      "symbol": "Notification.Netable",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/brendan/repos/netable/Netable/Netable/Notification.swift",
+      "line": 17,
+      "symbol": "Notification.Netable.request",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/brendan/repos/netable/Netable/Netable/Notification.swift",
+      "line": 18,
+      "symbol": "Notification.Netable.response",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/brendan/repos/netable/Netable/Netable/Notification.swift",
+      "line": 19,
+      "symbol": "Notification.Netable.responseData",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/brendan/repos/netable/Netable/Netable/Notification.swift",
+      "line": 20,
+      "symbol": "Notification.Netable.responseError",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/brendan/repos/netable/Netable/Netable/Notification.swift",
+      "line": 21,
+      "symbol": "Notification.Netable.duration",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/brendan/repos/netable/Netable/Netable/Request.swift",
+      "line": 96,
+      "symbol": "Empty",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/brendan/repos/netable/Netable/Netable/Request.swift",
+      "line": 97,
+      "symbol": "Empty.data",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/brendan/repos/netable/Netable/Netable/RequestIdentifier.swift",
+      "line": 23,
+      "symbol": "RequestIdentifier.cancel()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/brendan/repos/netable/Netable/Netable/URLRequest+EncodeURL.swift",
+      "line": 11,
+      "symbol": "UrlEncodedFormData",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/brendan/repos/netable/Netable/Netable/URLRequest+Multipart.swift",
+      "line": 23,
+      "symbol": "MultipartFormData",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/brendan/repos/netable"
+}
