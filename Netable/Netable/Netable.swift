@@ -126,12 +126,11 @@ open class Netable {
                 case .success(let raw):
                     let finalizedData = request.finalize(raw: raw)
 
-                    if case let .success(finalizedResult) = finalizedData {
+                    switch finalizedData {
+                    case .success(let finalizedResult):
                         self.log(.requestSuccess(request: requestInfo, taskTime: time, statusCode: response.statusCode, responseData: data, finalizedResult: finalizedResult))
-                    } else if case let .failure(finalizedError) = finalizedData {
+                    case .failure(let finalizedError):
                         throw finalizedError
-                    } else {
-                        throw NetableError.resourceExtractionError("Failed to parse the result of `Finalize`.")
                     }
 
                     completion(finalizedData)
