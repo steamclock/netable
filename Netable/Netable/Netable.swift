@@ -125,7 +125,14 @@ open class Netable {
                 switch decoded {
                 case .success(let raw):
                     let finalizedData = request.finalize(raw: raw)
-                    self.log(.requestSuccess(request: requestInfo, taskTime: time, statusCode: response.statusCode, responseData: data, finalizedResult: finalizedData))
+
+                    switch finalizedData {
+                    case .success(let finalizedResult):
+                        self.log(.requestSuccess(request: requestInfo, taskTime: time, statusCode: response.statusCode, responseData: data, finalizedResult: finalizedResult))
+                    case .failure(let finalizedError):
+                        throw finalizedError
+                    }
+
                     completion(finalizedData)
                 case .failure(let error):
                     throw error
