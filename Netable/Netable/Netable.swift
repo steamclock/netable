@@ -100,10 +100,11 @@ open class Netable {
         let requestInfo = LogEvent.RequestInfo(
             urlString:  urlRequest.url?.absoluteString ?? "UNDEFINED",
             method: request.method,
-            headers: urlRequest.allHTTPHeaderFields ?? [:],
-            params: try? request.parameters.toParameterDictionary(encodingStrategy: request.jsonKeyEncodingStrategy))
+            headers: urlRequest.allHTTPHeaderFields ?? [:]
+        )
 
         log(.requestStarted(request: requestInfo))
+        log(.requestBody(body: request.safeParameters))
 
         let retryConfiguration = self.retryConfiguration
 

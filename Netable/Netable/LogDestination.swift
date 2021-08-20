@@ -14,7 +14,6 @@ public enum LogEvent: CustomDebugStringConvertible {
         public let urlString: String
         public let method: HTTPMethod
         public let headers: [String: Any]
-        public let params: [String: Any]?
     }
 
     /// Print up some debugging info at start.
@@ -28,6 +27,9 @@ public enum LogEvent: CustomDebugStringConvertible {
 
     /// Request has been successfully initiated.
     case requestStarted(request: RequestInfo)
+
+    /// Request body that is sent to the server.
+    case requestBody(body: [String: String])
 
     /// Request has successfully completed.
     /// Note: taskTime only covers the time it took the current network request to run, in retry scenarios the time for the whole request may be longer.
@@ -49,7 +51,9 @@ public enum LogEvent: CustomDebugStringConvertible {
         case .requestCreationFailed(let urlString, let error):
             return "Request (\(urlString)) failed: \(error.localizedDescription)"
         case .requestStarted(let request):
-            return "Started \(request.method.rawValue) request... URL: \(request.urlString) Headers: \(request.headers) Params: \(request.params ?? [:])"
+            return "Started \(request.method.rawValue) request... URL: \(request.urlString) Headers: \(request.headers)"
+        case .requestBody(let body):
+            return "Body: \(body)"
         case .requestSuccess(let request, _, let statusCode, let responseData, let finalizedResult):
             return "Request (\(request.urlString)) completed with status code \(statusCode) Data: \(responseData ?? Data()) Finalized data: \(String(describing: finalizedResult))"
         case .requestRetrying(let request, _, let error):

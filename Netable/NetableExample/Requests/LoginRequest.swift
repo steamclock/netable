@@ -32,4 +32,8 @@ struct LoginRequest: Request {
    }
 
    public var parameters: LoginParams
+
+    public var safeParameterKeys: Set<String> {
+        ["first_name", "username"]
+    }
 }
