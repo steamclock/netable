@@ -41,13 +41,15 @@ open class Netable {
      * Create a new instance of `Netable` with a base URL.
      *
      * - parameter baseURL: The base URL of your endpoint.
-     * - parameter configuration: Configuration such as timeouts and caching policies for the underlying url session.
+     * - parameter config: Configuration such as timeouts and caching policies for the underlying url session.
+     * - parameter logDestination: Destination to send request logs to. Default is DefaultLogDestination
+     * - parameter retryConfiguration: Configuration for request retry policies
      */
-    public init(baseURL: URL, configuration: URLSessionConfiguration = .ephemeral, logDestination: LogDestination = DefaultLogDestination(), retryConfiguration: RetryConfiguration = RetryConfiguration()) {
+    public init(baseURL: URL, config: Config = Config(), logDestination: LogDestination = DefaultLogDestination(), retryConfiguration: RetryConfiguration = RetryConfiguration()) {
         self.baseURL = baseURL
-        self.urlSession = URLSession(configuration: configuration)
         self.logDestination = logDestination
         self.retryConfiguration = retryConfiguration
+        self.urlSession = URLSession(configuration: config.urlSessionConfig)
 
         log(.startupInfo(baseURL: baseURL, logDestination: logDestination))
     }
