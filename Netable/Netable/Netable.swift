@@ -53,7 +53,7 @@ open class Netable {
         self.config = config
         self.logDestination = logDestination
         self.retryConfiguration = retryConfiguration
-        self.urlSession = URLSession(configuration: config.urlSessionConfig)
+        self.urlSession = config.urlSession
 
         log(.startupInfo(baseURL: baseURL, logDestination: logDestination))
     }

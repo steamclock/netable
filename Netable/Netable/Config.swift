@@ -15,13 +15,13 @@ public struct Config {
         self.timeout = timeout
     }
 
-    internal var urlSessionConfig: URLSessionConfiguration {
-        let config = URLSessionConfiguration()
+    internal var urlSession: URLSession {
+        let urlSession = URLSession(configuration: .ephemeral)
 
         if let timeout = timeout {
-            config.timeoutIntervalForRequest = timeout
+            urlSession.configuration.timeoutIntervalForRequest = timeout
         }
 
-        return config
+        return urlSession
     }
 }
