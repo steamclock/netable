@@ -22,6 +22,9 @@ open class Netable {
     /// The URL session requests are run through.
     private let urlSession: URLSession
 
+    /// The Netable config supplied when creating an instance.
+    private let config: Config
+
     /// The base URL of your api endpoint.
     public var baseURL: URL
 
@@ -47,6 +50,7 @@ open class Netable {
      */
     public init(baseURL: URL, config: Config = Config(), logDestination: LogDestination = DefaultLogDestination(), retryConfiguration: RetryConfiguration = RetryConfiguration()) {
         self.baseURL = baseURL
+        self.config = config
         self.logDestination = logDestination
         self.retryConfiguration = retryConfiguration
         self.urlSession = URLSession(configuration: config.urlSessionConfig)
