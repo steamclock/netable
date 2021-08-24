@@ -31,7 +31,7 @@ public protocol Request {
 
     /// Parameter keys whose values will be printed in full to logs.
     /// By default, all parameters will be printed as `<REDACTED>` to logs.
-    var safeParameterKeys: Set<String> { get }
+    var unredactedParameterKeys: Set<String> { get }
 
     /// Optional: The key decoding strategy to be used when decoding return JSON.
     var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy { get }
@@ -47,11 +47,11 @@ public protocol Request {
 }
 
 public extension Request {
-    var safeParameterKeys: Set<String> {
+    var unredactedParameterKeys: Set<String> {
         return Set<String>()
     }
 
-    var safeParameters: [String: String] {
+    var unredactedParameters: [String: String] {
         var output = [String: String]()
 
         guard let paramsDict = try? parameters.toParameterDictionary(encodingStrategy: self.jsonKeyEncodingStrategy) else {
@@ -59,7 +59,7 @@ public extension Request {
         }
         
         for (key, value) in paramsDict {
-            if safeParameterKeys.contains(key) {
+            if unredactedParameterKeys.contains(key) {
                 output[key] = value
             } else {
                 output[key] = "<REDACTED>"

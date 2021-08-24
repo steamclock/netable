@@ -33,7 +33,7 @@ struct LoginRequest: Request {
 
    public var parameters: LoginParams
 
-    public var safeParameterKeys: Set<String> {
+    public var unredactedParameterKeys: Set<String> {
         ["first_name", "username"]
     }
 }
