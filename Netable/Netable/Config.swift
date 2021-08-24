@@ -14,14 +14,4 @@ public struct Config {
     public init(timeout: TimeInterval? = nil) {
         self.timeout = timeout
     }
-
-    internal var urlSession: URLSession {
-        let urlSession = URLSession(configuration: .ephemeral)
-
-        if let timeout = timeout {
-            urlSession.configuration.timeoutIntervalForRequest = timeout
-        }
-
-        return urlSession
-    }
 }

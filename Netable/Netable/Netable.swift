@@ -53,7 +53,11 @@ open class Netable {
         self.config = config
         self.logDestination = logDestination
         self.retryConfiguration = retryConfiguration
-        self.urlSession = config.urlSession
+
+        self.urlSession = URLSession(configuration: .ephemeral)
+        if let timeout = config.timeout {
+            self.urlSession.configuration.timeoutIntervalForRequest = timeout
+        }
 
         log(.startupInfo(baseURL: baseURL, logDestination: logDestination))
     }
