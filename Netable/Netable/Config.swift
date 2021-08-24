@@ -26,14 +26,4 @@ public struct Config {
         self.jsonDecodingStrategy = jsonDecodingStrategy
         self.jsonEncodingStrategy = jsonEncodingStrategy
     }
-
-    internal var urlSession: URLSession {
-        let urlSession = URLSession(configuration: .ephemeral)
-
-        if let timeout = timeout {
-            urlSession.configuration.timeoutIntervalForRequest = timeout
-        }
-
-        return urlSession
-    }
 }
