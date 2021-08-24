@@ -22,6 +22,9 @@ open class Netable {
     /// The URL session requests are run through.
     private let urlSession: URLSession
 
+    /// The Netable config supplied when creating an instance.
+    private let config: Config
+
     /// The base URL of your api endpoint.
     public var baseURL: URL
 
@@ -41,13 +44,20 @@ open class Netable {
      * Create a new instance of `Netable` with a base URL.
      *
      * - parameter baseURL: The base URL of your endpoint.
-     * - parameter configuration: Configuration such as timeouts and caching policies for the underlying url session.
+     * - parameter config: Configuration such as timeouts and caching policies for the underlying url session.
+     * - parameter logDestination: Destination to send request logs to. Default is DefaultLogDestination
+     * - parameter retryConfiguration: Configuration for request retry policies
      */
-    public init(baseURL: URL, configuration: URLSessionConfiguration = .ephemeral, logDestination: LogDestination = DefaultLogDestination(), retryConfiguration: RetryConfiguration = RetryConfiguration()) {
+    public init(baseURL: URL, config: Config = Config(), logDestination: LogDestination = DefaultLogDestination(), retryConfiguration: RetryConfiguration = RetryConfiguration()) {
         self.baseURL = baseURL
-        self.urlSession = URLSession(configuration: configuration)
+        self.config = config
         self.logDestination = logDestination
         self.retryConfiguration = retryConfiguration
+
+        self.urlSession = URLSession(configuration: .ephemeral)
+        if let timeout = config.timeout {
+            self.urlSession.configuration.timeoutIntervalForRequest = timeout
+        }
 
         log(.startupInfo(baseURL: baseURL, logDestination: logDestination))
     }
