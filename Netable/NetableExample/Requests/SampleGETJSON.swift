@@ -29,6 +29,4 @@ struct SampleGetJSON: Request {
     }
 
     var parameters: [String : String]
-    
-    var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .convertFromSnakeCase
 }

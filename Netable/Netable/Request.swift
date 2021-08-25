@@ -33,14 +33,14 @@ public protocol Request {
     /// By default, all parameters will be printed as `<REDACTED>` to logs.
     var unredactedParameterKeys: Set<String> { get }
 
-    /// Optional: The key decoding strategy to be used when decoding return JSON.
-    var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy { get }
+    /// Optional: The key decoding strategy to be used when decoding return JSON. Default is `.useDefaultKeys`.
+    var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy? { get }
 
-    /// Optional: The key encoding strategy to be used when encoding JSON parameters.
-    var jsonKeyEncodingStrategy: JSONEncoder.KeyEncodingStrategy { get }
+    /// Optional: The key encoding strategy to be used when encoding JSON parameters. Default is `.useDefaultKeys`.
+    var jsonKeyEncodingStrategy: JSONEncoder.KeyEncodingStrategy? { get }
 
     /// Optional: The method to decode Data into your RawResource
-    func decode(_ data: Data?) -> Result<RawResource, NetableError>
+    func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) -> Result<RawResource, NetableError>
 
     /// Optional: The method to convert your RawResource returned by the server to FinalResource.
     func finalize(raw: RawResource) -> Result<FinalResource, NetableError>
@@ -51,10 +51,10 @@ public extension Request {
         return Set<String>()
     }
 
-    var unredactedParameters: [String: String] {
+    func unredactedParameters(defaultEncodingStrategy: JSONEncoder.KeyEncodingStrategy) -> [String: String] {
         var output = [String: String]()
 
-        guard let paramsDict = try? parameters.toParameterDictionary(encodingStrategy: self.jsonKeyEncodingStrategy) else {
+        guard let paramsDict = try? parameters.toParameterDictionary(encodingStrategy: self.jsonKeyEncodingStrategy ?? defaultEncodingStrategy) else {
             return output
         }
         
@@ -79,13 +79,13 @@ public extension Request where Parameters == Empty {
 
 public extension Request {
     /// Set the default key decoding strategy.
-    var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy {
-        return .useDefaultKeys
+    var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy? {
+        return nil
     }
 
     /// Set the default key encoding strategy.
-    var jsonKeyEncodingStrategy: JSONEncoder.KeyEncodingStrategy {
-        return .useDefaultKeys
+    var jsonKeyEncodingStrategy: JSONEncoder.KeyEncodingStrategy? {
+        return nil
     }
 }
 
@@ -97,11 +97,11 @@ public extension Request where FinalResource == RawResource {
 }
 
 public extension Request where RawResource: Decodable {
-    func decode(_ data: Data?) -> Result<RawResource, NetableError> {
+    func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) -> Result<RawResource, NetableError> {
         do {
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
-            decoder.keyDecodingStrategy = jsonKeyDecodingStrategy
+            decoder.keyDecodingStrategy = jsonKeyDecodingStrategy ?? defaultDecodingStrategy
 
             if RawResource.self == Empty.self {
                 let raw = try decoder.decode(RawResource.self, from: Empty.data)
@@ -120,7 +120,7 @@ public extension Request where RawResource: Decodable {
 }
 
 public extension Request where RawResource == Data {
-    func decode(_ data : Data?) -> Result<RawResource, NetableError> {
+    func decode(_ data : Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) -> Result<RawResource, NetableError> {
         if let data = data {
             return .success(data)
         } else {

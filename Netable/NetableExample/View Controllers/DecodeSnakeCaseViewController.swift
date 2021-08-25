@@ -13,7 +13,10 @@ class DecodeSnakeCaseViewController: UIViewController {
     @IBOutlet private var paramsLabel: UILabel!
     @IBOutlet private var resultLabel: UILabel!
 
-    private let client = Netable(baseURL: URL(string: "https://reqres.in/")!)
+    private let client = Netable(
+        baseURL: URL(string: "https://reqres.in/")!,
+        config: Config(jsonDecodingStrategy: .convertFromSnakeCase)
+    )
 
     override func viewDidLoad() {
         super.viewDidLoad()
