@@ -29,7 +29,9 @@ class ExamplesTableViewController: UITableViewController {
                 RequestRow(title: "Empty Logger Example", vcIdentifier: "EmptyLoggerViewController"),
                 RequestRow(title: "Decode_snake_case", vcIdentifier: "DecodeSnakeCaseViewController"),
                 RequestRow(title: "Cancel Request", vcIdentifier: "CancelRequestViewController"),
-                RequestRow(title: "Delete Example", vcIdentifier: "SampleDeleteViewController")
+                RequestRow(title: "Delete Example", vcIdentifier: "SampleDeleteViewController"),
+                RequestRow(title: "Global Error Delegate", vcIdentifier: "GlobalRequestFailureDelegateExample"),
+                RequestRow(title: "Global Error Publisher", vcIdentifier: "GlobalRequestFailurePublisherExample")
             ]
         ),
         RequestSet(sectionTitle: "POST", requestRows: [RequestRow(title: "POST Sample Login", vcIdentifier: "PostLoginViewController")]),

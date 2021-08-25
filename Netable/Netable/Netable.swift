@@ -6,6 +6,7 @@
 //  Copyright © 2020 Steamclock Software. All rights reserved.
 //
 
+import Combine
 import Foundation
 #if canImport(FoundationNetworking)
 import FoundationNetworking
@@ -18,6 +19,7 @@ func CACurrentMediaTime() -> TimeInterval {
 }
 #endif
 
+@available(iOS 13.0, *)
 open class Netable {
     /// The URL session requests are run through.
     private let urlSession: URLSession
@@ -39,6 +41,12 @@ open class Netable {
 
     /// Settings for if / how retries will be handled
     private var delayedOperations = DelayedOperations()
+
+    /// Delegate to handle global request errors
+    public var requestFailureDelegate: RequestFailureDelegate?
+
+    /// Publisher for global request errors
+    public let requestFailurePublisher = PassthroughSubject<NetableError, Never>()
 
     /**
      * Create a new instance of `Netable` with a base URL.
@@ -73,6 +81,11 @@ open class Netable {
         let completion: (Result<T.FinalResource, NetableError>) -> Void = { result in
             DispatchQueue.main.async {
                 unsafeCompletion(result)
+
+                if case .failure(let error) = result {
+                    self.requestFailureDelegate?.requestDidFail(request, error: error)
+                    self.requestFailurePublisher.send(error)
+                }
             }
         }
 

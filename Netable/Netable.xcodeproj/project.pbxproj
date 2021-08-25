@@ -47,6 +47,10 @@
 		C6953F42241A95830044D278 /* LogDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6953F41241A95830044D278 /* LogDestination.swift */; };
 		C6D5C2F624E206C800A543CB /* DeleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D5C2F524E206C800A543CB /* DeleteRequest.swift */; };
 		C6D5C2F824E2085900A543CB /* SampleDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D5C2F724E2085900A543CB /* SampleDeleteViewController.swift */; };
+		C6F4CFB026D582E8004E6BB8 /* RequestFailedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F4CFAF26D582E8004E6BB8 /* RequestFailedDelegate.swift */; };
+		C6F4CFB226D5874F004E6BB8 /* GlobalRequestFailureDelegateExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F4CFB126D5874F004E6BB8 /* GlobalRequestFailureDelegateExample.swift */; };
+		C6F4CFB426D5875F004E6BB8 /* GlobalRequestFailurePublisherExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F4CFB326D5875F004E6BB8 /* GlobalRequestFailurePublisherExample.swift */; };
+		C6F4CFB626D598B3004E6BB8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C6F4CFB526D598B3004E6BB8 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +127,10 @@
 		C6953F41241A95830044D278 /* LogDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDestination.swift; sourceTree = "<group>"; };
 		C6D5C2F524E206C800A543CB /* DeleteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteRequest.swift; sourceTree = "<group>"; };
 		C6D5C2F724E2085900A543CB /* SampleDeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleDeleteViewController.swift; sourceTree = "<group>"; };
+		C6F4CFAF26D582E8004E6BB8 /* RequestFailedDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFailedDelegate.swift; sourceTree = "<group>"; };
+		C6F4CFB126D5874F004E6BB8 /* GlobalRequestFailureDelegateExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalRequestFailureDelegateExample.swift; sourceTree = "<group>"; };
+		C6F4CFB326D5875F004E6BB8 /* GlobalRequestFailurePublisherExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalRequestFailurePublisherExample.swift; sourceTree = "<group>"; };
+		C6F4CFB526D598B3004E6BB8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +197,7 @@
 		B8C9288223E9F68000DB2B37 /* Netable */ = {
 			isa = PBXGroup;
 			children = (
+				C6F4CFB526D598B3004E6BB8 /* README.md */,
 				C64F8591241FE4870028E0E9 /* CHANGELOG.md */,
 				C65289F426D01829009D486B /* Config.swift */,
 				A63ABCCB24ABBFCC004DE84E /* DelayedOperations.swift */,
@@ -205,6 +214,7 @@
 				B8C9289E23E9FB1500DB2B37 /* URLRequest+EncodeParameters.swift */,
 				B8C928A623E9FC8D00DB2B37 /* URLRequest+EncodeURL.swift */,
 				B8C928A423E9FC3E00DB2B37 /* URLRequest+Multipart.swift */,
+				C6F4CFAF26D582E8004E6BB8 /* RequestFailedDelegate.swift */,
 			);
 			path = Netable;
 			sourceTree = "<group>";
@@ -263,6 +273,8 @@
 				C6D5C2F724E2085900A543CB /* SampleDeleteViewController.swift */,
 				23B627092435332200BD888D /* SampleDownloadViewController.swift */,
 				B822C8F123F20E8900D7BDAD /* SampleGetViewController.swift */,
+				C6F4CFB126D5874F004E6BB8 /* GlobalRequestFailureDelegateExample.swift */,
+				C6F4CFB326D5875F004E6BB8 /* GlobalRequestFailurePublisherExample.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -406,6 +418,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6F4CFB626D598B3004E6BB8 /* README.md in Resources */,
 				C64F8590241FE4670028E0E9 /* Netable.podspec in Resources */,
 				C64F8592241FE4870028E0E9 /* CHANGELOG.md in Resources */,
 			);
@@ -434,12 +447,14 @@
 				C66A8BF72436619F0052A1AF /* CancelRequestViewController.swift in Sources */,
 				B822C8F223F20E8900D7BDAD /* SampleGetViewController.swift in Sources */,
 				23B6270A2435332200BD888D /* SampleDownloadViewController.swift in Sources */,
+				C6F4CFB426D5875F004E6BB8 /* GlobalRequestFailurePublisherExample.swift in Sources */,
 				B822C8EE23F20E8900D7BDAD /* AppDelegate.swift in Sources */,
 				C6D5C2F624E206C800A543CB /* DeleteRequest.swift in Sources */,
 				C66A8BFE24367E910052A1AF /* CustomLoggerViewController.swift in Sources */,
 				C64F859C241FF09D0028E0E9 /* LoginRequest.swift in Sources */,
 				C6D5C2F824E2085900A543CB /* SampleDeleteViewController.swift in Sources */,
 				C64F859E241FF8E60028E0E9 /* PostLoginViewController.swift in Sources */,
+				C6F4CFB226D5874F004E6BB8 /* GlobalRequestFailureDelegateExample.swift in Sources */,
 				B822C8F023F20E8900D7BDAD /* SceneDelegate.swift in Sources */,
 				23B627082435329800BD888D /* DownloadCatImageRequest.swift in Sources */,
 			);
@@ -452,6 +467,7 @@
 				B8C928A723E9FC8D00DB2B37 /* URLRequest+EncodeURL.swift in Sources */,
 				B8C928A523E9FC3E00DB2B37 /* URLRequest+Multipart.swift in Sources */,
 				A63ABCCC24ABBFCC004DE84E /* DelayedOperations.swift in Sources */,
+				C6F4CFB026D582E8004E6BB8 /* RequestFailedDelegate.swift in Sources */,
 				B8C9289F23E9FB1500DB2B37 /* URLRequest+EncodeParameters.swift in Sources */,
 				B8C928A123E9FBA100DB2B37 /* Request.swift in Sources */,
 				C65289F526D01829009D486B /* Config.swift in Sources */,
@@ -684,7 +700,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Netable/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -714,7 +730,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Netable/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

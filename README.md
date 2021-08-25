@@ -133,6 +133,36 @@ netable.request(GetCatImageURL()) { result in
 }
 ```
 
+### Handling Errors
+
+In addition to handling errors locally through the `completion` callback provided by `request()`,  we provide two ways to handle errors globally. These can be useful for doing things like presenting errors in the UI for common error cases across multiple requests, or catching things like failed authentication requests to clear a stored user.
+
+#### Using `requestFailureDelegate`
+
+See [GlobalRequestFailureDelegate]() in the Example project for a more detailed example.
+
+```swift
+extension GlobalRequestFailureDelegateExample: RequestFailureDelegate {
+    func requestDidFail<T>(_ request: T, error: NetableError) where T : Request {
+        let alert = UIAlertController(title: "Uh oh!", message: error.errorDescription, preferredStyle: .alert)
+        present(alert, animated: true)
+    }
+}
+```
+
+#### Using `requestFailurePublisher`
+
+If you prefer `Combine`, you can subscribe to this publisher to recieve `NetableErrors` from elsewhere in your app.
+
+See [GlobalRequestFailurePublisher]() in the Example project for a more detailed example.
+
+```swift
+netable.requestFailurePublisher.sink { error in
+    let alert = UIAlertController(title: "Uh oh!", message: error.errorDescription, preferredStyle: .alert)
+    self.present(alert, animated: true)
+}.store(in: &cancellables)
+```
+
 ### Full Documentation
 
 [In-depth documentation](https://steamclock.github.io/netable/) is provided through Jazzy and GitHub Pages.  
