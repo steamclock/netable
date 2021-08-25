@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 ### Added
 - [74] Change Netable constructor to remove the option to directly set a URLSessionConfiguration and instead only expose the `timeout` option.
+- [76] Add an option to set json en/decoding strategies in the Netable config constructor in addition to per-request.
 
 ## [0.10.3] - 12-01-21
 ### Changed

@@ -53,6 +53,7 @@ open class Netable {
         self.config = config
         self.logDestination = logDestination
         self.retryConfiguration = retryConfiguration
+        self.urlSession = config.urlSession
 
         self.urlSession = URLSession(configuration: .ephemeral)
         if let timeout = config.timeout {
@@ -88,7 +89,7 @@ open class Netable {
             }
 
             if T.Parameters.self != Empty.self {
-                try urlRequest.encodeParameters(for: request)
+                try urlRequest.encodeParameters(for: request, defaultEncodingStrategy: config.jsonEncodingStrategy)
             }
         } catch {
             let netableError = (error as? NetableError) ?? NetableError.unknownError(error)
@@ -111,7 +112,10 @@ open class Netable {
             urlString:  urlRequest.url?.absoluteString ?? "UNDEFINED",
             method: request.method,
             headers: urlRequest.allHTTPHeaderFields ?? [:],
-            params: try? request.parameters.toParameterDictionary(encodingStrategy: request.jsonKeyEncodingStrategy))
+            params: try? request.parameters.toParameterDictionary(
+                encodingStrategy: request.jsonKeyEncodingStrategy ?? config.jsonEncodingStrategy
+            )
+        )
 
         log(.requestStarted(request: requestInfo))
 
@@ -131,7 +135,7 @@ open class Netable {
                     throw NetableError.httpError(response.statusCode, data)
                 }
 
-                let decoded = request.decode(data)
+                let decoded = request.decode(data, defaultDecodingStrategy: self.config.jsonDecodingStrategy)
                 switch decoded {
                 case .success(let raw):
                     let finalizedData = request.finalize(raw: raw)

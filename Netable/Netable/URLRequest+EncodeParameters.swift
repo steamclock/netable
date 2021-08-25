@@ -62,7 +62,7 @@ extension URLRequest {
      *
      * - Throws: `NetableError` if parameter encoding fails.
      */
-    mutating func encodeParameters<T: Request>(for request: T) throws {
+    mutating func encodeParameters<T: Request>(for request: T, defaultEncodingStrategy: JSONEncoder.KeyEncodingStrategy) throws {
         switch request.method {
         case .get:
             do {
@@ -71,7 +71,7 @@ extension URLRequest {
                         throw NetableError.codingError("Encoding Error: Failed to unwrap url components")
                 }
 
-                let paramsDictionary = try request.parameters.toParameterDictionary(encodingStrategy: request.jsonKeyEncodingStrategy)
+                let paramsDictionary = try request.parameters.toParameterDictionary(encodingStrategy: request.jsonKeyEncodingStrategy ?? defaultEncodingStrategy)
                 components.queryItems = paramsDictionary.map {
                     URLQueryItem(name: $0, value: $1)
                 }
@@ -83,9 +83,9 @@ extension URLRequest {
         case .post:
             do {
                 if request is MultipartFormData {
-                    try setMultipartFormData(try request.parameters.toParameterDictionary(encodingStrategy: request.jsonKeyEncodingStrategy))
+                    try setMultipartFormData(try request.parameters.toParameterDictionary(encodingStrategy: request.jsonKeyEncodingStrategy ?? defaultEncodingStrategy))
                 } else if request is UrlEncodedFormData {
-                    setUrlEncodedFormData(try request.parameters.toParameterDictionary(encodingStrategy: request.jsonKeyEncodingStrategy))
+                    setUrlEncodedFormData(try request.parameters.toParameterDictionary(encodingStrategy: request.jsonKeyEncodingStrategy ?? defaultEncodingStrategy))
                 } else {
                     fallthrough
                 }

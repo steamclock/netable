@@ -9,9 +9,21 @@
 import Foundation
 
 public struct Config {
-    var timeout: TimeInterval?
+    /// Decoding strategy to use when decoding keys from JSON. Default is `useDefaultKeys`. Note this value can be overridden by individual `Request`s.
+    let jsonDecodingStrategy: JSONDecoder.KeyDecodingStrategy
 
-    public init(timeout: TimeInterval? = nil) {
+    /// Encoding strategy to use when encoding keys to JSON. Default is `useDefaultKeys`. Note this value can be overridden by individual `Request`s.
+    let jsonEncodingStrategy: JSONEncoder.KeyEncodingStrategy
+
+    /// Timeout interval for requests. Default is `nil`. This value is assigned to `URLSessionConfiguration.timeoutIntervalForRequest`.
+    let timeout: TimeInterval?
+
+    public init(
+            jsonDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys,
+            jsonEncodingStrategy: JSONEncoder.KeyEncodingStrategy = .useDefaultKeys,
+            timeout: TimeInterval? = nil) {
         self.timeout = timeout
+        self.jsonDecodingStrategy = jsonDecodingStrategy
+        self.jsonEncodingStrategy = jsonEncodingStrategy
     }
 }
