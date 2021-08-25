@@ -114,7 +114,7 @@ open class Netable {
         )
 
         log(.requestStarted(request: requestInfo))
-        if config.disableLogRedaction, let params = try? request.parameters.toParameterDictionary(encodingStrategy: request.jsonKeyEncodingStrategy) {
+        if !config.enableLogRedaction, let params = try? request.parameters.toParameterDictionary(encodingStrategy: request.jsonKeyEncodingStrategy) {
             log(.requestBody(body: params))
         } else {
             log(.requestBody(body: request.unredactedParameters))

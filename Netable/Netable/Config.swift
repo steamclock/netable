@@ -9,11 +9,11 @@
 import Foundation
 
 public struct Config {
-    var disableLogRedaction: Bool
+    var enableLogRedaction: Bool
     var timeout: TimeInterval?
 
-    public init(disableLogRedaction: Bool = false, timeout: TimeInterval? = nil) {
-        self.disableLogRedaction = disableLogRedaction
+    public init(enableLogRedaction: Bool = true, timeout: TimeInterval? = nil) {
+        self.enableLogRedaction = enableLogRedaction
         self.timeout = timeout
     }
 }
