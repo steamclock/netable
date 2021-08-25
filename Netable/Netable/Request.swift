@@ -29,6 +29,10 @@ public protocol Request {
     /// Parameters to be encoded and sent with the request.
     var parameters: Parameters { get }
 
+    /// Parameter keys whose values will be printed in full to logs.
+    /// By default, all parameters will be printed as `<REDACTED>` to logs.
+    var unredactedParameterKeys: Set<String> { get }
+
     /// Optional: The key decoding strategy to be used when decoding return JSON. Default is `.useDefaultKeys`.
     var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy? { get }
 
@@ -40,6 +44,30 @@ public protocol Request {
 
     /// Optional: The method to convert your RawResource returned by the server to FinalResource.
     func finalize(raw: RawResource) -> Result<FinalResource, NetableError>
+}
+
+public extension Request {
+    var unredactedParameterKeys: Set<String> {
+        return Set<String>()
+    }
+
+    func unredactedParameters(defaultEncodingStrategy: JSONEncoder.KeyEncodingStrategy) -> [String: String] {
+        var output = [String: String]()
+
+        guard let paramsDict = try? parameters.toParameterDictionary(encodingStrategy: self.jsonKeyEncodingStrategy ?? defaultEncodingStrategy) else {
+            return output
+        }
+        
+        for (key, value) in paramsDict {
+            if unredactedParameterKeys.contains(key) {
+                output[key] = value
+            } else {
+                output[key] = "<REDACTED>"
+            }
+        }
+
+        return output
+    }
 }
 
 public extension Request where Parameters == Empty {

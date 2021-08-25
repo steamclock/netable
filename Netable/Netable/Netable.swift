@@ -53,7 +53,6 @@ open class Netable {
         self.config = config
         self.logDestination = logDestination
         self.retryConfiguration = retryConfiguration
-        self.urlSession = config.urlSession
 
         self.urlSession = URLSession(configuration: .ephemeral)
         if let timeout = config.timeout {
@@ -111,13 +110,16 @@ open class Netable {
         let requestInfo = LogEvent.RequestInfo(
             urlString:  urlRequest.url?.absoluteString ?? "UNDEFINED",
             method: request.method,
-            headers: urlRequest.allHTTPHeaderFields ?? [:],
-            params: try? request.parameters.toParameterDictionary(
-                encodingStrategy: request.jsonKeyEncodingStrategy ?? config.jsonEncodingStrategy
-            )
+            headers: urlRequest.allHTTPHeaderFields ?? [:]
         )
 
         log(.requestStarted(request: requestInfo))
+        if !config.enableLogRedaction, let params = try? request.parameters.toParameterDictionary(encodingStrategy: request.jsonKeyEncodingStrategy ?? config.jsonEncodingStrategy) {
+            log(.requestBody(body: params))
+        } else {
+            let params = request.unredactedParameters(defaultEncodingStrategy: config.jsonEncodingStrategy)
+            log(.requestBody(body: params))
+        }
 
         let retryConfiguration = self.retryConfiguration
 

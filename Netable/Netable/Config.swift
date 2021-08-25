@@ -9,6 +9,9 @@
 import Foundation
 
 public struct Config {
+    /// Enable redaction of parameter values in logs. Defaults to true.
+    var enableLogRedaction: Bool
+
     /// Decoding strategy to use when decoding keys from JSON. Default is `useDefaultKeys`. Note this value can be overridden by individual `Request`s.
     let jsonDecodingStrategy: JSONDecoder.KeyDecodingStrategy
 
@@ -19,11 +22,13 @@ public struct Config {
     let timeout: TimeInterval?
 
     public init(
+            enableLogRedaction: Bool = true,
             jsonDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys,
             jsonEncodingStrategy: JSONEncoder.KeyEncodingStrategy = .useDefaultKeys,
             timeout: TimeInterval? = nil) {
-        self.timeout = timeout
+        self.enableLogRedaction = enableLogRedaction
         self.jsonDecodingStrategy = jsonDecodingStrategy
         self.jsonEncodingStrategy = jsonEncodingStrategy
+        self.timeout = timeout
     }
 }
