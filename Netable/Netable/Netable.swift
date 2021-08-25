@@ -19,7 +19,6 @@ func CACurrentMediaTime() -> TimeInterval {
 }
 #endif
 
-@available(iOS 13.0, *)
 open class Netable {
     /// The URL session requests are run through.
     private let urlSession: URLSession
