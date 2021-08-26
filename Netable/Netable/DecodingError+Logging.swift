@@ -7,7 +7,7 @@
 //
 
 extension DecodingError {
-    public func loggableDescription() -> String {
+    func loggableDescription() -> String {
         switch self {
         case DecodingError.dataCorrupted(let context):
             return "Data Corrupt: \(context.debugDescription) \(context.codingPathDescription)"
@@ -24,7 +24,7 @@ extension DecodingError {
 }
 
 extension DecodingError.Context {
-    public var codingPathDescription: String {
+    var codingPathDescription: String {
         // Drop first "Index 0" coding key as it's not helpful for describing the coding path
         let stringValues = codingPath.dropFirst().map { $0.stringValue }.joined(separator: ", ")
         return "Path: " + stringValues
