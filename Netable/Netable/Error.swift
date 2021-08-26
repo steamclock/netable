@@ -69,7 +69,11 @@ extension NetableError: LocalizedError {
         case .codingError(let message):
             return "Coding error: \(message)"
         case .decodingError(let error, _):
-            return "Decoding error: \(error.localizedDescription)"
+            guard let error = error as? DecodingError else {
+                return error.localizedDescription
+            }
+
+            return error.loggableDescription()
         case .httpError(let statusCode, _):
             return "HTTP status code: \(statusCode)"
         case .malformedURL:
