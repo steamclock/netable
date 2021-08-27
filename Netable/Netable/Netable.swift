@@ -45,7 +45,8 @@ open class Netable {
     public var requestFailureDelegate: RequestFailureDelegate?
 
     /// Publisher for global request errors
-    public let requestFailurePublisher = PassthroughSubject<NetableError, Never>()
+    private let requestFailureSubject = PassthroughSubject<NetableError, Never>()
+    public let requestFailurePublisher: AnyPublisher<NetableError, Never>
 
     /**
      * Create a new instance of `Netable` with a base URL.
@@ -66,6 +67,8 @@ open class Netable {
             self.urlSession.configuration.timeoutIntervalForRequest = timeout
         }
 
+        requestFailurePublisher = requestFailureSubject.eraseToAnyPublisher()
+
         log(.startupInfo(baseURL: baseURL, logDestination: logDestination))
     }
 
@@ -83,7 +86,7 @@ open class Netable {
 
                 if case .failure(let error) = result {
                     self.requestFailureDelegate?.requestDidFail(request, error: error)
-                    self.requestFailurePublisher.send(error)
+                    self.requestFailureSubject.send(error)
                 }
             }
         }
