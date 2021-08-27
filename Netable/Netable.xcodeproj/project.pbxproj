@@ -32,6 +32,9 @@
 		B8C928A523E9FC3E00DB2B37 /* URLRequest+Multipart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C928A423E9FC3E00DB2B37 /* URLRequest+Multipart.swift */; };
 		B8C928A723E9FC8D00DB2B37 /* URLRequest+EncodeURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C928A623E9FC8D00DB2B37 /* URLRequest+EncodeURL.swift */; };
 		B8C928A923E9FDCC00DB2B37 /* Netable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C928A823E9FDCC00DB2B37 /* Netable.swift */; };
+		C635DCB426D95D2A009F82A0 /* SmartUnwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C635DCB326D95D2A009F82A0 /* SmartUnwrap.swift */; };
+		C635DCB626D95DB4009F82A0 /* SmartUnwrapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C635DCB526D95DB4009F82A0 /* SmartUnwrapViewController.swift */; };
+		C635DCB826D95DDB009F82A0 /* SmartUnwrapRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C635DCB726D95DDB009F82A0 /* SmartUnwrapRequest.swift */; };
 		C64F8590241FE4670028E0E9 /* Netable.podspec in Resources */ = {isa = PBXBuildFile; fileRef = C64F858F241FE4670028E0E9 /* Netable.podspec */; };
 		C64F8592241FE4870028E0E9 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = C64F8591241FE4870028E0E9 /* CHANGELOG.md */; };
 		C64F8594241FE70E0028E0E9 /* ExamplesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64F8593241FE70E0028E0E9 /* ExamplesTableViewController.swift */; };
@@ -109,6 +112,9 @@
 		B8C928A423E9FC3E00DB2B37 /* URLRequest+Multipart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Multipart.swift"; sourceTree = "<group>"; };
 		B8C928A623E9FC8D00DB2B37 /* URLRequest+EncodeURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+EncodeURL.swift"; sourceTree = "<group>"; };
 		B8C928A823E9FDCC00DB2B37 /* Netable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Netable.swift; sourceTree = "<group>"; };
+		C635DCB326D95D2A009F82A0 /* SmartUnwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartUnwrap.swift; sourceTree = "<group>"; };
+		C635DCB526D95DB4009F82A0 /* SmartUnwrapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartUnwrapViewController.swift; sourceTree = "<group>"; };
+		C635DCB726D95DDB009F82A0 /* SmartUnwrapRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartUnwrapRequest.swift; sourceTree = "<group>"; };
 		C64F858F241FE4670028E0E9 /* Netable.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Netable.podspec; path = ../../Netable.podspec; sourceTree = "<group>"; };
 		C64F8591241FE4870028E0E9 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../../CHANGELOG.md; sourceTree = "<group>"; };
 		C64F8593241FE70E0028E0E9 /* ExamplesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplesTableViewController.swift; sourceTree = "<group>"; };
@@ -193,6 +199,7 @@
 			children = (
 				C64F8591241FE4870028E0E9 /* CHANGELOG.md */,
 				C65289F426D01829009D486B /* Config.swift */,
+				3B00B3C626D7EA3C00A1DF79 /* DecodingError+Logging.swift */,
 				A63ABCCB24ABBFCC004DE84E /* DelayedOperations.swift */,
 				B8C9289C23E9FA0E00DB2B37 /* Error.swift */,
 				B8C928A223E9FBEC00DB2B37 /* HTTPMethod.swift */,
@@ -204,10 +211,10 @@
 				B8C928A023E9FBA100DB2B37 /* Request.swift */,
 				C66FC07324379A990047D864 /* RequestIdentifier.swift */,
 				A63ABCC924ABB402004DE84E /* RetryConfiguration.swift */,
+				C635DCB326D95D2A009F82A0 /* SmartUnwrap.swift */,
 				B8C9289E23E9FB1500DB2B37 /* URLRequest+EncodeParameters.swift */,
 				B8C928A623E9FC8D00DB2B37 /* URLRequest+EncodeURL.swift */,
 				B8C928A423E9FC3E00DB2B37 /* URLRequest+Multipart.swift */,
-				3B00B3C626D7EA3C00A1DF79 /* DecodingError+Logging.swift */,
 			);
 			path = Netable;
 			sourceTree = "<group>";
@@ -237,11 +244,12 @@
 		C64F8596241FED3F0028E0E9 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
-				C66A8C0124367EBA0052A1AF /* SampleGETJSON.swift */,
+				C6D5C2F524E206C800A543CB /* DeleteRequest.swift */,
+				23B627072435329800BD888D /* DownloadCatImageRequest.swift */,
 				B822C8FF23F210D800D7BDAD /* GetCatRequest.swift */,
 				C64F859B241FF09D0028E0E9 /* LoginRequest.swift */,
-				23B627072435329800BD888D /* DownloadCatImageRequest.swift */,
-				C6D5C2F524E206C800A543CB /* DeleteRequest.swift */,
+				C66A8C0124367EBA0052A1AF /* SampleGETJSON.swift */,
+				C635DCB726D95DDB009F82A0 /* SmartUnwrapRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -266,6 +274,7 @@
 				C6D5C2F724E2085900A543CB /* SampleDeleteViewController.swift */,
 				23B627092435332200BD888D /* SampleDownloadViewController.swift */,
 				B822C8F123F20E8900D7BDAD /* SampleGetViewController.swift */,
+				C635DCB526D95DB4009F82A0 /* SmartUnwrapViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -443,6 +452,8 @@
 				C64F859C241FF09D0028E0E9 /* LoginRequest.swift in Sources */,
 				C6D5C2F824E2085900A543CB /* SampleDeleteViewController.swift in Sources */,
 				C64F859E241FF8E60028E0E9 /* PostLoginViewController.swift in Sources */,
+				C635DCB626D95DB4009F82A0 /* SmartUnwrapViewController.swift in Sources */,
+				C635DCB826D95DDB009F82A0 /* SmartUnwrapRequest.swift in Sources */,
 				B822C8F023F20E8900D7BDAD /* SceneDelegate.swift in Sources */,
 				23B627082435329800BD888D /* DownloadCatImageRequest.swift in Sources */,
 			);
@@ -454,6 +465,7 @@
 			files = (
 				3B00B3C726D7EA3C00A1DF79 /* DecodingError+Logging.swift in Sources */,
 				B8C928A723E9FC8D00DB2B37 /* URLRequest+EncodeURL.swift in Sources */,
+				C635DCB426D95D2A009F82A0 /* SmartUnwrap.swift in Sources */,
 				B8C928A523E9FC3E00DB2B37 /* URLRequest+Multipart.swift in Sources */,
 				A63ABCCC24ABBFCC004DE84E /* DelayedOperations.swift in Sources */,
 				B8C9289F23E9FB1500DB2B37 /* URLRequest+EncodeParameters.swift in Sources */,

@@ -129,6 +129,36 @@ public extension Request where RawResource == Data {
     }
 }
 
+public extension Request where RawResource: SmartUnwrapper {
+    // I feel like there should be some combination of -> Result<SmartUnwrapper.Value, NetableError> that works, but I'm not sure what it is.
+    func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) -> Result<RawResource, NetableError> {
+
+        guard let data = data else {
+            return .failure(.noData)
+        }
+
+        do {
+
+            guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
+              // appropriate error handling
+                return .failure(.noData)
+            }
+
+            let valueKey = String(describing: type(of: RawResource.Value.self))
+                .lowercased()
+                .replacingOccurrences(of: ".type", with: "")
+            print(valueKey)
+            print(json)
+            print(json[valueKey])
+        } catch {
+            let error = NetableError.decodingError(error, data)
+            return .failure(error)
+        }
+
+        return .failure(.noData)
+    }
+}
+
 public struct Empty: Codable {
     public static let data = "{}".data(using: .utf8)!
 }
