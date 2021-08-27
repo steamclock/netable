@@ -32,6 +32,7 @@
 		B8C928A523E9FC3E00DB2B37 /* URLRequest+Multipart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C928A423E9FC3E00DB2B37 /* URLRequest+Multipart.swift */; };
 		B8C928A723E9FC8D00DB2B37 /* URLRequest+EncodeURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C928A623E9FC8D00DB2B37 /* URLRequest+EncodeURL.swift */; };
 		B8C928A923E9FDCC00DB2B37 /* Netable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C928A823E9FDCC00DB2B37 /* Netable.swift */; };
+		C635DCB226D95B58009F82A0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C635DCB126D95B58009F82A0 /* README.md */; };
 		C64F8590241FE4670028E0E9 /* Netable.podspec in Resources */ = {isa = PBXBuildFile; fileRef = C64F858F241FE4670028E0E9 /* Netable.podspec */; };
 		C64F8592241FE4870028E0E9 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = C64F8591241FE4870028E0E9 /* CHANGELOG.md */; };
 		C64F8594241FE70E0028E0E9 /* ExamplesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64F8593241FE70E0028E0E9 /* ExamplesTableViewController.swift */; };
@@ -109,6 +110,7 @@
 		B8C928A423E9FC3E00DB2B37 /* URLRequest+Multipart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Multipart.swift"; sourceTree = "<group>"; };
 		B8C928A623E9FC8D00DB2B37 /* URLRequest+EncodeURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+EncodeURL.swift"; sourceTree = "<group>"; };
 		B8C928A823E9FDCC00DB2B37 /* Netable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Netable.swift; sourceTree = "<group>"; };
+		C635DCB126D95B58009F82A0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		C64F858F241FE4670028E0E9 /* Netable.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Netable.podspec; path = ../../Netable.podspec; sourceTree = "<group>"; };
 		C64F8591241FE4870028E0E9 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../../CHANGELOG.md; sourceTree = "<group>"; };
 		C64F8593241FE70E0028E0E9 /* ExamplesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplesTableViewController.swift; sourceTree = "<group>"; };
@@ -191,8 +193,10 @@
 		B8C9288223E9F68000DB2B37 /* Netable */ = {
 			isa = PBXGroup;
 			children = (
+				C635DCB126D95B58009F82A0 /* README.md */,
 				C64F8591241FE4870028E0E9 /* CHANGELOG.md */,
 				C65289F426D01829009D486B /* Config.swift */,
+				3B00B3C626D7EA3C00A1DF79 /* DecodingError+Logging.swift */,
 				A63ABCCB24ABBFCC004DE84E /* DelayedOperations.swift */,
 				B8C9289C23E9FA0E00DB2B37 /* Error.swift */,
 				B8C928A223E9FBEC00DB2B37 /* HTTPMethod.swift */,
@@ -207,7 +211,6 @@
 				B8C9289E23E9FB1500DB2B37 /* URLRequest+EncodeParameters.swift */,
 				B8C928A623E9FC8D00DB2B37 /* URLRequest+EncodeURL.swift */,
 				B8C928A423E9FC3E00DB2B37 /* URLRequest+Multipart.swift */,
-				3B00B3C626D7EA3C00A1DF79 /* DecodingError+Logging.swift */,
 			);
 			path = Netable;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C635DCB226D95B58009F82A0 /* README.md in Resources */,
 				C64F8590241FE4670028E0E9 /* Netable.podspec in Resources */,
 				C64F8592241FE4870028E0E9 /* CHANGELOG.md in Resources */,
 			);
