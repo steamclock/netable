@@ -15,12 +15,3 @@ public class SmartUnwrap<Value: Decodable> {
         self.value = value
     }
 }
-
-public protocol SmartUnwrapper {
-    associatedtype Value: Decodable
-    var smartUnwrap: SmartUnwrap<Value> { get }
-}
-
-extension SmartUnwrap: SmartUnwrapper {
-    public var smartUnwrap: SmartUnwrap<Value> { return self}
-}
