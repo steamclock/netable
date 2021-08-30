@@ -9,9 +9,9 @@
 import Foundation
 
 public class SmartUnwrap<Value: Decodable> {
-    var value: Value
+    public var value: Value
 
-    init(_ value: Value) {
+    public init(_ value: Value) {
         self.value = value
     }
 }

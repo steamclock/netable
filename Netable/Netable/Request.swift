@@ -29,6 +29,9 @@ public protocol Request {
     /// Parameters to be encoded and sent with the request.
     var parameters: Parameters { get }
 
+    /// If using SmartUnwrap, you need to specify the key that your object is stored in.
+    var smartUnwrapKey: String? { get }
+
     /// Parameter keys whose values will be printed in full to logs.
     /// By default, all parameters will be printed as `<REDACTED>` to logs.
     var unredactedParameterKeys: Set<String> { get }
@@ -47,6 +50,10 @@ public protocol Request {
 }
 
 public extension Request {
+    var smartUnwrapKey: String? {
+        return nil
+    }
+
     var unredactedParameterKeys: Set<String> {
         return Set<String>()
     }
@@ -129,33 +136,50 @@ public extension Request where RawResource == Data {
     }
 }
 
-public extension Request where RawResource: SmartUnwrapper {
-    // I feel like there should be some combination of -> Result<SmartUnwrapper.Value, NetableError> that works, but I'm not sure what it is.
-    func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) -> Result<RawResource, NetableError> {
+public extension Request where RawResource: SmartUnwrap<FinalResource> {
+    /// By default use the type of FinalResource as the coding key.
+    var smartUnwrapKey: String? {
+        String(describing: type(of: FinalResource.self))
+            .lowercased()
+            .replacingOccurrences(of: ".type", with: "")
+    }
+
+    func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) -> Result<SmartUnwrap<FinalResource>, NetableError> {
 
         guard let data = data else {
             return .failure(.noData)
         }
 
         do {
-
             guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
-              // appropriate error handling
-                return .failure(.noData)
+                return .failure(.resourceExtractionError("Smart unwrap failed while trying to decode JSON from response data."))
             }
 
-            let valueKey = String(describing: type(of: RawResource.Value.self))
-                .lowercased()
-                .replacingOccurrences(of: ".type", with: "")
-            print(valueKey)
-            print(json)
-            print(json[valueKey])
+            guard let unwrapKey = smartUnwrapKey else {
+                return .failure(.resourceExtractionError("Tried to use SmartUnwrap without specifying a `smartUnwrapKey` in your Request, this is a coding error."))
+            }
+
+            guard let jsonObject = json[unwrapKey] else {
+                let availableKeys = json.keys.joined(separator: ", ")
+                return .failure(.resourceExtractionError("Smart unwrap failed while trying to unwrap object with key \(unwrapKey). Available keys are: \(availableKeys)"))
+            }
+
+            let data = try JSONSerialization.data(withJSONObject: jsonObject, options: [])
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            decoder.keyDecodingStrategy = jsonKeyDecodingStrategy ?? defaultDecodingStrategy
+
+            let unwrappedResource = try decoder.decode(FinalResource.self, from: data)
+            return .success(SmartUnwrap(unwrappedResource))
         } catch {
             let error = NetableError.decodingError(error, data)
             return .failure(error)
         }
+    }
 
-        return .failure(.noData)
+    func finalize(raw: RawResource) -> Result<FinalResource, NetableError> {
+        let unwrapped = raw as SmartUnwrap<FinalResource>
+        return .success(unwrapped.value)
     }
 }
 

@@ -8,15 +8,20 @@
 
 import Netable
 
-struct Json: Decodable {
-    let email: String
+struct User: Decodable {
+    let username: String
     let firstName: String
-    let lastName: String
+    let password: String
 }
 
 struct SmartUnwrapRequest: Request {
     typealias Parameters = LoginParams
-    typealias RawResource = SmartUnwrap<Json>
+    typealias RawResource = SmartUnwrap<User>
+    typealias FinalResource = User
+
+    public var smartUnwrapKey: String? {
+        return "json"
+    }
 
     public var method: HTTPMethod { return .post }
     public var jsonKeyEncodingStrategy: JSONEncoder.KeyEncodingStrategy {

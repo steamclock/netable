@@ -11,7 +11,7 @@ import UIKit
 
 class SmartUnwrapViewController: UIViewController {
 
-    @IBOutlet private var catImageView: UIImageView!
+    @IBOutlet var resultLabel: UILabel!
 
     /// Create a Netable instance using the default log destination
     private let netable = Netable(baseURL: URL(string: "https://httpbin.org/")!)
@@ -24,8 +24,8 @@ class SmartUnwrapViewController: UIViewController {
             guard let self = self else { return }
 
             switch result {
-            case .success(let image):
-                print("success!")
+            case .success(let result):
+                self.resultLabel.text = "Success! \(result.firstName)"
             case .failure(let error):
                 let alert = UIAlertController(
                     title: "Uh oh!",
