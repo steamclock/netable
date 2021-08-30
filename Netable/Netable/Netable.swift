@@ -6,6 +6,7 @@
 //  Copyright © 2020 Steamclock Software. All rights reserved.
 //
 
+import Combine
 import Foundation
 #if canImport(FoundationNetworking)
 import FoundationNetworking
@@ -40,6 +41,13 @@ open class Netable {
     /// Settings for if / how retries will be handled
     private var delayedOperations = DelayedOperations()
 
+    /// Delegate to handle global request errors
+    public var requestFailureDelegate: RequestFailureDelegate?
+
+    /// Publisher for global request errors
+    private let requestFailureSubject = PassthroughSubject<NetableError, Never>()
+    public let requestFailurePublisher: AnyPublisher<NetableError, Never>
+
     /**
      * Create a new instance of `Netable` with a base URL.
      *
@@ -59,6 +67,8 @@ open class Netable {
             self.urlSession.configuration.timeoutIntervalForRequest = timeout
         }
 
+        requestFailurePublisher = requestFailureSubject.eraseToAnyPublisher()
+
         log(.startupInfo(baseURL: baseURL, logDestination: logDestination))
     }
 
@@ -73,6 +83,11 @@ open class Netable {
         let completion: (Result<T.FinalResource, NetableError>) -> Void = { result in
             DispatchQueue.main.async {
                 unsafeCompletion(result)
+
+                if case .failure(let error) = result {
+                    self.requestFailureDelegate?.requestDidFail(request, error: error)
+                    self.requestFailureSubject.send(error)
+                }
             }
         }
 

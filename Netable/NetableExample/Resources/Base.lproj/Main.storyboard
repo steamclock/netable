@@ -67,7 +67,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1479.7101449275362" y="-81.026785714285708"/>
+            <point key="canvasLocation" x="1484" y="-81"/>
         </scene>
         <!--Cancel Request View Controller-->
         <scene sceneID="a5V-Tg-tyu">
@@ -326,6 +326,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8X9-gZ-E7W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2799" y="-81"/>
+        </scene>
+        <!--GET Cat-->
+        <scene sceneID="REO-CL-QW0">
+            <objects>
+                <viewController storyboardIdentifier="GlobalRequestFailureDelegateExample" title="GET Cat" id="r95-de-DXL" customClass="GlobalRequestFailureDelegateExample" customModule="NetableExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="o6M-rY-40H">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fCk-91-zZB">
+                                <rect key="frame" x="57" y="298" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="0vQ-Zd-Q4X"/>
+                                    <constraint firstAttribute="width" constant="300" id="ISP-aR-8Jk"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6fE-y0-Jsq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fCk-91-zZB" firstAttribute="centerY" secondItem="o6M-rY-40H" secondAttribute="centerY" id="BOp-vE-w3p"/>
+                            <constraint firstItem="fCk-91-zZB" firstAttribute="centerX" secondItem="o6M-rY-40H" secondAttribute="centerX" id="Y9O-Mj-9jj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="catImageView" destination="fCk-91-zZB" id="YpT-9B-ghB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ffZ-19-YSy" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1499" y="-757"/>
         </scene>
     </scenes>
     <resources>
