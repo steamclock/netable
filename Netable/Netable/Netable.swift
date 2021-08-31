@@ -73,10 +73,34 @@ open class Netable {
     }
 
     /**
+     * Create and send a new request, returning a PassthroughSubject to monitor for results.
+     *
+     * - parameter request: The request to send, this has to extend `Request`.
+     *
+     * - returns: A PassthroughSubject that will emit a `Result` when the request completes, or a `NetableErorr` on failure.
+     */
+    public func request<T: Request>(_ request: T) -> PassthroughSubject<T.FinalResource, NetableError> {
+        let resultSubject = PassthroughSubject<T.FinalResource, NetableError>()
+
+        self.request(request) { result in
+            switch result {
+            case .success(let finalResource):
+                resultSubject.send(finalResource)
+            case .failure(let error):
+                resultSubject.send(completion: .failure(error))
+            }
+        }
+
+        return resultSubject
+    }
+
+    /**
      * Create and send a new request.
      *
      * - parameter request: The request to send, this has to extend `Request`.
      * - parameter completion: Your completion handler for the request.
+     *
+     * - returns: A `RequestIdentifier` you can use to monitor and cancel your request.
      */
     @discardableResult public func request<T: Request>(_ request: T, completion unsafeCompletion: @escaping (Result<T.FinalResource, NetableError>) -> Void) -> RequestIdentifier {
         // Make sure the completion is dispatched on the main thread.

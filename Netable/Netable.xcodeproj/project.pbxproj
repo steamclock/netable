@@ -32,6 +32,7 @@
 		B8C928A523E9FC3E00DB2B37 /* URLRequest+Multipart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C928A423E9FC3E00DB2B37 /* URLRequest+Multipart.swift */; };
 		B8C928A723E9FC8D00DB2B37 /* URLRequest+EncodeURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C928A623E9FC8D00DB2B37 /* URLRequest+EncodeURL.swift */; };
 		B8C928A923E9FDCC00DB2B37 /* Netable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C928A823E9FDCC00DB2B37 /* Netable.swift */; };
+		C64689A526DD934400D2AFDD /* CombineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64689A426DD934400D2AFDD /* CombineViewController.swift */; };
 		C64F8590241FE4670028E0E9 /* Netable.podspec in Resources */ = {isa = PBXBuildFile; fileRef = C64F858F241FE4670028E0E9 /* Netable.podspec */; };
 		C64F8592241FE4870028E0E9 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = C64F8591241FE4870028E0E9 /* CHANGELOG.md */; };
 		C64F8594241FE70E0028E0E9 /* ExamplesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64F8593241FE70E0028E0E9 /* ExamplesTableViewController.swift */; };
@@ -113,6 +114,7 @@
 		B8C928A423E9FC3E00DB2B37 /* URLRequest+Multipart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Multipart.swift"; sourceTree = "<group>"; };
 		B8C928A623E9FC8D00DB2B37 /* URLRequest+EncodeURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+EncodeURL.swift"; sourceTree = "<group>"; };
 		B8C928A823E9FDCC00DB2B37 /* Netable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Netable.swift; sourceTree = "<group>"; };
+		C64689A426DD934400D2AFDD /* CombineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineViewController.swift; sourceTree = "<group>"; };
 		C64F858F241FE4670028E0E9 /* Netable.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Netable.podspec; path = ../../Netable.podspec; sourceTree = "<group>"; };
 		C64F8591241FE4870028E0E9 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../../CHANGELOG.md; sourceTree = "<group>"; };
 		C64F8593241FE70E0028E0E9 /* ExamplesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplesTableViewController.swift; sourceTree = "<group>"; };
@@ -268,16 +270,17 @@
 			isa = PBXGroup;
 			children = (
 				C66A8BF62436619F0052A1AF /* CancelRequestViewController.swift */,
+				C64689A426DD934400D2AFDD /* CombineViewController.swift */,
 				C66A8BFB24367E910052A1AF /* CustomLoggerViewController.swift */,
 				C66A8BFA24367E910052A1AF /* DecodeSnakeCaseViewController.swift */,
 				C66A8BFC24367E910052A1AF /* EmptyLoggerViewController.swift */,
 				C64F8593241FE70E0028E0E9 /* ExamplesTableViewController.swift */,
+				C6F4CFB126D5874F004E6BB8 /* GlobalRequestFailureDelegateExample.swift */,
+				C6F4CFB326D5875F004E6BB8 /* GlobalRequestFailurePublisherExample.swift */,
 				C64F859D241FF8E60028E0E9 /* PostLoginViewController.swift */,
 				C6D5C2F724E2085900A543CB /* SampleDeleteViewController.swift */,
 				23B627092435332200BD888D /* SampleDownloadViewController.swift */,
 				B822C8F123F20E8900D7BDAD /* SampleGetViewController.swift */,
-				C6F4CFB126D5874F004E6BB8 /* GlobalRequestFailureDelegateExample.swift */,
-				C6F4CFB326D5875F004E6BB8 /* GlobalRequestFailurePublisherExample.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 			files = (
 				C66A8BFF24367E910052A1AF /* EmptyLoggerViewController.swift in Sources */,
 				C66901AF241C1B0A002954C5 /* CustomLogDestination.swift in Sources */,
+				C64689A526DD934400D2AFDD /* CombineViewController.swift in Sources */,
 				B822C90023F210D800D7BDAD /* GetCatRequest.swift in Sources */,
 				C64F8594241FE70E0028E0E9 /* ExamplesTableViewController.swift in Sources */,
 				C66A8C0224367EBA0052A1AF /* SampleGETJSON.swift in Sources */,
