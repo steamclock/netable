@@ -136,7 +136,7 @@ public extension Request where RawResource == Data {
     }
 }
 
-public extension Request where RawResource: SmartUnwrap<FinalResource> {
+public extension Request where RawResource == SmartUnwrap<FinalResource> {
     /// By default use the type of FinalResource as the coding key.
     var smartUnwrapKey: String? {
         String(describing: type(of: FinalResource.self))
@@ -151,26 +151,8 @@ public extension Request where RawResource: SmartUnwrap<FinalResource> {
         }
 
         do {
-            guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
-                return .failure(.resourceExtractionError("Smart unwrap failed while trying to decode JSON from response data."))
-            }
-
-            guard let unwrapKey = smartUnwrapKey else {
-                return .failure(.resourceExtractionError("Tried to use SmartUnwrap without specifying a `smartUnwrapKey` in your Request, this is a coding error."))
-            }
-
-            guard let jsonObject = json[unwrapKey] else {
-                let availableKeys = json.keys.joined(separator: ", ")
-                return .failure(.resourceExtractionError("Smart unwrap failed while trying to unwrap object with key \(unwrapKey). Available keys are: \(availableKeys)"))
-            }
-
-            let data = try JSONSerialization.data(withJSONObject: jsonObject, options: [])
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .iso8601
-            decoder.keyDecodingStrategy = jsonKeyDecodingStrategy ?? defaultDecodingStrategy
-
-            let unwrappedResource = try decoder.decode(FinalResource.self, from: data)
-            return .success(SmartUnwrap(unwrappedResource))
+            let decodedResult = try JSONDecoder().decode(SmartUnwrap<FinalResource>.self, from: data)
+            return .success(decodedResult)
         } catch {
             let error = NetableError.decodingError(error, data)
             return .failure(error)
@@ -179,7 +161,7 @@ public extension Request where RawResource: SmartUnwrap<FinalResource> {
 
     func finalize(raw: RawResource) -> Result<FinalResource, NetableError> {
         let unwrapped = raw as SmartUnwrap<FinalResource>
-        return .success(unwrapped.value)
+        return .success(unwrapped.decodedType)
     }
 }
 
