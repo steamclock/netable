@@ -36,6 +36,9 @@ public enum NetableError: Error {
     /// Throw this error if something goes wrong while calling Request.finalize().
     case resourceExtractionError(String)
 
+    /// Decoding your `RawResource` type failed, but decoding to your `FallbackResource` was successful.
+    case fallbackDecode(Decodable)
+
     /// We're not sure what went wrong, but something did.
     case unknownError(Error)
 }
@@ -61,6 +64,8 @@ extension NetableError: LocalizedError {
             return 7
         case .unknownError:
             return 8
+        case .fallbackDecode:
+            return 9
         }
     }
 
@@ -88,6 +93,8 @@ extension NetableError: LocalizedError {
             return "No data"
         case .resourceExtractionError(let message):
             return "Resource Extraction Error: The raw result could not be turned into the final resource: \(message)"
+        case .fallbackDecode:
+            return "Decoding to RawResource failed, but FallbackResource was successful."
         case .unknownError(let error):
             return "Unknown error: \(error.localizedDescription)"
         }

@@ -359,6 +359,38 @@
             </objects>
             <point key="canvasLocation" x="2151" y="-757"/>
         </scene>
+        <!--Fallback Decoder View Controller-->
+        <scene sceneID="K3q-F4-qAQ">
+            <objects>
+                <viewController storyboardIdentifier="FallbackDecoderViewController" id="cGj-9f-aIi" customClass="FallbackDecoderViewController" customModule="NetableExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NLX-Jh-5Qa">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQa-wO-Edo">
+                                <rect key="frame" x="20" y="448" width="374" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Z2q-DZ-iyi"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="YQa-wO-Edo" firstAttribute="centerX" secondItem="NLX-Jh-5Qa" secondAttribute="centerX" id="KRW-Td-VhW"/>
+                            <constraint firstItem="YQa-wO-Edo" firstAttribute="leading" secondItem="NLX-Jh-5Qa" secondAttribute="leading" constant="20" id="WZW-vt-Mei"/>
+                            <constraint firstItem="YQa-wO-Edo" firstAttribute="centerY" secondItem="NLX-Jh-5Qa" secondAttribute="centerY" id="luX-OB-sNm"/>
+                            <constraint firstAttribute="trailing" secondItem="YQa-wO-Edo" secondAttribute="trailing" constant="20" id="twc-Ol-ku5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="YQa-wO-Edo" id="ugM-9Q-QCu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D7q-Hj-bMz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4077" y="576"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">
