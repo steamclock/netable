@@ -2,12 +2,30 @@
   "object": {
     "pins": [
       {
-        "package": "OHHTTPStubs",
-        "repositoryURL": "https://github.com/AliSoftware/OHHTTPStubs.git",
+        "package": "CocoaAsyncSocket",
+        "repositoryURL": "https://github.com/robbiehanson/CocoaAsyncSocket.git",
         "state": {
           "branch": null,
-          "revision": "e92b5a5746ef16add2a1424f1fc19529d9a75cde",
-          "version": "9.0.0"
+          "revision": "dbdc00669c1ced63b27c3c5f052ee4d28f10150c",
+          "version": "7.6.5"
+        }
+      },
+      {
+        "package": "HTTPParserC",
+        "repositoryURL": "https://github.com/Building42/HTTPParserC.git",
+        "state": {
+          "branch": null,
+          "revision": "75f12587ccf3296827d3f97e2a69a5865acc4d98",
+          "version": "2.9.4"
+        }
+      },
+      {
+        "package": "Telegraph",
+        "repositoryURL": "https://github.com/Building42/Telegraph.git",
+        "state": {
+          "branch": null,
+          "revision": "e763612868ffd0b1be190b2ff40276e4ab883e18",
+          "version": "0.29.0"
         }
       }
     ]

@@ -18,8 +18,6 @@
 		B822C8F523F20E8900D7BDAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B822C8F323F20E8900D7BDAD /* Main.storyboard */; };
 		B822C8FA23F20E8B00D7BDAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B822C8F823F20E8B00D7BDAD /* LaunchScreen.storyboard */; };
 		B822C90023F210D800D7BDAD /* GetCatRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B822C8FF23F210D800D7BDAD /* GetCatRequest.swift */; };
-		B888FD4B23ECD20800026A7F /* OHHTTPStubs in Frameworks */ = {isa = PBXBuildFile; productRef = B888FD4A23ECD20800026A7F /* OHHTTPStubs */; };
-		B888FD4D23ECD20800026A7F /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B888FD4C23ECD20800026A7F /* OHHTTPStubsSwift */; };
 		B8A18C0D23F2201000941EA6 /* Netable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C9288023E9F68000DB2B37 /* Netable.framework */; };
 		B8A18C0E23F2201000941EA6 /* Netable.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B8C9288023E9F68000DB2B37 /* Netable.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B8C9288A23E9F68000DB2B37 /* Netable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C9288023E9F68000DB2B37 /* Netable.framework */; };
@@ -32,6 +30,7 @@
 		B8C928A523E9FC3E00DB2B37 /* URLRequest+Multipart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C928A423E9FC3E00DB2B37 /* URLRequest+Multipart.swift */; };
 		B8C928A723E9FC8D00DB2B37 /* URLRequest+EncodeURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C928A623E9FC8D00DB2B37 /* URLRequest+EncodeURL.swift */; };
 		B8C928A923E9FDCC00DB2B37 /* Netable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C928A823E9FDCC00DB2B37 /* Netable.swift */; };
+		C64689E526E0330100D2AFDD /* Telegraph in Frameworks */ = {isa = PBXBuildFile; productRef = C64689E426E0330100D2AFDD /* Telegraph */; };
 		C64F8590241FE4670028E0E9 /* Netable.podspec in Resources */ = {isa = PBXBuildFile; fileRef = C64F858F241FE4670028E0E9 /* Netable.podspec */; };
 		C64F8592241FE4870028E0E9 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = C64F8591241FE4870028E0E9 /* CHANGELOG.md */; };
 		C64F8594241FE70E0028E0E9 /* ExamplesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64F8593241FE70E0028E0E9 /* ExamplesTableViewController.swift */; };
@@ -141,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8A18C0D23F2201000941EA6 /* Netable.framework in Frameworks */,
+				C64689E526E0330100D2AFDD /* Telegraph in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,8 +148,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B888FD4D23ECD20800026A7F /* OHHTTPStubsSwift in Frameworks */,
-				B888FD4B23ECD20800026A7F /* OHHTTPStubs in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +316,9 @@
 				B8A18C1023F2201000941EA6 /* PBXTargetDependency */,
 			);
 			name = NetableExample;
+			packageProductDependencies = (
+				C64689E426E0330100D2AFDD /* Telegraph */,
+			);
 			productName = NetableExample;
 			productReference = B822C8EB23F20E8900D7BDAD /* NetableExample.app */;
 			productType = "com.apple.product-type.application";
@@ -337,8 +338,6 @@
 			);
 			name = Netable;
 			packageProductDependencies = (
-				B888FD4A23ECD20800026A7F /* OHHTTPStubs */,
-				B888FD4C23ECD20800026A7F /* OHHTTPStubsSwift */,
 			);
 			productName = Netable;
 			productReference = B8C9288023E9F68000DB2B37 /* Netable.framework */;
@@ -394,7 +393,7 @@
 			);
 			mainGroup = B8C9287623E9F68000DB2B37;
 			packageReferences = (
-				B888FD4923ECD20800026A7F /* XCRemoteSwiftPackageReference "OHHTTPStubs" */,
+				C64689E326E0330100D2AFDD /* XCRemoteSwiftPackageReference "Telegraph" */,
 			);
 			productRefGroup = B8C9288123E9F68000DB2B37 /* Products */;
 			projectDirPath = "";
@@ -830,26 +829,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		B888FD4923ECD20800026A7F /* XCRemoteSwiftPackageReference "OHHTTPStubs" */ = {
+		C64689E326E0330100D2AFDD /* XCRemoteSwiftPackageReference "Telegraph" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AliSoftware/OHHTTPStubs.git";
+			repositoryURL = "https://github.com/Building42/Telegraph.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
+				minimumVersion = 0.29.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B888FD4A23ECD20800026A7F /* OHHTTPStubs */ = {
+		C64689E426E0330100D2AFDD /* Telegraph */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B888FD4923ECD20800026A7F /* XCRemoteSwiftPackageReference "OHHTTPStubs" */;
-			productName = OHHTTPStubs;
-		};
-		B888FD4C23ECD20800026A7F /* OHHTTPStubsSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B888FD4923ECD20800026A7F /* XCRemoteSwiftPackageReference "OHHTTPStubs" */;
-			productName = OHHTTPStubsSwift;
+			package = C64689E326E0330100D2AFDD /* XCRemoteSwiftPackageReference "Telegraph" */;
+			productName = Telegraph;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
