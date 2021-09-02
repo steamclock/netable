@@ -133,6 +133,51 @@ netable.request(GetCatImageURL()) { result in
 }
 ```
 
+#### Smart Unwrapping Objects
+
+Sometimes APIs like to return the object you actually care about inside of a single level wrapper, which `Finalize` is great at dealing with, but requires a little more boilerplate code than we'd like. This is where `SmartUnwrap<>` comes in! 
+
+Create your request as normal, but set your `RawResource = SmartUnwrap<ObjectYouCareAbout>` and `FinalResource = ObjectYourCareAbout`. You can also specify `Request.smartUnwrapKey` to avoid ambiguity when unwrapping objects from your response.
+
+Before: 
+```swift
+struct UserResponse {
+    let user: User
+}
+
+struct User {
+    let name: String
+    let email: String
+}
+
+struct GetUserRequest: Request {
+    typealias Parameters: GetUserParams
+    typealias RawResource: UserResponse
+    typealias FinalResource: User
+    
+    // ...
+    
+    func finalize(raw: RawResource) -> Result<FinalResource, NetableError> {
+        return .success(raw.user)
+    }
+}
+```
+
+After: 
+```swift
+struct User: {
+    let name: String
+    let email: String
+}
+
+struct GetUserRequest: Request {
+    typealias Parameters: GetUserParams
+    typealias RawResource: SmartUnwrap<User>
+    typealias FinalResource: User
+}
+
+```
+
 ### Handling Errors
 
 In addition to handling errors locally through the `completion` callback provided by `request()`,  we provide two ways to handle errors globally. These can be useful for doing things like presenting errors in the UI for common error cases across multiple requests, or catching things like failed authentication requests to clear a stored user.

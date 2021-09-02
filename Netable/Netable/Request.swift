@@ -33,6 +33,9 @@ public protocol Request {
     /// Parameters to be encoded and sent with the request.
     var parameters: Parameters { get }
 
+    /// If using SmartUnwrap, you need to specify the key that your object is stored in.
+    var smartUnwrapKey: String { get }
+
     /// Parameter keys whose values will be printed in full to logs.
     /// By default, all parameters will be printed as `<REDACTED>` to logs.
     var unredactedParameterKeys: Set<String> { get }
@@ -51,6 +54,10 @@ public protocol Request {
 }
 
 public extension Request {
+    var smartUnwrapKey: String {
+        return ""
+    }
+
     var unredactedParameterKeys: Set<String> {
         return Set<String>()
     }
@@ -131,6 +138,36 @@ public extension Request where RawResource == Data {
     }
 }
 
+extension CodingUserInfoKey {
+    static let smartUnwrapKey = CodingUserInfoKey(rawValue: "smartUnwrapKey")!
+}
+
+public extension Request where RawResource == SmartUnwrap<FinalResource> {
+    func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) -> Result<SmartUnwrap<FinalResource>, NetableError> {
+
+        guard let data = data else {
+            return .failure(.noData)
+        }
+
+        do {
+            let decoder = JSONDecoder()
+            decoder.userInfo = [
+                .smartUnwrapKey: smartUnwrapKey
+            ]
+            let decodedResult = try decoder.decode(SmartUnwrap<FinalResource>.self, from: data)
+            return .success(decodedResult)
+        } catch {
+            let error = NetableError.decodingError(error, data)
+            return .failure(error)
+        }
+    }
+
+    func finalize(raw: RawResource) -> Result<FinalResource, NetableError> {
+        let unwrapped = raw as SmartUnwrap<FinalResource>
+        return .success(unwrapped.decodedType)
+    }
+}
+
 public extension Request where RawResource: Decodable, FallbackResource: Decodable {
     func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) -> Result<RawResource, NetableError> {
         let decoder = JSONDecoder()
@@ -161,3 +198,5 @@ public extension Request where RawResource: Decodable, FallbackResource: Decodab
 public struct Empty: Codable {
     public static let data = "{}".data(using: .utf8)!
 }
+
+

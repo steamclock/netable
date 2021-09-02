@@ -30,6 +30,7 @@ class ExamplesTableViewController: UITableViewController {
                 RequestRow(title: "Decode_snake_case", vcIdentifier: "DecodeSnakeCaseViewController"),
                 RequestRow(title: "Cancel Request", vcIdentifier: "CancelRequestViewController"),
                 RequestRow(title: "Delete Example", vcIdentifier: "SampleDeleteViewController"),
+                RequestRow(title: "Smart Unwrapper", vcIdentifier: "SmartUnwrapViewController"),
                 RequestRow(title: "Global Error Delegate", vcIdentifier: "GlobalRequestFailureDelegateExample"),
                 RequestRow(title: "Global Error Publisher", vcIdentifier: "GlobalRequestFailurePublisherExample"),
                 RequestRow(title: "Fallback Decoder Example", vcIdentifier: "FallbackDecoderViewController"),
