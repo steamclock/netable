@@ -30,7 +30,8 @@
 		B8C928A523E9FC3E00DB2B37 /* URLRequest+Multipart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C928A423E9FC3E00DB2B37 /* URLRequest+Multipart.swift */; };
 		B8C928A723E9FC8D00DB2B37 /* URLRequest+EncodeURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C928A623E9FC8D00DB2B37 /* URLRequest+EncodeURL.swift */; };
 		B8C928A923E9FDCC00DB2B37 /* Netable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C928A823E9FDCC00DB2B37 /* Netable.swift */; };
-		C64689E526E0330100D2AFDD /* Telegraph in Frameworks */ = {isa = PBXBuildFile; productRef = C64689E426E0330100D2AFDD /* Telegraph */; };
+		C64689E726E0337B00D2AFDD /* TelegraphManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64689E626E0337B00D2AFDD /* TelegraphManager.swift */; };
+		C64689EA26E0371400D2AFDD /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = C64689E926E0371400D2AFDD /* Swifter */; };
 		C64F8590241FE4670028E0E9 /* Netable.podspec in Resources */ = {isa = PBXBuildFile; fileRef = C64F858F241FE4670028E0E9 /* Netable.podspec */; };
 		C64F8592241FE4870028E0E9 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = C64F8591241FE4870028E0E9 /* CHANGELOG.md */; };
 		C64F8594241FE70E0028E0E9 /* ExamplesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64F8593241FE70E0028E0E9 /* ExamplesTableViewController.swift */; };
@@ -112,6 +113,7 @@
 		B8C928A423E9FC3E00DB2B37 /* URLRequest+Multipart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Multipart.swift"; sourceTree = "<group>"; };
 		B8C928A623E9FC8D00DB2B37 /* URLRequest+EncodeURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+EncodeURL.swift"; sourceTree = "<group>"; };
 		B8C928A823E9FDCC00DB2B37 /* Netable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Netable.swift; sourceTree = "<group>"; };
+		C64689E626E0337B00D2AFDD /* TelegraphManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegraphManager.swift; sourceTree = "<group>"; };
 		C64F858F241FE4670028E0E9 /* Netable.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Netable.podspec; path = ../../Netable.podspec; sourceTree = "<group>"; };
 		C64F8591241FE4870028E0E9 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../../CHANGELOG.md; sourceTree = "<group>"; };
 		C64F8593241FE70E0028E0E9 /* ExamplesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplesTableViewController.swift; sourceTree = "<group>"; };
@@ -140,7 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8A18C0D23F2201000941EA6 /* Netable.framework in Frameworks */,
-				C64689E526E0330100D2AFDD /* Telegraph in Frameworks */,
+				C64689EA26E0371400D2AFDD /* Swifter in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				C66901AE241C1B0A002954C5 /* CustomLogDestination.swift */,
+				C64689E626E0337B00D2AFDD /* TelegraphManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -317,7 +320,7 @@
 			);
 			name = NetableExample;
 			packageProductDependencies = (
-				C64689E426E0330100D2AFDD /* Telegraph */,
+				C64689E926E0371400D2AFDD /* Swifter */,
 			);
 			productName = NetableExample;
 			productReference = B822C8EB23F20E8900D7BDAD /* NetableExample.app */;
@@ -393,7 +396,7 @@
 			);
 			mainGroup = B8C9287623E9F68000DB2B37;
 			packageReferences = (
-				C64689E326E0330100D2AFDD /* XCRemoteSwiftPackageReference "Telegraph" */,
+				C64689E826E0371400D2AFDD /* XCRemoteSwiftPackageReference "swifter" */,
 			);
 			productRefGroup = B8C9288123E9F68000DB2B37 /* Products */;
 			projectDirPath = "";
@@ -456,6 +459,7 @@
 				C64F859C241FF09D0028E0E9 /* LoginRequest.swift in Sources */,
 				C6D5C2F824E2085900A543CB /* SampleDeleteViewController.swift in Sources */,
 				C64F859E241FF8E60028E0E9 /* PostLoginViewController.swift in Sources */,
+				C64689E726E0337B00D2AFDD /* TelegraphManager.swift in Sources */,
 				C6F4CFB226D5874F004E6BB8 /* GlobalRequestFailureDelegateExample.swift in Sources */,
 				B822C8F023F20E8900D7BDAD /* SceneDelegate.swift in Sources */,
 				23B627082435329800BD888D /* DownloadCatImageRequest.swift in Sources */,
@@ -829,21 +833,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C64689E326E0330100D2AFDD /* XCRemoteSwiftPackageReference "Telegraph" */ = {
+		C64689E826E0371400D2AFDD /* XCRemoteSwiftPackageReference "swifter" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Building42/Telegraph.git";
+			repositoryURL = "https://github.com/httpswift/swifter.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.29.0;
+				minimumVersion = 1.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C64689E426E0330100D2AFDD /* Telegraph */ = {
+		C64689E926E0371400D2AFDD /* Swifter */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C64689E326E0330100D2AFDD /* XCRemoteSwiftPackageReference "Telegraph" */;
-			productName = Telegraph;
+			package = C64689E826E0371400D2AFDD /* XCRemoteSwiftPackageReference "swifter" */;
+			productName = Swifter;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

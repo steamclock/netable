@@ -2,30 +2,12 @@
   "object": {
     "pins": [
       {
-        "package": "CocoaAsyncSocket",
-        "repositoryURL": "https://github.com/robbiehanson/CocoaAsyncSocket.git",
+        "package": "Swifter",
+        "repositoryURL": "https://github.com/httpswift/swifter.git",
         "state": {
           "branch": null,
-          "revision": "dbdc00669c1ced63b27c3c5f052ee4d28f10150c",
-          "version": "7.6.5"
-        }
-      },
-      {
-        "package": "HTTPParserC",
-        "repositoryURL": "https://github.com/Building42/HTTPParserC.git",
-        "state": {
-          "branch": null,
-          "revision": "75f12587ccf3296827d3f97e2a69a5865acc4d98",
-          "version": "2.9.4"
-        }
-      },
-      {
-        "package": "Telegraph",
-        "repositoryURL": "https://github.com/Building42/Telegraph.git",
-        "state": {
-          "branch": null,
-          "revision": "e763612868ffd0b1be190b2ff40276e4ab883e18",
-          "version": "0.29.0"
+          "revision": "9483a5d459b45c3ffd059f7b55f9638e268632fd",
+          "version": "1.5.0"
         }
       }
     ]

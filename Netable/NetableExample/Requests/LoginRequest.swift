@@ -28,7 +28,7 @@ struct LoginRequest: Request {
     }
     
    public var path: String {
-       return "/post"
+       return "/login"
    }
 
    public var parameters: LoginParams

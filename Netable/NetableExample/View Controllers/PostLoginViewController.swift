@@ -15,8 +15,8 @@ class PostLoginViewController: UIViewController {
     @IBOutlet private var submitButton: UIButton!
     @IBOutlet private var resultLabel: UILabel!
 
-    private let netable = Netable(baseURL: URL(string: "https://httpbin.org/")!)
-
+    private let netable = Netable(baseURL: URL(string: "http://localhost:8080/")!)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -22,7 +22,7 @@ struct GetCatRequest: Request {
     public var method: HTTPMethod { return .get }
 
     public var path: String {
-        return "images/search"
+        return "/login"
     }
 
     public var parameters: [String: String] {
