@@ -139,7 +139,7 @@ In addition to handling errors locally through the `completion` callback provide
 
 #### Using `requestFailureDelegate`
 
-See [GlobalRequestFailureDelegate]() in the Example project for a more detailed example.
+See [GlobalRequestFailureDelegate](https://github.com/steamclock/netable/blob/master/Netable/NetableExample/View%20Controllers/GlobalRequestFailureDelegateExample.swift) in the Example project for a more detailed example.
 
 ```swift
 extension GlobalRequestFailureDelegateExample: RequestFailureDelegate {
@@ -154,7 +154,7 @@ extension GlobalRequestFailureDelegateExample: RequestFailureDelegate {
 
 If you prefer `Combine`, you can subscribe to this publisher to recieve `NetableErrors` from elsewhere in your app.
 
-See [GlobalRequestFailurePublisher]() in the Example project for a more detailed example.
+See [GlobalRequestFailurePublisher](https://github.com/steamclock/netable/blob/master/Netable/NetableExample/View%20Controllers/GlobalRequestFailurePublisherExample.swift) in the Example project for a more detailed example.
 
 ```swift
 netable.requestFailurePublisher.sink { error in
@@ -162,6 +162,17 @@ netable.requestFailurePublisher.sink { error in
     self.present(alert, animated: true)
 }.store(in: &cancellables)
 ```
+
+#### Using `FallbackResource`
+
+Sometimes, you may want to specify a backup type to try and decode your response to if the initial decoding fails, for example:
+- You want to provide a fallback option for an important request that may have changed due to protocol versioning
+- An API may send back different types of responses for different types of success
+
+`Request` allows you to optionally declare a `FallbackResource: Decodable` associated type when creating your request. If you do and your request fails to decode the `RawResource`, it will try to decode your fallback resource, and if successful, throw a `NetableError.fallbackDecode` with your successful decoding.
+
+See [FallbackDecoderViewController](https://github.com/steamclock/netable/blob/master/Netable/NetableExample/View%20Controllers/FallbackDecoderViewController.swift) in the Example project for a more detailed example.
+
 
 ### Full Documentation
 

@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - [60] Add better handling for printing request bodies to the console, including some default redaction for sensitive parameters.
 - [64] Add an alternate `request` format that allows you to use Combine to process results.
+- [66] Add support for fallback decoding to `NetableError`, allowing you to set a fallback type to try and decode if your first decode to `RawResource` fails.
 - [73] Add more helpful decoding error descriptions
 - [74] Change Netable constructor to remove the option to directly set a URLSessionConfiguration and instead only expose the `timeout` option.
 - [76] Add an option to set json en/decoding strategies in the Netable config constructor in addition to per-request.

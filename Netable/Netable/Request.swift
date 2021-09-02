@@ -16,9 +16,13 @@ public protocol Request {
     /// The raw data returned by the server from the request.
     associatedtype RawResource: Any
 
-    /// An optional convienience type that allows for unwrapping of raw data to a predefined type.
+    /// An optional convenience type that allows for unwrapping of raw data to a predefined type.
     /// See `GetCatRequest` for a demonstration of this in action.
     associatedtype FinalResource: Any = RawResource
+
+    /// An optional convenience type that Netable will try to use to decode your response if `RawResource` fails for any reason.
+    /// See `FallbackDecoderViewController` for an example.
+    associatedtype FallbackResource: Any = AnyObject
 
     /// HTTP method the request will use. Currently GET, POST, PUT and PATCH are supported.
     var method: HTTPMethod { get }
@@ -68,16 +72,7 @@ public extension Request {
 
         return output
     }
-}
 
-public extension Request where Parameters == Empty {
-    /// Don't require filling in parameters for requests that don't send any.
-    var parameters: Parameters {
-        return Empty()
-    }
-}
-
-public extension Request {
     /// Set the default key decoding strategy.
     var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy? {
         return nil
@@ -86,6 +81,13 @@ public extension Request {
     /// Set the default key encoding strategy.
     var jsonKeyEncodingStrategy: JSONEncoder.KeyEncodingStrategy? {
         return nil
+    }
+}
+
+public extension Request where Parameters == Empty {
+    /// Don't require filling in parameters for requests that don't send any.
+    var parameters: Parameters {
+        return Empty()
     }
 }
 
@@ -126,6 +128,33 @@ public extension Request where RawResource == Data {
         } else {
             return .failure(.noData)
         }
+    }
+}
+
+public extension Request where RawResource: Decodable, FallbackResource: Decodable {
+    func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) -> Result<RawResource, NetableError> {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        decoder.keyDecodingStrategy = jsonKeyDecodingStrategy ?? defaultDecodingStrategy
+
+        do {
+            if RawResource.self == Empty.self {
+                let raw = try decoder.decode(RawResource.self, from: Empty.data)
+                return .success(raw)
+            } else if let data = data {
+                let raw = try decoder.decode(RawResource.self, from: data)
+                return .success(raw)
+            }
+        } catch {
+            if let data = data, let raw = try? decoder.decode(FallbackResource.self, from: data) {
+                return .failure(.fallbackDecode(raw))
+            }
+
+            let error = NetableError.decodingError(error, data)
+            return .failure(error)
+        }
+
+        return .failure(.noData)
     }
 }
 
