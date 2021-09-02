@@ -394,7 +394,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQa-wO-Edo">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQa-wO-Edo">
                                 <rect key="frame" x="20" y="448" width="374" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -402,14 +402,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="quu-8f-DjQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="r0z-P6-hCN" firstAttribute="centerX" secondItem="khU-Gg-Qkl" secondAttribute="centerX" id="IrE-sq-xO1"/>
-                            <constraint firstItem="r0z-P6-hCN" firstAttribute="centerY" secondItem="khU-Gg-Qkl" secondAttribute="centerY" id="tN6-Qs-hTv"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="label" destination="r0z-P6-hCN" id="CbY-1I-Hcu"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ith-wb-UFS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
