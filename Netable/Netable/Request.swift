@@ -30,7 +30,7 @@ public protocol Request {
     var parameters: Parameters { get }
 
     /// If using SmartUnwrap, you need to specify the key that your object is stored in.
-    var smartUnwrapKey: String? { get }
+    var smartUnwrapKey: String { get }
 
     /// Parameter keys whose values will be printed in full to logs.
     /// By default, all parameters will be printed as `<REDACTED>` to logs.
@@ -50,8 +50,8 @@ public protocol Request {
 }
 
 public extension Request {
-    var smartUnwrapKey: String? {
-        return nil
+    var smartUnwrapKey: String {
+        return ""
     }
 
     var unredactedParameterKeys: Set<String> {
@@ -136,14 +136,12 @@ public extension Request where RawResource == Data {
     }
 }
 
-public extension Request where RawResource == SmartUnwrap<FinalResource> {
-    /// By default use the type of FinalResource as the coding key.
-    var smartUnwrapKey: String? {
-        String(describing: type(of: FinalResource.self))
-            .lowercased()
-            .replacingOccurrences(of: ".type", with: "")
-    }
+extension CodingUserInfoKey {
+    static let smartUnwrapKey = CodingUserInfoKey(rawValue: "smartUnwrapKey")!
+}
 
+
+public extension Request where RawResource == SmartUnwrap<FinalResource> {
     func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) -> Result<SmartUnwrap<FinalResource>, NetableError> {
 
         guard let data = data else {
@@ -151,7 +149,11 @@ public extension Request where RawResource == SmartUnwrap<FinalResource> {
         }
 
         do {
-            let decodedResult = try JSONDecoder().decode(SmartUnwrap<FinalResource>.self, from: data)
+            let decoder = JSONDecoder()
+            decoder.userInfo = [
+                .smartUnwrapKey: smartUnwrapKey
+            ]
+            let decodedResult = try decoder.decode(SmartUnwrap<FinalResource>.self, from: data)
             return .success(decodedResult)
         } catch {
             let error = NetableError.decodingError(error, data)
@@ -168,3 +170,5 @@ public extension Request where RawResource == SmartUnwrap<FinalResource> {
 public struct Empty: Codable {
     public static let data = "{}".data(using: .utf8)!
 }
+
+
