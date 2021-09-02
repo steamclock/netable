@@ -32,7 +32,8 @@ class ExamplesTableViewController: UITableViewController {
                 RequestRow(title: "Delete Example", vcIdentifier: "SampleDeleteViewController"),
                 RequestRow(title: "Global Error Delegate", vcIdentifier: "GlobalRequestFailureDelegateExample"),
                 RequestRow(title: "Global Error Publisher", vcIdentifier: "GlobalRequestFailurePublisherExample"),
-                RequestRow(title: "Fallback Decoder Example", vcIdentifier: "FallbackDecoderViewController")
+                RequestRow(title: "Fallback Decoder Example", vcIdentifier: "FallbackDecoderViewController"),
+                RequestRow(title: "Combine Example", vcIdentifier: "CombineViewController")
             ]
         ),
         RequestSet(sectionTitle: "POST", requestRows: [RequestRow(title: "POST Sample Login", vcIdentifier: "PostLoginViewController")]),
