@@ -35,9 +35,9 @@
 		C635DCB426D95D2A009F82A0 /* SmartUnwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C635DCB326D95D2A009F82A0 /* SmartUnwrap.swift */; };
 		C635DCB626D95DB4009F82A0 /* SmartUnwrapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C635DCB526D95DB4009F82A0 /* SmartUnwrapViewController.swift */; };
 		C635DCB826D95DDB009F82A0 /* SmartUnwrapRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C635DCB726D95DDB009F82A0 /* SmartUnwrapRequest.swift */; };
+		C64689A526DD934400D2AFDD /* CombineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64689A426DD934400D2AFDD /* CombineViewController.swift */; };
 		C64689A726DE9D5300D2AFDD /* FallbackDecoderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64689A626DE9D5300D2AFDD /* FallbackDecoderViewController.swift */; };
 		C64689A926DE9DFD00D2AFDD /* FallbackDecoderRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64689A826DE9DFD00D2AFDD /* FallbackDecoderRequest.swift */; };
-		C64689A526DD934400D2AFDD /* CombineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64689A426DD934400D2AFDD /* CombineViewController.swift */; };
 		C64F8590241FE4670028E0E9 /* Netable.podspec in Resources */ = {isa = PBXBuildFile; fileRef = C64F858F241FE4670028E0E9 /* Netable.podspec */; };
 		C64F8592241FE4870028E0E9 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = C64F8591241FE4870028E0E9 /* CHANGELOG.md */; };
 		C64F8594241FE70E0028E0E9 /* ExamplesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64F8593241FE70E0028E0E9 /* ExamplesTableViewController.swift */; };
@@ -51,6 +51,8 @@
 		C66A8BFF24367E910052A1AF /* EmptyLoggerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66A8BFC24367E910052A1AF /* EmptyLoggerViewController.swift */; };
 		C66A8C0224367EBA0052A1AF /* SampleGETJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66A8C0124367EBA0052A1AF /* SampleGETJSON.swift */; };
 		C66FC07424379A990047D864 /* RequestIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66FC07324379A990047D864 /* RequestIdentifier.swift */; };
+		C692787926F120E100917E65 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C692787826F120E100917E65 /* User.swift */; };
+		C692787B26F1210500917E65 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C692787A26F1210500917E65 /* UserRepository.swift */; };
 		C6953F42241A95830044D278 /* LogDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6953F41241A95830044D278 /* LogDestination.swift */; };
 		C6D5C2F624E206C800A543CB /* DeleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D5C2F524E206C800A543CB /* DeleteRequest.swift */; };
 		C6D5C2F824E2085900A543CB /* SampleDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D5C2F724E2085900A543CB /* SampleDeleteViewController.swift */; };
@@ -122,9 +124,9 @@
 		C635DCB326D95D2A009F82A0 /* SmartUnwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartUnwrap.swift; sourceTree = "<group>"; };
 		C635DCB526D95DB4009F82A0 /* SmartUnwrapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartUnwrapViewController.swift; sourceTree = "<group>"; };
 		C635DCB726D95DDB009F82A0 /* SmartUnwrapRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartUnwrapRequest.swift; sourceTree = "<group>"; };
+		C64689A426DD934400D2AFDD /* CombineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineViewController.swift; sourceTree = "<group>"; };
 		C64689A626DE9D5300D2AFDD /* FallbackDecoderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FallbackDecoderViewController.swift; sourceTree = "<group>"; };
 		C64689A826DE9DFD00D2AFDD /* FallbackDecoderRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FallbackDecoderRequest.swift; sourceTree = "<group>"; };
-		C64689A426DD934400D2AFDD /* CombineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineViewController.swift; sourceTree = "<group>"; };
 		C64F858F241FE4670028E0E9 /* Netable.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Netable.podspec; path = ../../Netable.podspec; sourceTree = "<group>"; };
 		C64F8591241FE4870028E0E9 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../../CHANGELOG.md; sourceTree = "<group>"; };
 		C64F8593241FE70E0028E0E9 /* ExamplesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplesTableViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +140,8 @@
 		C66A8BFC24367E910052A1AF /* EmptyLoggerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyLoggerViewController.swift; sourceTree = "<group>"; };
 		C66A8C0124367EBA0052A1AF /* SampleGETJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleGETJSON.swift; sourceTree = "<group>"; };
 		C66FC07324379A990047D864 /* RequestIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestIdentifier.swift; sourceTree = "<group>"; };
+		C692787826F120E100917E65 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C692787A26F1210500917E65 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		C6953F41241A95830044D278 /* LogDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDestination.swift; sourceTree = "<group>"; };
 		C6D5C2F524E206C800A543CB /* DeleteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteRequest.swift; sourceTree = "<group>"; };
 		C6D5C2F724E2085900A543CB /* SampleDeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleDeleteViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +183,10 @@
 		B822C8EC23F20E8900D7BDAD /* NetableExample */ = {
 			isa = PBXGroup;
 			children = (
+				C692787726F1209500917E65 /* Repository */,
+				C692787626F1209100917E65 /* Model */,
+				C692787526F1208B00917E65 /* ViewModel */,
+				C692787426F1208400917E65 /* ViewController */,
 				C64F8597241FED610028E0E9 /* Helpers */,
 				C64F8596241FED3F0028E0E9 /* Requests */,
 				C64F8595241FECD40028E0E9 /* Resources */,
@@ -214,7 +222,6 @@
 				C6F4CFB526D598B3004E6BB8 /* README.md */,
 				C64F8591241FE4870028E0E9 /* CHANGELOG.md */,
 				C65289F426D01829009D486B /* Config.swift */,
-				3B00B3C626D7EA3C00A1DF79 /* DecodingError+Logging.swift */,
 				A63ABCCB24ABBFCC004DE84E /* DelayedOperations.swift */,
 				B8C9289C23E9FA0E00DB2B37 /* Error.swift */,
 				B8C928A223E9FBEC00DB2B37 /* HTTPMethod.swift */,
@@ -261,8 +268,6 @@
 		C64F8596241FED3F0028E0E9 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
-				C6D5C2F524E206C800A543CB /* DeleteRequest.swift */,
-				23B627072435329800BD888D /* DownloadCatImageRequest.swift */,
 				B822C8FF23F210D800D7BDAD /* GetCatRequest.swift */,
 				C64F859B241FF09D0028E0E9 /* LoginRequest.swift */,
 				C66A8C0124367EBA0052A1AF /* SampleGETJSON.swift */,
@@ -291,8 +296,6 @@
 				C66A8BFA24367E910052A1AF /* DecodeSnakeCaseViewController.swift */,
 				C66A8BFC24367E910052A1AF /* EmptyLoggerViewController.swift */,
 				C64F8593241FE70E0028E0E9 /* ExamplesTableViewController.swift */,
-				C6F4CFB126D5874F004E6BB8 /* GlobalRequestFailureDelegateExample.swift */,
-				C6F4CFB326D5875F004E6BB8 /* GlobalRequestFailurePublisherExample.swift */,
 				C64F859D241FF8E60028E0E9 /* PostLoginViewController.swift */,
 				C6D5C2F724E2085900A543CB /* SampleDeleteViewController.swift */,
 				23B627092435332200BD888D /* SampleDownloadViewController.swift */,
@@ -303,6 +306,36 @@
 				C64689A626DE9D5300D2AFDD /* FallbackDecoderViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		C692787426F1208400917E65 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C692787526F1208B00917E65 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C692787626F1209100917E65 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C692787826F120E100917E65 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C692787726F1209500917E65 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				C692787A26F1210500917E65 /* UserRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		E670F3A3E320C28D82338D75 /* Pods */ = {
@@ -464,6 +497,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C692787B26F1210500917E65 /* UserRepository.swift in Sources */,
+				C692787926F120E100917E65 /* User.swift in Sources */,
 				C66A8BFF24367E910052A1AF /* EmptyLoggerViewController.swift in Sources */,
 				C66901AF241C1B0A002954C5 /* CustomLogDestination.swift in Sources */,
 				C64689A526DD934400D2AFDD /* CombineViewController.swift in Sources */,
