@@ -13,18 +13,12 @@ class LoginViewController: UIViewController {
     @IBOutlet private var passwordField: UITextField!
     @IBOutlet private var submitButton: UIButton!
 
-    private let viewModel = LoginViewModel()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
     @IBAction private func login(_ sender: Any) {
         guard let email = emailField.text, let password = passwordField.text else {
             // TODO: handle error
             return
         }
 
-        viewModel.login(email: email, password: password)
+        UserRepository.shared.login(email: email, password: password)
     }
 }

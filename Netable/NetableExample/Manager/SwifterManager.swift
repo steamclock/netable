@@ -16,8 +16,6 @@ class SwifterManager {
     private init() {
         server = HttpServer()
 
-        print(loadJson(from: "login"))
-
         server["/user/login"] = { _ in
             .ok(self.loadJson(from: "login"))
         }
@@ -26,8 +24,20 @@ class SwifterManager {
             .ok(self.loadJson(from: "user"))
         }
 
-        server["/post/all"] = { _ in
+        server["/user/unauthorized"] = { _ in
+            .unauthorized
+        }
+
+        server["/user/failed"] = { _ in
+            .internalServerError
+        }
+
+        server["/posts/all"] = { _ in
             .ok(self.loadJson(from: "posts"))
+        }
+
+        server["/posts/version"] = { _ in
+            .ok(self.loadJson(from: "version"))
         }
 
         try! server.start()
