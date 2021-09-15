@@ -13,15 +13,12 @@ Modern apps interact with a lot of different APIs. Netable makes that easier by 
 
 ## Features
 
-Netable's core philosophy is to ensure that developers can write simple code for simple APIs, while providing various options for wrangling strange or non-standard APIs.
-1. Every request is an independent type
-    1. Facilitates breaking up requests into separate files, avoiding monolithic networking classes
-1. `Codable`-based `Result` return types
-    1. Easy interfacing between model and controller layers
-    1. Reduces need for wrapper types  
-1. Can automatically convert request responses into usable objects
-1. Easily integrates with existing logging libraries, or logs to `debugPrint` by default
-1. Comprehensive error types make handling expected and unexpected errors painless
+Netable is built on a number of core principles we believe a networking library should follow:
+- Handle the simplest REST API calls with minimal code, while still having the extensibility to decode the gnarliest responses
+- Leverage Swift’s Codabale protocols for automatic decoding and encoding
+- Avoid monolithic networking files and avoid wrappers
+- Straightforward global and local error handling
+- Add a little bit of magic, but only where it goes a long way 
 
 ## Usage
 
