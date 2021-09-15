@@ -11,4 +11,7 @@ import Foundation
 struct User: Decodable {
     let email: String
     let token: String
+    let firstName: String?
+    let lastName: String?
+    let location: String?
 }
