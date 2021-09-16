@@ -16,4 +16,8 @@ struct GetPostsRequest: Request {
     var method = HTTPMethod.get
 
     var path = "all"
+
+    var unredactedParameterKeys: Set<String> {
+        ["title", "content"]
+    }
 }
