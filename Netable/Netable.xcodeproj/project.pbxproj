@@ -36,6 +36,9 @@
 		C64EAB7526F2B2000093850A /* VersionCheckRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64EAB7426F2B2000093850A /* VersionCheckRequest.swift */; };
 		C64EAB7726F2B2E00093850A /* version.json in Resources */ = {isa = PBXBuildFile; fileRef = C64EAB7626F2B2E00093850A /* version.json */; };
 		C64EAB7A26F3AD370093850A /* PostOverviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64EAB7926F3AD370093850A /* PostOverviewCell.swift */; };
+		C64EAB7C26F3B1FC0093850A /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64EAB7B26F3B1FC0093850A /* NewPostViewController.swift */; };
+		C64EAB7E26F3B8160093850A /* CreatePostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64EAB7D26F3B8160093850A /* CreatePostRequest.swift */; };
+		C64EAB8026F3C0A00093850A /* createPost.json in Resources */ = {isa = PBXBuildFile; fileRef = C64EAB7F26F3C0A00093850A /* createPost.json */; };
 		C64F8590241FE4670028E0E9 /* Netable.podspec in Resources */ = {isa = PBXBuildFile; fileRef = C64F858F241FE4670028E0E9 /* Netable.podspec */; };
 		C64F8592241FE4870028E0E9 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = C64F8591241FE4870028E0E9 /* CHANGELOG.md */; };
 		C65289F526D01829009D486B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65289F426D01829009D486B /* Config.swift */; };
@@ -125,6 +128,9 @@
 		C64EAB7426F2B2000093850A /* VersionCheckRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionCheckRequest.swift; sourceTree = "<group>"; };
 		C64EAB7626F2B2E00093850A /* version.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = version.json; sourceTree = "<group>"; };
 		C64EAB7926F3AD370093850A /* PostOverviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostOverviewCell.swift; sourceTree = "<group>"; };
+		C64EAB7B26F3B1FC0093850A /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
+		C64EAB7D26F3B8160093850A /* CreatePostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostRequest.swift; sourceTree = "<group>"; };
+		C64EAB7F26F3C0A00093850A /* createPost.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = createPost.json; sourceTree = "<group>"; };
 		C64F858F241FE4670028E0E9 /* Netable.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Netable.podspec; path = ../../Netable.podspec; sourceTree = "<group>"; };
 		C64F8591241FE4870028E0E9 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../../CHANGELOG.md; sourceTree = "<group>"; };
 		C65289F426D01829009D486B /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -278,6 +284,7 @@
 				C692788226F124CF00917E65 /* LoginRequest.swift */,
 				C64EAB6C26F29AFD0093850A /* UnauthorizedRequest.swift */,
 				C64EAB7426F2B2000093850A /* VersionCheckRequest.swift */,
+				C64EAB7D26F3B8160093850A /* CreatePostRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -298,6 +305,7 @@
 				C692789426F13F9800917E65 /* ProfileNavigationController.swift */,
 				C692789626F141A000917E65 /* ProfileViewController.swift */,
 				C64EAB7026F2AE970093850A /* RootTabBarController.swift */,
+				C64EAB7B26F3B1FC0093850A /* NewPostViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -336,6 +344,7 @@
 				C692788A26F125B400917E65 /* posts.json */,
 				C692789A26F1463B00917E65 /* user.json */,
 				C64EAB7626F2B2E00093850A /* version.json */,
+				C64EAB7F26F3C0A00093850A /* createPost.json */,
 			);
 			path = JsonResponse;
 			sourceTree = "<group>";
@@ -470,6 +479,7 @@
 				C692788B26F125B400917E65 /* posts.json in Resources */,
 				C64EAB7726F2B2E00093850A /* version.json in Resources */,
 				C692789B26F1463B00917E65 /* user.json in Resources */,
+				C64EAB8026F3C0A00093850A /* createPost.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +518,7 @@
 				C64EAB6F26F2AD4F0093850A /* FailedRequest.swift in Sources */,
 				C64EAB7A26F3AD370093850A /* PostOverviewCell.swift in Sources */,
 				C64EAB7126F2AE970093850A /* RootTabBarController.swift in Sources */,
+				C64EAB7C26F3B1FC0093850A /* NewPostViewController.swift in Sources */,
 				C66901AF241C1B0A002954C5 /* CustomLogDestination.swift in Sources */,
 				B822C8EE23F20E8900D7BDAD /* AppDelegate.swift in Sources */,
 				C692787E26F121CD00917E65 /* PostRepository.swift in Sources */,
@@ -515,6 +526,7 @@
 				C64EAB7326F2B1B30093850A /* Version.swift in Sources */,
 				C692788126F121FB00917E65 /* SwifterManager.swift in Sources */,
 				C692789526F13F9800917E65 /* ProfileNavigationController.swift in Sources */,
+				C64EAB7E26F3B8160093850A /* CreatePostRequest.swift in Sources */,
 				B822C8F023F20E8900D7BDAD /* SceneDelegate.swift in Sources */,
 				C692788326F124CF00917E65 /* LoginRequest.swift in Sources */,
 				C692789326F1374000917E65 /* HomeViewController.swift in Sources */,

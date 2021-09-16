@@ -45,4 +45,13 @@ class PostRepository {
             }
         }
     }
+
+    func create(_ title: String, content: String, onComplete: @escaping () -> Void) {
+        let params = CreatePostParams(title: title, content: content)
+
+        netable.request(CreatePostRequest(parameters: params)) { result in
+            print(result)
+            onComplete()
+        }
+    }
 }

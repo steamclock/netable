@@ -31,7 +31,9 @@ class HomeViewController: UITableViewController {
             self.tableView.reloadData()
         }.store(in: &cancellables)
     }
-
+    @IBAction func createNewPost(_ sender: Any) {
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

@@ -36,6 +36,10 @@ class SwifterManager {
             .ok(self.loadJson(from: "posts"))
         }
 
+        server["/posts/create"] = { _ in
+            .ok(self.loadJson(from: "createPost"))
+        }
+
         server["/posts/version"] = { _ in
             .ok(self.loadJson(from: "version"))
         }
