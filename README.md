@@ -229,7 +229,7 @@ To run the example project, clone the repo, and run `pod install` from inside th
 
 ## Requirements
 
-- iOS 10.0+
+- iOS 13.0+
 - MacOS 10.15+
 - Xcode 11.0+
 
