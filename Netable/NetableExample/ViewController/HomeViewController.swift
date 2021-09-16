@@ -41,11 +41,14 @@ class HomeViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostOverviewCell") as? PostOverviewCell else {
+            return UITableViewCell()
+        }
+
         let post = posts[indexPath.row]
 
-        let cell = UITableViewCell()
-        cell.textLabel?.text = post.title
-        cell.detailTextLabel?.text = post.content
+        cell.titleLabel.text = post.title
+        cell.contentLabel.text = post.content
         return cell
     }
 }

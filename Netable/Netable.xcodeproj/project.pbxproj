@@ -35,6 +35,7 @@
 		C64EAB7326F2B1B30093850A /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64EAB7226F2B1B30093850A /* Version.swift */; };
 		C64EAB7526F2B2000093850A /* VersionCheckRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64EAB7426F2B2000093850A /* VersionCheckRequest.swift */; };
 		C64EAB7726F2B2E00093850A /* version.json in Resources */ = {isa = PBXBuildFile; fileRef = C64EAB7626F2B2E00093850A /* version.json */; };
+		C64EAB7A26F3AD370093850A /* PostOverviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64EAB7926F3AD370093850A /* PostOverviewCell.swift */; };
 		C64F8590241FE4670028E0E9 /* Netable.podspec in Resources */ = {isa = PBXBuildFile; fileRef = C64F858F241FE4670028E0E9 /* Netable.podspec */; };
 		C64F8592241FE4870028E0E9 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = C64F8591241FE4870028E0E9 /* CHANGELOG.md */; };
 		C65289F526D01829009D486B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65289F426D01829009D486B /* Config.swift */; };
@@ -123,6 +124,7 @@
 		C64EAB7226F2B1B30093850A /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		C64EAB7426F2B2000093850A /* VersionCheckRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionCheckRequest.swift; sourceTree = "<group>"; };
 		C64EAB7626F2B2E00093850A /* version.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = version.json; sourceTree = "<group>"; };
+		C64EAB7926F3AD370093850A /* PostOverviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostOverviewCell.swift; sourceTree = "<group>"; };
 		C64F858F241FE4670028E0E9 /* Netable.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Netable.podspec; path = ../../Netable.podspec; sourceTree = "<group>"; };
 		C64F8591241FE4870028E0E9 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../../CHANGELOG.md; sourceTree = "<group>"; };
 		C65289F426D01829009D486B /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 		B822C8EC23F20E8900D7BDAD /* NetableExample */ = {
 			isa = PBXGroup;
 			children = (
+				C64EAB7826F3AD280093850A /* View */,
 				C692787F26F121F100917E65 /* Manager */,
 				C692787726F1209500917E65 /* Repository */,
 				C692787626F1209100917E65 /* Model */,
@@ -242,6 +245,14 @@
 				B8C9289023E9F68000DB2B37 /* Info.plist */,
 			);
 			path = NetableTests;
+			sourceTree = "<group>";
+		};
+		C64EAB7826F3AD280093850A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C64EAB7926F3AD370093850A /* PostOverviewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		C64F8595241FECD40028E0E9 /* Resources */ = {
@@ -495,6 +506,7 @@
 				C692789D26F147FC00917E65 /* GetUserDetailsRequest.swift in Sources */,
 				C692789726F141A000917E65 /* ProfileViewController.swift in Sources */,
 				C64EAB6F26F2AD4F0093850A /* FailedRequest.swift in Sources */,
+				C64EAB7A26F3AD370093850A /* PostOverviewCell.swift in Sources */,
 				C64EAB7126F2AE970093850A /* RootTabBarController.swift in Sources */,
 				C66901AF241C1B0A002954C5 /* CustomLogDestination.swift in Sources */,
 				B822C8EE23F20E8900D7BDAD /* AppDelegate.swift in Sources */,
