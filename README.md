@@ -181,7 +181,7 @@ In addition to handling errors locally through the `completion` callback provide
 
 #### Using `requestFailureDelegate`
 
-See [GlobalRequestFailureDelegate](https://github.com/steamclock/netable/blob/master/Netable/NetableExample/View%20Controllers/GlobalRequestFailureDelegateExample.swift) in the Example project for a more detailed example.
+See [GlobalRequestFailureDelegate](https://github.com/steamclock/netable/blob/master/Netable/NetableExample/ViewController/RootTabBarController.swift) in the Example project for a more detailed example.
 
 ```swift
 extension GlobalRequestFailureDelegateExample: RequestFailureDelegate {
@@ -196,7 +196,7 @@ extension GlobalRequestFailureDelegateExample: RequestFailureDelegate {
 
 If you prefer `Combine`, you can subscribe to this publisher to recieve `NetableErrors` from elsewhere in your app.
 
-See [GlobalRequestFailurePublisher](https://github.com/steamclock/netable/blob/master/Netable/NetableExample/View%20Controllers/GlobalRequestFailurePublisherExample.swift) in the Example project for a more detailed example.
+See [GlobalRequestFailurePublisher](https://github.com/steamclock/netable/blob/master/Netable/NetableExample/Repository/UserRepository.swift) in the Example project for a more detailed example.
 
 ```swift
 netable.requestFailurePublisher.sink { error in
@@ -213,7 +213,7 @@ Sometimes, you may want to specify a backup type to try and decode your response
 
 `Request` allows you to optionally declare a `FallbackResource: Decodable` associated type when creating your request. If you do and your request fails to decode the `RawResource`, it will try to decode your fallback resource, and if successful, throw a `NetableError.fallbackDecode` with your successful decoding.
 
-See [FallbackDecoderViewController](https://github.com/steamclock/netable/blob/master/Netable/NetableExample/View%20Controllers/FallbackDecoderViewController.swift) in the Example project for a more detailed example.
+See [FallbackDecoderViewController](https://github.com/steamclock/netable/blob/master/Netable/NetableExample/Request/VersionCheckRequest.swift) in the Example project for a more detailed example.
 
 
 ### Full Documentation
@@ -226,7 +226,7 @@ To run the example project, clone the repo, and run `pod install` from inside th
 
 ## Requirements
 
-- iOS 10.0+
+- iOS 13.0+
 - MacOS 10.15+
 - Xcode 11.0+
 
