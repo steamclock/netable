@@ -1,5 +1,5 @@
 //
-//  SwifterManager.swift
+//  ExampleNetworkService.swift
 //  NetableExample
 //
 //  Created by Brendan on 2021-09-03.
@@ -8,8 +8,8 @@
 import Foundation
 import Swifter
 
-class SwifterManager {
-    static let shared = SwifterManager()
+class ExampleNetworkService {
+    static let shared = ExampleNetworkService()
 
     private var server: HttpServer
 

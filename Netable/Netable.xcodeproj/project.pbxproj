@@ -47,7 +47,7 @@
 		C692787926F120E100917E65 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C692787826F120E100917E65 /* User.swift */; };
 		C692787B26F1210500917E65 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C692787A26F1210500917E65 /* UserRepository.swift */; };
 		C692787E26F121CD00917E65 /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C692787D26F121CD00917E65 /* PostRepository.swift */; };
-		C692788126F121FB00917E65 /* SwifterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C692788026F121FB00917E65 /* SwifterManager.swift */; };
+		C692788126F121FB00917E65 /* ExampleNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C692788026F121FB00917E65 /* ExampleNetworkService.swift */; };
 		C692788326F124CF00917E65 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C692788226F124CF00917E65 /* LoginRequest.swift */; };
 		C692788626F1254800917E65 /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = C692788526F1254800917E65 /* Swifter */; };
 		C692788926F1259800917E65 /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = C692788826F1259800917E65 /* login.json */; };
@@ -139,7 +139,7 @@
 		C692787826F120E100917E65 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C692787A26F1210500917E65 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		C692787D26F121CD00917E65 /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
-		C692788026F121FB00917E65 /* SwifterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifterManager.swift; sourceTree = "<group>"; };
+		C692788026F121FB00917E65 /* ExampleNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleNetworkService.swift; sourceTree = "<group>"; };
 		C692788226F124CF00917E65 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		C692788826F1259800917E65 /* login.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = login.json; sourceTree = "<group>"; };
 		C692788A26F125B400917E65 /* posts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = posts.json; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				C64EAB7826F3AD280093850A /* View */,
-				C692787F26F121F100917E65 /* Manager */,
+				C692787F26F121F100917E65 /* Service */,
 				C692787726F1209500917E65 /* Repository */,
 				C692787626F1209100917E65 /* Model */,
 				C692787426F1208400917E65 /* ViewController */,
@@ -329,12 +329,12 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
-		C692787F26F121F100917E65 /* Manager */ = {
+		C692787F26F121F100917E65 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				C692788026F121FB00917E65 /* SwifterManager.swift */,
+				C692788026F121FB00917E65 /* ExampleNetworkService.swift */,
 			);
-			path = Manager;
+			path = Service;
 			sourceTree = "<group>";
 		};
 		C692788726F1257400917E65 /* JsonResponse */ = {
@@ -524,7 +524,7 @@
 				C692787E26F121CD00917E65 /* PostRepository.swift in Sources */,
 				C64EAB6926F2828E0093850A /* Post.swift in Sources */,
 				C64EAB7326F2B1B30093850A /* Version.swift in Sources */,
-				C692788126F121FB00917E65 /* SwifterManager.swift in Sources */,
+				C692788126F121FB00917E65 /* ExampleNetworkService.swift in Sources */,
 				C692789526F13F9800917E65 /* ProfileNavigationController.swift in Sources */,
 				C64EAB7E26F3B8160093850A /* CreatePostRequest.swift in Sources */,
 				B822C8F023F20E8900D7BDAD /* SceneDelegate.swift in Sources */,
