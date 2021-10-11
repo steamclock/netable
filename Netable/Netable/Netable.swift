@@ -197,7 +197,7 @@ open class Netable {
 
                 var allowRetry = true
 
-                // We totally supress retrying cancels (becasue then it would be impossible to cancel a request at all)
+                // We totally supress retrying cancels (because then it would be impossible to cancel a request at all)
                 // and timeouts (becasue they generally take so long to fail that allowing retries would cause enormous waits,
                 // might want to relax this eventually if we know a shorter timeout is in use)
                 if case .requestFailed(let error) = netableError {
