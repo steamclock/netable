@@ -1,5 +1,5 @@
 //
-//  StarWarsViewController.swift
+//  GraphQLViewController.swift
 //  NetableExample
 //
 //  Created by Brendan on 2022-09-12.
@@ -10,11 +10,9 @@ import Combine
 import Netable
 import UIKit
 
-class StarWarsViewController: UITableViewController {
-    private var films = [Film]()
+class GraphQLViewController: UITableViewController {
+    private var posts = [Post]()
     private var cancellables = [AnyCancellable]()
-
-    private let netable = Netable(baseURL: URL(string: "https://swapi-graphql.netlify.app/.netlify/functions/")!)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +23,12 @@ class StarWarsViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        StarWarsRepository.shared.getFilms()
+        GraphQLRepository.shared.getPosts()
     }
 
     private func bindRepository() {
-        StarWarsRepository.shared.films.sink { films in
-            self.films = films
+        GraphQLRepository.shared.posts.sink { posts in
+            self.posts = posts
             self.tableView.reloadData()
         }.store(in: &cancellables)
     }
@@ -42,7 +40,7 @@ class StarWarsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return films.count
+        return posts.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -50,10 +48,10 @@ class StarWarsViewController: UITableViewController {
             return UITableViewCell()
         }
 
-        let films = films[indexPath.row]
+        let post = posts[indexPath.row]
 
-        cell.titleLabel.text = films.title
-        cell.contentLabel.text = films.openingCrawl
+        cell.titleLabel.text = post.title
+        cell.contentLabel.text = post.content
         return cell
     }
 }

@@ -369,11 +369,11 @@
             </objects>
             <point key="canvasLocation" x="2132" y="-549"/>
         </scene>
-        <!--Star Wars-->
+        <!--GraphQL-->
         <scene sceneID="s6M-kE-Gou">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tb4-tH-7Dh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Star Wars" selectedImage="star" catalog="system" id="6dx-j0-IMf"/>
+                    <tabBarItem key="tabBarItem" title="GraphQL" selectedImage="star" catalog="system" id="6dx-j0-IMf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3UN-rm-ofa">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -388,10 +388,10 @@
             </objects>
             <point key="canvasLocation" x="2145" y="-1276"/>
         </scene>
-        <!--Star Wars View Controller-->
+        <!--GraphQL View Controller-->
         <scene sceneID="Leu-XV-ypz">
             <objects>
-                <tableViewController id="Wf2-tr-d0A" customClass="StarWarsViewController" customModule="NetableExample" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Wf2-tr-d0A" customClass="GraphQLViewController" customModule="NetableExample" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ig4-vN-JJa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

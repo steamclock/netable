@@ -1,9 +1,0 @@
-query GetAllFilms {
-  allFilms {
-    films {
-      id
-      title
-      openingCrawl
-    }
-  }
-}

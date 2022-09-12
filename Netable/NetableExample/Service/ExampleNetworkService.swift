@@ -44,6 +44,10 @@ class ExampleNetworkService {
             .ok(self.loadJson(from: "version"))
         }
 
+        server["/graphql"] = { resp in
+            return .ok(self.loadJson(from: "posts"))
+        }
+
         try! server.start()
     }
 

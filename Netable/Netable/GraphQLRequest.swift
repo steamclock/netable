@@ -10,15 +10,23 @@ import Foundation
 
 public protocol GraphQLRequest: Request {
     associatedtype Parameters = [String: String]
+
+    func getGraphQLQueryFileContents() -> String
 }
 
 public extension GraphQLRequest {
     var method: HTTPMethod { HTTPMethod.post }
 
-    var path: String { "index/" }
+    var path: String { "" }
 
-    var parameters: [String: String] {
-        let params = try! String(contentsOfFile: Bundle.main.path(forResource: String("\(type(of: self))".split(separator: ".").last!), ofType: "graphql")!)
-        return ["query": params]
+    func getGraphQLQueryFileContents() -> String {
+        guard let resource = "\(type(of: self))".split(separator: ".").last,
+            let resourcePath = Bundle.main.path(forResource: String(resource), ofType: "graphql"),
+            let params = try? String(contentsOfFile: resourcePath) else {
+            fatalError("Failed to retrieve .graphql file for request: \(type(of: self)).")
+        }
+
+        return params
     }
 }
+
