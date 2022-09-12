@@ -24,4 +24,8 @@ public extension GraphQLMutation {
 
         return ["query": params, "input": "\(encodedInputs)"]
     }
+
+    var unredactedParameterKeys: Set<String> {
+        ["query"]
+    }
 }

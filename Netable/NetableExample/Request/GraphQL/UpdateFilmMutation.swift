@@ -20,8 +20,4 @@ struct UpdateFilmMutation: GraphQLMutation {
     typealias RawResource = Bool
 
     var input: UpdateFilmMutationInput
-
-    var unredactedParameterKeys: Set<String> {
-        ["input", "query"]
-    }
 }
