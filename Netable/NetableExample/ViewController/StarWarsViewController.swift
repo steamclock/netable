@@ -1,18 +1,20 @@
 //
-//  HomeViewController.swift
+//  StarWarsViewController.swift
 //  NetableExample
 //
-//  Created by Brendan on 2021-09-14.
-//  Copyright © 2021 Steamclock Software. All rights reserved.
+//  Created by Brendan on 2022-09-12.
+//  Copyright © 2022 Steamclock Software. All rights reserved.
 //
 
 import Combine
 import Netable
 import UIKit
 
-class HomeViewController: UITableViewController {
-    private var posts = [Post]()
+class StarWarsViewController: UITableViewController {
+    private var films = [Film]()
     private var cancellables = [AnyCancellable]()
+
+    private let netable = Netable(baseURL: URL(string: "https://swapi-graphql.netlify.app/.netlify/functions/")!)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,24 +25,24 @@ class HomeViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        PostRepository.shared.getPosts()
+        StarWarsRepository.shared.getFilms()
     }
 
     private func bindRepository() {
-        PostRepository.shared.posts.sink { posts in
-            self.posts = posts
+        StarWarsRepository.shared.films.sink { films in
+            self.films = films
             self.tableView.reloadData()
         }.store(in: &cancellables)
     }
     @IBAction func createNewPost(_ sender: Any) {
     }
-    
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        return films.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -48,10 +50,10 @@ class HomeViewController: UITableViewController {
             return UITableViewCell()
         }
 
-        let post = posts[indexPath.row]
+        let films = films[indexPath.row]
 
-        cell.titleLabel.text = post.title
-        cell.contentLabel.text = post.content
+        cell.titleLabel.text = films.title
+        cell.contentLabel.text = films.openingCrawl
         return cell
     }
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="B36-UV-ZdD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="B36-UV-ZdD">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -184,6 +184,7 @@
                     <connections>
                         <segue destination="4e8-EX-yBO" kind="relationship" relationship="viewControllers" id="f9K-Og-NtG"/>
                         <segue destination="7ux-Zv-fKj" kind="relationship" relationship="viewControllers" id="bLf-kU-Q6n"/>
+                        <segue destination="tb4-tH-7Dh" kind="relationship" relationship="viewControllers" id="SkF-c9-JMY"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="24u-rb-gtH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -200,7 +201,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PostOverviewCell" id="bsd-WQ-Isj" customClass="PostOverviewCell" customModule="NetableExample" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="24.5" width="414" height="58"/>
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="58"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bsd-WQ-Isj" id="ft3-iS-5IA">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="58"/>
@@ -264,7 +265,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dmb-Sc-DyR">
-                                <rect key="frame" x="350" y="16" width="48" height="30"/>
+                                <rect key="frame" x="350" y="60" width="48" height="30"/>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
                                     <action selector="cancel:" destination="bQD-J6-NGL" eventType="touchUpInside" id="8DM-FK-kxg"/>
@@ -273,7 +274,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Mpg-ht-s54">
-                                <rect key="frame" x="32" y="64" width="350" height="242"/>
+                                <rect key="frame" x="32" y="108" width="350" height="242"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P4K-jc-wGP">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="34"/>
@@ -368,11 +369,89 @@
             </objects>
             <point key="canvasLocation" x="2132" y="-549"/>
         </scene>
+        <!--Star Wars-->
+        <scene sceneID="s6M-kE-Gou">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tb4-tH-7Dh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Star Wars" selectedImage="star" catalog="system" id="6dx-j0-IMf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3UN-rm-ofa">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Wf2-tr-d0A" kind="relationship" relationship="rootViewController" id="Ell-Jf-soR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CPV-rT-9Lr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2145" y="-1276"/>
+        </scene>
+        <!--Star Wars View Controller-->
+        <scene sceneID="Leu-XV-ypz">
+            <objects>
+                <tableViewController id="Wf2-tr-d0A" customClass="StarWarsViewController" customModule="NetableExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ig4-vN-JJa">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PostOverviewCell" id="v7y-9I-1CX" customClass="PostOverviewCell" customModule="NetableExample" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="58"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v7y-9I-1CX" id="jqe-zt-AD7">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="58"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="sF1-Az-4T9">
+                                            <rect key="frame" x="16" y="8" width="382" height="42"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IIH-iq-72J">
+                                                    <rect key="frame" x="0.0" y="0.0" width="382" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dht-p4-XUe">
+                                                    <rect key="frame" x="0.0" y="24.5" width="382" height="17.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="sF1-Az-4T9" firstAttribute="top" secondItem="jqe-zt-AD7" secondAttribute="top" constant="8" id="6Ix-pJ-9ZU"/>
+                                        <constraint firstItem="sF1-Az-4T9" firstAttribute="leading" secondItem="jqe-zt-AD7" secondAttribute="leading" constant="16" id="Jp0-7X-bag"/>
+                                        <constraint firstAttribute="bottom" secondItem="sF1-Az-4T9" secondAttribute="bottom" constant="8" id="k0m-Mq-G6d"/>
+                                        <constraint firstAttribute="trailing" secondItem="sF1-Az-4T9" secondAttribute="trailing" constant="16" id="ybU-qf-w9x"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="contentLabel" destination="dht-p4-XUe" id="IUl-lt-rx8"/>
+                                    <outlet property="titleLabel" destination="IIH-iq-72J" id="sRj-r6-OHR"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Wf2-tr-d0A" id="b7f-b2-qHV"/>
+                            <outlet property="delegate" destination="Wf2-tr-d0A" id="QjC-Nk-imN"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="IK1-3Q-JGA"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rET-S8-IQn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2971" y="-1276"/>
+        </scene>
     </scenes>
     <resources>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
+        <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

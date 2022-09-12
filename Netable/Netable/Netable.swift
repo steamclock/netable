@@ -116,6 +116,7 @@ open class Netable {
         }
 
         var urlRequest: URLRequest!
+
         do {
             let finalURL = try fullyQualifiedURLFrom(path: request.path)
             urlRequest = URLRequest(url: finalURL)

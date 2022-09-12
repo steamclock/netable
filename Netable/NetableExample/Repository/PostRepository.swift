@@ -50,7 +50,6 @@ class PostRepository {
         let params = CreatePostParams(title: title, content: content)
 
         netable.request(CreatePostRequest(parameters: params)) { result in
-            print(result)
             onComplete()
         }
     }

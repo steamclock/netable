@@ -15,7 +15,7 @@ class RootTabBarController: UITabBarController {
 
         UserRepository.shared.netable.requestFailureDelegate = self
 
-        PostRepository.shared.checkVersion()
+//        PostRepository.shared.checkVersion()
     }
 }
 

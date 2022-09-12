@@ -215,6 +215,10 @@ Sometimes, you may want to specify a backup type to try and decode your response
 
 See [FallbackDecoderViewController](https://github.com/steamclock/netable/blob/master/Netable/NetableExample/Request/VersionCheckRequest.swift) in the Example project for a more detailed example.
 
+#### GraphQL Support
+
+
+
 
 ### Full Documentation
 
