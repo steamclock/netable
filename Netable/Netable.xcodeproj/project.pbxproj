@@ -29,7 +29,7 @@
 		C61DC6EC28CF9AEC0089E912 /* GetAllPostsQuery.graphql in Resources */ = {isa = PBXBuildFile; fileRef = C61DC6EB28CF9AEC0089E912 /* GetAllPostsQuery.graphql */; };
 		C61DC6EE28CF9BD80089E912 /* GraphQLQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DC6ED28CF9BD80089E912 /* GraphQLQuery.swift */; };
 		C61DC6F028CF9CE20089E912 /* GetAllPostsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DC6EF28CF9CE20089E912 /* GetAllPostsQuery.swift */; };
-		C61DC6F228CFB2D00089E912 /* StarWarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DC6F128CFB2D00089E912 /* StarWarsViewController.swift */; };
+		C61DC6F228CFB2D00089E912 /* GraphQLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DC6F128CFB2D00089E912 /* GraphQLViewController.swift */; };
 		C61DC6F428CFB2F40089E912 /* GraphQLRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DC6F328CFB2F40089E912 /* GraphQLRepository.swift */; };
 		C61DC6F628CFC09E0089E912 /* UpdateFilmMutation.graphql in Resources */ = {isa = PBXBuildFile; fileRef = C61DC6F528CFC09E0089E912 /* UpdateFilmMutation.graphql */; };
 		C61DC6F828CFC4360089E912 /* GraphQLMutation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DC6F728CFC4360089E912 /* GraphQLMutation.swift */; };
@@ -130,7 +130,7 @@
 		C61DC6EB28CF9AEC0089E912 /* GetAllPostsQuery.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetAllPostsQuery.graphql; sourceTree = "<group>"; };
 		C61DC6ED28CF9BD80089E912 /* GraphQLQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLQuery.swift; sourceTree = "<group>"; };
 		C61DC6EF28CF9CE20089E912 /* GetAllPostsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllPostsQuery.swift; sourceTree = "<group>"; };
-		C61DC6F128CFB2D00089E912 /* StarWarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsViewController.swift; sourceTree = "<group>"; };
+		C61DC6F128CFB2D00089E912 /* GraphQLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLViewController.swift; sourceTree = "<group>"; };
 		C61DC6F328CFB2F40089E912 /* GraphQLRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLRepository.swift; sourceTree = "<group>"; };
 		C61DC6F528CFC09E0089E912 /* UpdateFilmMutation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = UpdateFilmMutation.graphql; sourceTree = "<group>"; };
 		C61DC6F728CFC4360089E912 /* GraphQLMutation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLMutation.swift; sourceTree = "<group>"; };
@@ -339,7 +339,7 @@
 				C692789426F13F9800917E65 /* ProfileNavigationController.swift */,
 				C692789626F141A000917E65 /* ProfileViewController.swift */,
 				C64EAB7026F2AE970093850A /* RootTabBarController.swift */,
-				C61DC6F128CFB2D00089E912 /* StarWarsViewController.swift */,
+				C61DC6F128CFB2D00089E912 /* GraphQLViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -565,7 +565,7 @@
 				C64EAB6926F2828E0093850A /* Post.swift in Sources */,
 				C64EAB7326F2B1B30093850A /* Version.swift in Sources */,
 				C692788126F121FB00917E65 /* ExampleNetworkService.swift in Sources */,
-				C61DC6F228CFB2D00089E912 /* StarWarsViewController.swift in Sources */,
+				C61DC6F228CFB2D00089E912 /* GraphQLViewController.swift in Sources */,
 				C692789526F13F9800917E65 /* ProfileNavigationController.swift in Sources */,
 				C64EAB7E26F3B8160093850A /* CreatePostRequest.swift in Sources */,
 				B822C8F023F20E8900D7BDAD /* SceneDelegate.swift in Sources */,
