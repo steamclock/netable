@@ -1,16 +1,16 @@
 //
-//  HomeViewController.swift
+//  GraphQLViewController.swift
 //  NetableExample
 //
-//  Created by Brendan on 2021-09-14.
-//  Copyright © 2021 Steamclock Software. All rights reserved.
+//  Created by Brendan on 2022-09-12.
+//  Copyright © 2022 Steamclock Software. All rights reserved.
 //
 
 import Combine
 import Netable
 import UIKit
 
-class HomeViewController: UITableViewController {
+class GraphQLViewController: UITableViewController {
     private var posts = [Post]()
     private var cancellables = [AnyCancellable]()
 
@@ -23,18 +23,18 @@ class HomeViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        PostRepository.shared.getPosts()
+        GraphQLRepository.shared.getPosts()
     }
 
     private func bindRepository() {
-        PostRepository.shared.posts.sink { posts in
+        GraphQLRepository.shared.posts.sink { posts in
             self.posts = posts
             self.tableView.reloadData()
         }.store(in: &cancellables)
     }
     @IBAction func createNewPost(_ sender: Any) {
     }
-    
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

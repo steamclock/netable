@@ -116,6 +116,7 @@ open class Netable {
         }
 
         var urlRequest: URLRequest!
+
         do {
             let finalURL = try fullyQualifiedURLFrom(path: request.path)
             urlRequest = URLRequest(url: finalURL)
@@ -298,6 +299,8 @@ open class Netable {
      * - returns: A fully qualified URL if successful, an `Error` if not.
      */
     internal func fullyQualifiedURLFrom(path: String) throws -> URL {
+        if path.isEmpty { return baseURL }
+
         // Make sure the url is a well formed path.
         guard let url = URL(string: path) else {
             throw NetableError.malformedURL

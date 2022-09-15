@@ -299,7 +299,6 @@ class NetableTests: XCTestCase {
             return
         }
 
-        print(url.absoluteString)
         XCTAssert(
             url.absoluteString == "https://www.steamclock.com?a=foo&b=2" ||
             url.absoluteString == "https://www.steamclock.com?b=2&a=foo"

@@ -215,6 +215,13 @@ Sometimes, you may want to specify a backup type to try and decode your response
 
 See [FallbackDecoderViewController](https://github.com/steamclock/netable/blob/master/Netable/NetableExample/Request/VersionCheckRequest.swift) in the Example project for a more detailed example.
 
+#### GraphQL Support
+
+While you can technically use `Netable` to manage GraphQL queries right out of the box, we've added a couple helper protocols to make your life a little bit easier, called `GraphQLQuery` and `GraphQLMutation`.
+
+You can see a detailed example in the example project, but note that by default it's important that your `.graphql` file's name matches _exactly_ with your request.
+
+We recommend using a tool like [Postman](https://www.postman.com/) to document and test your queries.
 
 ### Full Documentation
 
