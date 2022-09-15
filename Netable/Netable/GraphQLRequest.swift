@@ -69,8 +69,6 @@ public extension GraphQLRequest {
                 let params = try? String(contentsOfFile: resourcePath) else {
             fatalError("Failed to retrieve .graphql file for request: \(type(of: self)).")
         }
-        print("123")
-        print(params)
 
         return params
     }

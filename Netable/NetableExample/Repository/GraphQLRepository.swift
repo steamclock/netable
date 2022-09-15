@@ -35,8 +35,8 @@ class GraphQLRepository {
         let input = UpdatePostMutationInput(id: id, title: title)
         netable.request(UpdatePostMutation(input: input)) { result in
             switch result {
-            case .success(let posts):
-                print(posts)
+            case .success(let post):
+                print("Updated \(post)")
             case .failure(let error):
                 print("failure: \(error.localizedDescription)")
             }
