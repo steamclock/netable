@@ -17,6 +17,8 @@ struct GetAllPostsQuery: GraphQLQuery {
     typealias RawResource = GetAllPostsResponse
     typealias FinalResource = [Post]
 
+    var source = GraphQLQuerySource.resource("GetAllPostsQuery")
+
     func finalize(raw: GetAllPostsResponse) -> Result<[Post], NetableError> {
         .success(raw.posts)
     }

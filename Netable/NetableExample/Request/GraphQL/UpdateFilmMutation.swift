@@ -20,4 +20,6 @@ struct UpdateFilmMutation: GraphQLMutation {
     typealias RawResource = Bool
 
     var input: UpdateFilmMutationInput
+
+    var source = GraphQLQuerySource.autoResource
 }

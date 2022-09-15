@@ -16,7 +16,7 @@ public protocol GraphQLMutation: GraphQLRequest {
 
 public extension GraphQLMutation {
     var parameters: [String: String] {
-        let params = getGraphQLQueryFileContents()
+        let params = getGraphQLQueryContents()
 
         guard let encodedInputs = try? input.toParameterDictionary(encodingStrategy: .useDefaultKeys) else {
             fatalError("Failed to unwrap inputs for graphQL mutation: \(type(of: self))")

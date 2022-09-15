@@ -12,7 +12,7 @@ public protocol GraphQLQuery: GraphQLRequest {}
 
 public extension GraphQLQuery {
     var parameters: [String: String] {
-        let params = getGraphQLQueryFileContents()
+        let params = getGraphQLQueryContents()
         return ["query": params]
     }
 }
