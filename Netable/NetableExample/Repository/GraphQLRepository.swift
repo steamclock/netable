@@ -30,4 +30,16 @@ class GraphQLRepository {
             }
         }
     }
+
+    func updatePost(id: String, title: String) {
+        let input = UpdatePostMutationInput(id: id, title: title)
+        netable.request(UpdatePostMutation(input: input)) { result in
+            switch result {
+            case .success(let posts):
+                print(posts)
+            case .failure(let error):
+                print("failure: \(error.localizedDescription)")
+            }
+        }
+    }
 }
