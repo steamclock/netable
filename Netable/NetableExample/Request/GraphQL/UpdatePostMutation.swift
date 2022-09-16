@@ -1,5 +1,5 @@
 //
-//  UpdateFilmMutation.swift
+//  UpdatePostMutation.swift
 //  NetableExample
 //
 //  Created by Brendan on 2022-09-12.
@@ -9,17 +9,17 @@
 import Foundation
 import Netable
 
-struct UpdateFilmMutationInput: Codable {
+struct UpdatePostMutationInput: Codable {
     let id: String
     let title: String
 }
 
-struct UpdateFilmMutation: GraphQLMutation {
-    typealias Input = UpdateFilmMutationInput
+struct UpdatePostMutation: GraphQLMutation {
+    typealias Input = UpdatePostMutationInput
 
     typealias RawResource = Bool
 
-    var input: UpdateFilmMutationInput
+    var input: UpdatePostMutationInput
 
     var source = GraphQLQuerySource.autoResource
 }

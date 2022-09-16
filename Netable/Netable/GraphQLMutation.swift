@@ -18,11 +18,12 @@ public extension GraphQLMutation {
     var parameters: [String: String] {
         let params = getGraphQLQueryContents()
 
-        guard let encodedInputs = try? input.toParameterDictionary(encodingStrategy: .useDefaultKeys) else {
+        guard let encodedData = try? JSONEncoder().encode(input),
+              let encodedInputs = String(data: encodedData, encoding: .utf8) else {
             fatalError("Failed to unwrap inputs for graphQL mutation: \(type(of: self))")
         }
 
-        return ["query": params, "input": "\(encodedInputs)"]
+        return ["query": params, "input": encodedInputs]
     }
 
     var unredactedParameterKeys: Set<String> {

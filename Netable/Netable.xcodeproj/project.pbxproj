@@ -31,9 +31,9 @@
 		C61DC6F028CF9CE20089E912 /* GetAllPostsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DC6EF28CF9CE20089E912 /* GetAllPostsQuery.swift */; };
 		C61DC6F228CFB2D00089E912 /* GraphQLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DC6F128CFB2D00089E912 /* GraphQLViewController.swift */; };
 		C61DC6F428CFB2F40089E912 /* GraphQLRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DC6F328CFB2F40089E912 /* GraphQLRepository.swift */; };
-		C61DC6F628CFC09E0089E912 /* UpdateFilmMutation.graphql in Resources */ = {isa = PBXBuildFile; fileRef = C61DC6F528CFC09E0089E912 /* UpdateFilmMutation.graphql */; };
+		C61DC6F628CFC09E0089E912 /* UpdatePostMutation.graphql in Resources */ = {isa = PBXBuildFile; fileRef = C61DC6F528CFC09E0089E912 /* UpdatePostMutation.graphql */; };
 		C61DC6F828CFC4360089E912 /* GraphQLMutation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DC6F728CFC4360089E912 /* GraphQLMutation.swift */; };
-		C61DC6FA28CFD4260089E912 /* UpdateFilmMutation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DC6F928CFD4250089E912 /* UpdateFilmMutation.swift */; };
+		C61DC6FA28CFD4260089E912 /* UpdatePostMutation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DC6F928CFD4250089E912 /* UpdatePostMutation.swift */; };
 		C61DC6FC28CFDF3F0089E912 /* GraphQLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61DC6FB28CFDF3F0089E912 /* GraphQLRequest.swift */; };
 		C635DCB426D95D2A009F82A0 /* SmartUnwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C635DCB326D95D2A009F82A0 /* SmartUnwrap.swift */; };
 		C64EAB6926F2828E0093850A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64EAB6826F2828E0093850A /* Post.swift */; };
@@ -132,9 +132,9 @@
 		C61DC6EF28CF9CE20089E912 /* GetAllPostsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllPostsQuery.swift; sourceTree = "<group>"; };
 		C61DC6F128CFB2D00089E912 /* GraphQLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLViewController.swift; sourceTree = "<group>"; };
 		C61DC6F328CFB2F40089E912 /* GraphQLRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLRepository.swift; sourceTree = "<group>"; };
-		C61DC6F528CFC09E0089E912 /* UpdateFilmMutation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = UpdateFilmMutation.graphql; sourceTree = "<group>"; };
+		C61DC6F528CFC09E0089E912 /* UpdatePostMutation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = UpdatePostMutation.graphql; sourceTree = "<group>"; };
 		C61DC6F728CFC4360089E912 /* GraphQLMutation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLMutation.swift; sourceTree = "<group>"; };
-		C61DC6F928CFD4250089E912 /* UpdateFilmMutation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFilmMutation.swift; sourceTree = "<group>"; };
+		C61DC6F928CFD4250089E912 /* UpdatePostMutation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePostMutation.swift; sourceTree = "<group>"; };
 		C61DC6FB28CFDF3F0089E912 /* GraphQLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLRequest.swift; sourceTree = "<group>"; };
 		C635DCB326D95D2A009F82A0 /* SmartUnwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartUnwrap.swift; sourceTree = "<group>"; };
 		C64EAB6826F2828E0093850A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -279,8 +279,8 @@
 			children = (
 				C61DC6EB28CF9AEC0089E912 /* GetAllPostsQuery.graphql */,
 				C61DC6EF28CF9CE20089E912 /* GetAllPostsQuery.swift */,
-				C61DC6F528CFC09E0089E912 /* UpdateFilmMutation.graphql */,
-				C61DC6F928CFD4250089E912 /* UpdateFilmMutation.swift */,
+				C61DC6F528CFC09E0089E912 /* UpdatePostMutation.graphql */,
+				C61DC6F928CFD4250089E912 /* UpdatePostMutation.swift */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -512,7 +512,7 @@
 				B822C8F523F20E8900D7BDAD /* Main.storyboard in Resources */,
 				C692788926F1259800917E65 /* login.json in Resources */,
 				C692788B26F125B400917E65 /* posts.json in Resources */,
-				C61DC6F628CFC09E0089E912 /* UpdateFilmMutation.graphql in Resources */,
+				C61DC6F628CFC09E0089E912 /* UpdatePostMutation.graphql in Resources */,
 				C61DC6EC28CF9AEC0089E912 /* GetAllPostsQuery.graphql in Resources */,
 				C64EAB7726F2B2E00093850A /* version.json in Resources */,
 				C692789B26F1463B00917E65 /* user.json in Resources */,
@@ -553,7 +553,7 @@
 				C692789D26F147FC00917E65 /* GetUserDetailsRequest.swift in Sources */,
 				C692789726F141A000917E65 /* ProfileViewController.swift in Sources */,
 				C64EAB6F26F2AD4F0093850A /* FailedRequest.swift in Sources */,
-				C61DC6FA28CFD4260089E912 /* UpdateFilmMutation.swift in Sources */,
+				C61DC6FA28CFD4260089E912 /* UpdatePostMutation.swift in Sources */,
 				C64EAB7A26F3AD370093850A /* PostOverviewCell.swift in Sources */,
 				C64EAB7126F2AE970093850A /* RootTabBarController.swift in Sources */,
 				C61DC6F028CF9CE20089E912 /* GetAllPostsQuery.swift in Sources */,

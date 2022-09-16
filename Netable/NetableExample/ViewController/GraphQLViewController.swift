@@ -24,6 +24,9 @@ class GraphQLViewController: UITableViewController {
         super.viewWillAppear(animated)
 
         GraphQLRepository.shared.getPosts()
+
+        /// This doesn't actually do anything, but serves as an example of a mutation
+        GraphQLRepository.shared.updatePost(id: "1", title: "A new title")
     }
 
     private func bindRepository() {
