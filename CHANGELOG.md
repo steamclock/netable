@@ -5,8 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [1.1.0] UNRELEASED
+- [77] Add basic support for `async`/`await`
 - [96] Add support + documentation for basic GraphQL requests.
-
 
 ## [1.0.0] 12-9-21
 ### Added
