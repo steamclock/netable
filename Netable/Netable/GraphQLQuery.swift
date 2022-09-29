@@ -12,7 +12,8 @@ public protocol GraphQLQuery: GraphQLRequest {}
 
 public extension GraphQLQuery {
     var parameters: [String: String] {
-        let params = getGraphQLQueryContents()
-        return ["query": params]
+        // TODO: FIX THIS
+//        let params = getGraphQLQueryContents()
+        return ["query": "params"]
     }
 }

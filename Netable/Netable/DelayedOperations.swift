@@ -10,6 +10,30 @@ import Foundation
 
 // Utility class for scheduling future operations that can easily be identified and cancelled later
 // Used to hold in-flight requests that are waiting for a retry.
+internal actor DelayedOperationsAsync {
+    private var operations: [(timer: DispatchSourceTimer, id: String)] = []
+    private var currentTask: Task<Void, Never>?
+
+    func delay(_ delay: TimeInterval, withID id: String, doAction action: @escaping () async -> Void) {
+        Task {
+            sleep(UInt32(delay))
+
+//            cancel(id)
+
+            await action()
+        }
+    }
+//
+//    @discardableResult
+//    func cancel(_ id: String) -> Bool {
+//        self.localQueue.sync {
+//            let origCount = operations.count
+//            operations.removeAll { $0.id == id }
+//            return operations.count != origCount
+//        }
+//    }
+}
+
 internal class DelayedOperations {
     private var localQueue = DispatchQueue(label: "Netable DelayedOperations")
     private var actionQueue: DispatchQueue

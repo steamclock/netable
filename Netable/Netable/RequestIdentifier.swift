@@ -20,7 +20,7 @@ public struct RequestIdentifier {
     /*
      * Cancel an ongoing request without needing to store a reference to the `Netable` instance.
      */
-    public func cancel() {
-        session?.cancel(byId: self)
+    public func cancel() async {
+        await session?.cancel(byId: self)
     }
 }

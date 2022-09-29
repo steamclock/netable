@@ -40,31 +40,31 @@ public extension GraphQLRequest {
 
     var path: String { "" }
 
-    func getGraphQLQueryContents() -> String {
+    func getGraphQLQueryContents() async -> String {
         switch source {
-        case .autoResource: return getAutoResourcedContents()
-        case .file(let url): return getFileContents(url)
+        case .autoResource: return await getAutoResourcedContents()
+        case .file(let url): return await getFileContents(url)
         case .literal(let literal): return literal
-        case .resource(let bundleResource): return getResourcedContents(bundleResource)
+        case .resource(let bundleResource): return await getResourcedContents(bundleResource)
         }
     }
 
-    private func getFileContents(_ url: URL) -> String {
+    private func getFileContents(_ url: URL) async -> String {
         guard let params = try? String(contentsOf: url) else {
             fatalError("Failed to retrieve .graphql file by URL \(url.absoluteString) for request: \(type(of: self)).")
         }
         return params
     }
 
-    private func getAutoResourcedContents() -> String {
+    private func getAutoResourcedContents() async -> String {
         guard let autoResource = "\(type(of: self))".split(separator: ".").last else {
             fatalError("Failed to retrieve auto-resourced .graphql file for request: \(type(of: self)).")
         }
 
-        return getResourcedContents(String(autoResource))
+        return await getResourcedContents(String(autoResource))
     }
 
-    private func getResourcedContents(_ resource: String) -> String {
+    private func getResourcedContents(_ resource: String) async -> String {
         guard let resourcePath = Bundle.main.path(forResource: String(resource), ofType: "graphql"),
                 let params = try? String(contentsOfFile: resourcePath) else {
             fatalError("Failed to retrieve .graphql file for request: \(type(of: self)).")

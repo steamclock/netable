@@ -47,10 +47,10 @@ public protocol Request {
     var jsonKeyEncodingStrategy: JSONEncoder.KeyEncodingStrategy? { get }
 
     /// Optional: The method to decode Data into your RawResource
-    func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) -> Result<RawResource, NetableError>
+    func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) async throws -> RawResource
 
     /// Optional: The method to convert your RawResource returned by the server to FinalResource.
-    func finalize(raw: RawResource) -> Result<FinalResource, NetableError>
+    func finalize(raw: RawResource) async throws -> FinalResource
 }
 
 public extension Request {
@@ -100,40 +100,39 @@ public extension Request where Parameters == Empty {
 
 public extension Request where FinalResource == RawResource {
     /// By default, `finalize` just returns the RawResource.
-    func finalize(raw: RawResource) -> Result<FinalResource, NetableError> {
-        return .success(raw)
+    func finalize(raw: RawResource) async throws -> FinalResource {
+        return raw
     }
 }
 
 public extension Request where RawResource: Decodable {
-    func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) -> Result<RawResource, NetableError> {
-        do {
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .iso8601
-            decoder.keyDecodingStrategy = jsonKeyDecodingStrategy ?? defaultDecodingStrategy
+    func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) async throws -> RawResource {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        decoder.keyDecodingStrategy = jsonKeyDecodingStrategy ?? defaultDecodingStrategy
 
+        do {
             if RawResource.self == Empty.self {
                 let raw = try decoder.decode(RawResource.self, from: Empty.data)
-                return .success(raw)
+                return raw
             } else if let data = data {
                 let raw = try decoder.decode(RawResource.self, from: data)
-                return .success(raw)
-            } else {
-                return .failure(.noData)
+                return raw
             }
         } catch {
-            let error = NetableError.decodingError(error, data)
-            return .failure(error)
+            throw NetableError.decodingError(error, data)
         }
+
+        throw NetableError.noData
     }
 }
 
 public extension Request where RawResource == Data {
-    func decode(_ data : Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) -> Result<RawResource, NetableError> {
+    func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) async throws -> RawResource {
         if let data = data {
-            return .success(data)
+            return data
         } else {
-            return .failure(.noData)
+            throw NetableError.noData
         }
     }
 }
@@ -143,10 +142,9 @@ extension CodingUserInfoKey {
 }
 
 public extension Request where RawResource == SmartUnwrap<FinalResource> {
-    func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) -> Result<SmartUnwrap<FinalResource>, NetableError> {
-
+    func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) async throws -> RawResource {
         guard let data = data else {
-            return .failure(.noData)
+            throw NetableError.noData
         }
 
         do {
@@ -155,21 +153,20 @@ public extension Request where RawResource == SmartUnwrap<FinalResource> {
                 .smartUnwrapKey: smartUnwrapKey
             ]
             let decodedResult = try decoder.decode(SmartUnwrap<FinalResource>.self, from: data)
-            return .success(decodedResult)
+            return decodedResult
         } catch {
-            let error = NetableError.decodingError(error, data)
-            return .failure(error)
+            throw NetableError.decodingError(error, data)
         }
     }
 
-    func finalize(raw: RawResource) -> Result<FinalResource, NetableError> {
+    func finalize(raw: RawResource) async throws -> FinalResource {
         let unwrapped = raw as SmartUnwrap<FinalResource>
-        return .success(unwrapped.decodedType)
+        return unwrapped.decodedType
     }
 }
 
 public extension Request where RawResource: Decodable, FallbackResource: Decodable {
-    func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) -> Result<RawResource, NetableError> {
+    func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) async throws -> RawResource {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         decoder.keyDecodingStrategy = jsonKeyDecodingStrategy ?? defaultDecodingStrategy
@@ -177,21 +174,21 @@ public extension Request where RawResource: Decodable, FallbackResource: Decodab
         do {
             if RawResource.self == Empty.self {
                 let raw = try decoder.decode(RawResource.self, from: Empty.data)
-                return .success(raw)
+                return raw
             } else if let data = data {
                 let raw = try decoder.decode(RawResource.self, from: data)
-                return .success(raw)
+                return raw
             }
         } catch {
             if let data = data, let raw = try? decoder.decode(FallbackResource.self, from: data) {
-                return .failure(.fallbackDecode(raw))
+                throw NetableError.fallbackDecode(raw)
             }
 
             let error = NetableError.decodingError(error, data)
-            return .failure(error)
+            throw error
         }
 
-        return .failure(.noData)
+        throw NetableError.noData
     }
 }
 

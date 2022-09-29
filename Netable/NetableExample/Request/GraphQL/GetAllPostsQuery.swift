@@ -19,7 +19,7 @@ struct GetAllPostsQuery: GraphQLQuery {
 
     var source = GraphQLQuerySource.resource("GetAllPostsQuery")
 
-    func finalize(raw: GetAllPostsResponse) -> Result<[Post], NetableError> {
-        .success(raw.posts)
+    func finalize(raw: GetAllPostsResponse) async throws -> [Post] {
+        raw.posts
     }
 }
