@@ -23,11 +23,11 @@ class PostRepository {
     }
 
     func checkVersion() {
-        netable.request(VersionCheckRequest()) { result in
-            switch result {
-            case .success:
+        Task {
+            do {
+                try await netable.request(VersionCheckRequest())
                 print("Version check successful!")
-            case .failure(let error):
+            } catch {
                 if case NetableError.fallbackDecode = error {
                     print("Version check fallback successful!")
                     return
@@ -39,9 +39,12 @@ class PostRepository {
     }
 
     func getPosts() {
-        netable.request(GetPostsRequest()) { [weak self] result in
-            if case .success(let posts) = result {
-                self?.posts.send(posts)
+        Task { @MainActor in
+            do {
+                let posts = try await netable.request(GetPostsRequest())
+                self.posts.send(posts)
+            } catch {
+                print(error)
             }
         }
     }

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3B00B3C726D7EA3C00A1DF79 /* DecodingError+Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B00B3C626D7EA3C00A1DF79 /* DecodingError+Logging.swift */; };
 		A63ABCCA24ABB402004DE84E /* RetryConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63ABCC924ABB402004DE84E /* RetryConfiguration.swift */; };
-		A63ABCCC24ABBFCC004DE84E /* DelayedOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63ABCCB24ABBFCC004DE84E /* DelayedOperations.swift */; };
 		B822C8EE23F20E8900D7BDAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B822C8ED23F20E8900D7BDAD /* AppDelegate.swift */; };
 		B822C8F023F20E8900D7BDAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B822C8EF23F20E8900D7BDAD /* SceneDelegate.swift */; };
 		B822C8F523F20E8900D7BDAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B822C8F323F20E8900D7BDAD /* Main.storyboard */; };
@@ -55,7 +54,6 @@
 		C64F8592241FE4870028E0E9 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = C64F8591241FE4870028E0E9 /* CHANGELOG.md */; };
 		C65289F526D01829009D486B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65289F426D01829009D486B /* Config.swift */; };
 		C66901AF241C1B0A002954C5 /* CustomLogDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66901AE241C1B0A002954C5 /* CustomLogDestination.swift */; };
-		C66FC07424379A990047D864 /* RequestIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66FC07324379A990047D864 /* RequestIdentifier.swift */; };
 		C692787926F120E100917E65 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C692787826F120E100917E65 /* User.swift */; };
 		C692787B26F1210500917E65 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C692787A26F1210500917E65 /* UserRepository.swift */; };
 		C692787E26F121CD00917E65 /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C692787D26F121CD00917E65 /* PostRepository.swift */; };
@@ -109,7 +107,6 @@
 /* Begin PBXFileReference section */
 		3B00B3C626D7EA3C00A1DF79 /* DecodingError+Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DecodingError+Logging.swift"; sourceTree = "<group>"; };
 		A63ABCC924ABB402004DE84E /* RetryConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryConfiguration.swift; sourceTree = "<group>"; };
-		A63ABCCB24ABBFCC004DE84E /* DelayedOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedOperations.swift; sourceTree = "<group>"; };
 		B822C8EB23F20E8900D7BDAD /* NetableExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetableExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B822C8ED23F20E8900D7BDAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B822C8EF23F20E8900D7BDAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -159,7 +156,6 @@
 		C64F8591241FE4870028E0E9 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../../CHANGELOG.md; sourceTree = "<group>"; };
 		C65289F426D01829009D486B /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		C66901AE241C1B0A002954C5 /* CustomLogDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLogDestination.swift; sourceTree = "<group>"; };
-		C66FC07324379A990047D864 /* RequestIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestIdentifier.swift; sourceTree = "<group>"; };
 		C692787826F120E100917E65 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C692787A26F1210500917E65 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		C692787D26F121CD00917E65 /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
@@ -248,7 +244,6 @@
 				C64F8591241FE4870028E0E9 /* CHANGELOG.md */,
 				C65289F426D01829009D486B /* Config.swift */,
 				3B00B3C626D7EA3C00A1DF79 /* DecodingError+Logging.swift */,
-				A63ABCCB24ABBFCC004DE84E /* DelayedOperations.swift */,
 				B8C9289C23E9FA0E00DB2B37 /* Error.swift */,
 				C61DC6F728CFC4360089E912 /* GraphQLMutation.swift */,
 				C61DC6ED28CF9BD80089E912 /* GraphQLQuery.swift */,
@@ -262,7 +257,6 @@
 				C6F4CFB526D598B3004E6BB8 /* README.md */,
 				B8C928A023E9FBA100DB2B37 /* Request.swift */,
 				C6F4CFAF26D582E8004E6BB8 /* RequestFailedDelegate.swift */,
-				C66FC07324379A990047D864 /* RequestIdentifier.swift */,
 				A63ABCC924ABB402004DE84E /* RetryConfiguration.swift */,
 				C635DCB326D95D2A009F82A0 /* SmartUnwrap.swift */,
 				B8C9289E23E9FB1500DB2B37 /* URLRequest+EncodeParameters.swift */,
@@ -599,7 +593,6 @@
 				B8C928A723E9FC8D00DB2B37 /* URLRequest+EncodeURL.swift in Sources */,
 				C635DCB426D95D2A009F82A0 /* SmartUnwrap.swift in Sources */,
 				B8C928A523E9FC3E00DB2B37 /* URLRequest+Multipart.swift in Sources */,
-				A63ABCCC24ABBFCC004DE84E /* DelayedOperations.swift in Sources */,
 				C6F4CFB026D582E8004E6BB8 /* RequestFailedDelegate.swift in Sources */,
 				C639675128E5F89D00ADAE3E /* Netable+Error.swift in Sources */,
 				B8C9289F23E9FB1500DB2B37 /* URLRequest+EncodeParameters.swift in Sources */,
@@ -612,7 +605,6 @@
 				B8C9289D23E9FA0E00DB2B37 /* Error.swift in Sources */,
 				C639674F28E4F58100ADAE3E /* String+FullyQualifiedURL.swift in Sources */,
 				B8C928A323E9FBEC00DB2B37 /* HTTPMethod.swift in Sources */,
-				C66FC07424379A990047D864 /* RequestIdentifier.swift in Sources */,
 				C61DC6F828CFC4360089E912 /* GraphQLMutation.swift in Sources */,
 				B8C928A923E9FDCC00DB2B37 /* Netable.swift in Sources */,
 				A63ABCCA24ABB402004DE84E /* RetryConfiguration.swift in Sources */,

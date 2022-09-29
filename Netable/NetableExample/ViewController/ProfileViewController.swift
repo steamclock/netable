@@ -38,7 +38,12 @@ class ProfileViewController: UIViewController {
     }
 
     private func bindUserRepository() {
-        UserRepository.shared.getUserDetails()
+        do {
+            try UserRepository.shared.getUserDetails()
+        } catch {
+            print("How you want to handle errors is up to you")
+        }
+
         UserRepository.shared.user.sink { user in
             self.emailLabel.text = user?.email
             self.firstNameLabel.text = user?.firstName

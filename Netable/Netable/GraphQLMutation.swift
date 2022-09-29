@@ -16,7 +16,7 @@ public protocol GraphQLMutation: GraphQLRequest {
 
 public extension GraphQLMutation {
     var parameters: [String: String] {
-        let params = "" // TODO getGraphQLQueryContents()
+        let params = getGraphQLQueryContents()
 
         guard let encodedData = try? JSONEncoder().encode(input),
               let encodedInputs = String(data: encodedData, encoding: .utf8) else {

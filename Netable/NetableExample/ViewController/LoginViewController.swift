@@ -12,6 +12,7 @@ class LoginViewController: UIViewController {
     @IBOutlet private var emailField: UITextField!
     @IBOutlet private var passwordField: UITextField!
     @IBOutlet private var submitButton: UIButton!
+    @IBOutlet var errorText: UILabel!
 
     @IBAction private func login(_ sender: Any) {
         guard let email = emailField.text, let password = passwordField.text else {
@@ -19,6 +20,10 @@ class LoginViewController: UIViewController {
             return
         }
 
-        UserRepository.shared.login(email: email, password: password)
+        do {
+            try UserRepository.shared.login(email: email, password: password)
+        } catch {
+            errorText.text = error.localizedDescription
+        }
     }
 }

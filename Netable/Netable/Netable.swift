@@ -38,9 +38,6 @@ open class Netable {
     /// Settings for if / how retries will be handled
     public var retryConfiguration: RetryConfiguration
 
-    /// Settings for if / how retries will be handled
-    private var delayedOperations = DelayedOperations()
-
     /// Delegate to handle global request errors
     public var requestFailureDelegate: RequestFailureDelegate?
 
@@ -80,6 +77,7 @@ open class Netable {
      * - Throws: An error of type `NetableError`
      * - returns: Your `FinalResource`
      */
+    @discardableResult
     public func request<T: Request>(_ request: T) async throws -> T.FinalResource {
         var urlRequest: URLRequest!
 
@@ -115,8 +113,11 @@ open class Netable {
      *
      * - parameter request: The request to send, this has to extend `Request`.
      * - parameter completion: Your completion handler for the request.
+     *
+     * - returns: the Task your request is running in, for cancellation
      */
-    public func request<T: Request>(_ request: T, completion unsafeCompletion: @escaping (Result<T.FinalResource, NetableError>) -> Void) {
+    @discardableResult
+    public func request<T: Request>(_ request: T, completion unsafeCompletion: @escaping (Result<T.FinalResource, NetableError>) -> Void) -> Task<(), Never> {
         // We don't need the whole request to run on the main thread, but DO need to make sure the completion does
         let completion: (Result<T.FinalResource, NetableError>) -> Void = { result in
             DispatchQueue.main.async {
@@ -129,7 +130,7 @@ open class Netable {
             }
         }
 
-        Task {
+        let task = Task {
             do {
                 let result = try await self.request(request)
                 completion(.success(result))
@@ -137,6 +138,8 @@ open class Netable {
                 completion(.failure(error.netableError))
             }
         }
+
+        return task
     }
 
     /**
@@ -146,10 +149,10 @@ open class Netable {
      *
      * - returns: A PassthroughSubject that will emit a `Result` when the request completes, or a `NetableErorr` on failure.
      */
-    public func request<T: Request>(_ request: T) -> PassthroughSubject<T.FinalResource, NetableError> {
+    public func request<T: Request>(_ request: T) -> (task: Task<(), Never>, subject: PassthroughSubject<T.FinalResource, NetableError>) {
         let resultSubject = PassthroughSubject<T.FinalResource, NetableError>()
 
-        Task {
+        let task = Task {
             do {
                 let finalResource = try await self.request(request)
                 resultSubject.send(finalResource)
@@ -158,7 +161,7 @@ open class Netable {
             }
         }
 
-        return resultSubject
+        return (task: task, subject: resultSubject)
     }
 
     private func startRequestTask<T: Request>(_ request: T, urlRequest: URLRequest, id: String, retriesLeft: UInt) async throws -> T.FinalResource {
@@ -178,10 +181,13 @@ open class Netable {
             log(.requestBody(body: params))
         }
 
-//        let retryConfiguration = self.retryConfiguration
+        let retryConfiguration = self.retryConfiguration
 
         do {
-            // TODO: Do we want to handle cancelling requests here with data(for: urlRequest, delegate: )?
+            if retriesLeft < retryConfiguration.count {
+                sleep(UInt32(retryConfiguration.delay))
+            }
+
             let (data, response) = try await urlSession.data(for: urlRequest)
 
             guard let response = response as? HTTPURLResponse else { fatalError("Casting response to HTTPURLResponse failed") }
@@ -199,66 +205,37 @@ open class Netable {
         } catch {
             let netableError = error.netableError
             let time = CACurrentMediaTime() - startTimestamp
-//
-//            var allowRetry = true
-//
-//            // We totally suppress retrying cancels (because then it would be impossible to cancel a request at all)
-//            // and timeouts (because they generally take so long to fail that allowing retries would cause enormous waits,
-//            // might want to relax this eventually if we know a shorter timeout is in use)
-//            if case .requestFailed(let error) = netableError {
-//                let nsError = error as NSError
-//                if nsError.domain == NSURLErrorDomain {
-//                    if (nsError.code == NSURLErrorCancelled) || (nsError.code == NSURLErrorTimedOut) {
-//                        allowRetry = false
-//                    }
-//                }
-//            }
-//
-//            if allowRetry && retryConfiguration.enabled && retriesLeft > 0 && retryConfiguration.errors.shouldRetry(netableError) {
-//                self.log(.requestRetrying(request: requestInfo, taskTime: time, error: netableError))
-//                self.delayedOperations.delay(retryConfiguration.delay, withID: id) {
-//                    let result = try await self.startRequestTask(request, urlRequest: urlRequest, id: id, retriesLeft: retriesLeft - 1)
-//                }
-//            } else {
+
+            var allowRetry = true
+
+            // We totally suppress retrying cancels (because then it would be impossible to cancel a request at all)
+            // and timeouts (because they generally take so long to fail that allowing retries would cause enormous waits,
+            // might want to relax this eventually if we know a shorter timeout is in use)
+            if case .requestFailed(let error) = netableError {
+                let nsError = error as NSError
+                if nsError.domain == NSURLErrorDomain {
+                    if (nsError.code == NSURLErrorCancelled) || (nsError.code == NSURLErrorTimedOut) {
+                        allowRetry = false
+                    }
+                }
+
+                throw netableError
+            }
+
+            if allowRetry && retryConfiguration.enabled && retriesLeft > 0 && retryConfiguration.errors.shouldRetry(netableError) {
+                self.log(.requestRetrying(request: requestInfo, taskTime: time, error: netableError))
+                return try await self.startRequestTask(request, urlRequest: urlRequest, id: id, retriesLeft: retriesLeft - 1)
+            } else {
                 self.log(.requestFailed(request: requestInfo, taskTime: time, error: netableError))
                 throw netableError
-//            }
+            }
         }
-    }
-
-    /**
-     * Cancel a specific ongoing request.
-     *
-     * - parameter request: The request to cancel.
-     */
-    open func cancel(byId taskId: RequestIdentifier) async {
-        guard taskId.session == self else {
-          fatalError("Attempted to cancel a task from a different Netable session")
-        }
-
-        self.log(.message("Cancelling request by task identifier."))
-
-        if delayedOperations.cancel(taskId.id) {
-            self.log(.message("Cancelled delayed retry task."))
-            return
-        }
-
-        let tasks = await urlSession.allTasks
-        guard let task = tasks.first(where: { $0.taskDescription == taskId.id }) else {
-            self.log(.message("Failed to cancel request, no request with that id was found."))
-            return
-        }
-
-        self.log(.message("Task cancelled."))
-        task.cancel()
     }
 
     /**
      * Cancel any ongoing requests.
      */
     open func cancelAllTasks() {
-        delayedOperations.cancelAll()
-        
         urlSession.getAllTasks { tasks in
             self.log(.message("Cancelling all ongoing tasks."))
             for task in tasks {
@@ -279,46 +256,6 @@ open class Netable {
     internal func log(_ event: LogEvent) {
         Task { @MainActor in
             self.logDestination.log(event: event)
-        }
-    }
-}
-
-
-
-
-
-
-class TaskQueue{
-    private actor TaskQueueActor{
-        private var blocks : [() async -> Void] = []
-        private var currentTask : Task<Void,Never>? = nil
-
-        func addBlock(block:@escaping () async -> Void){
-            blocks.append(block)
-            next()
-        }
-
-        func next()
-        {
-            if(currentTask != nil) {
-                return
-            }
-            if(!blocks.isEmpty)
-            {
-                let block = blocks.removeFirst()
-                currentTask = Task{
-                    await block()
-                    currentTask = nil
-                    next()
-                }
-            }
-        }
-    }
-    private let taskQueueActor = TaskQueueActor()
-
-    func dispatch(block:@escaping () async ->Void){
-        Task{
-            await taskQueueActor.addBlock(block: block)
         }
     }
 }
