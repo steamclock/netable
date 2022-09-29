@@ -14,6 +14,12 @@ public extension Error {
      * If the unwrap fails, it will wrap the error in `NetableError.unknownError`.
      */
     var netableError: NetableError {
+        let nsError = self as NSError
+        if nsError.domain == NSURLErrorDomain &&
+                nsError.code == NSURLErrorCancelled || nsError.code == NSURLErrorTimedOut {
+            return NetableError.cancelled(self)
+        }
+
         let netableError = (self as? NetableError) ?? NetableError.unknownError(self)
         return netableError
     }

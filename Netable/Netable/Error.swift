@@ -10,6 +10,9 @@ import Foundation
 
 /// All errors returned by Netable are NetableErrors.
 public enum NetableError: Error {
+    /// Either the request was manually cancelled or timed out
+    case cancelled(Error)
+
     /// Something went wrong while encoding request parameters.
     case codingError(String)
 
@@ -46,6 +49,8 @@ public enum NetableError: Error {
 extension NetableError: LocalizedError {
     public var errorCode: Int? {
         switch self {
+        case .cancelled:
+            return -1
         case .codingError:
             return 0
         case .decodingError:
@@ -71,6 +76,8 @@ extension NetableError: LocalizedError {
 
     public var errorDescription: String? {
         switch self {
+        case .cancelled:
+            return "Cancelled"
         case .codingError(let message):
             return "Coding error: \(message)"
         case .decodingError(let error, _):
@@ -104,6 +111,8 @@ extension NetableError: LocalizedError {
 extension NetableError: Equatable {
     public static func == (lhs: NetableError, rhs: NetableError) -> Bool {
         switch (lhs, rhs) {
+        case (.cancelled(let lhsError), .cancelled(let rhsError)):
+            return lhsError.localizedDescription == rhsError.localizedDescription
         case (.codingError(let lhsMessage), .codingError(let rhsMessage)):
             return lhsMessage == rhsMessage
         case (.decodingError(let lhsError, let lhsData), .decodingError(let rhsError, let rhsData)):

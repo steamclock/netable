@@ -211,15 +211,8 @@ open class Netable {
             // We totally suppress retrying cancels (because then it would be impossible to cancel a request at all)
             // and timeouts (because they generally take so long to fail that allowing retries would cause enormous waits,
             // might want to relax this eventually if we know a shorter timeout is in use)
-            if case .requestFailed(let error) = netableError {
-                let nsError = error as NSError
-                if nsError.domain == NSURLErrorDomain {
-                    if (nsError.code == NSURLErrorCancelled) || (nsError.code == NSURLErrorTimedOut) {
-                        allowRetry = false
-                    }
-                }
-
-                throw netableError
+            if case .cancelled = netableError {
+                allowRetry = false
             }
 
             if allowRetry && retryConfiguration.enabled && retriesLeft > 0 && retryConfiguration.errors.shouldRetry(netableError) {
