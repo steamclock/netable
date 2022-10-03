@@ -8,13 +8,16 @@
 
 import Foundation
 
+/// This protocol extends the default `Request` protocol, adding support for making GraphQL mutation requests.
 public protocol GraphQLMutation: GraphQLRequest {
+    /// Your mutation's input will be encoded and sent along with the request.
     associatedtype Input: Encodable
 
     var input: Input { get }
 }
 
 public extension GraphQLMutation {
+    /// Encodes and combines the request `Input` and query to form the request.
     var parameters: [String: String] {
         let params = getGraphQLQueryContents()
 

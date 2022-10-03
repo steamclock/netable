@@ -16,7 +16,7 @@ extension String {
      *
      * - Throws: `NetableError` if the provided URL is invalid and unable to be corrected.
      *
-     * - returns: A fully qualified URL if successful, an `Error` if not.
+     * - returns: A fully qualified URL.
      */
     internal func fullyQualifiedURL(from baseURL: URL) throws -> URL {
         if self.isEmpty { return baseURL }
