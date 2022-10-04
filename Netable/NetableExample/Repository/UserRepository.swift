@@ -35,7 +35,10 @@ class UserRepository {
 
         Task {
             let user = try await netable.request(LoginRequest(parameters: params))
-            self.user.send(user)
+
+            await MainActor.run {
+                self.user.send(user)
+            }
         }
     }
 
@@ -44,7 +47,10 @@ class UserRepository {
 
         Task {
             let userDetails = try await netable.request(GetUserDetailsRequest(parameters: params))
-            self.user.send(userDetails)
+
+            await MainActor.run {
+                self.user.send(userDetails)
+            }
         }
     }
 

@@ -120,7 +120,7 @@ open class Netable {
     public func request<T: Request>(_ request: T, completion unsafeCompletion: @escaping (Result<T.FinalResource, NetableError>) -> Void) -> Task<(), Never> {
         // We don't need the whole request to run on the main thread, but DO need to make sure the completion does
         let completion: (Result<T.FinalResource, NetableError>) -> Void = { result in
-            DispatchQueue.main.async {
+            Task { @MainActor in
                 unsafeCompletion(result)
 
                 if case .failure(let error) = result {
@@ -143,21 +143,25 @@ open class Netable {
     }
 
     /**
-     * Create and send a new request, returning a PassthroughSubject to monitor for results.
+     * Create and send a new request, returning a tuple containing a reference to the task and a PassthroughSubject to monitor for results.
      *
      * - parameter request: The request to send, this has to extend `Request`.
      *
-     * - returns: A PassthroughSubject that will emit a `Result` when the request completes, or a `NetableErorr` on failure.
+     * - returns: A tuple that contains a reference to the `Task` and a PassthroughSubject to monitor for results.
      */
-    public func request<T: Request>(_ request: T) -> (task: Task<(), Never>, subject: PassthroughSubject<T.FinalResource, NetableError>) {
-        let resultSubject = PassthroughSubject<T.FinalResource, NetableError>()
+    public func request<T: Request>(_ request: T) -> (task: Task<(), Never>, subject: PassthroughSubject<Result<T.FinalResource, NetableError>, Never>) {
+        let resultSubject = PassthroughSubject<Result<T.FinalResource, NetableError>, Never>()
 
         let task = Task {
             do {
                 let finalResource = try await self.request(request)
-                resultSubject.send(finalResource)
+                await MainActor.run {
+                    resultSubject.send(.success(finalResource))
+                }
             } catch {
-                resultSubject.send(completion: .failure(error.netableError))
+                await MainActor.run {
+                    resultSubject.send(.failure(error.netableError))
+                }
             }
         }
 

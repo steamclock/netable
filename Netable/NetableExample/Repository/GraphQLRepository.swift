@@ -26,14 +26,15 @@ class GraphQLRepository {
     }
 
     func getPosts() {
-        Task {
-            do {
-                let posts = try await netable.request(GetAllPostsQuery())
-                self.posts.send(posts)
-            } catch {
-                errors.send(error)
-            }
-        }
+        let (_, results) = netable.request(GetAllPostsQuery())
+            results.sink { result in
+                switch result {
+                case .success(let posts):
+                    self.posts.send(posts)
+                case .failure(let error):
+                    print(error)
+                }
+            }.store(in: &cancellables)
     }
 
     func updatePost(id: String, title: String) {
@@ -41,7 +42,6 @@ class GraphQLRepository {
             do {
                 let input = UpdatePostMutationInput(id: id, title: title)
                 let post = try await netable.request(UpdatePostMutation(input: input))
-                print("Updated \(post)")
             } catch {
                 errors.send(error)
             }
