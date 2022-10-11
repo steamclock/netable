@@ -116,6 +116,7 @@ open class Netable {
      *
      * - returns: the Task your request is running in, for cancellation
      */
+    @available(*, deprecated, message: "Please update to use the new `async`/`await` APIs.")
     @discardableResult
     public func request<T: Request>(_ request: T, completion unsafeCompletion: @escaping (Result<T.FinalResource, NetableError>) -> Void) -> Task<(), Never> {
         // We don't need the whole request to run on the main thread, but DO need to make sure the completion does
