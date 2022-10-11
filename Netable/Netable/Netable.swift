@@ -104,7 +104,7 @@ open class Netable {
             urlRequest.setValue(value, forHTTPHeaderField: key)
         }
 
-        return try await startRequestTask(request, urlRequest: urlRequest, id: UUID().uuidString, retriesLeft: retryConfiguration.count)
+        return try await startRequestTask(request, urlRequest: urlRequest, id: UUID().uuidString)
     }
 
     /**
@@ -169,7 +169,7 @@ open class Netable {
         return (task: task, subject: resultSubject)
     }
 
-    private func startRequestTask<T: Request>(_ request: T, urlRequest: URLRequest, id: String, retriesLeft: UInt) async throws -> T.FinalResource {
+    private func startRequestTask<T: Request>(_ request: T, urlRequest: URLRequest, id: String) async throws -> T.FinalResource {
         let startTimestamp = CACurrentMediaTime()
 
         let requestInfo = LogEvent.RequestInfo(
@@ -188,46 +188,45 @@ open class Netable {
 
         let retryConfiguration = self.retryConfiguration
 
-        do {
-            if retriesLeft < retryConfiguration.count {
+        for retry in 0..<retryConfiguration.count {
+            do {
+                let (data, response) = try await urlSession.data(for: urlRequest)
+                guard let response = response as? HTTPURLResponse else { fatalError("Casting response to HTTPURLResponse failed") }
+
+                guard 200...299 ~= response.statusCode else {
+                  throw NetableError.httpError(response.statusCode, data)
+                }
+
+                let decoded = try await request.decode(data, defaultDecodingStrategy: self.config.jsonDecodingStrategy)
+                let finalizedResult = try await request.finalize(raw: decoded)
+
+                self.log(.requestSuccess(request: requestInfo, taskTime: CACurrentMediaTime() - startTimestamp, statusCode: response.statusCode, responseData: data, finalizedResult: finalizedResult))
+
+                return finalizedResult
+            } catch {
+                let netableError = error.netableError
+                let time = CACurrentMediaTime() - startTimestamp
+
+                var dontRetry = false
+
+                // We totally suppress retrying cancels (because then it would be impossible to cancel a request at all)
+                // and timeouts (because they generally take so long to fail that allowing retries would cause enormous waits,
+                // might want to relax this eventually if we know a shorter timeout is in use)
+                if case .cancelled = netableError {
+                  dontRetry = true
+                }
+
+                if dontRetry || !retryConfiguration.errors.shouldRetry(netableError) || retry >= retryConfiguration.count {
+                    self.log(.requestFailed(request: requestInfo, taskTime: time, error: netableError))
+                    throw error
+                }
+
+                self.log(.requestRetrying(request: requestInfo, taskTime: time, error: netableError))
                 try await Task.sleep(nanoseconds: UInt64(retryConfiguration.delay) * 1_000_000_000)
             }
-
-            let (data, response) = try await urlSession.data(for: urlRequest)
-
-            guard let response = response as? HTTPURLResponse else { fatalError("Casting response to HTTPURLResponse failed") }
-
-            guard 200...299 ~= response.statusCode else {
-                throw NetableError.httpError(response.statusCode, data)
-            }
-
-            let decoded = try await request.decode(data, defaultDecodingStrategy: self.config.jsonDecodingStrategy)
-            let finalizedResult = try await request.finalize(raw: decoded)
-
-            self.log(.requestSuccess(request: requestInfo, taskTime: CACurrentMediaTime() - startTimestamp, statusCode: response.statusCode, responseData: data, finalizedResult: finalizedResult))
-
-            return finalizedResult
-        } catch {
-            let netableError = error.netableError
-            let time = CACurrentMediaTime() - startTimestamp
-
-            var allowRetry = true
-
-            // We totally suppress retrying cancels (because then it would be impossible to cancel a request at all)
-            // and timeouts (because they generally take so long to fail that allowing retries would cause enormous waits,
-            // might want to relax this eventually if we know a shorter timeout is in use)
-            if case .cancelled = netableError {
-                allowRetry = false
-            }
-
-            if allowRetry && retryConfiguration.enabled && retriesLeft > 0 && retryConfiguration.errors.shouldRetry(netableError) {
-                self.log(.requestRetrying(request: requestInfo, taskTime: time, error: netableError))
-                return try await self.startRequestTask(request, urlRequest: urlRequest, id: id, retriesLeft: retriesLeft - 1)
-            } else {
-                self.log(.requestFailed(request: requestInfo, taskTime: time, error: netableError))
-                throw netableError
-            }
         }
+
+        throw NetableError.noData
     }
 
     /// Cancel any ongoing requests.
