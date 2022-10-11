@@ -48,7 +48,7 @@ public struct RetryConfiguration {
     /// How many times to rety before giving up and failing for good
     public let count: UInt
 
-    /// Delay time between retry attempts
+    /// Delay time between retry attempts, in seconds
     public let delay: TimeInterval
 
     public init(errors: Errors = .transport, count: UInt = 2, delay: TimeInterval = 5.0 ) {

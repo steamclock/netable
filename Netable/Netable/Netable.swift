@@ -190,7 +190,7 @@ open class Netable {
 
         do {
             if retriesLeft < retryConfiguration.count {
-                sleep(UInt32(retryConfiguration.delay))
+                try await Task.sleep(nanoseconds: UInt64(retryConfiguration.delay) * 1_000_000_000)
             }
 
             let (data, response) = try await urlSession.data(for: urlRequest)
