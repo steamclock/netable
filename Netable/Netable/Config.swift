@@ -21,6 +21,15 @@ public struct Config {
     /// Timeout interval for requests. Default is `nil`. This value is assigned to `URLSessionConfiguration.timeoutIntervalForRequest`.
     let timeout: TimeInterval?
 
+    /**
+     * Create a new `Config` to pass into a Netable instance
+     *
+     * - parameters:
+     *      - enableLogRedaction:
+     *      - jsonDecodingStrategy: The default strategy to use when decoding JSON. Default is .useDefaultKeys
+     *      - jsonEncodingStrategy:
+     *      - timeout:
+     */
     public init(
             enableLogRedaction: Bool = true,
             jsonDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys,

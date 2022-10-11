@@ -147,7 +147,7 @@ open class Netable {
      *
      * - parameter request: The request to send, this has to extend `Request`.
      *
-     * - returns: A tuple that contains a reference to the `Task` and a PassthroughSubject to monitor for results.
+     * - returns: A tuple that contains a reference to the `Task`, for cancellation, and a PassthroughSubject to monitor for results.
      */
     public func request<T: Request>(_ request: T) -> (task: Task<(), Never>, subject: PassthroughSubject<Result<T.FinalResource, NetableError>, Never>) {
         let resultSubject = PassthroughSubject<Result<T.FinalResource, NetableError>, Never>()
@@ -229,9 +229,7 @@ open class Netable {
         }
     }
 
-    /**
-     * Cancel any ongoing requests.
-     */
+    /// Cancel any ongoing requests.
     open func cancelAllTasks() {
         urlSession.getAllTasks { tasks in
             self.log(.message("Cancelling all ongoing tasks."))

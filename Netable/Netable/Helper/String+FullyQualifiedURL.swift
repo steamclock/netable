@@ -10,13 +10,15 @@ import Foundation
 
 extension String {
     /**
-     * Make the provided path into a fully qualified URL. It may be invalid or partially qualified.
+     * Attempts to turn the given string into a fully qualified URL.
+     * If the provided URL has a scheme, we check to make sure that scheme is supported and return an `URL`.
+     * If not, we attempt to prepend the provided `baseURL` and return the whole thing.
      *
-     * - parameter path: The request path to qualify.
+     * - parameter baseURL: The base URL to attempt to attach to the string
      *
      * - Throws: `NetableError` if the provided URL is invalid and unable to be corrected.
      *
-     * - returns: A fully qualified URL.
+     * - returns: A fully qualified `URL`.
      */
     internal func fullyQualifiedURL(from baseURL: URL) throws -> URL {
         if self.isEmpty { return baseURL }

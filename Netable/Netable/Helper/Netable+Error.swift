@@ -10,8 +10,10 @@ import Foundation
 
 public extension Error {
     /**
-     * Helper function that takes an error and unwraps it to a NetableError.
-     * If the unwrap doesn't work, it will wrap the error in `NetableError.unknownError`.
+     * Helper function that attempts to transform an error by:
+     *    1. Checking of the error code is `NSURLErrorCancelled` or `NSURLErrorTimedOut` and transforming it to `NetableError.cancelled`
+     *    2. Attempts to unwrap the error as a `NetableError`
+     *    3. Wrap the error and return as `NetableError.unknownError`
      */
     var netableError: NetableError {
         let nsError = self as NSError
