@@ -86,7 +86,6 @@ Task {
 
 ```swift
 netable.request(GetCatImages())
-    .receive(on: RunLoop.main)
     .sink { result in
         switch result {
         case .success(let catImages):

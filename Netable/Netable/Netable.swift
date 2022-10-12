@@ -145,12 +145,13 @@ open class Netable {
 
     /**
      * Create and send a new request, returning a tuple containing a reference to the task and a PassthroughSubject to monitor for results.
+     * Note that the PassthroughSubject runs on RunLoop.main.
      *
      * - parameter request: The request to send, this has to extend `Request`.
      *
      * - returns: A tuple that contains a reference to the `Task`, for cancellation, and a PassthroughSubject to monitor for results.
      */
-    public func request<T: Request>(_ request: T) -> (task: Task<(), Never>, subject: PassthroughSubject<Result<T.FinalResource, NetableError>, Never>) {
+    public func request<T: Request>(_ request: T) -> (task: Task<(), Never>, subject: Publishers.ReceiveOn<PassthroughSubject<Result<T.FinalResource, NetableError>, Never>, RunLoop>) {
         let resultSubject = PassthroughSubject<Result<T.FinalResource, NetableError>, Never>()
 
         let task = Task {
@@ -166,7 +167,7 @@ open class Netable {
             }
         }
 
-        return (task: task, subject: resultSubject)
+        return (task: task, subject: resultSubject.receive(on: RunLoop.main))
     }
 
     private func startRequestTask<T: Request>(_ request: T, urlRequest: URLRequest, id: String) async throws -> T.FinalResource {
