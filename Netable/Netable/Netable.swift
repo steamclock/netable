@@ -66,7 +66,7 @@ open class Netable {
 
         requestFailurePublisher = requestFailureSubject.eraseToAnyPublisher()
 
-        log(.startupInfo(baseURL: baseURL, logDestination: logDestination))
+        logToMainThread(.startupInfo(baseURL: baseURL, logDestination: logDestination))
     }
 
     /**
@@ -87,7 +87,7 @@ open class Netable {
             urlRequest.httpMethod = request.method.rawValue
 
             guard finalURL.scheme?.lowercased() == "https" || finalURL.scheme?.lowercased() == "http" else {
-                self.log(.message("Only HTTP and HTTPS request are supported currently."))
+                await self.log(.message("Only HTTP and HTTPS request are supported currently."))
                 throw NetableError.malformedURL
             }
 
@@ -96,7 +96,7 @@ open class Netable {
             }
         } catch {
             let netableError = (error as? NetableError) ?? NetableError.unknownError(error)
-            log(.requestCreationFailed(urlString: request.path, error: netableError))
+            await log(.requestCreationFailed(urlString: request.path, error: netableError))
             throw netableError
         }
 
@@ -178,12 +178,12 @@ open class Netable {
             headers: urlRequest.allHTTPHeaderFields ?? [:]
         )
 
-        log(.requestStarted(request: requestInfo))
+        await log(.requestStarted(request: requestInfo))
         if !config.enableLogRedaction, let params = try? request.parameters.toParameterDictionary(encodingStrategy: request.jsonKeyEncodingStrategy ?? config.jsonEncodingStrategy) {
-            log(.requestBody(body: params))
+            await log(.requestBody(body: params))
         } else {
             let params = request.unredactedParameters(defaultEncodingStrategy: config.jsonEncodingStrategy)
-            log(.requestBody(body: params))
+            await log(.requestBody(body: params))
         }
 
         let retryConfiguration = self.retryConfiguration
@@ -200,7 +200,7 @@ open class Netable {
                 let decoded = try await request.decode(data, defaultDecodingStrategy: self.config.jsonDecodingStrategy)
                 let finalizedResult = try await request.finalize(raw: decoded)
 
-                self.log(.requestSuccess(request: requestInfo, taskTime: CACurrentMediaTime() - startTimestamp, statusCode: response.statusCode, responseData: data, finalizedResult: finalizedResult))
+                await self.log(.requestSuccess(request: requestInfo, taskTime: CACurrentMediaTime() - startTimestamp, statusCode: response.statusCode, responseData: data, finalizedResult: finalizedResult))
 
                 return finalizedResult
             } catch {
@@ -217,11 +217,11 @@ open class Netable {
                 }
 
                 if dontRetry || !retryConfiguration.errors.shouldRetry(netableError) || retry >= retryConfiguration.count {
-                    self.log(.requestFailed(request: requestInfo, taskTime: time, error: netableError))
+                    await self.log(.requestFailed(request: requestInfo, taskTime: time, error: netableError))
                     throw error
                 }
 
-                self.log(.requestRetrying(request: requestInfo, taskTime: time, error: netableError))
+                await self.log(.requestRetrying(request: requestInfo, taskTime: time, error: netableError))
                 try await Task.sleep(nanoseconds: UInt64(retryConfiguration.delay) * 1_000_000_000)
             }
         }
@@ -232,7 +232,7 @@ open class Netable {
     /// Cancel any ongoing requests.
     open func cancelAllTasks() {
         urlSession.getAllTasks { tasks in
-            self.log(.message("Cancelling all ongoing tasks."))
+            self.logToMainThread(.message("Cancelling all ongoing tasks."))
             for task in tasks {
                 task.cancel()
             }
@@ -248,9 +248,19 @@ open class Netable {
      * - parameter event: The event to log
      *
      */
-    internal func log(_ event: LogEvent) {
+    internal func log(_ event: LogEvent) async {
+        self.logDestination.log(event: event)
+    }
+
+    /**
+     * Logs an event on the main thread
+     *
+     * - parameter event: The event to log
+     *
+     */
+    internal func logToMainThread(_ event: LogEvent) {
         Task { @MainActor in
-            self.logDestination.log(event: event)
+            await log(event)
         }
     }
 }
