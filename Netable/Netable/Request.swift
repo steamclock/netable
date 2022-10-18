@@ -24,6 +24,11 @@ public protocol Request {
     /// See `FallbackDecoderViewController` for an example.
     associatedtype FallbackResource: Any = AnyObject
 
+    /// Any headers that should be included with the request.
+    /// Note that these will be set _after_ any global headers,
+    /// and will thus take precedence if there's a duplicated key
+    var headers: [String: String] { get }
+
     /// HTTP method the request will use. Currently GET, POST, PUT and PATCH are supported.
     var method: HTTPMethod { get }
 
@@ -54,6 +59,10 @@ public protocol Request {
 }
 
 public extension Request {
+    var headers: [String: String] {
+        [:]
+    }
+
     var smartUnwrapKey: String {
         return ""
     }

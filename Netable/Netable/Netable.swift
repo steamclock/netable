@@ -27,16 +27,13 @@ open class Netable {
     private let config: Config
 
     /// The base URL of your api endpoint.
-    public var baseURL: URL
-
-    /// Headers to be sent with each request.
-    public var headers: [String: String] = [:]
+    public let baseURL: URL
 
     /// Destination that logs will be printed to during network requests.
-    public var logDestination: LogDestination
+    public let logDestination: LogDestination
 
     /// Settings for if / how retries will be handled
-    public var retryConfiguration: RetryConfiguration
+    public let retryConfiguration: RetryConfiguration
 
     /// Delegate to handle global request errors
     public var requestFailureDelegate: RequestFailureDelegate?
@@ -100,7 +97,11 @@ open class Netable {
             throw netableError
         }
 
-        headers.forEach { key, value in
+        config.globalHeaders.forEach { key, value in
+            urlRequest.setValue(value, forHTTPHeaderField: key)
+        }
+
+        request.headers.forEach { key, value in
             urlRequest.setValue(value, forHTTPHeaderField: key)
         }
 
