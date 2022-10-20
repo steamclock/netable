@@ -36,7 +36,7 @@ open class Netable {
     public let retryConfiguration: RetryConfiguration
 
     /// Delegate to handle global request errors
-    public var requestFailureDelegate: RequestFailureDelegate?
+    public let requestFailureDelegate: RequestFailureDelegate?
 
     /// Publisher for global request errors
     private let requestFailureSubject = PassthroughSubject<NetableError, Never>()
@@ -50,11 +50,17 @@ open class Netable {
      * - parameter logDestination: Destination to send request logs to. Default is DefaultLogDestination
      * - parameter retryConfiguration: Configuration for request retry policies
      */
-    public init(baseURL: URL, config: Config = Config(), logDestination: LogDestination = DefaultLogDestination(), retryConfiguration: RetryConfiguration = RetryConfiguration()) {
+    public init(
+            baseURL: URL,
+            config: Config = Config(),
+            logDestination: LogDestination = DefaultLogDestination(),
+            retryConfiguration: RetryConfiguration = RetryConfiguration(),
+            requestFailureDelegate: RequestFailureDelegate? = nil) {
         self.baseURL = baseURL
         self.config = config
         self.logDestination = logDestination
         self.retryConfiguration = retryConfiguration
+        self.requestFailureDelegate = requestFailureDelegate
 
         self.urlSession = URLSession(configuration: .ephemeral)
         if let timeout = config.timeout {
@@ -91,21 +97,23 @@ open class Netable {
             if T.Parameters.self != Empty.self {
                 try urlRequest.encodeParameters(for: request, defaultEncodingStrategy: config.jsonEncodingStrategy)
             }
+
+            config.globalHeaders.forEach { key, value in
+                urlRequest.setValue(value, forHTTPHeaderField: key)
+            }
+
+            request.headers.forEach { key, value in
+                urlRequest.setValue(value, forHTTPHeaderField: key)
+            }
+
+            return try await startRequestTask(request, urlRequest: urlRequest, id: UUID().uuidString)
         } catch {
             let netableError = (error as? NetableError) ?? NetableError.unknownError(error)
             await log(.requestCreationFailed(urlString: request.path, error: netableError))
+            self.requestFailureDelegate?.requestDidFail(request, error: netableError)
+            self.requestFailureSubject.send(netableError)
             throw netableError
         }
-
-        config.globalHeaders.forEach { key, value in
-            urlRequest.setValue(value, forHTTPHeaderField: key)
-        }
-
-        request.headers.forEach { key, value in
-            urlRequest.setValue(value, forHTTPHeaderField: key)
-        }
-
-        return try await startRequestTask(request, urlRequest: urlRequest, id: UUID().uuidString)
     }
 
     /**
@@ -124,11 +132,6 @@ open class Netable {
         let completion: (Result<T.FinalResource, NetableError>) -> Void = { result in
             Task { @MainActor in
                 unsafeCompletion(result)
-
-                if case .failure(let error) = result {
-                    self.requestFailureDelegate?.requestDidFail(request, error: error)
-                    self.requestFailureSubject.send(error)
-                }
             }
         }
 
