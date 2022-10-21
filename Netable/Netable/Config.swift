@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Config {
+public struct Config: Sendable {
     /// Enable redaction of parameter values in logs. Defaults to true.
     let enableLogRedaction: Bool
 

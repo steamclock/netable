@@ -19,7 +19,7 @@ func CACurrentMediaTime() -> TimeInterval {
 }
 #endif
 
-open class Netable {
+public actor Netable {
     /// The URL session requests are run through.
     internal let urlSession: URLSession
 
@@ -36,11 +36,11 @@ open class Netable {
     public let retryConfiguration: RetryConfiguration
 
     /// Delegate to handle global request errors
-    public let requestFailureDelegate: RequestFailureDelegate?
+    public nonisolated let requestFailureDelegate: RequestFailureDelegate?
 
     /// Publisher for global request errors
     private let requestFailureSubject = PassthroughSubject<NetableError, Never>()
-    public let requestFailurePublisher: AnyPublisher<NetableError, Never>
+    public nonisolated let requestFailurePublisher: AnyPublisher<NetableError, Never>
 
     /**
      * Create a new instance of `Netable` with a base URL.
@@ -110,8 +110,7 @@ open class Netable {
         } catch {
             let netableError = (error as? NetableError) ?? NetableError.unknownError(error)
             await log(.requestCreationFailed(urlString: request.path, error: netableError))
-            self.requestFailureDelegate?.requestDidFail(request, error: netableError)
-            self.requestFailureSubject.send(netableError)
+            self.sendToErrorDelegates(netableError, request: request)
             throw netableError
         }
     }
@@ -127,7 +126,7 @@ open class Netable {
      */
     @available(*, deprecated, message: "Please update to use the new `async`/`await` APIs.")
     @discardableResult
-    public func request<T: Request>(_ request: T, completion unsafeCompletion: @escaping (Result<T.FinalResource, NetableError>) -> Void) -> Task<(), Never> {
+    public nonisolated func request<T: Request>(_ request: T, completion unsafeCompletion: @escaping (Result<T.FinalResource, NetableError>) -> Void) -> Task<(), Never> {
         // We don't need the whole request to run on the main thread, but DO need to make sure the completion does
         let completion: (Result<T.FinalResource, NetableError>) -> Void = { result in
             Task { @MainActor in
@@ -155,7 +154,7 @@ open class Netable {
      *
      * - returns: A tuple that contains a reference to the `Task`, for cancellation, and a PassthroughSubject to monitor for results.
      */
-    public func request<T: Request>(_ request: T) -> (task: Task<(), Never>, subject: Publishers.ReceiveOn<PassthroughSubject<Result<T.FinalResource, NetableError>, Never>, RunLoop>) {
+    public nonisolated func request<T: Request>(_ request: T) -> (task: Task<(), Never>, subject: Publishers.ReceiveOn<PassthroughSubject<Result<T.FinalResource, NetableError>, Never>, RunLoop>) {
         let resultSubject = PassthroughSubject<Result<T.FinalResource, NetableError>, Never>()
 
         let task = Task {
@@ -235,7 +234,7 @@ open class Netable {
     }
 
     /// Cancel any ongoing requests.
-    open func cancelAllTasks() {
+    public func cancelAllTasks() {
         urlSession.getAllTasks { tasks in
             self.logToMainThread(.message("Cancelling all ongoing tasks."))
             for task in tasks {
@@ -263,9 +262,16 @@ open class Netable {
      * - parameter event: The event to log
      *
      */
-    internal func logToMainThread(_ event: LogEvent) {
+    internal nonisolated func logToMainThread(_ event: LogEvent) {
         Task { @MainActor in
             await log(event)
+        }
+    }
+
+    internal func sendToErrorDelegates<T: Request>(_ error: NetableError, request: T) {
+        Task { @MainActor in
+            self.requestFailureSubject.send(error)
+            self.requestFailureDelegate?.requestDidFail(request, error: error)
         }
     }
 }
