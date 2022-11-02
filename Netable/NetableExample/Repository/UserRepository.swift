@@ -15,12 +15,13 @@ class UserRepository {
     let netable: Netable
 
     var user: CurrentValueSubject<User?, Never>
+
     var cancellables = [AnyCancellable]()
 
     private init() {
         user = CurrentValueSubject<User?, Never>(nil)
 
-        netable = Netable(baseURL: URL(string: "http://localhost:8080/user/")!, requestFailureDelegate: self)
+        netable = Netable(baseURL: URL(string: "http://localhost:8080/user/")!, requestFailureDelegate: ErrorService.shared)
 
         // Listen for 401 errors and if we get one, clear the current user
         netable.requestFailurePublisher.sink { [weak self] error in
@@ -73,6 +74,3 @@ class UserRepository {
     }
 }
 
-extension UserRepository: RequestFailureDelegate {
-    
-}
