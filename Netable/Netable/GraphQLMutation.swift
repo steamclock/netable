@@ -23,7 +23,7 @@ public extension GraphQLMutation {
             fatalError("Failed to unwrap inputs for graphQL mutation: \(type(of: self))")
         }
 
-        return ["query": params, "input": encodedInputs]
+        return ["query": params, "variables": encodedInputs]
     }
 
     var unredactedParameterKeys: Set<String> {
