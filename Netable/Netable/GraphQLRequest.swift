@@ -31,7 +31,9 @@ public enum GraphQLQuerySource {
 */
 public protocol GraphQLRequest: Request {
     associatedtype Parameters = [String: String]
+    associatedtype Input: Encodable
 
+    var input: Input { get }
     var source: GraphQLQuerySource { get }
 }
 
@@ -39,6 +41,17 @@ public extension GraphQLRequest {
     var method: HTTPMethod { HTTPMethod.post }
 
     var path: String { "" }
+
+    var parameters: [String: String] {
+        let params = getGraphQLQueryContents()
+
+        guard let encodedData = try? JSONEncoder().encode(input),
+              let encodedInputs = String(data: encodedData, encoding: .utf8) else {
+            fatalError("Failed to unwrap inputs for graphQL mutation: \(type(of: self))")
+        }
+
+        return ["query": params, "variables": encodedInputs]
+    }
 
     func getGraphQLQueryContents() -> String {
         switch source {
@@ -74,3 +87,8 @@ public extension GraphQLRequest {
     }
 }
 
+public extension GraphQLRequest {
+    var input: [String] {
+        [String]()
+    }
+}

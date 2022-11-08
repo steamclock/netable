@@ -13,7 +13,7 @@ struct GetAllPostsResponse: Decodable {
     let posts: [Post]
 }
 
-struct GetAllPostsQuery: GraphQLQuery {
+struct GetAllPostsQuery: GraphQLRequest {
     typealias RawResource = GetAllPostsResponse
     typealias FinalResource = [Post]
 
