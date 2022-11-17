@@ -34,7 +34,8 @@ public protocol GraphQLRequest: Request {
     associatedtype Input: Encodable
 
     /// The source of the GraphQL query that will be encoded and passed as parameters for the request.
-    var input: Input { get }
+    var source: GraphQLQuerySource { get }
+}
 
 public extension GraphQLRequest {
     /// All GraphQL requests use POST, so just lock that in.
