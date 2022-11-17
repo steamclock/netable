@@ -54,14 +54,17 @@ public enum LogEvent: CustomDebugStringConvertible {
             return "Started \(request.method.rawValue) request... URL: \(request.urlString) Headers: \(request.headers)"
         case .requestBody(let body):
             return "Body: \(body)"
-        case .requestSuccess(let request, _, let statusCode, let responseData, let finalizedResult):
-            return "Request (\(request.urlString)) completed with status code \(statusCode) Data: \(responseData ?? Data()) Finalized data: \(String(describing: finalizedResult))"
+        case .requestSuccess(let request, _, let statusCode, _, _):
+            return "Request (\(request.urlString)) completed with status code \(statusCode)."
         case .requestRetrying(let request, _, let error):
             return "Request (\(request.urlString)) retrying: \(error.localizedDescription)"
         case .requestFailed(let request, _, let error):
             switch error {
             case .httpError(let statusCode, let data):
-                return "Request (\(request.urlString)) failed with status code \(statusCode) Data: \(data ?? Data())"
+                if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                    return "Request (\(request.urlString)) failed with status code \(statusCode), \(dataString)"
+                }
+                fallthrough
             default:
                 return "Request (\(request.urlString)) failed: \(error.localizedDescription)"
             }

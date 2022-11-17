@@ -175,6 +175,14 @@ struct GetUserRequest: Request {
 
 ```
 
+#### Logging
+
+By default, Netable will log a fair amount of detail for outgoing requests, using the `DefaultLogDestination`
+
+You can customize this when you create your Netable object by passing in a new log destination that conforms to the provided `LogDestination` protocol. See the example project's [CustomLogDestination](https://github.com/steamclock/netable/blob/master/Netable/NetableExample/Helpers/CustomLogDestination.swift) for an example of this in action.
+
+For convenience, we provide an `EmptyLogDestination` if you would prefer to silence all logs from Netable. See [PostRepository.swift](https://github.com/steamclock/netable/blob/master/Netable/NetableExample/Repository/PostRepository.swift) for an example of this in action.
+
 ### Handling Errors
 
 In addition to handling errors locally through the `completion` callback provided by `request()`,  we provide two ways to handle errors globally. These can be useful for doing things like presenting errors in the UI for common error cases across multiple requests, or catching things like failed authentication requests to clear a stored user.

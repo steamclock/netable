@@ -13,7 +13,7 @@ class PostRepository {
     static var shared = PostRepository()
 
     /// If we aren't concerned with logging results from a particular instance, pass in the EmptyLogDestination as the logDestination
-    private let netable = Netable(baseURL: URL(string: "http://localhost:8080/posts/")!)
+    private let netable = Netable(baseURL: URL(string: "http://localhost:8080/posts/")!, logDestination: EmptyLogDestination())
 
     var posts: CurrentValueSubject<[Post], Never>
     var cancellables = [AnyCancellable]()
