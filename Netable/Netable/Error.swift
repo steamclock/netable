@@ -9,7 +9,7 @@
 import Foundation
 
 /// All errors returned by Netable are NetableErrors.
-public enum NetableError: Error {
+public enum NetableError: Error, @unchecked Sendable {
     /// Either the request was manually cancelled or timed out
     case cancelled(Error)
 

@@ -9,7 +9,7 @@
 import Foundation
 
 /// Type representing all supported HTTP methods.
-public enum HTTPMethod: String {
+public enum HTTPMethod: String, Sendable {
     case delete = "DELETE"
     case get = "GET"
     case post = "POST"

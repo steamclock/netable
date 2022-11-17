@@ -9,20 +9,20 @@
 import Foundation
 
 /// The Request protocol defines the structure for any network requests run through Netable.
-public protocol Request {
+public protocol Request: Sendable {
     /// Parameters will be encoded and sent along with the request.
-    associatedtype Parameters: Encodable
+    associatedtype Parameters: Encodable, Sendable
 
     /// The raw data returned by the server from the request.
-    associatedtype RawResource: Any
+    associatedtype RawResource: Sendable
 
     /// An optional convenience type that allows for unwrapping of raw data to a predefined type.
     /// See `GetCatRequest` for a demonstration of this in action.
-    associatedtype FinalResource: Any = RawResource
+    associatedtype FinalResource: Sendable = RawResource
 
     /// An optional convenience type that Netable will try to use to decode your response if `RawResource` fails for any reason.
     /// See `FallbackDecoderViewController` for an example.
-    associatedtype FallbackResource: Any = AnyObject
+    associatedtype FallbackResource: Sendable = AnyObject
 
     /// Any headers that should be included with the request.
     /// Note that these will be set _after_ any global headers,

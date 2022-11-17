@@ -11,7 +11,7 @@ import Netable
 import os
 
 /// Defines a custom log destination for Netable to send logs to.
-class CustomLogDestination: LogDestination {
+final class CustomLogDestination: LogDestination {
     func log(event: LogEvent) {
         switch event {
         case .requestFailed(_, _, let error):
