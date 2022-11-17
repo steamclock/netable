@@ -6,7 +6,7 @@
 //  Copyright © 2020 Steamclock Software. All rights reserved.
 //
 
-@preconcurrency import Combine
+import Combine
 import Foundation
 #if canImport(FoundationNetworking)
 import FoundationNetworking
