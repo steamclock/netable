@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Request Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/Request" class="dashAnchor"></a>
+    <a title="Request Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Netable 0.8.5 Docs</a> (75% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Netable Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Request Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Netable.html">Netable</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/HTTPMethod.html">HTTPMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/LogEvent.html">LogEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/MultipartFormDataEncodingError.html">MultipartFormDataEncodingError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/NetableError.html">NetableError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Notification.html">Notification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Notification/Name.html">– Name</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Notification/Netable.html">– Netable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/URLRequest.html">URLRequest</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Instance%20Methods.html">Instance Methods</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Instance%20Methods.html#/s:7Netable14LogDestinationP3log5eventyAA0B5EventO_tF">log(event:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:7Netable14LogDestinationP">LogDestination</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:7Netable17MultipartFormDataP">MultipartFormData</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Request.html">Request</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:7Netable18UrlEncodedFormDataP">UrlEncodedFormData</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Empty.html">Empty</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RequestIdentifier.html">RequestIdentifier</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Request</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Request</span></code></pre>
+
+                </div>
+              </div>
+            <p>The Request protocol defines the structure for any network requests run through Netable.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Netable7RequestP10ParametersQa"></a>
+                    <a name="//apple_ref/swift/Alias/Parameters" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Netable7RequestP10ParametersQa">Parameters</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Parameters will be encoded and sent along with the request.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">associatedtype</span> <span class="kt">Parameters</span> <span class="p">:</span> <span class="kt">Encodable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Netable7RequestP11RawResourceQa"></a>
+                    <a name="//apple_ref/swift/Alias/RawResource" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Netable7RequestP11RawResourceQa">RawResource</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The raw data returned by the server from the request.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">associatedtype</span> <span class="kt">RawResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Netable7RequestP13FinalResourceQa"></a>
+                    <a name="//apple_ref/swift/Alias/FinalResource" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Netable7RequestP13FinalResourceQa">FinalResource</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An optional convienience type that allows for unwrapping of raw data to a predefined type.
+See <code>GetCatRequest</code> for a demonstration of this in action.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">associatedtype</span> <span class="kt">FinalResource</span> <span class="o">=</span> <span class="k">Self</span><span class="o">.</span><span class="kt"><a href="../Protocols/Request.html#/s:7Netable7RequestP11RawResourceQa">RawResource</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Netable7RequestP6methodAA10HTTPMethodOvp"></a>
+                    <a name="//apple_ref/swift/Property/method" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Netable7RequestP6methodAA10HTTPMethodOvp">method</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>HTTP method the request will use. Currently GET, POST, PUT and PATCH are supported.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">method</span><span class="p">:</span> <span class="kt"><a href="../Enums/HTTPMethod.html">HTTPMethod</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Netable7RequestP4pathSSvp"></a>
+                    <a name="//apple_ref/swift/Property/path" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Netable7RequestP4pathSSvp">path</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The path for this request, relative to the base URL defined when you created your Netable instance.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Netable7RequestP10parameters10ParametersQzvp"></a>
+                    <a name="//apple_ref/swift/Property/parameters" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Netable7RequestP10parameters10ParametersQzvp">parameters</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Parameters to be encoded and sent with the request.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Request.html#/s:7Netable7RequestP10ParametersQa">Parameters</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Netable7RequestP23jsonKeyDecodingStrategy10Foundation11JSONDecoderC0deF0Ovp"></a>
+                    <a name="//apple_ref/swift/Property/jsonKeyDecodingStrategy" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Netable7RequestP23jsonKeyDecodingStrategy10Foundation11JSONDecoderC0deF0Ovp">jsonKeyDecodingStrategy</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Optional: The key decoding strategy to be used when decoding return JSON.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p>Set the default key decoding strategy.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">jsonKeyDecodingStrategy</span><span class="p">:</span> <span class="kt">JSONDecoder</span><span class="o">.</span><span class="kt">KeyDecodingStrategy</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Netable7RequestP6decodeys6ResultOy11RawResourceQzAA0A5ErrorOG10Foundation4DataVSgF"></a>
+                    <a name="//apple_ref/swift/Method/decode(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Netable7RequestP6decodeys6ResultOy11RawResourceQzAA0A5ErrorOG10Foundation4DataVSgF">decode(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Optional: The method to decode Data into your RawResource</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">decode</span><span class="p">(</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">Data</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/Request.html#/s:7Netable7RequestP11RawResourceQa">RawResource</a></span><span class="p">,</span> <span class="kt"><a href="../Enums/NetableError.html">NetableError</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Netable7RequestP8finalize3raws6ResultOy13FinalResourceQzAA0A5ErrorOG03RawG0Qz_tF"></a>
+                    <a name="//apple_ref/swift/Method/finalize(raw:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Netable7RequestP8finalize3raws6ResultOy13FinalResourceQzAA0A5ErrorOG03RawG0Qz_tF">finalize(raw:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Optional: The method to convert your RawResource returned by the server to FinalResource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">finalize</span><span class="p">(</span><span class="nv">raw</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Request.html#/s:7Netable7RequestP11RawResourceQa">RawResource</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/Request.html#/s:7Netable7RequestP13FinalResourceQa">FinalResource</a></span><span class="p">,</span> <span class="kt"><a href="../Enums/NetableError.html">NetableError</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Available%20where%20%60Parameters%60%20==%20%60Empty%60"></a>
+                <a name="//apple_ref/swift/Section/Available where `Parameters` == `Empty`" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Available%20where%20%60Parameters%60%20==%20%60Empty%60"></a>
+                  <h3 class="section-name"><p>Available where <code><a href="../Protocols/Request.html#/s:7Netable7RequestP10ParametersQa">Parameters</a></code> == <code><a href="../Structs/Empty.html">Empty</a></code></p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Netable7RequestPA2A5EmptyV10ParametersRtzrlE10parametersAEvp"></a>
+                    <a name="//apple_ref/swift/Property/parameters" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Netable7RequestPA2A5EmptyV10ParametersRtzrlE10parametersAEvp">parameters</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p>Don&rsquo;t require filling in parameters for requests that don&rsquo;t send any.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Request.html#/s:7Netable7RequestP10ParametersQa">Parameters</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Available%20where%20%60FinalResource%60%20==%20%60RawResource%60"></a>
+                <a name="//apple_ref/swift/Section/Available where `FinalResource` == `RawResource`" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Available%20where%20%60FinalResource%60%20==%20%60RawResource%60"></a>
+                  <h3 class="section-name"><p>Available where <code><a href="../Protocols/Request.html#/s:7Netable7RequestP13FinalResourceQa">FinalResource</a></code> == <code><a href="../Protocols/Request.html#/s:7Netable7RequestP11RawResourceQa">RawResource</a></code></p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Netable7RequestPAA11RawResourceQz05FinalD0RtzrlE8finalize3raws6ResultOyAgA0A5ErrorOGAG_tF"></a>
+                    <a name="//apple_ref/swift/Method/finalize(raw:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Netable7RequestPAA11RawResourceQz05FinalD0RtzrlE8finalize3raws6ResultOyAgA0A5ErrorOGAG_tF">finalize(raw:<wbr>)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p>By default, <code>finalize</code> just returns the RawResource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">finalize</span><span class="p">(</span><span class="nv">raw</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Request.html#/s:7Netable7RequestP11RawResourceQa">RawResource</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/Request.html#/s:7Netable7RequestP13FinalResourceQa">FinalResource</a></span><span class="p">,</span> <span class="kt"><a href="../Enums/NetableError.html">NetableError</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2020 <a class="link" href="https://github.com/steamclock/netable/" target="_blank" rel="external">Brendan Lensink</a>. All rights reserved. (Last updated: 2020-05-01)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
