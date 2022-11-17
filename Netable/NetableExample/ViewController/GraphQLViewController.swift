@@ -30,10 +30,11 @@ class GraphQLViewController: UITableViewController {
     }
 
     private func bindRepository() {
-        GraphQLRepository.shared.posts.sink { posts in
-            self.posts = posts
-            self.tableView.reloadData()
-        }.store(in: &cancellables)
+        GraphQLRepository.shared.posts
+            .sink { posts in
+                self.posts = posts
+                self.tableView.reloadData()
+            }.store(in: &cancellables)
     }
     @IBAction func createNewPost(_ sender: Any) {
     }

@@ -1,7 +1,7 @@
 //
 //  ExampleNetworkService.swift
 //  NetableExample
-//
+// 
 //  Created by Brendan on 2021-09-03.
 //
 
@@ -37,7 +37,8 @@ class ExampleNetworkService {
         }
 
         server["/posts/create"] = { _ in
-            .ok(self.loadJson(from: "createPost"))
+                .internalServerError
+//            .ok(self.loadJson(from: "createPost"))
         }
 
         server["/posts/version"] = { _ in
@@ -45,7 +46,7 @@ class ExampleNetworkService {
         }
 
         server["/graphql"] = { resp in
-            return .ok(self.loadJson(from: "posts"))
+            .ok(self.loadJson(from: "posts"))
         }
 
         try! server.start()

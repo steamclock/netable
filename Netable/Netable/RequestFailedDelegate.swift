@@ -8,6 +8,6 @@
 
 import Foundation
 
-public protocol RequestFailureDelegate {
+public protocol RequestFailureDelegate: Sendable {
     func requestDidFail<T: Request>(_ request: T, error: NetableError)
 }

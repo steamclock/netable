@@ -8,9 +8,12 @@
 
 import Foundation
 
-public struct Config {
+public struct Config: Sendable {
     /// Enable redaction of parameter values in logs. Defaults to true.
-    var enableLogRedaction: Bool
+    let enableLogRedaction: Bool
+
+    /// Headers to be sent with each request.
+    public let globalHeaders: [String: String]
 
     /// Decoding strategy to use when decoding keys from JSON. Default is `useDefaultKeys`. Note this value can be overridden by individual `Request`s.
     let jsonDecodingStrategy: JSONDecoder.KeyDecodingStrategy
@@ -21,12 +24,24 @@ public struct Config {
     /// Timeout interval for requests. Default is `nil`. This value is assigned to `URLSessionConfiguration.timeoutIntervalForRequest`.
     let timeout: TimeInterval?
 
+    /**
+     * Create a new `Config` to pass into a Netable instance
+     *
+     * - parameters:
+     *      - enableLogRedaction: Enable redaction of parameter values in logs. Default is true.
+     *      - globalHeaders: Any headers that will be attached to each request.
+     *      - jsonDecodingStrategy: The default strategy to use when decoding JSON. Default is `.useDefaultKeys`
+     *      - jsonEncodingStrategy: The default strategy to use when encoding JSON. Default is `.useDefaultKeys`
+     *      - timeout: The timeout interval for requests. Default is `nil`.
+     */
     public init(
             enableLogRedaction: Bool = true,
+            globalHeaders: [String: String] = [:],
             jsonDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys,
             jsonEncodingStrategy: JSONEncoder.KeyEncodingStrategy = .useDefaultKeys,
             timeout: TimeInterval? = nil) {
         self.enableLogRedaction = enableLogRedaction
+        self.globalHeaders = globalHeaders
         self.jsonDecodingStrategy = jsonDecodingStrategy
         self.jsonEncodingStrategy = jsonEncodingStrategy
         self.timeout = timeout

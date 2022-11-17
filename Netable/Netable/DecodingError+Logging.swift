@@ -6,7 +6,7 @@
 //  Copyright © 2021 Steamclock Software. All rights reserved.
 //
 
-extension DecodingError {
+public extension DecodingError {
     func loggableDescription() -> String {
         switch self {
         case DecodingError.dataCorrupted(let context):
@@ -23,7 +23,7 @@ extension DecodingError {
     }
 }
 
-extension DecodingError.Context {
+public extension DecodingError.Context {
     var codingPathDescription: String {
         // Drop first "Index 0" coding key as it's not helpful for describing the coding path
         let stringValues = codingPath.dropFirst().map { $0.stringValue }.joined(separator: ", ")

@@ -9,11 +9,16 @@
 import Foundation
 
 /// All errors returned by Netable are NetableErrors.
-public enum NetableError: Error {
+public enum NetableError: Error, Sendable {
+    public typealias SendableDecodable = Decodable & Sendable
+
+    /// Either the request was manually cancelled or timed out
+    case cancelled(Error)
+
     /// Something went wrong while encoding request parameters.
     case codingError(String)
 
-    /// Something went wrong while decoding the response.
+    /// Something went wrong while decoding the response.√
     case decodingError(Error, Data?)
 
     /// The request was successful, but returned a non-200 status code.
@@ -37,7 +42,7 @@ public enum NetableError: Error {
     case resourceExtractionError(String)
 
     /// Decoding your `RawResource` type failed, but decoding to your `FallbackResource` was successful.
-    case fallbackDecode(Decodable)
+    case fallbackDecode(SendableDecodable)
 
     /// We're not sure what went wrong, but something did.
     case unknownError(Error)
@@ -46,6 +51,8 @@ public enum NetableError: Error {
 extension NetableError: LocalizedError {
     public var errorCode: Int? {
         switch self {
+        case .cancelled:
+            return -1
         case .codingError:
             return 0
         case .decodingError:
@@ -71,6 +78,8 @@ extension NetableError: LocalizedError {
 
     public var errorDescription: String? {
         switch self {
+        case .cancelled:
+            return "Cancelled"
         case .codingError(let message):
             return "Coding error: \(message)"
         case .decodingError(let error, _):
@@ -104,6 +113,8 @@ extension NetableError: LocalizedError {
 extension NetableError: Equatable {
     public static func == (lhs: NetableError, rhs: NetableError) -> Bool {
         switch (lhs, rhs) {
+        case (.cancelled(let lhsError), .cancelled(let rhsError)):
+            return lhsError.localizedDescription == rhsError.localizedDescription
         case (.codingError(let lhsMessage), .codingError(let rhsMessage)):
             return lhsMessage == rhsMessage
         case (.decodingError(let lhsError, let lhsData), .decodingError(let rhsError, let rhsData)):

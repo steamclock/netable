@@ -13,8 +13,6 @@ class RootTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        UserRepository.shared.netable.requestFailureDelegate = self
-
         PostRepository.shared.checkVersion()
     }
 }

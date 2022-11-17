@@ -12,13 +12,16 @@ import Netable
 class UserRepository {
     static var shared = UserRepository()
 
-     let netable = Netable(baseURL: URL(string: "http://localhost:8080/user/")!)
+    let netable: Netable
 
     var user: CurrentValueSubject<User?, Never>
+
     var cancellables = [AnyCancellable]()
 
     private init() {
         user = CurrentValueSubject<User?, Never>(nil)
+
+        netable = Netable(baseURL: URL(string: "http://localhost:8080/user/")!, requestFailureDelegate: ErrorService.shared)
 
         // Listen for 401 errors and if we get one, clear the current user
         netable.requestFailurePublisher.sink { [weak self] error in
@@ -30,41 +33,39 @@ class UserRepository {
         }.store(in: &cancellables)
     }
 
-    func login(email: String, password: String) {
+    func login(email: String, password: String) throws {
         let params = LoginParams(email: email, password: password)
 
-        netable.request(LoginRequest(parameters: params)) { [weak self] result in
-            guard let self = self else { return }
+        Task {
+            let user = try await netable.request(LoginRequest(parameters: params))
 
-            if case .success(let user) = result {
+            await MainActor.run {
                 self.user.send(user)
             }
         }
     }
 
-    func getUserDetails() {
+    func getUserDetails() throws {
         let params = UserDetailsParams(email: "", token: "")
 
-        netable.request(GetUserDetailsRequest(parameters: params)) { [weak self] result in
-            guard let self = self else { return }
+        Task {
+            let userDetails = try await netable.request(GetUserDetailsRequest(parameters: params))
 
-            if case .success(let user) = result {
-                self.user.send(user)
+            await MainActor.run {
+                self.user.send(userDetails)
             }
         }
     }
 
     public func unauthorizedRequest() {
-        netable.request(UnauthorizedRequest()) { _ in
-            // Since we know this request is going to fail, do nothing.
-            return
+        Task {
+            netable.request(UnauthorizedRequest())
         }
     }
 
     public func failedRequest() {
-        netable.request(FailedRequest()) { _ in
-            // Since we know this request is going to fail, do nothing.
-            return
+        Task {
+            netable.request(FailedRequest())
         }
     }
 
@@ -72,3 +73,4 @@ class UserRepository {
         self.user.send(nil)
     }
 }
+

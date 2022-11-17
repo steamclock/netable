@@ -52,7 +52,68 @@ struct GetCatImages: Request {
 }
 ```
 
-#### Make your request and handle the result:
+### Make your request using `async`/`await` and handle the result:
+
+```swift
+Task {
+    do {
+        let catImages = try await netable.request(GetCatImages())
+        if let firstCat = catImages.first,
+           let url = URL(string: firstCat.url),
+           let imageData = try? Data(contentsOf: url) {
+            self.catsImageView1.image = UIImage(data: imageData)
+        }
+
+        if let lastCat = catImages.last,
+           let url = URL(string: lastCat.url),
+           let imageData = try? Data(contentsOf: url) {
+            self.catsImageView2.image = UIImage(data: imageData)
+        }
+    } catch {
+        let alert = UIAlertController(
+            title: "Uh oh!",
+            message: "Get cats request failed with error: \(error)",
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        self.present(alert, animated: true, completion: nil)
+    }
+}
+```
+
+### Making a request with Combine
+
+```swift
+netable.request(GetCatImages())
+    .sink { result in
+        switch result {
+        case .success(let catImages):
+            if let firstCat = catImages.first,
+               let url = URL(string: firstCat.url),
+               let imageData = try? Data(contentsOf: url) {
+                self.catsImageView1.image = UIImage(data: imageData)
+            }
+
+            if let lastCat = catImages.last,
+               let url = URL(string: lastCat.url),
+               let imageData = try? Data(contentsOf: url) {
+                self.catsImageView2.image = UIImage(data: imageData)
+            }
+        case .failure(let error):
+            let alert = UIAlertController(
+                title: "Uh oh!",
+                message: "Get cats request failed with error: \(error)",
+                preferredStyle: .alert
+            )
+
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }.store(in: &cancellables)
+```
+
+### Or, if you prefer good old fashioned callbacks
 
 ```swift
 netable.request(GetCatImages()) { result in
@@ -99,16 +160,16 @@ struct GetCatImageURL: Request {
 
      // ...
 
-    func finalize(raw: RawResource) -> Result<FinalResource, NetableError> {
+    func finalize(raw: RawResource) async throws -> FinalResource {
         guard let catImage = raw.first else {
-            return .failure(NetableError.resourceExtractionError("The CatImage array is empty"))
+            throw NetableError.resourceExtractionError("The CatImage array is empty")
         }
 
         guard let url = URL(string: catImage.url) else {
-            return .failure(NetableError.resourceExtractionError("Could not build URL from CatImage url string"))
+            throw NetableError.resourceExtractionError("Could not build URL from CatImage url string")
         }
 
-        return .success(url)
+        return url
     }
 }
 ```
@@ -116,15 +177,15 @@ struct GetCatImageURL: Request {
 #### Leave your network code to deal with the important stuff
 
 ```swift
-netable.request(GetCatImageURL()) { result in
-    switch result {
-    case .success(let catUrl):
+Task {
+    do {
+        let catUrl = try await netable.request(GetCatImages())
         guard let imageData = try? Data(contentsOf: catUrl) else {
-            return
+            throw NetableError.noData
         }
 
         self.imageView.image = UIImage(data: imageData)
-    case .failure(let error):
+    } catch {
         // ...
     }
 }
@@ -154,8 +215,8 @@ struct GetUserRequest: Request {
     
     // ...
     
-    func finalize(raw: RawResource) -> Result<FinalResource, NetableError> {
-        return .success(raw.user)
+    func finalize(raw: RawResource) async throws -> FinalResource {
+        return raw.user
     }
 }
 ```
@@ -177,7 +238,7 @@ struct GetUserRequest: Request {
 
 ### Handling Errors
 
-In addition to handling errors locally through the `completion` callback provided by `request()`,  we provide two ways to handle errors globally. These can be useful for doing things like presenting errors in the UI for common error cases across multiple requests, or catching things like failed authentication requests to clear a stored user.
+In addition to handling errors locally that are thrown, or returned through `Result` objects, we provide two ways to handle errors globally. These can be useful for doing things like presenting errors in the UI for common error cases across multiple requests, or catching things like failed authentication requests to clear a stored user.
 
 #### Using `requestFailureDelegate`
 
@@ -194,7 +255,7 @@ extension GlobalRequestFailureDelegateExample: RequestFailureDelegate {
 
 #### Using `requestFailurePublisher`
 
-If you prefer `Combine`, you can subscribe to this publisher to recieve `NetableErrors` from elsewhere in your app.
+If you prefer `Combine`, you can subscribe to this publisher to receive `NetableErrors` from elsewhere in your app.
 
 See [GlobalRequestFailurePublisher](https://github.com/steamclock/netable/blob/master/Netable/NetableExample/Repository/UserRepository.swift) in the Example project for a more detailed example.
 
@@ -233,7 +294,7 @@ To run the example project, clone the repo, and run `pod install` from inside th
 
 ## Requirements
 
-- iOS 13.0+
+- iOS 15.0+
 - MacOS 10.15+
 - Xcode 11.0+
 
@@ -244,6 +305,10 @@ Netable is available through **[Swift Package Manager](https://swift.org/package
 1. In Xcode, click **File**, then **Swift Package Manager**, then **Add Package Dependency**
 2. Choose your project
 3. Enter this URL in the search bar `https://github.com/steamclock/netable.git`
+
+### Supporting earlier version of iOS
+
+Since Netable 2.0 leverages `async`/`await` under the hood, if you want to build for iOS versions before 15.0 you'll need to use `v1.0`.
 
 ## License
 

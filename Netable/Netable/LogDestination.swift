@@ -9,11 +9,11 @@
 import Foundation
 
 /// Wrapper class for log events emitted by Netable.
-public enum LogEvent: CustomDebugStringConvertible {
-    public struct RequestInfo {
+public enum LogEvent: CustomDebugStringConvertible, Sendable {
+    public struct RequestInfo: Sendable {
         public let urlString: String
         public let method: HTTPMethod
-        public let headers: [String: Any]
+        public let headers: [String: Sendable]
     }
 
     /// Print up some debugging info at start.
@@ -33,7 +33,7 @@ public enum LogEvent: CustomDebugStringConvertible {
 
     /// Request has successfully completed.
     /// Note: taskTime only covers the time it took the current network request to run, in retry scenarios the time for the whole request may be longer.
-    case requestSuccess(request: RequestInfo, taskTime: TimeInterval, statusCode: Int, responseData: Data?, finalizedResult: Any)
+    case requestSuccess(request: RequestInfo, taskTime: TimeInterval, statusCode: Int, responseData: Data?, finalizedResult: Sendable)
 
     /// Sent when a request fails but will be retried. Note: taskTime only cover the time it took the current network request to run, in retry scenarios the time for the whole request may be longer.
     case requestRetrying(request: RequestInfo, taskTime: TimeInterval, error: NetableError)
@@ -70,7 +70,7 @@ public enum LogEvent: CustomDebugStringConvertible {
 }
 
 /// Conform to `LogDestination` to receive and handle log events emitted by Netable.
-public protocol LogDestination {
+public protocol LogDestination: Sendable {
     /**
      * Log an event emitted by the Netable client.
      *
