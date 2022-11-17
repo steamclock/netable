@@ -28,10 +28,11 @@ public struct Config: Sendable {
      * Create a new `Config` to pass into a Netable instance
      *
      * - parameters:
-     *      - enableLogRedaction:
-     *      - jsonDecodingStrategy: The default strategy to use when decoding JSON. Default is .useDefaultKeys
-     *      - jsonEncodingStrategy:
-     *      - timeout:
+     *      - enableLogRedaction: Enable redaction of parameter values in logs. Default is true.
+     *      - globalHeaders: Any headers that will be attached to each request.
+     *      - jsonDecodingStrategy: The default strategy to use when decoding JSON. Default is `.useDefaultKeys`
+     *      - jsonEncodingStrategy: The default strategy to use when encoding JSON. Default is `.useDefaultKeys`
+     *      - timeout: The timeout interval for requests. Default is `nil`.
      */
     public init(
             enableLogRedaction: Bool = true,
