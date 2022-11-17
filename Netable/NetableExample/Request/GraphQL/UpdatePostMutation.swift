@@ -14,7 +14,7 @@ struct UpdatePostMutationInput: Codable {
     let title: String
 }
 
-struct UpdatePostMutation: GraphQLMutation {
+struct UpdatePostMutation: GraphQLRequest {
     typealias Input = UpdatePostMutationInput
 
     typealias RawResource = Bool
