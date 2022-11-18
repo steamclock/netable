@@ -1,6 +1,6 @@
 ![](header.png)
 
-[![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Netable.svg)](https://img.shields.io/cocoapods/v/Netable.svg) [![Platform](https://img.shields.io/cocoapods/p/Netable.svg?style=flat)](http://cocoapods.org/pods/Netable)
+[![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Platform](https://img.shields.io/cocoapods/p/Netable.svg?style=flat)](http://cocoapods.org/pods/Netable)
 
 Modern apps interact with a lot of different APIs. Netable makes that easier by providing a simple interface for using those APIs to drive high quality iOS and MacOS apps, built on Swift `Codable`, while still supporting non-standard and unusual APIs when need be.
 
@@ -177,7 +177,7 @@ struct GetCatImageURL: Request {
 #### Leave your network code to deal with the important stuff
 
 ```swift
-Task {
+Task { 
     do {
         let catUrl = try await netable.request(GetCatImages())
         guard let imageData = try? Data(contentsOf: catUrl) else {
@@ -289,8 +289,6 @@ We recommend using a tool like [Postman](https://www.postman.com/) to document a
 [In-depth documentation](https://steamclock.github.io/netable/) is provided through Jazzy and GitHub Pages.  
 
 ## Example
-
-To run the example project, clone the repo, and run `pod install` from inside the Example directory first.
 
 ## Requirements
 
