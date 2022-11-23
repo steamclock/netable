@@ -71,6 +71,10 @@
 		C6DA3354293822230076F693 /* LossyArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DA3353293822230076F693 /* LossyArray.swift */; };
 		C6F4CFB026D582E8004E6BB8 /* RequestFailedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F4CFAF26D582E8004E6BB8 /* RequestFailedDelegate.swift */; };
 		C6F4CFB626D598B3004E6BB8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C6F4CFB526D598B3004E6BB8 /* README.md */; };
+		E1275825292E9C5A0047E5DD /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1275824292E9C5A0047E5DD /* ExampleApp.swift */; };
+		E1275827292E9C5A0047E5DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1275826292E9C5A0047E5DD /* ContentView.swift */; };
+		E1275829292E9C5B0047E5DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1275828292E9C5B0047E5DD /* Assets.xcassets */; };
+		E127582C292E9C5B0047E5DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E127582B292E9C5B0047E5DD /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,6 +176,11 @@
 		C6DA3353293822230076F693 /* LossyArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LossyArray.swift; sourceTree = "<group>"; };
 		C6F4CFAF26D582E8004E6BB8 /* RequestFailedDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFailedDelegate.swift; sourceTree = "<group>"; };
 		C6F4CFB526D598B3004E6BB8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
+		E1275822292E9C5A0047E5DD /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1275824292E9C5A0047E5DD /* ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleApp.swift; sourceTree = "<group>"; };
+		E1275826292E9C5A0047E5DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E1275828292E9C5B0047E5DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E127582B292E9C5B0047E5DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +208,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E127581F292E9C5A0047E5DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -223,6 +239,7 @@
 				B8C9288223E9F68000DB2B37 /* Netable */,
 				B8C9288D23E9F68000DB2B37 /* NetableTests */,
 				B822C8EC23F20E8900D7BDAD /* NetableExample */,
+				E1275823292E9C5A0047E5DD /* Example */,
 				B8C9288123E9F68000DB2B37 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -233,6 +250,7 @@
 				B8C9288023E9F68000DB2B37 /* Netable.framework */,
 				B8C9288923E9F68000DB2B37 /* NetableTests.xctest */,
 				B822C8EB23F20E8900D7BDAD /* NetableExample.app */,
+				E1275822292E9C5A0047E5DD /* Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -395,6 +413,25 @@
 			path = JsonResponse;
 			sourceTree = "<group>";
 		};
+		E1275823292E9C5A0047E5DD /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				E1275824292E9C5A0047E5DD /* ExampleApp.swift */,
+				E1275826292E9C5A0047E5DD /* ContentView.swift */,
+				E1275828292E9C5B0047E5DD /* Assets.xcassets */,
+				E127582A292E9C5B0047E5DD /* Preview Content */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		E127582A292E9C5B0047E5DD /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				E127582B292E9C5B0047E5DD /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -469,13 +506,30 @@
 			productReference = B8C9288923E9F68000DB2B37 /* NetableTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		E1275821292E9C5A0047E5DD /* Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E127582D292E9C5B0047E5DD /* Build configuration list for PBXNativeTarget "Example" */;
+			buildPhases = (
+				E127581E292E9C5A0047E5DD /* Sources */,
+				E127581F292E9C5A0047E5DD /* Frameworks */,
+				E1275820292E9C5A0047E5DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Example;
+			productName = Example;
+			productReference = E1275822292E9C5A0047E5DD /* Example.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		B8C9287723E9F68000DB2B37 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Steamclock Software";
 				TargetAttributes = {
@@ -488,6 +542,9 @@
 					};
 					B8C9288823E9F68000DB2B37 = {
 						CreatedOnToolsVersion = 11.3.1;
+					};
+					E1275821292E9C5A0047E5DD = {
+						CreatedOnToolsVersion = 14.1;
 					};
 				};
 			};
@@ -510,6 +567,7 @@
 				B8C9287F23E9F68000DB2B37 /* Netable */,
 				B8C9288823E9F68000DB2B37 /* NetableTests */,
 				B822C8EA23F20E8900D7BDAD /* NetableExample */,
+				E1275821292E9C5A0047E5DD /* Example */,
 			);
 		};
 /* End PBXProject section */
@@ -544,6 +602,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1275820292E9C5A0047E5DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E127582C292E9C5B0047E5DD /* Preview Assets.xcassets in Resources */,
+				E1275829292E9C5B0047E5DD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,6 +683,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8C9288F23E9F68000DB2B37 /* NetableTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E127581E292E9C5A0047E5DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1275827292E9C5A0047E5DD /* ContentView.swift in Sources */,
+				E1275825292E9C5A0047E5DD /* ExampleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -921,6 +997,70 @@
 			};
 			name = Release;
 		};
+		E127582E292E9C5B0047E5DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Example/Preview Content\"";
+				DEVELOPMENT_TEAM = GH868RP95T;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.steamclock.Example;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E127582F292E9C5B0047E5DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Example/Preview Content\"";
+				DEVELOPMENT_TEAM = GH868RP95T;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.steamclock.Example;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -956,6 +1096,15 @@
 			buildConfigurations = (
 				B8C9289823E9F68000DB2B37 /* Debug */,
 				B8C9289923E9F68000DB2B37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E127582D292E9C5B0047E5DD /* Build configuration list for PBXNativeTarget "Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E127582E292E9C5B0047E5DD /* Debug */,
+				E127582F292E9C5B0047E5DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
