@@ -74,7 +74,8 @@
 		E1275825292E9C5A0047E5DD /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1275824292E9C5A0047E5DD /* ExampleApp.swift */; };
 		E1275827292E9C5A0047E5DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1275826292E9C5A0047E5DD /* ContentView.swift */; };
 		E1275829292E9C5B0047E5DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1275828292E9C5B0047E5DD /* Assets.xcassets */; };
-		E127582C292E9C5B0047E5DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E127582B292E9C5B0047E5DD /* Preview Assets.xcassets */; };
+		E1275834292EAF550047E5DD /* ExampleNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1275833292EAF550047E5DD /* ExampleNetworkService.swift */; };
+		E1275838292EAFDE0047E5DD /* posts.json in Resources */ = {isa = PBXBuildFile; fileRef = E1275837292EAFDE0047E5DD /* posts.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,7 +181,8 @@
 		E1275824292E9C5A0047E5DD /* ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleApp.swift; sourceTree = "<group>"; };
 		E1275826292E9C5A0047E5DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E1275828292E9C5B0047E5DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E127582B292E9C5B0047E5DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E1275833292EAF550047E5DD /* ExampleNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleNetworkService.swift; sourceTree = "<group>"; };
+		E1275837292EAFDE0047E5DD /* posts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = posts.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -416,20 +418,37 @@
 		E1275823292E9C5A0047E5DD /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				E1275832292EAF2D0047E5DD /* GenericAPI */,
+				E1275830292EA5D10047E5DD /* Views */,
 				E1275824292E9C5A0047E5DD /* ExampleApp.swift */,
-				E1275826292E9C5A0047E5DD /* ContentView.swift */,
 				E1275828292E9C5B0047E5DD /* Assets.xcassets */,
-				E127582A292E9C5B0047E5DD /* Preview Content */,
 			);
 			path = Example;
 			sourceTree = "<group>";
 		};
-		E127582A292E9C5B0047E5DD /* Preview Content */ = {
+		E1275830292EA5D10047E5DD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E127582B292E9C5B0047E5DD /* Preview Assets.xcassets */,
+				E1275826292E9C5A0047E5DD /* ContentView.swift */,
 			);
-			path = "Preview Content";
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E1275832292EAF2D0047E5DD /* GenericAPI */ = {
+			isa = PBXGroup;
+			children = (
+				E1275836292EAF9D0047E5DD /* JSONData */,
+				E1275833292EAF550047E5DD /* ExampleNetworkService.swift */,
+			);
+			path = GenericAPI;
+			sourceTree = "<group>";
+		};
+		E1275836292EAF9D0047E5DD /* JSONData */ = {
+			isa = PBXGroup;
+			children = (
+				E1275837292EAFDE0047E5DD /* posts.json */,
+			);
+			path = JSONData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -609,8 +628,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E127582C292E9C5B0047E5DD /* Preview Assets.xcassets in Resources */,
 				E1275829292E9C5B0047E5DD /* Assets.xcassets in Resources */,
+				E1275838292EAFDE0047E5DD /* posts.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -690,6 +709,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1275834292EAF550047E5DD /* ExampleNetworkService.swift in Sources */,
 				E1275827292E9C5A0047E5DD /* ContentView.swift in Sources */,
 				E1275825292E9C5A0047E5DD /* ExampleApp.swift in Sources */,
 			);
@@ -1006,7 +1026,6 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Example/Preview Content\"";
 				DEVELOPMENT_TEAM = GH868RP95T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1038,7 +1057,6 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Example/Preview Content\"";
 				DEVELOPMENT_TEAM = GH868RP95T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
