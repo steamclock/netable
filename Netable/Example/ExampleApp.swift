@@ -10,9 +10,13 @@ import SwiftUI
 
 @main
 struct ExampleApp: App {
+    init() {
+        ExampleNetworkService.shared
+    }
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView(viewModel: HomeVM())
         }
     }
 }
