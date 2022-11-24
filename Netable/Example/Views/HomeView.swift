@@ -6,30 +6,32 @@
 //  Copyright © 2022 Steamclock Software. All rights reserved.
 //
 
+import Foundation
 import SwiftUI
 
 struct HomeView: View {
     @ObservedObject var viewModel: HomeVM
 
-
     var body: some View {
-        let _ = print(viewModel.posts)
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+        ScrollView {
+            VStack(alignment: .leading) {
+            if let posts = viewModel.posts {
+                ForEach(posts, id: \.self) { post in
+                        VStack(alignment: .leading) {
+                            Text(post.title)
+                                .font(.title2)
+                            Text(post.content)
+                            Divider()
+                        }
+                    }
+            } else {
+                EmptyView()
+            }
+            }
+        }.padding(8)
         .onAppear {
             viewModel.bindViewModel()
         }
     }
 
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView(viewModel: HomeVM())
-    }
 }
