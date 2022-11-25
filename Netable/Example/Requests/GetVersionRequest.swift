@@ -1,0 +1,20 @@
+//
+//  GetVersionRequest.swift
+//  Example
+//
+//  Created by Amy Oulton on 2022-11-25.
+//  Copyright © 2022 Steamclock Software. All rights reserved.
+//
+
+import Foundation
+import Netable
+
+struct GetVersionRequest: Request {
+    typealias Parameters = Empty
+    typealias RawResource = Version
+
+    var method: HTTPMethod { return .get }
+
+    var path = ""
+
+}

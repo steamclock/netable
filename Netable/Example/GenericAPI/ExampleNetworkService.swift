@@ -21,6 +21,10 @@ class ExampleNetworkService {
             .ok(self.loadJson(from: "posts"))
         }
 
+        server["/version"] = { _ in
+            .ok(self.loadJson(from: "version"))
+        }
+
         try! server.start()
     }
 

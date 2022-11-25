@@ -11,8 +11,6 @@ import Foundation
 import Netable
 
 class PostRepository {
-    static var shared = PostRepository()
-
     private let netable: Netable
 
     var posts: CurrentValueSubject<[Post], Never>
@@ -30,5 +28,4 @@ class PostRepository {
             self.posts.send(posts)
             return posts
     }
-
 }

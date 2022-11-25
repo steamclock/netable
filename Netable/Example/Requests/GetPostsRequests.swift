@@ -16,6 +16,8 @@ struct GetPostsRequest: Request {
 
     var method: HTTPMethod { return .get }
 
+    var smartUnwrapKey = "posts"
+
     var path = "all"
 
 }
