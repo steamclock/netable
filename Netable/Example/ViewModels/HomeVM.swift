@@ -6,33 +6,22 @@
 //  Copyright © 2022 Steamclock Software. All rights reserved.
 //
 
-import Combine
 import Foundation
 
 class HomeVM: ObservableObject {
-    var postRepo = PostRepository()
-    var versionRepo = VersionRepository()
 
     @Published var posts: [Post]?
-    var cancellables: [AnyCancellable] = []
-
 
     func bindViewModel() {
-        postRepo.posts
-            .receive(on: RunLoop.main)
-            .sink { posts in
-                self.posts = posts
-            }.store(in: &cancellables)
-
         Task { @MainActor in
-            posts = try await postRepo.getPosts()
+            posts = try await NetworkService.shared.getPosts()
         }
         getVersion()
     }
 
     func getVersion() {
         Task {
-            let version = try await versionRepo.getVersion()
+            let version = try await SimpleNetworkService.shared.getVersion()
             print(version.buildNumber)
         }
     }

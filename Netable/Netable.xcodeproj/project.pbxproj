@@ -77,14 +77,14 @@
 		E1275834292EAF550047E5DD /* ExampleNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1275833292EAF550047E5DD /* ExampleNetworkService.swift */; };
 		E1275838292EAFDE0047E5DD /* posts.json in Resources */ = {isa = PBXBuildFile; fileRef = E1275837292EAFDE0047E5DD /* posts.json */; };
 		E127583B292EB21C0047E5DD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127583A292EB21C0047E5DD /* Post.swift */; };
-		E127583E292EB5F90047E5DD /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127583D292EB5F90047E5DD /* PostRepository.swift */; };
-		E1275841292EC8E30047E5DD /* GetPostsRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1275840292EC8E30047E5DD /* GetPostsRequests.swift */; };
+		E1275841292EC8E30047E5DD /* GetPostsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1275840292EC8E30047E5DD /* GetPostsRequest.swift */; };
 		E1275846292EDD110047E5DD /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = E1275845292EDD110047E5DD /* Swifter */; };
 		E1275847292EDD160047E5DD /* Netable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C9288023E9F68000DB2B37 /* Netable.framework */; };
 		E127584A292EE7D60047E5DD /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1275849292EE7D60047E5DD /* HomeVM.swift */; };
 		E18AAA1029312DF700756455 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA0F29312DF700756455 /* Version.swift */; };
-		E18AAA1229312E2E00756455 /* GetVersionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA1129312E2E00756455 /* GetVersionRequest.swift */; };
-		E18AAA142931388000756455 /* VersionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA132931388000756455 /* VersionRepository.swift */; };
+		E18AAA172935248000756455 /* SimpleNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA162935248000756455 /* SimpleNetworkService.swift */; };
+		E18AAA19293524AA00756455 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA18293524AA00756455 /* NetworkService.swift */; };
+		E18AAA1B2935251400756455 /* GetVersionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA1A2935251400756455 /* GetVersionRequest.swift */; };
 		E1E5B69F29300390001E7299 /* version.json in Resources */ = {isa = PBXBuildFile; fileRef = E1E5B69E29300390001E7299 /* version.json */; };
 /* End PBXBuildFile section */
 
@@ -201,12 +201,12 @@
 		E1275833292EAF550047E5DD /* ExampleNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleNetworkService.swift; sourceTree = "<group>"; };
 		E1275837292EAFDE0047E5DD /* posts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = posts.json; sourceTree = "<group>"; };
 		E127583A292EB21C0047E5DD /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		E127583D292EB5F90047E5DD /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
-		E1275840292EC8E30047E5DD /* GetPostsRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPostsRequests.swift; sourceTree = "<group>"; };
+		E1275840292EC8E30047E5DD /* GetPostsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPostsRequest.swift; sourceTree = "<group>"; };
 		E1275849292EE7D60047E5DD /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
 		E18AAA0F29312DF700756455 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
-		E18AAA1129312E2E00756455 /* GetVersionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVersionRequest.swift; sourceTree = "<group>"; };
-		E18AAA132931388000756455 /* VersionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionRepository.swift; sourceTree = "<group>"; };
+		E18AAA162935248000756455 /* SimpleNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleNetworkService.swift; sourceTree = "<group>"; };
+		E18AAA18293524AA00756455 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		E18AAA1A2935251400756455 /* GetVersionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVersionRequest.swift; sourceTree = "<group>"; };
 		E1E5B69E29300390001E7299 /* version.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = version.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -446,9 +446,9 @@
 		E1275823292E9C5A0047E5DD /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				E18AAA152935243100756455 /* Services */,
 				E1275848292EE7950047E5DD /* ViewModels */,
 				E127583F292EC8CD0047E5DD /* Requests */,
-				E127583C292EB5C90047E5DD /* Repositories */,
 				E1275839292EB1FF0047E5DD /* Models */,
 				E1275832292EAF2D0047E5DD /* GenericAPI */,
 				E1275830292EA5D10047E5DD /* Views */,
@@ -493,20 +493,11 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		E127583C292EB5C90047E5DD /* Repositories */ = {
-			isa = PBXGroup;
-			children = (
-				E127583D292EB5F90047E5DD /* PostRepository.swift */,
-				E18AAA132931388000756455 /* VersionRepository.swift */,
-			);
-			path = Repositories;
-			sourceTree = "<group>";
-		};
 		E127583F292EC8CD0047E5DD /* Requests */ = {
 			isa = PBXGroup;
 			children = (
-				E1275840292EC8E30047E5DD /* GetPostsRequests.swift */,
-				E18AAA1129312E2E00756455 /* GetVersionRequest.swift */,
+				E1275840292EC8E30047E5DD /* GetPostsRequest.swift */,
+				E18AAA1A2935251400756455 /* GetVersionRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -524,6 +515,15 @@
 				E1275849292EE7D60047E5DD /* HomeVM.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E18AAA152935243100756455 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E18AAA162935248000756455 /* SimpleNetworkService.swift */,
+				E18AAA18293524AA00756455 /* NetworkService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -789,14 +789,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E18AAA142931388000756455 /* VersionRepository.swift in Sources */,
+				E18AAA19293524AA00756455 /* NetworkService.swift in Sources */,
 				E1275834292EAF550047E5DD /* ExampleNetworkService.swift in Sources */,
-				E127583E292EB5F90047E5DD /* PostRepository.swift in Sources */,
 				E127584A292EE7D60047E5DD /* HomeVM.swift in Sources */,
-				E18AAA1229312E2E00756455 /* GetVersionRequest.swift in Sources */,
-				E1275841292EC8E30047E5DD /* GetPostsRequests.swift in Sources */,
+				E1275841292EC8E30047E5DD /* GetPostsRequest.swift in Sources */,
+				E18AAA172935248000756455 /* SimpleNetworkService.swift in Sources */,
 				E1275827292E9C5A0047E5DD /* HomeView.swift in Sources */,
 				E1275825292E9C5A0047E5DD /* ExampleApp.swift in Sources */,
+				E18AAA1B2935251400756455 /* GetVersionRequest.swift in Sources */,
 				E18AAA1029312DF700756455 /* Version.swift in Sources */,
 				E127583B292EB21C0047E5DD /* Post.swift in Sources */,
 			);

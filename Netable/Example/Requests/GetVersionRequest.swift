@@ -2,7 +2,7 @@
 //  GetVersionRequest.swift
 //  Example
 //
-//  Created by Amy Oulton on 2022-11-25.
+//  Created by Amy Oulton on 2022-11-28.
 //  Copyright © 2022 Steamclock Software. All rights reserved.
 //
 
@@ -15,6 +15,6 @@ struct GetVersionRequest: Request {
 
     var method: HTTPMethod { return .get }
 
-    var path = ""
+    var path = "version"
 
 }

@@ -1,5 +1,5 @@
 //
-//  GetPostsRequests.swift
+//  GetPostsRequest.swift
 //  Example
 //
 //  Created by Amy Oulton on 2022-11-23.
@@ -18,6 +18,6 @@ struct GetPostsRequest: Request {
 
     var smartUnwrapKey = "posts"
 
-    var path = "all"
+    var path = "posts/all"
 
 }
