@@ -74,7 +74,7 @@
 		E1275825292E9C5A0047E5DD /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1275824292E9C5A0047E5DD /* ExampleApp.swift */; };
 		E1275827292E9C5A0047E5DD /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1275826292E9C5A0047E5DD /* HomeView.swift */; };
 		E1275829292E9C5B0047E5DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1275828292E9C5B0047E5DD /* Assets.xcassets */; };
-		E1275834292EAF550047E5DD /* ExampleNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1275833292EAF550047E5DD /* ExampleNetworkService.swift */; };
+		E1275834292EAF550047E5DD /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1275833292EAF550047E5DD /* MockNetworkService.swift */; };
 		E1275838292EAFDE0047E5DD /* posts.json in Resources */ = {isa = PBXBuildFile; fileRef = E1275837292EAFDE0047E5DD /* posts.json */; };
 		E127583B292EB21C0047E5DD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127583A292EB21C0047E5DD /* Post.swift */; };
 		E1275841292EC8E30047E5DD /* GetPostsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1275840292EC8E30047E5DD /* GetPostsRequest.swift */; };
@@ -198,7 +198,7 @@
 		E1275824292E9C5A0047E5DD /* ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleApp.swift; sourceTree = "<group>"; };
 		E1275826292E9C5A0047E5DD /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E1275828292E9C5B0047E5DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E1275833292EAF550047E5DD /* ExampleNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleNetworkService.swift; sourceTree = "<group>"; };
+		E1275833292EAF550047E5DD /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
 		E1275837292EAFDE0047E5DD /* posts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = posts.json; sourceTree = "<group>"; };
 		E127583A292EB21C0047E5DD /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		E1275840292EC8E30047E5DD /* GetPostsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPostsRequest.swift; sourceTree = "<group>"; };
@@ -470,7 +470,7 @@
 			isa = PBXGroup;
 			children = (
 				E1275836292EAF9D0047E5DD /* JSONData */,
-				E1275833292EAF550047E5DD /* ExampleNetworkService.swift */,
+				E1275833292EAF550047E5DD /* MockNetworkService.swift */,
 			);
 			path = GenericAPI;
 			sourceTree = "<group>";
@@ -790,7 +790,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E18AAA19293524AA00756455 /* NetworkService.swift in Sources */,
-				E1275834292EAF550047E5DD /* ExampleNetworkService.swift in Sources */,
+				E1275834292EAF550047E5DD /* MockNetworkService.swift in Sources */,
 				E127584A292EE7D60047E5DD /* HomeVM.swift in Sources */,
 				E1275841292EC8E30047E5DD /* GetPostsRequest.swift in Sources */,
 				E18AAA172935248000756455 /* SimpleNetworkService.swift in Sources */,

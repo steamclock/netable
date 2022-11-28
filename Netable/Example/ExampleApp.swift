@@ -11,7 +11,7 @@ import SwiftUI
 @main
 struct ExampleApp: App {
     init() {
-        ExampleNetworkService.shared
+        MockNetworkService.shared
     }
 
     var body: some Scene {

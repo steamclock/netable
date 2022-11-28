@@ -1,5 +1,5 @@
 //
-//  ExampleNetworkService.swift
+//  MockNetworkService.swift
 //  Example
 //
 //  Created by Amy Oulton on 2022-11-23.
@@ -9,8 +9,8 @@
 import Foundation
 import Swifter
 
-class ExampleNetworkService {
-    static let shared = ExampleNetworkService()
+class MockNetworkService {
+    static let shared = MockNetworkService()
 
     private var server: HttpServer
 
