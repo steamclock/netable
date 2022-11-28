@@ -1,17 +1,15 @@
 //
-//  NetworkService.swift
+//  UserNetworkService.swift
 //  Example
 //
 //  Created by Amy Oulton on 2022-11-28.
 //  Copyright © 2022 Steamclock Software. All rights reserved.
 //
 
-import Combine
 import Foundation
-import Netable
 
-class NetworkService {
-    static var shared = NetworkService()
+class UserNetworkService {
+    static var shared = UserNetworkService()
 
     private let netable: Netable
 
@@ -20,7 +18,5 @@ class NetworkService {
             baseURL: URL(string: "http://localhost:8080/")!)
     }
 
-    func getPosts() async throws -> [Post] {
-        try await netable.request(GetPostsRequest())
-    }
 }
+

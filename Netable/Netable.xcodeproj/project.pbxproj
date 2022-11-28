@@ -85,6 +85,9 @@
 		E18AAA172935248000756455 /* SimpleNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA162935248000756455 /* SimpleNetworkService.swift */; };
 		E18AAA19293524AA00756455 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA18293524AA00756455 /* NetworkService.swift */; };
 		E18AAA1B2935251400756455 /* GetVersionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA1A2935251400756455 /* GetVersionRequest.swift */; };
+		E18AAA1D293540AD00756455 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = E18AAA1C293540AD00756455 /* user.json */; };
+		E18AAA1F2935469B00756455 /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = E18AAA1E2935469B00756455 /* login.json */; };
+		E18AAA212935486100756455 /* UserNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA202935486100756455 /* UserNetworkService.swift */; };
 		E1E5B69F29300390001E7299 /* version.json in Resources */ = {isa = PBXBuildFile; fileRef = E1E5B69E29300390001E7299 /* version.json */; };
 /* End PBXBuildFile section */
 
@@ -207,6 +210,9 @@
 		E18AAA162935248000756455 /* SimpleNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleNetworkService.swift; sourceTree = "<group>"; };
 		E18AAA18293524AA00756455 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		E18AAA1A2935251400756455 /* GetVersionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVersionRequest.swift; sourceTree = "<group>"; };
+		E18AAA1C293540AD00756455 /* user.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
+		E18AAA1E2935469B00756455 /* login.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = login.json; sourceTree = "<group>"; };
+		E18AAA202935486100756455 /* UserNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetworkService.swift; sourceTree = "<group>"; };
 		E1E5B69E29300390001E7299 /* version.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = version.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -480,6 +486,8 @@
 			children = (
 				E1275837292EAFDE0047E5DD /* posts.json */,
 				E1E5B69E29300390001E7299 /* version.json */,
+				E18AAA1C293540AD00756455 /* user.json */,
+				E18AAA1E2935469B00756455 /* login.json */,
 			);
 			path = JSONData;
 			sourceTree = "<group>";
@@ -522,6 +530,7 @@
 			children = (
 				E18AAA162935248000756455 /* SimpleNetworkService.swift */,
 				E18AAA18293524AA00756455 /* NetworkService.swift */,
+				E18AAA202935486100756455 /* UserNetworkService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -707,7 +716,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E18AAA1D293540AD00756455 /* user.json in Resources */,
 				E1275829292E9C5B0047E5DD /* Assets.xcassets in Resources */,
+				E18AAA1F2935469B00756455 /* login.json in Resources */,
 				E1E5B69F29300390001E7299 /* version.json in Resources */,
 				E1275838292EAFDE0047E5DD /* posts.json in Resources */,
 			);
@@ -793,6 +804,7 @@
 				E1275834292EAF550047E5DD /* MockNetworkService.swift in Sources */,
 				E127584A292EE7D60047E5DD /* HomeVM.swift in Sources */,
 				E1275841292EC8E30047E5DD /* GetPostsRequest.swift in Sources */,
+				E18AAA212935486100756455 /* UserNetworkService.swift in Sources */,
 				E18AAA172935248000756455 /* SimpleNetworkService.swift in Sources */,
 				E1275827292E9C5A0047E5DD /* HomeView.swift in Sources */,
 				E1275825292E9C5A0047E5DD /* ExampleApp.swift in Sources */,

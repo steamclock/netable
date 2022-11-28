@@ -10,7 +10,7 @@ import Foundation
 import Netable
 
 class SimpleNetworkService {
-    static let shared = SimpleNetworkService()
+    static var shared = SimpleNetworkService()
 
     private let netable: Netable
 
