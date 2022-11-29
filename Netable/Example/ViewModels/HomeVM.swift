@@ -23,6 +23,8 @@ class HomeVM: ObservableObject {
         Task {
             let version = try await SimpleNetworkService.shared.getVersion()
             print(version.buildNumber)
+
+            let login = try await UserNetworkService.shared.login(email: "sirmeows@netable.com", password: "ififitsisits")
         }
     }
 

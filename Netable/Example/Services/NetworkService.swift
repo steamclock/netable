@@ -23,4 +23,5 @@ class NetworkService {
     func getPosts() async throws -> [Post] {
         try await netable.request(GetPostsRequest())
     }
+
 }

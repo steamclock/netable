@@ -2,8 +2,8 @@
     "user": {
         "email": "sirmeows@netable.com",
         "password": "ifitsisits",
-        "first_name": "Sir",
-        "last_name": "Meowington",
+        "firstName": "Sir",
+        "lastName": "Meowington",
         "location": "Somewhere far far away"
     }
 }
