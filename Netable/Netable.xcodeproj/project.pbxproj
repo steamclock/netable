@@ -91,6 +91,7 @@
 		E18AAA2329354D2400756455 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA2229354D2400756455 /* User.swift */; };
 		E18AAA2529354E0900756455 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA2429354E0900756455 /* LoginRequest.swift */; };
 		E18AAA282936987100756455 /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA272936987100756455 /* UserRequest.swift */; };
+		E1BAC48E293937500042BF60 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAC48D293937500042BF60 /* UserView.swift */; };
 		E1E5B69F29300390001E7299 /* version.json in Resources */ = {isa = PBXBuildFile; fileRef = E1E5B69E29300390001E7299 /* version.json */; };
 /* End PBXBuildFile section */
 
@@ -219,6 +220,7 @@
 		E18AAA2229354D2400756455 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E18AAA2429354E0900756455 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		E18AAA272936987100756455 /* UserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
+		E1BAC48D293937500042BF60 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		E1E5B69E29300390001E7299 /* version.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = version.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -475,6 +477,7 @@
 			isa = PBXGroup;
 			children = (
 				E1275826292E9C5A0047E5DD /* HomeView.swift */,
+				E1BAC48D293937500042BF60 /* UserView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -824,6 +827,7 @@
 				E1275841292EC8E30047E5DD /* GetPostsRequest.swift in Sources */,
 				E18AAA212935486100756455 /* AuthNetworkService.swift in Sources */,
 				E18AAA282936987100756455 /* UserRequest.swift in Sources */,
+				E1BAC48E293937500042BF60 /* UserView.swift in Sources */,
 				E1275827292E9C5A0047E5DD /* HomeView.swift in Sources */,
 				E1275825292E9C5A0047E5DD /* ExampleApp.swift in Sources */,
 				E169C7A829383E3B00A49824 /* File.swift in Sources */,

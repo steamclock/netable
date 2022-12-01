@@ -13,11 +13,10 @@ class HomeVM: ObservableObject {
     @Published var username: String = ""
     @Published var password: String = ""
     @Published var posts: [Post]?
+    @Published var user: User?
 
     func bindViewModel() {
-        Task { @MainActor in
-            posts = try await AuthNetworkService.shared.getPosts()
-        }
+
         getVersion()
     }
 
@@ -28,10 +27,18 @@ class HomeVM: ObservableObject {
         }
     }
 
-    func login() {
-        Task {
-            try await AuthNetworkService.shared.login(email: username, password: password)
+    func getPosts() {
+        Task { @MainActor in
+            posts = try await AuthNetworkService.shared.getPosts()
         }
     }
+
+    func login() {
+        Task { @MainActor in
+            user = try await AuthNetworkService.shared.login(email: username, password: password)
+            getPosts()
+        }
+    }
+
 
 }

@@ -11,30 +11,34 @@ import SwiftUI
 
 struct HomeView: View {
     @ObservedObject var viewModel: HomeVM
-    @State var showingSheet = false
-
 
     var body: some View {
         VStack {
-            login
-//            VStack(alignment: .leading) {
-//                    Text("Cat Diary")
-//                        .font(.largeTitle)
-//                        .frame(maxWidth: .infinity, alignment: .center)
-//                }.padding(.bottom, 4)
-//                if let posts = viewModel.posts {
-//                ForEach(posts, id: \.self) { post in
-//                        VStack(alignment: .leading) {
-//                            Text(post.title)
-//                                .font(.title2)
-//                                .padding(.bottom, 4)
-//                            Text(post.content)
-//                            Divider()
-//                        }
-//                    }
-//            } else {
-//                EmptyView()
-//            }
+            if viewModel.user != nil {
+                ScrollView {
+                    VStack(alignment: .leading) {
+                        Text("Cat Diary")
+                            .font(.largeTitle)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                    }.padding(.bottom, 4)
+
+                    if let posts = viewModel.posts {
+                    ForEach(posts, id: \.self) { post in
+                            VStack(alignment: .leading) {
+                                Text(post.title)
+                                    .font(.title2)
+                                    .padding(.bottom, 4)
+                                Text(post.content)
+                                Divider()
+                            }
+                        }
+                    } else {
+                        EmptyView()
+                    }
+                }
+            } else {
+                loginView
+            }
         }.padding(8)
         .background(CustomColor.lightGrey)
         .onAppear {
@@ -43,7 +47,7 @@ struct HomeView: View {
     }
 
 
-    var login: some View {
+    var loginView: some View {
         VStack(alignment: .center, spacing: 10) {
             Spacer()
             VStack {
@@ -51,18 +55,22 @@ struct HomeView: View {
                     .font(.title)
                 TextField("Username", text: $viewModel.username)
                     .padding()
-                    .background(Color.white)
+                    .background(.white)
                     .cornerRadius(10)
                     .padding(.bottom, 10)
                     .textInputAutocapitalization(.never)
                 SecureField("Password", text: $viewModel.password)
                     .padding()
-                    .background(Color.white)
+                    .background(.white)
                     .cornerRadius(10)
                     .padding(.bottom, 10)
                 Button(action: { viewModel.login() }) {
                     Text("Login")
-                }
+                }.padding()
+                    .padding(.horizontal, 40)
+                    .background(.blue)
+                    .cornerRadius(10)
+                    .foregroundColor(.white)
             }
             Spacer()
         }
