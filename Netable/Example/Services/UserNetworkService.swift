@@ -12,30 +12,28 @@ import Netable
 class UserNetworkService {
     static var shared = UserNetworkService()
 
-    private let netable: Netable
+    private let unauthNetable: Netable
 
-    var loginToken: String?
+    private var authNetable: Netable?
+    var netable: Netable {
+        authNetable ?? unauthNetable
+    }
 
     init() {
-        netable = Netable(
+        unauthNetable = Netable(
             baseURL: URL(string: "http://localhost:8080/user/")!)
     }
 
     func login(email: String, password: String) async throws {
         let login = try await netable.request(LoginRequest(parameters: LoginParameters(email: "sirmeows@netable.com", password: "ififitsisits")))
-        loginToken = login.token
-        try await getUser()
 
+        authNetable =  Netable(baseURL: URL(string: "http://localhost:8080/user/")!, config: Config(globalHeaders: ["Authentication" : "Bearer \(login.token)"]))
+
+        try await getUser()
     }
 
     func getUser() async throws -> User? {
-        guard let loginToken = loginToken else {
-            print("User token not found.")
-            return nil
-        }
-
-        let netableWHeader = Netable(baseURL: URL(string: "http://localhost:8080/user/")!, config: Config(globalHeaders: ["Authentication" : "Bearer \(loginToken)"]))
-        return try await netableWHeader.request(UserRequest())
+        try await netable.request(UserRequest(headers: ["Accept-Language": "en-US"]))
     }
 
 }

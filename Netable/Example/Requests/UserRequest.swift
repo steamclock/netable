@@ -16,4 +16,6 @@ struct UserRequest: Request {
     var method: HTTPMethod { return .get }
 
     var path = "profile"
+    var headers: [String : String]
+
 }
