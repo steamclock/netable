@@ -14,7 +14,7 @@ class HomeVM: ObservableObject {
 
     func bindViewModel() {
         Task { @MainActor in
-            posts = try await NetworkService.shared.getPosts()
+            posts = try await AuthNetworkService.shared.getPosts()
         }
         getVersion()
     }
@@ -24,7 +24,7 @@ class HomeVM: ObservableObject {
             let version = try await SimpleNetworkService.shared.getVersion()
             print(version.buildNumber)
 
-            let login = try await UserNetworkService.shared.login(email: "sirmeows@netable.com", password: "ififitsisits")
+            let login = try await AuthNetworkService.shared.login(email: "sirmeows@netable.com", password: "ififitsisits")
         }
     }
 

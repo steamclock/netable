@@ -12,7 +12,6 @@ import Netable
 struct LoginParameters: Encodable {
     let email: String
     let password: String
-
 }
 
 struct LoginToken: Codable {
@@ -25,7 +24,7 @@ struct LoginRequest: Request {
 
     var method: HTTPMethod { return .get }
 
-    var path = "login"
+    var path = "user/login"
 
     var parameters: LoginParameters
 }

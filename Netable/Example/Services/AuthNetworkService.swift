@@ -1,5 +1,5 @@
 //
-//  UserNetworkService.swift
+//  AuthNetworkService.swift
 //  Example
 //
 //  Created by Amy Oulton on 2022-11-28.
@@ -9,8 +9,8 @@
 import Foundation
 import Netable
 
-class UserNetworkService {
-    static var shared = UserNetworkService()
+class AuthNetworkService {
+    static var shared = AuthNetworkService()
 
     private let unauthNetable: Netable
 
@@ -21,19 +21,23 @@ class UserNetworkService {
 
     init() {
         unauthNetable = Netable(
-            baseURL: URL(string: "http://localhost:8080/user/")!)
+            baseURL: URL(string: "http://localhost:8080/")!)
     }
 
     func login(email: String, password: String) async throws {
         let login = try await netable.request(LoginRequest(parameters: LoginParameters(email: "sirmeows@netable.com", password: "ififitsisits")))
 
-        authNetable =  Netable(baseURL: URL(string: "http://localhost:8080/user/")!, config: Config(globalHeaders: ["Authentication" : "Bearer \(login.token)"]))
+        authNetable =  Netable(baseURL: URL(string: "http://localhost:8080/")!, config: Config(globalHeaders: ["Authentication" : "Bearer \(login.token)"]))
 
         try await getUser()
     }
 
     func getUser() async throws -> User? {
         try await netable.request(UserRequest(headers: ["Accept-Language": "en-US"]))
+    }
+
+    func getPosts() async throws -> [Post] {
+        try await netable.request(GetPostsRequest())
     }
 
 }

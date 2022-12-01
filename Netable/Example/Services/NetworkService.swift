@@ -1,5 +1,5 @@
 //
-//  NetworkService.swift
+//  SimpleNetworkService.swift
 //  Example
 //
 //  Created by Amy Oulton on 2022-11-28.
@@ -10,8 +10,8 @@ import Combine
 import Foundation
 import Netable
 
-class NetworkService {
-    static var shared = NetworkService()
+class SimpleNetworkService {
+    static var shared = SimpleNetworkService()
 
     private let netable: Netable
 
@@ -20,8 +20,8 @@ class NetworkService {
             baseURL: URL(string: "http://localhost:8080/")!)
     }
 
-    func getPosts() async throws -> [Post] {
-        try await netable.request(GetPostsRequest())
+    func getVersion() async throws -> Version {
+        try await netable.request(GetVersionRequest())
     }
 
 }
