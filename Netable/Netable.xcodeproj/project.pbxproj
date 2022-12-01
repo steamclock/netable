@@ -81,6 +81,7 @@
 		E1275846292EDD110047E5DD /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = E1275845292EDD110047E5DD /* Swifter */; };
 		E1275847292EDD160047E5DD /* Netable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C9288023E9F68000DB2B37 /* Netable.framework */; };
 		E127584A292EE7D60047E5DD /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1275849292EE7D60047E5DD /* HomeVM.swift */; };
+		E169C7A829383E3B00A49824 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = E169C7A729383E3B00A49824 /* File.swift */; };
 		E18AAA1029312DF700756455 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA0F29312DF700756455 /* Version.swift */; };
 		E18AAA19293524AA00756455 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA18293524AA00756455 /* NetworkService.swift */; };
 		E18AAA1B2935251400756455 /* GetVersionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA1A2935251400756455 /* GetVersionRequest.swift */; };
@@ -208,6 +209,7 @@
 		E127583A292EB21C0047E5DD /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		E1275840292EC8E30047E5DD /* GetPostsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPostsRequest.swift; sourceTree = "<group>"; };
 		E1275849292EE7D60047E5DD /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
+		E169C7A729383E3B00A49824 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		E18AAA0F29312DF700756455 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		E18AAA18293524AA00756455 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		E18AAA1A2935251400756455 /* GetVersionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVersionRequest.swift; sourceTree = "<group>"; };
@@ -545,6 +547,7 @@
 		E18AAA2629368F9200756455 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				E169C7A729383E3B00A49824 /* File.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -823,6 +826,7 @@
 				E18AAA282936987100756455 /* UserRequest.swift in Sources */,
 				E1275827292E9C5A0047E5DD /* HomeView.swift in Sources */,
 				E1275825292E9C5A0047E5DD /* ExampleApp.swift in Sources */,
+				E169C7A829383E3B00A49824 /* File.swift in Sources */,
 				E18AAA2329354D2400756455 /* User.swift in Sources */,
 				E18AAA1B2935251400756455 /* GetVersionRequest.swift in Sources */,
 				E18AAA1029312DF700756455 /* Version.swift in Sources */,

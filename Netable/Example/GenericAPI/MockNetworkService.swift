@@ -28,6 +28,7 @@ class MockNetworkService {
             }
 
             let email = self.getValue(params: req.queryParams, value: "email")
+            print(email)
             let password = self.getValue(params: req.queryParams, value: "password")
 
             guard email == userInfo["email"], password == userInfo["password"] else {

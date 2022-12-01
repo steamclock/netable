@@ -11,32 +11,60 @@ import SwiftUI
 
 struct HomeView: View {
     @ObservedObject var viewModel: HomeVM
-    @State private var showingSheet = false
+    @State var showingSheet = false
 
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                    Text("Cat Diary")
-                        .font(.largeTitle)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                }.padding(.bottom, 4)
-                if let posts = viewModel.posts {
-                ForEach(posts, id: \.self) { post in
-                        VStack(alignment: .leading) {
-                            Text(post.title)
-                                .font(.title2)
-                                .padding(.bottom, 4)
-                            Text(post.content)
-                            Divider()
-                        }
-                    }
-            } else {
-                EmptyView()
-            }
+        VStack {
+            login
+//            VStack(alignment: .leading) {
+//                    Text("Cat Diary")
+//                        .font(.largeTitle)
+//                        .frame(maxWidth: .infinity, alignment: .center)
+//                }.padding(.bottom, 4)
+//                if let posts = viewModel.posts {
+//                ForEach(posts, id: \.self) { post in
+//                        VStack(alignment: .leading) {
+//                            Text(post.title)
+//                                .font(.title2)
+//                                .padding(.bottom, 4)
+//                            Text(post.content)
+//                            Divider()
+//                        }
+//                    }
+//            } else {
+//                EmptyView()
+//            }
         }.padding(8)
+        .background(CustomColor.lightGrey)
         .onAppear {
             viewModel.bindViewModel()
+        }
+    }
+
+
+    var login: some View {
+        VStack(alignment: .center, spacing: 10) {
+            Spacer()
+            VStack {
+                Text("Welcome back!")
+                    .font(.title)
+                TextField("Username", text: $viewModel.username)
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .padding(.bottom, 10)
+                    .textInputAutocapitalization(.never)
+                SecureField("Password", text: $viewModel.password)
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .padding(.bottom, 10)
+                Button(action: { viewModel.login() }) {
+                    Text("Login")
+                }
+            }
+            Spacer()
         }
     }
 }

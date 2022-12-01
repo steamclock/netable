@@ -25,7 +25,7 @@ class AuthNetworkService {
     }
 
     func login(email: String, password: String) async throws {
-        let login = try await netable.request(LoginRequest(parameters: LoginParameters(email: "sirmeows@netable.com", password: "ififitsisits")))
+        let login = try await netable.request(LoginRequest(parameters: LoginParameters(email: email, password: password)))
 
         authNetable =  Netable(baseURL: URL(string: "http://localhost:8080/")!, config: Config(globalHeaders: ["Authentication" : "Bearer \(login.token)"]))
 

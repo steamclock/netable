@@ -10,6 +10,8 @@ import Foundation
 
 class HomeVM: ObservableObject {
 
+    @Published var username: String = ""
+    @Published var password: String = ""
     @Published var posts: [Post]?
 
     func bindViewModel() {
@@ -23,8 +25,12 @@ class HomeVM: ObservableObject {
         Task {
             let version = try await SimpleNetworkService.shared.getVersion()
             print(version.buildNumber)
+        }
+    }
 
-            let login = try await AuthNetworkService.shared.login(email: "sirmeows@netable.com", password: "ififitsisits")
+    func login() {
+        Task {
+            try await AuthNetworkService.shared.login(email: username, password: password)
         }
     }
 
