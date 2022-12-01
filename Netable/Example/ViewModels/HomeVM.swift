@@ -13,10 +13,10 @@ class HomeVM: ObservableObject {
     @Published var username: String = ""
     @Published var password: String = ""
     @Published var posts: [Post]?
-    @Published var user: User?
+    @Published var user: User? 
+    @Published var loginFailed = false
 
     func bindViewModel() {
-
         getVersion()
     }
 
@@ -35,10 +35,12 @@ class HomeVM: ObservableObject {
 
     func login() {
         Task { @MainActor in
-            user = try await AuthNetworkService.shared.login(email: username, password: password)
-            getPosts()
+            do {
+                user = try await AuthNetworkService.shared.login(email: username, password: password)
+                getPosts()
+            } catch {
+                loginFailed = true
+            }
         }
     }
-
-
 }

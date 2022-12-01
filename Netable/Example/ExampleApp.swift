@@ -16,7 +16,7 @@ struct ExampleApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HomeView(viewModel: HomeVM())
+            RootView(viewModel: HomeVM())
         }
     }
 }

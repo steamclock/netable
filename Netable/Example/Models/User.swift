@@ -9,9 +9,9 @@
 import Foundation
 
 struct User: Decodable {
-    let email: String
-    let password: String
-    let firstName: String?
-    let lastName: String?
-    let location: String?
+    let firstName: String
+    let lastName: String
+    let location: String
+    let bio: String
+    let age: Int
 }

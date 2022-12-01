@@ -1,9 +1,9 @@
 {
     "user": {
-        "email": "cat@netable.com",
-        "password": "meows",
         "firstName": "Sir",
         "lastName": "Meowington",
-        "location": "Somewhere far far away"
+        "location": "Somewhere far far away",
+        "bio": "Love causing havoc, eating inappropriate things, and screaming at 3am.",
+        "age": 4
     }
 }
