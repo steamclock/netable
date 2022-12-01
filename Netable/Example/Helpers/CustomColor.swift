@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  CustomColor.swift
 //  Example
 //
 //  Created by Amy Oulton on 2022-11-30.
