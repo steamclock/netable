@@ -667,7 +667,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.steamclock.NetableExample;
 				PRODUCT_NAME = NetableExample;
 				SUPPORTS_MACCATALYST = YES;
-				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -690,7 +690,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.steamclock.NetableExample;
 				PRODUCT_NAME = NetableExample;
 				SUPPORTS_MACCATALYST = YES;
-				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
