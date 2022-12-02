@@ -10,7 +10,7 @@ import Netable
 
 struct GetPostsRequest: Request {
     typealias Parameters = Empty
-    typealias RawResource = SmartUnwrap<[Post]>
+    typealias RawResource = SmartUnwrap<LossyArray<Post>>
     typealias FinalResource = [Post]
 
     var method = HTTPMethod.get
@@ -19,5 +19,9 @@ struct GetPostsRequest: Request {
 
     var unredactedParameterKeys: Set<String> {
         ["title", "content"]
+    }
+
+    func finalize(raw: SmartUnwrap<LossyArray<Post>>) async throws -> [Post] {
+        raw.decodedType.elements
     }
 }

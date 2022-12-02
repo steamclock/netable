@@ -1,8 +1,7 @@
 {
     "posts": [
         {
-            "title": "first post",
-            "content": "em ipsum dolor sit amet, consectetur adipiscing elit. Proin in mattis magna. Pellentesque ac tortor nec lectus auctor egestas. Proin erat felis, finibus vitae condimentum at, viverra sed arcu."
+            "title": "first post"
         },
         {
             "title": "second post",

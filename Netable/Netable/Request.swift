@@ -125,8 +125,7 @@ public extension Request where RawResource: Decodable {
                 let raw = try decoder.decode(RawResource.self, from: Empty.data)
                 return raw
             } else if let data = data {
-                let raw = try decoder.decode(RawResource.self, from: data)
-                return raw
+                return try decoder.decode(RawResource.self, from: data)
             }
         } catch {
             throw NetableError.decodingError(error, data)
@@ -171,6 +170,12 @@ public extension Request where RawResource == SmartUnwrap<FinalResource> {
     func finalize(raw: RawResource) async throws -> FinalResource {
         let unwrapped = raw as SmartUnwrap<FinalResource>
         return unwrapped.decodedType
+    }
+}
+
+public extension Request where RawResource == SmartUnwrap<LossyArray<FinalResource>> {
+    func finalize(raw: RawResource) async throws -> FinalResource {
+        return raw.decodedType.elements as! Self.FinalResource
     }
 }
 

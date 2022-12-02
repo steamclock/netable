@@ -67,6 +67,7 @@
 		C692789D26F147FC00917E65 /* GetUserDetailsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C692789C26F147FC00917E65 /* GetUserDetailsRequest.swift */; };
 		C6953F42241A95830044D278 /* LogDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6953F41241A95830044D278 /* LogDestination.swift */; };
 		C6A455EE2912D77600C1C20E /* ErrorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A455ED2912D77600C1C20E /* ErrorService.swift */; };
+		C6DA3354293822230076F693 /* LossyArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DA3353293822230076F693 /* LossyArray.swift */; };
 		C6F4CFB026D582E8004E6BB8 /* RequestFailedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F4CFAF26D582E8004E6BB8 /* RequestFailedDelegate.swift */; };
 		C6F4CFB626D598B3004E6BB8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C6F4CFB526D598B3004E6BB8 /* README.md */; };
 /* End PBXBuildFile section */
@@ -166,6 +167,7 @@
 		C692789C26F147FC00917E65 /* GetUserDetailsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserDetailsRequest.swift; sourceTree = "<group>"; };
 		C6953F41241A95830044D278 /* LogDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDestination.swift; sourceTree = "<group>"; };
 		C6A455ED2912D77600C1C20E /* ErrorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorService.swift; sourceTree = "<group>"; };
+		C6DA3353293822230076F693 /* LossyArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LossyArray.swift; sourceTree = "<group>"; };
 		C6F4CFAF26D582E8004E6BB8 /* RequestFailedDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFailedDelegate.swift; sourceTree = "<group>"; };
 		C6F4CFB526D598B3004E6BB8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -245,6 +247,7 @@
 				B8C928A223E9FBEC00DB2B37 /* HTTPMethod.swift */,
 				B8C9288423E9F68000DB2B37 /* Info.plist */,
 				C6953F41241A95830044D278 /* LogDestination.swift */,
+				C6DA3353293822230076F693 /* LossyArray.swift */,
 				B8C9288323E9F68000DB2B37 /* Netable.h */,
 				B8C928A823E9FDCC00DB2B37 /* Netable.swift */,
 				C6F4CFB526D598B3004E6BB8 /* README.md */,
@@ -592,6 +595,7 @@
 				B8C9289F23E9FB1500DB2B37 /* URLRequest+EncodeParameters.swift in Sources */,
 				C61DC6FC28CFDF3F0089E912 /* GraphQLRequest.swift in Sources */,
 				B8C928A123E9FBA100DB2B37 /* Request.swift in Sources */,
+				C6DA3354293822230076F693 /* LossyArray.swift in Sources */,
 				C65289F526D01829009D486B /* Config.swift in Sources */,
 				C639674D28E4F4CD00ADAE3E /* Netable+Equatable.swift in Sources */,
 				C6953F42241A95830044D278 /* LogDestination.swift in Sources */,
@@ -663,6 +667,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.steamclock.NetableExample;
 				PRODUCT_NAME = NetableExample;
 				SUPPORTS_MACCATALYST = YES;
+				SWIFT_STRICT_CONCURRENCY = minimal;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -685,6 +690,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.steamclock.NetableExample;
 				PRODUCT_NAME = NetableExample;
 				SUPPORTS_MACCATALYST = YES;
+				SWIFT_STRICT_CONCURRENCY = minimal;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -837,6 +843,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = minimal;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -866,6 +873,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
+				SWIFT_STRICT_CONCURRENCY = minimal;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
