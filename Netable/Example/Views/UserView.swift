@@ -13,6 +13,7 @@ struct UserView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
+            let _ = print(viewModel.user)
             if let user = viewModel.user {
                 HStack {
                     Spacer()
@@ -35,7 +36,7 @@ struct UserView: View {
                 HStack {
                     Spacer()
                     // TODO: Add logout function - this is a good way to show create a "DELETE" request since we're only doing GET and UPDATE in this so far.
-                    Button(action: { print("log out")}) {
+                    Button(action: { viewModel.logout() }) {
                         Text("Log Out")
                     }.padding()
                     .padding(.horizontal, 40)

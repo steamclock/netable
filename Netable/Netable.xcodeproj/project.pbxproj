@@ -473,7 +473,7 @@
 				E1275848292EE7950047E5DD /* ViewModels */,
 				E127583F292EC8CD0047E5DD /* Requests */,
 				E1275839292EB1FF0047E5DD /* Models */,
-				E1275832292EAF2D0047E5DD /* GenericAPI */,
+				E1275832292EAF2D0047E5DD /* MockNetworkingService */,
 				E1275830292EA5D10047E5DD /* Views */,
 				E1275824292E9C5A0047E5DD /* ExampleApp.swift */,
 				E1275828292E9C5B0047E5DD /* Assets.xcassets */,
@@ -492,13 +492,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		E1275832292EAF2D0047E5DD /* GenericAPI */ = {
+		E1275832292EAF2D0047E5DD /* MockNetworkingService */ = {
 			isa = PBXGroup;
 			children = (
 				E1275836292EAF9D0047E5DD /* JSONData */,
 				E1275833292EAF550047E5DD /* MockNetworkService.swift */,
 			);
-			path = GenericAPI;
+			path = MockNetworkingService;
 			sourceTree = "<group>";
 		};
 		E1275836292EAF9D0047E5DD /* JSONData */ = {

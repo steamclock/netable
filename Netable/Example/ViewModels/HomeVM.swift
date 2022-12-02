@@ -6,6 +6,7 @@
 //  Copyright © 2022 Steamclock Software. All rights reserved.
 //
 
+import Combine
 import Foundation
 
 class HomeVM: ObservableObject {
@@ -16,7 +17,16 @@ class HomeVM: ObservableObject {
     @Published var user: User? 
     @Published var loginFailed = false
 
+    private var cancellables = [AnyCancellable]()
+
+
     func bindViewModel() {
+        AuthNetworkService.shared.user
+            .receive(on: RunLoop.main)
+            .sink { user in
+                self.user = user
+            }.store(in: &cancellables)
+        
         getVersion()
     }
 
@@ -33,11 +43,20 @@ class HomeVM: ObservableObject {
         }
     }
 
+    func getUser() {
+        Task { @MainActor in
+          let user = try await AuthNetworkService.shared.getUser()
+            self.user = user
+            getPosts()
+
+        }
+    }
+
     func login() {
         Task { @MainActor in
             do {
-                user = try await AuthNetworkService.shared.login(email: username, password: password)
-                getPosts()
+                try await AuthNetworkService.shared.login(email: username, password: password)
+                getUser()
             } catch {
                 loginFailed = true
             }

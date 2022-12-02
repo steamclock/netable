@@ -6,15 +6,25 @@
 //  Copyright © 2022 Steamclock Software. All rights reserved.
 //
 
+import Combine
 import Foundation
 
 class UserVM: ObservableObject {
     @Published var user: User?
+    private var cancellables = [AnyCancellable]()
 
 
     func bindViewModel() {
-        Task { @MainActor in
-          user = try await AuthNetworkService.shared.getUser()
-        }
+        AuthNetworkService.shared.user
+            .receive(on: RunLoop.main)
+            .sink { [weak self] user in
+                self?.user = user
+            }.store(in: &cancellables)
+    }
+
+    func logout() {
+        AuthNetworkService.shared.logout()
     }
 }
+
+    

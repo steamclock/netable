@@ -73,6 +73,6 @@ struct RootView: View {
                     .foregroundColor(.white)
             }.padding()
             Spacer()
-        }.background(CustomColor.lightGrey)
+        }.background(Color.lightGrey)
     }
 }

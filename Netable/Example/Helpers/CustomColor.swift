@@ -9,6 +9,6 @@
 import Foundation
 import SwiftUI
 
-struct CustomColor {
+extension Color {
     static let lightGrey = Color("lightGrey")
 }

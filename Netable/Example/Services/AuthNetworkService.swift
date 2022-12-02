@@ -6,6 +6,7 @@
 //  Copyright © 2022 Steamclock Software. All rights reserved.
 //
 
+import Combine
 import Foundation
 import Netable
 
@@ -19,25 +20,35 @@ class AuthNetworkService {
         authNetable ?? unauthNetable
     }
 
+    var user: CurrentValueSubject<User?, Never>
+    var cancellables = [AnyCancellable]()
+    
     init() {
+        user = CurrentValueSubject<User?, Never>(nil)
+
         unauthNetable = Netable(
             baseURL: URL(string: "http://localhost:8080/")!)
     }
 
-    func login(email: String, password: String) async throws -> User? {
+    func login(email: String, password: String) async throws {
         let login = try await netable.request(LoginRequest(parameters: LoginParameters(email: email, password: password)))
 
-        authNetable =  Netable(baseURL: URL(string: "http://localhost:8080/")!, config: Config(globalHeaders: ["Authentication" : "Bearer \(login.token)"]), logDestination: CustomLogDestination())
-
-        return try await getUser()
+        authNetable = Netable(baseURL: URL(string: "http://localhost:8080/")!, config: Config(globalHeaders: ["Authentication" : "Bearer \(login.token)"]), logDestination: CustomLogDestination())
     }
 
     func getUser() async throws -> User? {
-        try await netable.request(UserRequest(headers: ["Accept-Language": "en-US"]))
+        let user = try await netable.request(UserRequest(headers: ["Accept-Language": "en-US"]))
+        self.user.send(user)
+        return user
     }
 
     func getPosts() async throws -> [Post] {
         try await netable.request(GetPostsRequest())
+    }
+
+    func logout() {
+        authNetable = nil
+        self.user.send(nil)
     }
 }
 
