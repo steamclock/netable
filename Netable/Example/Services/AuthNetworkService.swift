@@ -33,7 +33,7 @@ class AuthNetworkService {
     func login(email: String, password: String) async throws {
         let login = try await netable.request(LoginRequest(parameters: LoginParameters(email: email, password: password)))
 
-        authNetable = Netable(baseURL: URL(string: "http://localhost:8080/")!, config: Config(globalHeaders: ["Authentication" : "Bearer \(login.token)"]), logDestination: CustomLogDestination())
+        authNetable = Netable(baseURL: URL(string: "http://localhost:8080/")!, config: Config(globalHeaders: ["Authentication" : "Bearer \(login.token)"]), logDestination: CustomLogDestination(), retryConfiguration: RetryConfiguration(errors: .all, count: 2, delay: 3.0))
     }
 
     func getUser() async throws -> User? {
@@ -44,6 +44,23 @@ class AuthNetworkService {
 
     func getPosts() async throws -> [Post] {
         try await netable.request(GetPostsRequest())
+    }
+
+    func createPost(title: String, content: String) async throws {
+        // this request is deliberately failing. Since there is a retry configuration set to the authNetable request, we are going to make use of `cancel()`
+        // to cancel the task after sending it so it doesn't try again.
+
+       let createRequest = Task {
+            do {
+               let result = try await netable.request(CreatePostRequest(parameters: CreatePostParameters(title: title, content: content)))
+            } catch {
+                print("Create request error: \(error)")
+            }
+        }
+
+        // to see the retry configuration in action, comment out the below line and re-run the application. The request will not print the error
+        // until the retry conditions have been met.
+        createRequest.cancel()
     }
 
     func logout() {

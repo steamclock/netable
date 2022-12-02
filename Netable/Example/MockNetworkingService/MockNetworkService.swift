@@ -17,6 +17,11 @@ class MockNetworkService {
     private init() {
         server = HttpServer()
 
+        server["/posts/new"] = { _ in
+                .internalServerError
+//                .ok(self.loadJson(from: "createPost"))
+        }
+
         server["/posts/all"] = { _ in
              .ok(self.loadJson(from: "posts"))
         }

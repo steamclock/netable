@@ -13,7 +13,6 @@ struct UserView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            let _ = print(viewModel.user)
             if let user = viewModel.user {
                 HStack {
                     Spacer()

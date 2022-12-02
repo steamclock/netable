@@ -96,6 +96,9 @@
 		E1BAC49329393EF80042BF60 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAC49229393EF80042BF60 /* RootView.swift */; };
 		E1BAC495293952900042BF60 /* UserVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAC494293952900042BF60 /* UserVM.swift */; };
 		E1BAC4972939720D0042BF60 /* CustomLogDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAC4962939720D0042BF60 /* CustomLogDestination.swift */; };
+		E1BAC499293AA6340042BF60 /* CreatePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAC498293AA6340042BF60 /* CreatePostView.swift */; };
+		E1BAC49B293AA95B0042BF60 /* createPosts.json in Resources */ = {isa = PBXBuildFile; fileRef = E1BAC49A293AA95B0042BF60 /* createPosts.json */; };
+		E1BAC49D293AAA190042BF60 /* CreatePostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAC49C293AAA190042BF60 /* CreatePostRequest.swift */; };
 		E1E5B69F29300390001E7299 /* version.json in Resources */ = {isa = PBXBuildFile; fileRef = E1E5B69E29300390001E7299 /* version.json */; };
 /* End PBXBuildFile section */
 
@@ -229,6 +232,9 @@
 		E1BAC49229393EF80042BF60 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		E1BAC494293952900042BF60 /* UserVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserVM.swift; sourceTree = "<group>"; };
 		E1BAC4962939720D0042BF60 /* CustomLogDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLogDestination.swift; sourceTree = "<group>"; };
+		E1BAC498293AA6340042BF60 /* CreatePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostView.swift; sourceTree = "<group>"; };
+		E1BAC49A293AA95B0042BF60 /* createPosts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = createPosts.json; sourceTree = "<group>"; };
+		E1BAC49C293AAA190042BF60 /* CreatePostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostRequest.swift; sourceTree = "<group>"; };
 		E1E5B69E29300390001E7299 /* version.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = version.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -488,6 +494,7 @@
 				E1BAC48D293937500042BF60 /* UserView.swift */,
 				E1BAC49029393E530042BF60 /* GraphQLView.swift */,
 				E1BAC49229393EF80042BF60 /* RootView.swift */,
+				E1BAC498293AA6340042BF60 /* CreatePostView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -508,6 +515,7 @@
 				E1E5B69E29300390001E7299 /* version.json */,
 				E18AAA1E2935469B00756455 /* login.json */,
 				E18AAA1C293540AD00756455 /* user.json */,
+				E1BAC49A293AA95B0042BF60 /* createPosts.json */,
 			);
 			path = JSONData;
 			sourceTree = "<group>";
@@ -529,6 +537,7 @@
 				E18AAA1A2935251400756455 /* GetVersionRequest.swift */,
 				E18AAA2429354E0900756455 /* LoginRequest.swift */,
 				E18AAA272936987100756455 /* UserRequest.swift */,
+				E1BAC49C293AAA190042BF60 /* CreatePostRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -753,6 +762,7 @@
 				E18AAA1F2935469B00756455 /* login.json in Resources */,
 				E1E5B69F29300390001E7299 /* version.json in Resources */,
 				E1275838292EAFDE0047E5DD /* posts.json in Resources */,
+				E1BAC49B293AA95B0042BF60 /* createPosts.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -832,6 +842,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1BAC499293AA6340042BF60 /* CreatePostView.swift in Sources */,
 				E18AAA19293524AA00756455 /* NetworkService.swift in Sources */,
 				E18AAA2529354E0900756455 /* LoginRequest.swift in Sources */,
 				E1275834292EAF550047E5DD /* MockNetworkService.swift in Sources */,
@@ -848,6 +859,7 @@
 				E1BAC49329393EF80042BF60 /* RootView.swift in Sources */,
 				E169C7A829383E3B00A49824 /* CustomColor.swift in Sources */,
 				E18AAA2329354D2400756455 /* User.swift in Sources */,
+				E1BAC49D293AAA190042BF60 /* CreatePostRequest.swift in Sources */,
 				E18AAA1B2935251400756455 /* GetVersionRequest.swift in Sources */,
 				E18AAA1029312DF700756455 /* Version.swift in Sources */,
 				E127583B292EB21C0047E5DD /* Post.swift in Sources */,

@@ -21,8 +21,7 @@ struct HomeView: View {
                             Text("Cat Diary")
                                 .font(.largeTitle)
                             Spacer()
-                            // TODO: Add the Create a new post view & request
-                            Button(action: { print("create") }) {
+                            NavigationLink(destination: CreatePostView(viewModel: viewModel)) {
                                 Text("New Post")
                             }.padding()
                             .background(.blue)
