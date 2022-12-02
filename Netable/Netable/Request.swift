@@ -203,5 +203,3 @@ public extension Request where RawResource: Decodable, FallbackResource: Decodab
 public struct Empty: Codable {
     public static let data = "{}".data(using: .utf8)!
 }
-
-

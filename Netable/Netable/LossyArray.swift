@@ -10,23 +10,28 @@ import Foundation
 
 /// Adapted from https://stackoverflow.com/a/46369152
 
-/// Decodable a non-optional item into an optional element.
-public struct FailableDecodable<Element: Decodable>: Decodable {
-    public var element: Element?
+/// Array container that allows for partial decoding of elements.
+/// If an element of the array fails to decode, it will be omitted rather than the rest of the array failing to decode.
+public struct LossyArray<Element> {
+    /// All elements of the array that decoded successfully.
+    public var elements: [Element]
 
-    /// Decode an element and set it to `nil` if decoding fails.
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        element = try? container.decode(Element.self)
+    public init(elements: [Element]) {
+        self.elements = elements
     }
 }
 
-/// Array container that allows for partial decoding of elements.
-/// If an element of the array fails to decode, it will be omitted rather than the rest of the array failing to decode.
-public struct LossyArray<Element: Decodable>: Decodable {
+extension LossyArray: Decodable where Element: Decodable {
+    /// Decode non-optional item into an optional element.
+    public struct FailableDecodable<Element: Decodable>: Decodable {
+        public var element: Element?
 
-    /// All elements of the array that decoded successfully.
-    public let elements: [Element]
+        /// Decode an element and set it to `nil` if decoding fails.
+        public init(from decoder: Decoder) throws {
+            let container = try decoder.singleValueContainer()
+            element = try? container.decode(Element.self)
+        }
+    }
 
     /// Attempt to decode the contents of an array, omitting any results that fail to decode.
     public init(from decoder: Decoder) throws {
