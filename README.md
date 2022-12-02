@@ -6,9 +6,15 @@ Modern apps interact with a lot of different APIs. Netable makes that easier by 
 
 - [Features](#features)
 - [Usage](#usage)
+    - [Standard Usage](#standard-usage)
+    - [Resource Extraction](#resource-extraction)
+    - [Handling Errors](#handling-errors)
+    - [GraphQL Support](#graphql-support)
 - [Example](#example)
-- [Requirements](#requirements)
+   - [Full Documentation](#full-documentation)
 - [Installation](#installation)
+   - [Requirements](#requirements)
+   - [Supporting Earlier Versions][#supporting-earlier-versions-of-ios]
 - [License](#license)
 
 ## Features
@@ -52,7 +58,7 @@ struct GetCatImages: Request {
 }
 ```
 
-### Make your request using `async`/`await` and handle the result:
+#### Make your request using `async`/`await` and handle the result:
 
 ```swift
 Task {
@@ -82,7 +88,7 @@ Task {
 }
 ```
 
-### Making a request with Combine
+#### Making a request with Combine
 
 ```swift
 netable.request(GetCatImages())
@@ -113,7 +119,7 @@ netable.request(GetCatImages())
     }.store(in: &cancellables)
 ```
 
-### Or, if you prefer good old fashioned callbacks
+#### Or, if you prefer good old fashioned callbacks
 
 ```swift
 netable.request(GetCatImages()) { result in
@@ -236,6 +242,12 @@ struct GetUserRequest: Request {
 
 ```
 
+#### Partially Decoding Arrays
+
+Sometimes, when decoding an array of objects, you may not want to fail the entire request if some of those objects fail to decode.
+
+To do this, you can wrap your `RawResource` in the `LossyArray` type, the in your `finalize` function, grab the `LossyArray`'s `elements` to unwrap your partially decoded array.
+
 ### Handling Errors
 
 In addition to handling errors locally that are thrown, or returned through `Result` objects, we provide two ways to handle errors globally. These can be useful for doing things like presenting errors in the UI for common error cases across multiple requests, or catching things like failed authentication requests to clear a stored user.
@@ -276,7 +288,7 @@ Sometimes, you may want to specify a backup type to try and decode your response
 
 See [FallbackDecoderViewController](https://github.com/steamclock/netable/blob/master/Netable/NetableExample/Request/VersionCheckRequest.swift) in the Example project for a more detailed example.
 
-#### GraphQL Support
+### GraphQL Support
 
 While you can technically use `Netable` to manage GraphQL queries right out of the box, we've added a helper protocol to make your life a little bit easier, called `GraphQLRequest`.
 
@@ -284,19 +296,19 @@ You can see a detailed example in the example project, but note that by default 
 
 We recommend using a tool like [Postman](https://www.postman.com/) to document and test your queries. Also note that currently, shared fragments are not supported.
 
+## Example
+
 ### Full Documentation
 
 [In-depth documentation](https://steamclock.github.io/netable/) is provided through Jazzy and GitHub Pages.  
 
-## Example
+## Installation
 
-## Requirements
+### Requirements
 
 - iOS 15.0+
 - MacOS 10.15+
 - Xcode 11.0+
-
-## Installation
 
 Netable is available through **[Swift Package Manager](https://swift.org/package-manager/)**. To install it, follow these steps:
 

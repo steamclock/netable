@@ -8,9 +8,9 @@
 
 import Foundation
 
-public struct RetryConfiguration {
+public struct RetryConfiguration: Sendable {
     /// Specify types of networking errors to retry
-    public enum Errors {
+    public enum Errors: Sendable {
         /// No retries will happen
         case none
 
@@ -21,7 +21,7 @@ public struct RetryConfiguration {
         case transport
 
         /// Test the errors with a user supplied closure. Custom errors are limited in the same way that ".all" is, there are certain types of errors (request formatting errors, cancellation, network timeouts) that this will NOT be called for and there is no option to retry. Note: will be called on a background thread so closure must be thread safe
-        case custom(retryTest: (NetableError) -> Bool)
+        case custom(retryTest: @Sendable (NetableError) -> Bool)
 
         internal func shouldRetry(_ error: NetableError) -> Bool {
             switch self {
