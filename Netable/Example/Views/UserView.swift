@@ -34,7 +34,6 @@ struct UserView: View {
                 }
                 HStack {
                     Spacer()
-                    // TODO: Add logout function - this is a good way to show create a "DELETE" request since we're only doing GET and UPDATE in this so far.
                     Button(action: { viewModel.logout() }) {
                         Text("Log Out")
                     }.padding()

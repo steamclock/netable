@@ -13,7 +13,6 @@ class UserVM: ObservableObject {
     @Published var user: User?
     private var cancellables = [AnyCancellable]()
 
-
     func bindViewModel() {
         AuthNetworkService.shared.user
             .receive(on: RunLoop.main)
