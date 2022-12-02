@@ -27,5 +27,9 @@ struct LoginRequest: Request {
     var path = "user/login"
 
     var parameters: LoginParameters
+
+    var unredactedParameterKeys: Set<String> {
+        ["email"]
+    }
 }
 

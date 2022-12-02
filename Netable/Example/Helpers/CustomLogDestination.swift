@@ -14,8 +14,8 @@ import os
 final class CustomLogDestination: LogDestination {
     func log(event: LogEvent) {
         switch event {
-        case .requestSuccess(_, _, _, _, _):
-            debugPrint("Request successful!")
+        case .requestSuccess(let request, _, _, _, _):
+            debugPrint("Request for \(request.urlString) successful!")
         default:
             debugPrint(event.debugDescription)
         }

@@ -46,7 +46,7 @@ struct RootView: View {
         VStack(alignment: .center, spacing: 10) {
             Spacer()
             if viewModel.loginFailed {
-                Text("Woops! We have to enter the credientials!")
+                Text("Password/username are incorrect. Hint:")
                 Text("User: cat@netable.com")
                 Text("Password: meows")
             }
