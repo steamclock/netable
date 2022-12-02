@@ -173,15 +173,6 @@ public extension Request where RawResource == SmartUnwrap<FinalResource> {
     }
 }
 
-public extension Request where RawResource == SmartUnwrap<LossyArray<FinalResource>> {
-    func finalize(raw: RawResource) async throws -> FinalResource {
-        guard let finalized = raw.decodedType.elements as? Self.FinalResource else {
-            throw NetableError.resourceExtractionError("Failed to unwrap LossyArray elements")
-        }
-        return finalized
-    }
-}
-
 public extension Request where RawResource: Decodable, FallbackResource: Decodable {
     func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) async throws -> RawResource {
         let decoder = JSONDecoder()

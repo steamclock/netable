@@ -22,8 +22,9 @@ public struct FailableDecodable<Element: Decodable>: Decodable {
 }
 
 /// Array container that allows for partial decoding of elements.
-/// If an element of the array fails to decode, it will be ommited rather than the rest of the array failing to decode.
+/// If an element of the array fails to decode, it will be omitted rather than the rest of the array failing to decode.
 public struct LossyArray<Element: Decodable>: Decodable {
+
     /// All elements of the array that decoded successfully.
     public let elements: [Element]
 

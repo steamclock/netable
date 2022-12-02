@@ -24,4 +24,5 @@ struct GetPostsRequest: Request {
     func finalize(raw: SmartUnwrap<LossyArray<Post>>) async throws -> [Post] {
         raw.decodedType.elements
     }
+
 }
