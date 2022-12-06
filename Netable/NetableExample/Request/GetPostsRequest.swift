@@ -10,22 +10,15 @@ import Netable
 
 struct GetPostsRequest: Request {
     typealias Parameters = Empty
-    typealias RawResource = Result
-    typealias FinalResource = [Post]
-
-    struct Result: Decodable {
-        let posts: LossyArray<Post>
-    }
+    typealias RawResource = [Post]
 
     var method = HTTPMethod.get
 
     var path = "all"
 
+    var arrayDecodeStrategy: ArrayDecodeStrategy { .lossy }
+
     var unredactedParameterKeys: Set<String> {
         ["title", "content"]
-    }
-
-    func finalize(raw: Result) async throws -> [Post] {
-        raw.posts.elements
     }
 }

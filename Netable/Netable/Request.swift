@@ -24,6 +24,9 @@ public protocol Request: Sendable {
     /// See `FallbackDecoderViewController` for an example.
     associatedtype FallbackResource: Sendable = AnyObject
 
+    /// Allows for top-level arrays to be partially decoded if some elements fail to decode.
+    var arrayDecodeStrategy: ArrayDecodeStrategy { get }
+
     /// Any headers that should be included with the request.
     /// Note that these will be set _after_ any global headers,
     /// and will thus take precedence if there's a duplicated key
@@ -71,6 +74,10 @@ public extension Request {
         return Set<String>()
     }
 
+    var arrayDecodeStrategy: ArrayDecodeStrategy {
+        .standard
+    }
+
     func unredactedParameters(defaultEncodingStrategy: JSONEncoder.KeyEncodingStrategy) -> [String: String] {
         var output = [String: String]()
 
@@ -114,6 +121,32 @@ public extension Request where FinalResource == RawResource {
     }
 }
 
+public extension Request where
+    RawResource: Sequence,
+    RawResource: Decodable,
+    RawResource.Element: Decodable
+{
+    func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) async throws -> RawResource {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        decoder.keyDecodingStrategy = jsonKeyDecodingStrategy ?? defaultDecodingStrategy
+
+        guard let data = data else { throw NetableError.noData }
+
+        do {
+            guard arrayDecodeStrategy == .lossy else {
+                return try decoder.decode(RawResource.self, from: data)
+            }
+
+            let decoded = try decoder.decode(LossyArray<RawResource.Element>.self, from: data)
+
+            return decoded.elements as! Self.RawResource
+        } catch {
+            throw NetableError.decodingError(error, data)
+        }
+    }
+}
+
 public extension Request where RawResource: Decodable {
     func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) async throws -> RawResource {
         let decoder = JSONDecoder()
@@ -122,8 +155,7 @@ public extension Request where RawResource: Decodable {
 
         do {
             if RawResource.self == Empty.self {
-                let raw = try decoder.decode(RawResource.self, from: Empty.data)
-                return raw
+                return try decoder.decode(RawResource.self, from: Empty.data)
             } else if let data = data {
                 return try decoder.decode(RawResource.self, from: data)
             }

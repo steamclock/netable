@@ -54,10 +54,17 @@ class ExampleNetworkService {
 
     private func loadJson(from path: String) -> HttpResponseBody {
         guard let path = Bundle.main.path(forResource: path, ofType: "json"),
-                let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe),
-                let jsonResult = try? JSONSerialization.jsonObject(with: data, options: .mutableLeaves),
-                let jsonResult = jsonResult as? Dictionary<String, AnyObject> else {
+              let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe),
+              let jsonResult = try? JSONSerialization.jsonObject(with: data, options: .mutableLeaves) else {
             fatalError("Failed to load response JSON for: \(path)")
+        }
+
+        if let result = jsonResult as? Dictionary<String, AnyObject> {
+            return .json(result)
+        }
+
+        if let result = jsonResult as? [Dictionary<String, AnyObject>] {
+            return .json(result)
         }
 
         return .json(jsonResult)
