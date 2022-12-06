@@ -246,7 +246,9 @@ struct GetUserRequest: Request {
 
 Sometimes, when decoding an array of objects, you may not want to fail the entire request if some of those objects fail to decode.
 
-To do this, you can wrap your `RawResource` in the `LossyArray` type, the in your `finalize` function, grab the `LossyArray`'s `elements` to unwrap your partially decoded array.
+To do this, you can set your Request's `arrayDecodeStrategy` to `.lossy` to return any elements that succeed to decode.
+
+Not that this will only work if your `RawResource: Sequence` or `RawResource: SmartUnwrap<Sequence>`. For better support of decoding nested, lossy, arrays we recommend checking out [Better Codable](https://github.com/marksands/BetterCodable)  
 
 ### Handling Errors
 

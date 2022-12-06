@@ -181,6 +181,42 @@ extension CodingUserInfoKey {
     static let smartUnwrapKey = CodingUserInfoKey(rawValue: "smartUnwrapKey")!
 }
 
+public extension Request where
+    RawResource == SmartUnwrap<FinalResource>,
+    FinalResource: Sequence,
+    FinalResource: Decodable,
+    FinalResource.Element: Decodable
+{
+    func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) async throws -> RawResource {
+        guard let data = data else {
+            throw NetableError.noData
+        }
+
+        do {
+            let decoder = JSONDecoder()
+            decoder.userInfo = [
+                .smartUnwrapKey: smartUnwrapKey
+            ]
+
+            guard arrayDecodeStrategy == .lossy else {
+                return try decoder.decode(SmartUnwrap<FinalResource>.self, from: data)
+            }
+
+            let decodedType = try decoder.decode(SmartUnwrap<LossyArray<FinalResource.Element>>.self, from: data).decodedType
+            guard let finalResource = decodedType.elements as? FinalResource,
+                  let rawResource = SmartUnwrap(decodedType: finalResource) as? SmartUnwrap<FinalResource> else {
+                throw NetableError.resourceExtractionError("Failed to smart unwrap lossy decodable type. This is an internal error.")
+            }
+
+            return rawResource
+        } catch {
+            throw NetableError.decodingError(error, data)
+        }
+    }
+}
+
+
+
 public extension Request where RawResource == SmartUnwrap<FinalResource> {
     func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) async throws -> RawResource {
         guard let data = data else {

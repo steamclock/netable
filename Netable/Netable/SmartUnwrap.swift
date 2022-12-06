@@ -27,6 +27,10 @@ public struct SmartUnwrap<T: Decodable>: Decodable {
         }
     }
 
+    public init(decodedType: T) {
+        self.decodedType = decodedType
+    }
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: DynamicCodingKeys.self)
         let smartUnwrapKey = decoder.userInfo[.smartUnwrapKey] as? String

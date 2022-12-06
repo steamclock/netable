@@ -10,7 +10,8 @@ import Netable
 
 struct GetPostsRequest: Request {
     typealias Parameters = Empty
-    typealias RawResource = [Post]
+    typealias RawResource = SmartUnwrap<[Post]>
+    typealias FinalResource = [Post]
 
     var method = HTTPMethod.get
 
