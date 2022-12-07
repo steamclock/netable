@@ -91,6 +91,8 @@
 		E18AAA2329354D2400756455 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA2229354D2400756455 /* User.swift */; };
 		E18AAA2529354E0900756455 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA2429354E0900756455 /* LoginRequest.swift */; };
 		E18AAA282936987100756455 /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA272936987100756455 /* UserRequest.swift */; };
+		E19C96E62941130B005A77BD /* GraphQLVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C96E52941130B005A77BD /* GraphQLVM.swift */; };
+		E19C96E82941135D005A77BD /* GraphQLNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C96E72941135D005A77BD /* GraphQLNetworkService.swift */; };
 		E1BAC48E293937500042BF60 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAC48D293937500042BF60 /* UserView.swift */; };
 		E1BAC49129393E530042BF60 /* GraphQLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAC49029393E530042BF60 /* GraphQLView.swift */; };
 		E1BAC49329393EF80042BF60 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAC49229393EF80042BF60 /* RootView.swift */; };
@@ -227,6 +229,8 @@
 		E18AAA2229354D2400756455 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E18AAA2429354E0900756455 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		E18AAA272936987100756455 /* UserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
+		E19C96E52941130B005A77BD /* GraphQLVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLVM.swift; sourceTree = "<group>"; };
+		E19C96E72941135D005A77BD /* GraphQLNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLNetworkService.swift; sourceTree = "<group>"; };
 		E1BAC48D293937500042BF60 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		E1BAC49029393E530042BF60 /* GraphQLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLView.swift; sourceTree = "<group>"; };
 		E1BAC49229393EF80042BF60 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -554,6 +558,7 @@
 			children = (
 				E1275849292EE7D60047E5DD /* HomeVM.swift */,
 				E1BAC494293952900042BF60 /* UserVM.swift */,
+				E19C96E52941130B005A77BD /* GraphQLVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -563,6 +568,7 @@
 			children = (
 				E18AAA18293524AA00756455 /* NetworkService.swift */,
 				E18AAA202935486100756455 /* AuthNetworkService.swift */,
+				E19C96E72941135D005A77BD /* GraphQLNetworkService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -842,9 +848,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E19C96E62941130B005A77BD /* GraphQLVM.swift in Sources */,
 				E1BAC499293AA6340042BF60 /* CreatePostView.swift in Sources */,
 				E18AAA19293524AA00756455 /* NetworkService.swift in Sources */,
 				E18AAA2529354E0900756455 /* LoginRequest.swift in Sources */,
+				E19C96E82941135D005A77BD /* GraphQLNetworkService.swift in Sources */,
 				E1275834292EAF550047E5DD /* MockNetworkService.swift in Sources */,
 				E127584A292EE7D60047E5DD /* HomeVM.swift in Sources */,
 				E1275841292EC8E30047E5DD /* GetPostsRequest.swift in Sources */,

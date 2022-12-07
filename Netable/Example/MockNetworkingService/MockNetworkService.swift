@@ -17,9 +17,12 @@ class MockNetworkService {
     private init() {
         server = HttpServer()
 
+        server["/graphql"] = { resp in
+            .ok(self.loadJson(from: "posts"))
+        }
+
         server["/posts/new"] = { _ in
                 .internalServerError
-//                .ok(self.loadJson(from: "createPost"))
         }
 
         server["/posts/all"] = { _ in

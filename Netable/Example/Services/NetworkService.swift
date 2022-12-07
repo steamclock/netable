@@ -13,12 +13,7 @@ import Netable
 class SimpleNetworkService {
     static var shared = SimpleNetworkService()
 
-    private let netable: Netable
-
-    init() {
-        netable = Netable(
-            baseURL: URL(string: "http://localhost:8080/")!)
-    }
+    private let netable = Netable(baseURL: URL(string: "http://localhost:8080/")!)
 
     func getVersion() async throws -> Version {
         try await netable.request(GetVersionRequest())
