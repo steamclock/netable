@@ -17,4 +17,15 @@ class GraphQLNetworkService {
     func getPosts() async throws -> [Post] {
         try await netable.request(GetAllPostsQuery())
     }
+
+    func updatePost(title: String, content: String) {
+        Task {
+            do {
+                let input = UpdatePostMutationInput(title: title, content: content)
+                try await netable.request(UpdatePostsMutation(input: input))
+            } catch {
+                print("sadjhajskhdajha error")
+            }
+        }
+    }
 }

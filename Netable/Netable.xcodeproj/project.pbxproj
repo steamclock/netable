@@ -74,6 +74,8 @@
 		E124E8B5294265A8003EBCE3 /* GetAllPostsQuery.graphql in Resources */ = {isa = PBXBuildFile; fileRef = E124E8B4294265A8003EBCE3 /* GetAllPostsQuery.graphql */; };
 		E124E8B7294267C2003EBCE3 /* GetAllPostsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = E124E8B6294267C2003EBCE3 /* GetAllPostsQuery.swift */; };
 		E124E8B929426EAE003EBCE3 /* CreateGraphQLPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E124E8B829426EAE003EBCE3 /* CreateGraphQLPostView.swift */; };
+		E124E8BB29427057003EBCE3 /* UpdatePostsMutation.graphql in Resources */ = {isa = PBXBuildFile; fileRef = E124E8BA29427057003EBCE3 /* UpdatePostsMutation.graphql */; };
+		E124E8BD2942709F003EBCE3 /* UpdatePostsMutation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E124E8BC2942709F003EBCE3 /* UpdatePostsMutation.swift */; };
 		E1275825292E9C5A0047E5DD /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1275824292E9C5A0047E5DD /* ExampleApp.swift */; };
 		E1275827292E9C5A0047E5DD /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1275826292E9C5A0047E5DD /* HomeView.swift */; };
 		E1275829292E9C5B0047E5DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1275828292E9C5B0047E5DD /* Assets.xcassets */; };
@@ -228,6 +230,8 @@
 		E124E8B4294265A8003EBCE3 /* GetAllPostsQuery.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetAllPostsQuery.graphql; sourceTree = "<group>"; };
 		E124E8B6294267C2003EBCE3 /* GetAllPostsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllPostsQuery.swift; sourceTree = "<group>"; };
 		E124E8B829426EAE003EBCE3 /* CreateGraphQLPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGraphQLPostView.swift; sourceTree = "<group>"; };
+		E124E8BA29427057003EBCE3 /* UpdatePostsMutation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = UpdatePostsMutation.graphql; sourceTree = "<group>"; };
+		E124E8BC2942709F003EBCE3 /* UpdatePostsMutation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePostsMutation.swift; sourceTree = "<group>"; };
 		E1275822292E9C5A0047E5DD /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1275824292E9C5A0047E5DD /* ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleApp.swift; sourceTree = "<group>"; };
 		E1275826292E9C5A0047E5DD /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -607,6 +611,8 @@
 			children = (
 				E124E8B4294265A8003EBCE3 /* GetAllPostsQuery.graphql */,
 				E124E8B6294267C2003EBCE3 /* GetAllPostsQuery.swift */,
+				E124E8BA29427057003EBCE3 /* UpdatePostsMutation.graphql */,
+				E124E8BC2942709F003EBCE3 /* UpdatePostsMutation.swift */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -793,6 +799,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E124E8BB29427057003EBCE3 /* UpdatePostsMutation.graphql in Resources */,
 				E18AAA1D293540AD00756455 /* user.json in Resources */,
 				E1275829292E9C5B0047E5DD /* Assets.xcassets in Resources */,
 				E18AAA1F2935469B00756455 /* login.json in Resources */,
@@ -892,6 +899,7 @@
 				E124E8B929426EAE003EBCE3 /* CreateGraphQLPostView.swift in Sources */,
 				E1BAC495293952900042BF60 /* UserVM.swift in Sources */,
 				E18AAA282936987100756455 /* UserRequest.swift in Sources */,
+				E124E8BD2942709F003EBCE3 /* UpdatePostsMutation.swift in Sources */,
 				E1BAC4972939720D0042BF60 /* CustomLogDestination.swift in Sources */,
 				E1BAC48E293937500042BF60 /* UserView.swift in Sources */,
 				E1275827292E9C5A0047E5DD /* HomeView.swift in Sources */,

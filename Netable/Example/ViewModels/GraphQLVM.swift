@@ -10,10 +10,18 @@ import Foundation
 
 class GraphQLVM: ObservableObject {
     @Published var posts: [Post]?
+    @Published var title: String = ""
+    @Published var content: String = ""
 
     func getPosts() {
         Task { @MainActor in
             posts = try await GraphQLNetworkService.shared.getPosts()
+        }
+    }
+
+    func updatePosts() {
+        Task { @MainActor in
+            GraphQLNetworkService.shared.updatePost(title: title, content: content)
         }
     }
 }

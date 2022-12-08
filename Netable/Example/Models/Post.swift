@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Post: Decodable, Hashable {
+struct Post: Codable, Hashable {
     let title: String
     let content: String
 }
