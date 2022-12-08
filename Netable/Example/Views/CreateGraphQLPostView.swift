@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct CreateGraphQLPostView: View {
+    @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: GraphQLVM
 
     var body: some View {
@@ -28,13 +29,17 @@ struct CreateGraphQLPostView: View {
                     .background(.white)
                     .cornerRadius(10)
                     .padding(.bottom, 10)
-                Button(action: { viewModel.updatePosts() }) {
+                Button(action: { viewModel.updatePosts()
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
                     Text("Post")
                 }.padding()
-                    .padding(.horizontal, 40)
-                    .background(.blue)
-                    .cornerRadius(10)
-                    .foregroundColor(.white)
+                .padding(.horizontal, 40)
+                .background(.blue)
+                .cornerRadius(10)
+                .foregroundColor(.white)
+                Text("Note: this method does not actually mutate posts.")
+                    .font(.footnote)
             }.padding()
             Spacer()
         }.background(Color.lightGrey)

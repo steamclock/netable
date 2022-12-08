@@ -23,8 +23,6 @@ class GraphQLNetworkService {
             do {
                 let input = UpdatePostMutationInput(title: title, content: content)
                 try await netable.request(UpdatePostsMutation(input: input))
-            } catch {
-                print("sadjhajskhdajha error")
             }
         }
     }
