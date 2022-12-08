@@ -9,5 +9,11 @@
 import Foundation
 
 class GraphQLVM: ObservableObject {
-    
+    @Published var posts: [Post]?
+
+    func getPosts() {
+        Task { @MainActor in
+            posts = try await GraphQLNetworkService.shared.getPosts()
+        }
+    }
 }

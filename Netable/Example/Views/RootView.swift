@@ -27,7 +27,7 @@ struct RootView: View {
                             Image(systemName: "person.fill")
                             Text("Profile")
                         }
-                    GraphQLView()
+                    GraphQLView(viewModel: GraphQLVM())
                         .tabItem {
                             Image(systemName: "flowchart.fill")
                             Text("GraphQL")

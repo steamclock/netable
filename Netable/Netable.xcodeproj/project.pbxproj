@@ -71,6 +71,9 @@
 		C6DA3354293822230076F693 /* LossyArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DA3353293822230076F693 /* LossyArray.swift */; };
 		C6F4CFB026D582E8004E6BB8 /* RequestFailedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F4CFAF26D582E8004E6BB8 /* RequestFailedDelegate.swift */; };
 		C6F4CFB626D598B3004E6BB8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C6F4CFB526D598B3004E6BB8 /* README.md */; };
+		E124E8B5294265A8003EBCE3 /* GetAllPostsQuery.graphql in Resources */ = {isa = PBXBuildFile; fileRef = E124E8B4294265A8003EBCE3 /* GetAllPostsQuery.graphql */; };
+		E124E8B7294267C2003EBCE3 /* GetAllPostsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = E124E8B6294267C2003EBCE3 /* GetAllPostsQuery.swift */; };
+		E124E8B929426EAE003EBCE3 /* CreateGraphQLPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E124E8B829426EAE003EBCE3 /* CreateGraphQLPostView.swift */; };
 		E1275825292E9C5A0047E5DD /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1275824292E9C5A0047E5DD /* ExampleApp.swift */; };
 		E1275827292E9C5A0047E5DD /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1275826292E9C5A0047E5DD /* HomeView.swift */; };
 		E1275829292E9C5B0047E5DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1275828292E9C5B0047E5DD /* Assets.xcassets */; };
@@ -82,6 +85,7 @@
 		E1275847292EDD160047E5DD /* Netable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C9288023E9F68000DB2B37 /* Netable.framework */; };
 		E127584A292EE7D60047E5DD /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1275849292EE7D60047E5DD /* HomeVM.swift */; };
 		E169C7A829383E3B00A49824 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E169C7A729383E3B00A49824 /* CustomColor.swift */; };
+		E186202129425EFF009B6E0C /* Netable.framework in Embeded Framworks */ = {isa = PBXBuildFile; fileRef = B8C9288023E9F68000DB2B37 /* Netable.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E18AAA1029312DF700756455 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA0F29312DF700756455 /* Version.swift */; };
 		E18AAA19293524AA00756455 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA18293524AA00756455 /* NetworkService.swift */; };
 		E18AAA1B2935251400756455 /* GetVersionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA1A2935251400756455 /* GetVersionRequest.swift */; };
@@ -138,6 +142,17 @@
 				B8A18C0E23F2201000941EA6 /* Netable.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E186202029425EE7009B6E0C /* Embeded Framworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E186202129425EFF009B6E0C /* Netable.framework in Embeded Framworks */,
+			);
+			name = "Embeded Framworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -210,6 +225,9 @@
 		C6DA3353293822230076F693 /* LossyArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LossyArray.swift; sourceTree = "<group>"; };
 		C6F4CFAF26D582E8004E6BB8 /* RequestFailedDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFailedDelegate.swift; sourceTree = "<group>"; };
 		C6F4CFB526D598B3004E6BB8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
+		E124E8B4294265A8003EBCE3 /* GetAllPostsQuery.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetAllPostsQuery.graphql; sourceTree = "<group>"; };
+		E124E8B6294267C2003EBCE3 /* GetAllPostsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllPostsQuery.swift; sourceTree = "<group>"; };
+		E124E8B829426EAE003EBCE3 /* CreateGraphQLPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGraphQLPostView.swift; sourceTree = "<group>"; };
 		E1275822292E9C5A0047E5DD /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1275824292E9C5A0047E5DD /* ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleApp.swift; sourceTree = "<group>"; };
 		E1275826292E9C5A0047E5DD /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -499,6 +517,7 @@
 				E1BAC49029393E530042BF60 /* GraphQLView.swift */,
 				E1BAC49229393EF80042BF60 /* RootView.swift */,
 				E1BAC498293AA6340042BF60 /* CreatePostView.swift */,
+				E124E8B829426EAE003EBCE3 /* CreateGraphQLPostView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -537,6 +556,7 @@
 		E127583F292EC8CD0047E5DD /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				E19C96E92941365D005A77BD /* GraphQL */,
 				E1275840292EC8E30047E5DD /* GetPostsRequest.swift */,
 				E18AAA1A2935251400756455 /* GetVersionRequest.swift */,
 				E18AAA2429354E0900756455 /* LoginRequest.swift */,
@@ -580,6 +600,15 @@
 				E1BAC4962939720D0042BF60 /* CustomLogDestination.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E19C96E92941365D005A77BD /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+				E124E8B4294265A8003EBCE3 /* GetAllPostsQuery.graphql */,
+				E124E8B6294267C2003EBCE3 /* GetAllPostsQuery.swift */,
+			);
+			path = GraphQL;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -663,6 +692,7 @@
 				E127581E292E9C5A0047E5DD /* Sources */,
 				E127581F292E9C5A0047E5DD /* Frameworks */,
 				E1275820292E9C5A0047E5DD /* Resources */,
+				E186202029425EE7009B6E0C /* Embeded Framworks */,
 			);
 			buildRules = (
 			);
@@ -769,6 +799,7 @@
 				E1E5B69F29300390001E7299 /* version.json in Resources */,
 				E1275838292EAFDE0047E5DD /* posts.json in Resources */,
 				E1BAC49B293AA95B0042BF60 /* createPosts.json in Resources */,
+				E124E8B5294265A8003EBCE3 /* GetAllPostsQuery.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -858,6 +889,7 @@
 				E1275841292EC8E30047E5DD /* GetPostsRequest.swift in Sources */,
 				E18AAA212935486100756455 /* AuthNetworkService.swift in Sources */,
 				E1BAC49129393E530042BF60 /* GraphQLView.swift in Sources */,
+				E124E8B929426EAE003EBCE3 /* CreateGraphQLPostView.swift in Sources */,
 				E1BAC495293952900042BF60 /* UserVM.swift in Sources */,
 				E18AAA282936987100756455 /* UserRequest.swift in Sources */,
 				E1BAC4972939720D0042BF60 /* CustomLogDestination.swift in Sources */,
@@ -865,6 +897,7 @@
 				E1275827292E9C5A0047E5DD /* HomeView.swift in Sources */,
 				E1275825292E9C5A0047E5DD /* ExampleApp.swift in Sources */,
 				E1BAC49329393EF80042BF60 /* RootView.swift in Sources */,
+				E124E8B7294267C2003EBCE3 /* GetAllPostsQuery.swift in Sources */,
 				E169C7A829383E3B00A49824 /* CustomColor.swift in Sources */,
 				E18AAA2329354D2400756455 /* User.swift in Sources */,
 				E1BAC49D293AAA190042BF60 /* CreatePostRequest.swift in Sources */,

@@ -12,6 +12,9 @@ import Netable
 class GraphQLNetworkService {
     static var shared = GraphQLNetworkService()
 
-    private let netable = Netable(baseURL: URL(string: "http://localhost:8080/")!)
+    private let netable = Netable(baseURL: URL(string: "http://localhost:8080/graphql")!)
 
+    func getPosts() async throws -> [Post] {
+        try await netable.request(GetAllPostsQuery())
+    }
 }

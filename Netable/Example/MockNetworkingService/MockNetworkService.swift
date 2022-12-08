@@ -17,7 +17,7 @@ class MockNetworkService {
     private init() {
         server = HttpServer()
 
-        server["/graphql"] = { resp in
+        server["/graphql"] = { _ in
             .ok(self.loadJson(from: "posts"))
         }
 
@@ -29,7 +29,7 @@ class MockNetworkService {
              .ok(self.loadJson(from: "posts"))
         }
 
-        server["user/login"] = { req in
+        server["/user/login"] = { req in
             let login = self.loadJson(from: "login")
             guard let userInfo = self.unwrapJson(from: login) as? [String: String] else {
                 return .internalServerError
