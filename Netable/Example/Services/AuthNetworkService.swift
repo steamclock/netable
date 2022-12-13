@@ -36,10 +36,17 @@ class AuthNetworkService {
         authNetable = Netable(baseURL: URL(string: "http://localhost:8080/")!, config: Config(globalHeaders: ["Authentication" : "Bearer \(login.token)"]), logDestination: CustomLogDestination(), retryConfiguration: RetryConfiguration(errors: .all, count: 2, delay: 3.0))
     }
 
-    func getUser() async throws -> User? {
-        let user = try await netable.request(UserRequest(headers: ["Accept-Language": "en-US"]))
-        self.user.send(user)
-        return user
+    func getUser() async throws {
+        let (_, result) = try await netable.request(UserRequest(headers: ["Accept-Language": "en-US"]))
+        result.sink { result in
+            print(result)
+            switch result {
+            case .success(let user):
+                self.user.send(user)
+            case .failure(let error):
+                print(error)
+            }
+        }.store(in: &cancellables)
     }
 
     func getPosts() async throws -> [Post] {

@@ -24,6 +24,7 @@ class GraphQLRepository {
 
         errors = PassthroughSubject<Error, Never>()
     }
+    
 
     func getPosts() {
         let (_, results) = netable.request(GetAllPostsQuery())

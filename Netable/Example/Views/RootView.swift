@@ -13,7 +13,7 @@ struct RootView: View {
 
     var body: some View {
         VStack {
-            if viewModel.user == nil {
+            if viewModel.userAuthorized == false {
                 loginView
             } else {
                 TabView {
