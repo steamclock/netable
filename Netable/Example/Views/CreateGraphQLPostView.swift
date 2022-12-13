@@ -38,7 +38,7 @@ struct CreateGraphQLPostView: View {
                 .background(.blue)
                 .cornerRadius(10)
                 .foregroundColor(.white)
-                Text("Note: this method does not actually mutate posts.")
+                Text("Note: this method does not actually mutate posts. Check console to see post method in action after making request.")
                     .font(.footnote)
             }.padding()
             Spacer()

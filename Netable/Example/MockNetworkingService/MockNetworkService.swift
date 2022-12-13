@@ -34,7 +34,6 @@ class MockNetworkService {
             guard let userInfo = self.unwrapJson(from: login) as? [String: String] else {
                 return .internalServerError
             }
-
             let email = self.getValue(params: req.queryParams, value: "email")
             let password = self.getValue(params: req.queryParams, value: "password")
 

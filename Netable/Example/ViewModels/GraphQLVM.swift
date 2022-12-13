@@ -21,7 +21,7 @@ class GraphQLVM: ObservableObject {
 
     func updatePosts() {
         Task { @MainActor in
-            GraphQLNetworkService.shared.updatePost(title: title, content: content)
+            try await GraphQLNetworkService.shared.updatePost(title: title, content: content)
         }
     }
 }

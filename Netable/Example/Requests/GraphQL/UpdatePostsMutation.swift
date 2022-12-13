@@ -26,7 +26,7 @@ struct UpdatePostsMutation: GraphQLRequest {
     var unredactedParameterKeys: Set<String> {
         ["query", "variables"]
     }
-    
+
     func finalize(raw: GetAllPostsResponse) async throws -> [Post] {
         raw.posts
     }
