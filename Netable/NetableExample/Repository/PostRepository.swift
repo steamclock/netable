@@ -46,7 +46,8 @@ class PostRepository {
     func getPosts() {
         Task { @MainActor in
             do {
-                let posts = try await netable.request(GetPostsRequest())
+                let posts = try await self.netable.request(GetPostsRequest())
+                print(posts)
                 self.posts.send(posts)
             } catch {
                 print(error)

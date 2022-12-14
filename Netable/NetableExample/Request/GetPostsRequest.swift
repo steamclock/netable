@@ -17,6 +17,8 @@ struct GetPostsRequest: Request {
 
     var path = "all"
 
+    var arrayDecodeStrategy: ArrayDecodeStrategy { .lossy }
+
     var unredactedParameterKeys: Set<String> {
         ["title", "content"]
     }
