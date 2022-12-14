@@ -1,9 +1,7 @@
 {
-    "user": {
-        "firstName": "Sir",
-        "lastName": "Meowington",
+        "first_name": "Sir",
+        "last_name": "Meowington",
         "location": "Somewhere far far away",
         "bio": "Love causing havoc, eating inappropriate things, and screaming at 3am.",
         "age": 4
-    }
 }

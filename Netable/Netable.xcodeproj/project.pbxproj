@@ -99,6 +99,8 @@
 		E18AAA282936987100756455 /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA272936987100756455 /* UserRequest.swift */; };
 		E19C96E62941130B005A77BD /* GraphQLVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C96E52941130B005A77BD /* GraphQLVM.swift */; };
 		E19C96E82941135D005A77BD /* GraphQLNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C96E72941135D005A77BD /* GraphQLNetworkService.swift */; };
+		E1B98DBB294A477B00DC9434 /* CustomDecodingStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B98DBA294A477B00DC9434 /* CustomDecodingStrategy.swift */; };
+		E1B98DBD294A6CEA00DC9434 /* SuperSimpleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B98DBC294A6CEA00DC9434 /* SuperSimpleRequest.swift */; };
 		E1BAC48E293937500042BF60 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAC48D293937500042BF60 /* UserView.swift */; };
 		E1BAC49129393E530042BF60 /* GraphQLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAC49029393E530042BF60 /* GraphQLView.swift */; };
 		E1BAC49329393EF80042BF60 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAC49229393EF80042BF60 /* RootView.swift */; };
@@ -253,6 +255,8 @@
 		E18AAA272936987100756455 /* UserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
 		E19C96E52941130B005A77BD /* GraphQLVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLVM.swift; sourceTree = "<group>"; };
 		E19C96E72941135D005A77BD /* GraphQLNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLNetworkService.swift; sourceTree = "<group>"; };
+		E1B98DBA294A477B00DC9434 /* CustomDecodingStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDecodingStrategy.swift; sourceTree = "<group>"; };
+		E1B98DBC294A6CEA00DC9434 /* SuperSimpleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperSimpleRequest.swift; sourceTree = "<group>"; };
 		E1BAC48D293937500042BF60 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		E1BAC49029393E530042BF60 /* GraphQLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLView.swift; sourceTree = "<group>"; };
 		E1BAC49229393EF80042BF60 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -566,6 +570,7 @@
 				E18AAA2429354E0900756455 /* LoginRequest.swift */,
 				E18AAA272936987100756455 /* UserRequest.swift */,
 				E1BAC49C293AAA190042BF60 /* CreatePostRequest.swift */,
+				E1B98DBC294A6CEA00DC9434 /* SuperSimpleRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -602,6 +607,7 @@
 			children = (
 				E169C7A729383E3B00A49824 /* CustomColor.swift */,
 				E1BAC4962939720D0042BF60 /* CustomLogDestination.swift */,
+				E1B98DBA294A477B00DC9434 /* CustomDecodingStrategy.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -887,6 +893,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E19C96E62941130B005A77BD /* GraphQLVM.swift in Sources */,
+				E1B98DBD294A6CEA00DC9434 /* SuperSimpleRequest.swift in Sources */,
 				E1BAC499293AA6340042BF60 /* CreatePostView.swift in Sources */,
 				E18AAA19293524AA00756455 /* NetworkService.swift in Sources */,
 				E18AAA2529354E0900756455 /* LoginRequest.swift in Sources */,
@@ -902,6 +909,7 @@
 				E124E8BD2942709F003EBCE3 /* UpdatePostsMutation.swift in Sources */,
 				E1BAC4972939720D0042BF60 /* CustomLogDestination.swift in Sources */,
 				E1BAC48E293937500042BF60 /* UserView.swift in Sources */,
+				E1B98DBB294A477B00DC9434 /* CustomDecodingStrategy.swift in Sources */,
 				E1275827292E9C5A0047E5DD /* HomeView.swift in Sources */,
 				E1275825292E9C5A0047E5DD /* ExampleApp.swift in Sources */,
 				E1BAC49329393EF80042BF60 /* RootView.swift in Sources */,
