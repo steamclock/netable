@@ -49,10 +49,10 @@ public protocol Request: Sendable {
     var unredactedParameterKeys: Set<String> { get }
 
     /// Optional: The key decoding strategy to be used when decoding return JSON. Default is `.useDefaultKeys`.
-    var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy? { get }
+    var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy { get }
 
     /// Optional: The key encoding strategy to be used when encoding JSON parameters. Default is `.useDefaultKeys`.
-    var jsonKeyEncodingStrategy: JSONEncoder.KeyEncodingStrategy? { get }
+    var jsonKeyEncodingStrategy: JSONEncoder.KeyEncodingStrategy { get }
 
     /// Optional: The method to decode Data into your RawResource
     func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) async throws -> RawResource
@@ -97,13 +97,13 @@ public extension Request {
     }
 
     /// Set the default key decoding strategy.
-    var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy? {
-        return nil
+    var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy {
+        return .useDefaultKeys
     }
 
     /// Set the default key encoding strategy.
-    var jsonKeyEncodingStrategy: JSONEncoder.KeyEncodingStrategy? {
-        return nil
+    var jsonKeyEncodingStrategy: JSONEncoder.KeyEncodingStrategy {
+        return .useDefaultKeys
     }
 }
 
