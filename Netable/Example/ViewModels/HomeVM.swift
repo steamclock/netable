@@ -16,20 +16,24 @@ class HomeVM: ObservableObject {
     @Published var title: String = ""
     @Published var content: String = ""
 
-
     @Published var posts: [Post]?
     @Published var user: User? 
     @Published var loginFailed = false
 
     private var cancellables = [AnyCancellable]()
 
+    func unbindViewModel() {
+        cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
+    }
 
     func bindViewModel() {
+        unbindViewModel()
+
         AuthNetworkService.shared.user
             .receive(on: RunLoop.main)
             .sink { user in
                 self.user = user
-                print(self.user)
             }.store(in: &cancellables)
         
         getVersion()
@@ -57,7 +61,6 @@ class HomeVM: ObservableObject {
     func getUser() {
         Task { @MainActor in
             try await AuthNetworkService.shared.getUser()
-
             getPosts()
         }
     }
@@ -66,10 +69,17 @@ class HomeVM: ObservableObject {
         Task { @MainActor in
             do {
                 try await AuthNetworkService.shared.login(email: username, password: password)
+                resetLoginSettings()
                 getUser()
             } catch {
                 loginFailed = true
             }
         }
+    }
+
+    func resetLoginSettings() {
+        username = ""
+        password = ""
+        loginFailed = false
     }
 }

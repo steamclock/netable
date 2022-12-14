@@ -45,9 +45,6 @@ struct HomeView: View {
                     EmptyView()
                 }
             }.padding()
-
-        } .onAppear {
-            viewModel.bindViewModel()
         }
     }   
 }

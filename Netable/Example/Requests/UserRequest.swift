@@ -10,12 +10,13 @@ import Foundation
 import Netable
 
 struct UserRequest: Request {
-    typealias RawResource = User
-//    typealias FinalResource = User
+    typealias RawResource = SmartUnwrap<User>
+    typealias FinalResource = User
 
     var method: HTTPMethod { return .get }
 
-    var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy? { return .convertFromSnakeCase }
+    var smartUnwrapKey = "user"
+    var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy? { return .convertFromKebabCase }
 
     var path = "user/profile"
     var headers: [String : String]

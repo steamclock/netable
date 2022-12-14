@@ -39,7 +39,6 @@ class AuthNetworkService {
     func getUser() async throws {
         let (_, result) = try await netable.request(UserRequest(headers: ["Accept-Language": "en-US"]))
         result.sink { result in
-            print(result)
             switch result {
             case .success(let user):
                 self.user.send(user)

@@ -74,8 +74,11 @@ struct RootView: View {
             }.padding()
             Spacer()
         }.background(Color.lightGrey)
-            .onAppear {
-            viewModel.bindViewModel()
+        .onAppear {
+        viewModel.bindViewModel()
+        }
+        .onDisappear {
+            viewModel.unbindViewModel()
         }
     }
 }

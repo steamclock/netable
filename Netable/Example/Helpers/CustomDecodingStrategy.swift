@@ -11,34 +11,41 @@ import Netable
 
 struct MyCodingKey: CodingKey {
 
-  var stringValue: String
+    var stringValue: String
+    var intValue: Int?
 
-  init?(stringValue: String) {
-    self.stringValue = stringValue
-  }
+    init?(stringValue: String) {
+        self.stringValue = stringValue
+        self.intValue = nil
+    }
 
-  var intValue: Int?
-
-  init?(intValue: Int) {
-    return nil
-  }
+    init?(intValue: Int) {
+        self.stringValue = String(intValue)
+        self.intValue = intValue
+    }
 
 }
 
 public extension JSONDecoder.KeyDecodingStrategy {
 
     static let convertFromKebabCase = JSONDecoder.KeyDecodingStrategy.custom({ keys in
-             // Should never receive an empty `keys` array in theory.
-        let lastKey = keys.last! // If only there was a non-empty array type...
-          if lastKey.intValue != nil {
-            return lastKey // It's an array key, we don't need to change anything
-          }
-          // lastKey.stringValue will be, e.g. "FullName"
-          let firstLetter = lastKey.stringValue.prefix(1).lowercased()
-          let modifiedKey = firstLetter + lastKey.stringValue.dropFirst()
-          // Modified string value will be "fullName"
-          return MyCodingKey(stringValue: modifiedKey) ?? lastKey
-        })
+        var modifiedKey = ""
+        let key = keys.last!
+        if key.intValue != nil {
+            return key
+        }
+        let components = key.stringValue.split(separator: "-")
+
+        guard let firstComponent = components.first?.lowercased() else {
+            return key
+        }
+        let trailingComponents = components.dropFirst().map {
+                $0.capitalized
+        }
+        let lowerCamelCaseKey = ([firstComponent] + trailingComponents).joined()
+
+        return MyCodingKey(stringValue: String(lowerCamelCaseKey))!
+    })
 }
 
 

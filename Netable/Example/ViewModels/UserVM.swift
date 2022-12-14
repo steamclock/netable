@@ -13,7 +13,14 @@ class UserVM: ObservableObject {
     @Published var user: User?
     private var cancellables = [AnyCancellable]()
 
+    func unbindViewModel() {
+        cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
+    }
+
     func bindViewModel() {
+        unbindViewModel()
+
         AuthNetworkService.shared.user
             .receive(on: RunLoop.main)
             .sink { [weak self] user in

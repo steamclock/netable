@@ -50,5 +50,8 @@ struct UserView: View {
         .onAppear {
             viewModel.bindViewModel()
         }
+        .onDisappear {
+            viewModel.unbindViewModel()
+        }
     }
 }
