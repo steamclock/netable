@@ -4,9 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] 14-12-22
+- [104] Add support for partially decoding arrays through new `arrayDecodingStrategy` parameter on `Request`.
+- [106] Fix `RetryConfiguration` not being marked as `Sendable`.
+
+
 ## [2.0.0] 18-11-22
 - [77] Rework networking to use async/await by default.
 - [96] Add support + documentation for basic GraphQL requests.
+
 
 ## [1.0.0] 12-9-21
 ### Added
@@ -18,18 +24,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - [76] Add an option to set json en/decoding strategies in the Netable config constructor in addition to per-request.
 - [79] Add `requestFailedDelegate` and `requestFailedPublisher` to users to handle errors globally in addition to in `request` completion callbacks. Bumps minimum iOS version to 13.0.
 
+
 ## [0.10.3] - 12-01-21
 ### Changed
 - Fixed an issue with logging successful requests that was preventing finalized data from being printed properly.
 - Fixed a couple small tpyos.
 
+
 ## [0.10.2] - 10-08-20
 ### Added
 - Added support for `DELETE` requests.
 
+
 ## [0.10.1] - 16-07-20
 ### Changed
 - Fixed some properties in the new logging not being marked as "public".
+
 
 ## [0.10.0] - 16-07-20
 ### Added
