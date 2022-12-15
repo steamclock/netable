@@ -21,19 +21,30 @@ class AuthNetworkService {
     }
 
     var user: CurrentValueSubject<User?, Never>
+    var authError: CurrentValueSubject<NetableError?, Never>
     var cancellables = [AnyCancellable]()
     
     init() {
         user = CurrentValueSubject<User?, Never>(nil)
+        authError = CurrentValueSubject<NetableError?, Never>(nil)
 
         unauthNetable = Netable(
             baseURL: URL(string: "http://localhost:8080/")!)
+
+        unauthNetable.requestFailurePublisher.sink { [weak self] error in
+            guard case let NetableError.httpError(statusCode, _) = error, statusCode == 401 else {
+                return
+            }
+
+            self?.user.send(nil)
+            self?.authError.send(error)
+        }.store(in: &cancellables)
     }
 
     func login(email: String, password: String) async throws {
         let login = try await netable.request(LoginRequest(parameters: LoginParameters(email: email, password: password)))
 
-        authNetable = Netable(baseURL: URL(string: "http://localhost:8080/")!, config: Config(globalHeaders: ["Authentication" : "Bearer \(login.token)"]), logDestination: CustomLogDestination(), retryConfiguration: RetryConfiguration(errors: .all, count: 2, delay: 3.0))
+        authNetable = Netable(baseURL: URL(string: "http://localhost:8080/")!, config: Config(globalHeaders: ["Authentication" : "Bearer \(login.token)"]), logDestination: CustomLogDestination(), retryConfiguration: RetryConfiguration(errors: .all, count: 2, delay: 3.0), requestFailureDelegate: ErrorService.shared)
     }
 
     func getUser() async throws {

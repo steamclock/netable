@@ -6,13 +6,37 @@
 //  Copyright © 2022 Steamclock Software. All rights reserved.
 //
 
+import Foundation
 import SwiftUI
 
 struct RootView: View {
     @ObservedObject var viewModel: HomeVM
 
+
     var body: some View {
         VStack {
+            if let error = viewModel.error {
+                let _ = print(error)
+                VStack{
+                    HStack {
+                        Spacer()
+                        Text("Error: \(error)")
+                        Spacer()
+                        Image(systemName: "xmark")
+                            .foregroundColor(.black)
+                            .onTapGesture {
+                                viewModel.clearError()
+                            }
+                    }
+                }.frame(maxWidth: .infinity)
+                .padding()
+                .background(.yellow)
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        viewModel.error = nil
+                    }
+                }
+            }
             if viewModel.user == nil {
                 loginView
             } else {
@@ -38,9 +62,13 @@ struct RootView: View {
                     UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
                 }
             }
-        }
+        }.onAppear {
+            viewModel.bindViewModel()
+            }
+            .onDisappear {
+                viewModel.unbindViewModel()
+            }
     }
-
 
     var loginView: some View {
         VStack(alignment: .center, spacing: 10) {
@@ -74,11 +102,6 @@ struct RootView: View {
             }.padding()
             Spacer()
         }.background(Color.lightGrey)
-        .onAppear {
-        viewModel.bindViewModel()
-        }
-        .onDisappear {
-            viewModel.unbindViewModel()
-        }
+
     }
 }

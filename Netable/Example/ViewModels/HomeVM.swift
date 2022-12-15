@@ -8,6 +8,7 @@
 
 import Combine
 import Foundation
+import Netable
 
 class HomeVM: ObservableObject {
 
@@ -19,6 +20,8 @@ class HomeVM: ObservableObject {
     @Published var posts: [Post]?
     @Published var user: User? 
     @Published var loginFailed = false
+
+    @Published var error: String?
 
     private var cancellables = [AnyCancellable]()
 
@@ -34,6 +37,18 @@ class HomeVM: ObservableObject {
             .receive(on: RunLoop.main)
             .sink { user in
                 self.user = user
+            }.store(in: &cancellables)
+
+        AuthNetworkService.shared.authError
+            .receive(on: RunLoop.main)
+            .sink { error in
+                self.error = error?.errorDescription
+            }.store(in: &cancellables)
+
+        ErrorService.shared.errors
+            .receive(on: RunLoop.main)
+            .sink { error in
+                self.error = error?.errorDescription
             }.store(in: &cancellables)
         
         getVersion()
@@ -81,5 +96,9 @@ class HomeVM: ObservableObject {
         username = ""
         password = ""
         loginFailed = false
+    }
+
+    func clearError() {
+        error = nil
     }
 }

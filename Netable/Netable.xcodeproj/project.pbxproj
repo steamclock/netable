@@ -86,6 +86,7 @@
 		E1275846292EDD110047E5DD /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = E1275845292EDD110047E5DD /* Swifter */; };
 		E1275847292EDD160047E5DD /* Netable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C9288023E9F68000DB2B37 /* Netable.framework */; };
 		E127584A292EE7D60047E5DD /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1275849292EE7D60047E5DD /* HomeVM.swift */; };
+		E12D8414294BB215006EF71A /* ErrorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12D8413294BB215006EF71A /* ErrorService.swift */; };
 		E169C7A829383E3B00A49824 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E169C7A729383E3B00A49824 /* CustomColor.swift */; };
 		E186202129425EFF009B6E0C /* Netable.framework in Embeded Framworks */ = {isa = PBXBuildFile; fileRef = B8C9288023E9F68000DB2B37 /* Netable.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E18AAA1029312DF700756455 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA0F29312DF700756455 /* Version.swift */; };
@@ -243,6 +244,7 @@
 		E127583A292EB21C0047E5DD /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		E1275840292EC8E30047E5DD /* GetPostsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPostsRequest.swift; sourceTree = "<group>"; };
 		E1275849292EE7D60047E5DD /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
+		E12D8413294BB215006EF71A /* ErrorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorService.swift; sourceTree = "<group>"; };
 		E169C7A729383E3B00A49824 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 		E18AAA0F29312DF700756455 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		E18AAA18293524AA00756455 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -595,9 +597,10 @@
 		E18AAA152935243100756455 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				E18AAA18293524AA00756455 /* NetworkService.swift */,
 				E18AAA202935486100756455 /* AuthNetworkService.swift */,
 				E19C96E72941135D005A77BD /* GraphQLNetworkService.swift */,
+				E18AAA18293524AA00756455 /* NetworkService.swift */,
+				E12D8413294BB215006EF71A /* ErrorService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -913,6 +916,7 @@
 				E1275827292E9C5A0047E5DD /* HomeView.swift in Sources */,
 				E1275825292E9C5A0047E5DD /* ExampleApp.swift in Sources */,
 				E1BAC49329393EF80042BF60 /* RootView.swift in Sources */,
+				E12D8414294BB215006EF71A /* ErrorService.swift in Sources */,
 				E124E8B7294267C2003EBCE3 /* GetAllPostsQuery.swift in Sources */,
 				E169C7A829383E3B00A49824 /* CustomColor.swift in Sources */,
 				E18AAA2329354D2400756455 /* User.swift in Sources */,
