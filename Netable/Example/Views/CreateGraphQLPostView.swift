@@ -30,8 +30,7 @@ struct CreateGraphQLPostView: View {
                     .cornerRadius(10)
                     .padding(.bottom, 10)
                 Button(action: { viewModel.updatePosts()
-                    self.presentationMode.wrappedValue.dismiss()
-                }) {
+                    self.presentationMode.wrappedValue.dismiss() }) {
                     Text("Post")
                 }.padding()
                 .padding(.horizontal, 40)
@@ -45,4 +44,3 @@ struct CreateGraphQLPostView: View {
         }.background(Color.lightGrey)
     }
 }
-

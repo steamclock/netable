@@ -23,7 +23,7 @@ class AuthNetworkService {
     var user: CurrentValueSubject<User?, Never>
     var authError: CurrentValueSubject<NetableError?, Never>
     var cancellables = [AnyCancellable]()
-    
+
     init() {
         user = CurrentValueSubject<User?, Never>(nil)
         authError = CurrentValueSubject<NetableError?, Never>(nil)
@@ -44,11 +44,15 @@ class AuthNetworkService {
     func login(email: String, password: String) async throws {
         let login = try await netable.request(LoginRequest(parameters: LoginParameters(email: email, password: password)))
 
-        authNetable = Netable(baseURL: URL(string: "http://localhost:8080/")!, config: Config(globalHeaders: ["Authentication" : "Bearer \(login.token)"]), logDestination: CustomLogDestination(), retryConfiguration: RetryConfiguration(errors: .all, count: 2, delay: 3.0), requestFailureDelegate: ErrorService.shared)
+        authNetable = Netable(baseURL: URL(string: "http://localhost:8080/")!,
+            config: Config(globalHeaders: ["Authentication" : "Bearer \(login.token)"]),
+            logDestination: CustomLogDestination(),
+            retryConfiguration: RetryConfiguration(errors: .all, count: 2, delay: 3.0),
+            requestFailureDelegate: ErrorService.shared)
     }
 
     func getUser() async throws {
-        let (_, result) = try await netable.request(UserRequest(headers: ["Accept-Language": "en-US"]))
+        let (_, result) = netable.request(GetUserRequest(headers: ["Accept-Language": "en-US"]))
         result.sink { result in
             switch result {
             case .success(let user):
@@ -85,4 +89,3 @@ class AuthNetworkService {
         self.user.send(nil)
     }
 }
-

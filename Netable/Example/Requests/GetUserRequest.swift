@@ -1,5 +1,5 @@
 //
-//  UserRequest.swift
+//  GetUserRequest.swift
 //  Example
 //
 //  Created by Amy Oulton on 2022-11-29.
@@ -9,7 +9,7 @@
 import Foundation
 import Netable
 
-struct UserRequest: Request {
+struct GetUserRequest: Request {
     typealias RawResource = SmartUnwrap<User>
     typealias FinalResource = User
 

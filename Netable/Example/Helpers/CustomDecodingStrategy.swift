@@ -47,5 +47,3 @@ public extension JSONDecoder.KeyDecodingStrategy {
         return MyCodingKey(stringValue: String(lowerCamelCaseKey))!
     })
 }
-
-

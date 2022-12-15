@@ -87,6 +87,7 @@
 		E1275847292EDD160047E5DD /* Netable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C9288023E9F68000DB2B37 /* Netable.framework */; };
 		E127584A292EE7D60047E5DD /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1275849292EE7D60047E5DD /* HomeVM.swift */; };
 		E12D8414294BB215006EF71A /* ErrorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12D8413294BB215006EF71A /* ErrorService.swift */; };
+		E12D841A294BD893006EF71A /* RootVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12D8419294BD893006EF71A /* RootVM.swift */; };
 		E169C7A829383E3B00A49824 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E169C7A729383E3B00A49824 /* CustomColor.swift */; };
 		E186202129425EFF009B6E0C /* Netable.framework in Embeded Framworks */ = {isa = PBXBuildFile; fileRef = B8C9288023E9F68000DB2B37 /* Netable.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E18AAA1029312DF700756455 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA0F29312DF700756455 /* Version.swift */; };
@@ -97,11 +98,10 @@
 		E18AAA212935486100756455 /* AuthNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA202935486100756455 /* AuthNetworkService.swift */; };
 		E18AAA2329354D2400756455 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA2229354D2400756455 /* User.swift */; };
 		E18AAA2529354E0900756455 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA2429354E0900756455 /* LoginRequest.swift */; };
-		E18AAA282936987100756455 /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA272936987100756455 /* UserRequest.swift */; };
+		E18AAA282936987100756455 /* GetUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA272936987100756455 /* GetUserRequest.swift */; };
 		E19C96E62941130B005A77BD /* GraphQLVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C96E52941130B005A77BD /* GraphQLVM.swift */; };
 		E19C96E82941135D005A77BD /* GraphQLNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C96E72941135D005A77BD /* GraphQLNetworkService.swift */; };
 		E1B98DBB294A477B00DC9434 /* CustomDecodingStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B98DBA294A477B00DC9434 /* CustomDecodingStrategy.swift */; };
-		E1B98DBD294A6CEA00DC9434 /* SuperSimpleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B98DBC294A6CEA00DC9434 /* SuperSimpleRequest.swift */; };
 		E1BAC48E293937500042BF60 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAC48D293937500042BF60 /* UserView.swift */; };
 		E1BAC49129393E530042BF60 /* GraphQLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAC49029393E530042BF60 /* GraphQLView.swift */; };
 		E1BAC49329393EF80042BF60 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BAC49229393EF80042BF60 /* RootView.swift */; };
@@ -245,6 +245,7 @@
 		E1275840292EC8E30047E5DD /* GetPostsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPostsRequest.swift; sourceTree = "<group>"; };
 		E1275849292EE7D60047E5DD /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
 		E12D8413294BB215006EF71A /* ErrorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorService.swift; sourceTree = "<group>"; };
+		E12D8419294BD893006EF71A /* RootVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootVM.swift; sourceTree = "<group>"; };
 		E169C7A729383E3B00A49824 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 		E18AAA0F29312DF700756455 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		E18AAA18293524AA00756455 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -254,11 +255,10 @@
 		E18AAA202935486100756455 /* AuthNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNetworkService.swift; sourceTree = "<group>"; };
 		E18AAA2229354D2400756455 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E18AAA2429354E0900756455 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
-		E18AAA272936987100756455 /* UserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
+		E18AAA272936987100756455 /* GetUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserRequest.swift; sourceTree = "<group>"; };
 		E19C96E52941130B005A77BD /* GraphQLVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLVM.swift; sourceTree = "<group>"; };
 		E19C96E72941135D005A77BD /* GraphQLNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLNetworkService.swift; sourceTree = "<group>"; };
 		E1B98DBA294A477B00DC9434 /* CustomDecodingStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDecodingStrategy.swift; sourceTree = "<group>"; };
-		E1B98DBC294A6CEA00DC9434 /* SuperSimpleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperSimpleRequest.swift; sourceTree = "<group>"; };
 		E1BAC48D293937500042BF60 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		E1BAC49029393E530042BF60 /* GraphQLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLView.swift; sourceTree = "<group>"; };
 		E1BAC49229393EF80042BF60 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -570,9 +570,8 @@
 				E1275840292EC8E30047E5DD /* GetPostsRequest.swift */,
 				E18AAA1A2935251400756455 /* GetVersionRequest.swift */,
 				E18AAA2429354E0900756455 /* LoginRequest.swift */,
-				E18AAA272936987100756455 /* UserRequest.swift */,
+				E18AAA272936987100756455 /* GetUserRequest.swift */,
 				E1BAC49C293AAA190042BF60 /* CreatePostRequest.swift */,
-				E1B98DBC294A6CEA00DC9434 /* SuperSimpleRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -590,6 +589,7 @@
 				E1275849292EE7D60047E5DD /* HomeVM.swift */,
 				E1BAC494293952900042BF60 /* UserVM.swift */,
 				E19C96E52941130B005A77BD /* GraphQLVM.swift */,
+				E12D8419294BD893006EF71A /* RootVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -896,9 +896,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E19C96E62941130B005A77BD /* GraphQLVM.swift in Sources */,
-				E1B98DBD294A6CEA00DC9434 /* SuperSimpleRequest.swift in Sources */,
 				E1BAC499293AA6340042BF60 /* CreatePostView.swift in Sources */,
 				E18AAA19293524AA00756455 /* NetworkService.swift in Sources */,
+				E12D841A294BD893006EF71A /* RootVM.swift in Sources */,
 				E18AAA2529354E0900756455 /* LoginRequest.swift in Sources */,
 				E19C96E82941135D005A77BD /* GraphQLNetworkService.swift in Sources */,
 				E1275834292EAF550047E5DD /* MockNetworkService.swift in Sources */,
@@ -908,7 +908,7 @@
 				E1BAC49129393E530042BF60 /* GraphQLView.swift in Sources */,
 				E124E8B929426EAE003EBCE3 /* CreateGraphQLPostView.swift in Sources */,
 				E1BAC495293952900042BF60 /* UserVM.swift in Sources */,
-				E18AAA282936987100756455 /* UserRequest.swift in Sources */,
+				E18AAA282936987100756455 /* GetUserRequest.swift in Sources */,
 				E124E8BD2942709F003EBCE3 /* UpdatePostsMutation.swift in Sources */,
 				E1BAC4972939720D0042BF60 /* CustomLogDestination.swift in Sources */,
 				E1BAC48E293937500042BF60 /* UserView.swift in Sources */,

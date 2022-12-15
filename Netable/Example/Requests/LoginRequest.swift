@@ -32,4 +32,3 @@ struct LoginRequest: Request {
         ["email"]
     }
 }
-

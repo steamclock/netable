@@ -11,7 +11,6 @@ import SwiftUI
 struct GraphQLView: View {
     @ObservedObject var viewModel: GraphQLVM
 
-
     var body: some View {
         NavigationView {
             ScrollView {

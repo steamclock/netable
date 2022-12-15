@@ -17,7 +17,7 @@ class MockNetworkService {
     private init() {
         server = HttpServer()
 
-        server["/graphql"] = { resp in
+        server["/graphql"] = { _ in
            return .ok(self.loadJson(from: "posts"))
         }
 
@@ -44,10 +44,9 @@ class MockNetworkService {
             return .ok(login)
         }
 
-        server["/user/profile"] = { req in
+        server["/user/profile"] = { _ in
             .ok(self.loadJson(from: "user"))
         }
-
 
         server["/version"] = { _ in
             .ok(self.loadJson(from: "version"))

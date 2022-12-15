@@ -10,14 +10,12 @@ import Foundation
 import SwiftUI
 
 struct RootView: View {
-    @ObservedObject var viewModel: HomeVM
-
+    @ObservedObject var viewModel: RootVM
 
     var body: some View {
         VStack {
             if let error = viewModel.error {
-                let _ = print(error)
-                VStack{
+                VStack {
                     HStack {
                         Spacer()
                         Text("Error: \(error)")
@@ -41,17 +39,17 @@ struct RootView: View {
                 loginView
             } else {
                 TabView {
-                    HomeView(viewModel: viewModel)
+                    HomeView(viewModel: viewModel.homeVM)
                         .tabItem {
                             Image(systemName: "house.fill")
                             Text("Home")
                         }
-                    UserView(viewModel: UserVM())
+                    UserView(viewModel: viewModel.userVM)
                         .tabItem {
                             Image(systemName: "person.fill")
                             Text("Profile")
                         }
-                    GraphQLView(viewModel: GraphQLVM())
+                    GraphQLView(viewModel: viewModel.graphQLVM)
                         .tabItem {
                             Image(systemName: "flowchart.fill")
                             Text("GraphQL")

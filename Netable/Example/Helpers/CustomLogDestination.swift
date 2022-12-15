@@ -10,7 +10,6 @@ import Foundation
 import Netable
 import os
 
-/// Defines a custom log destination for Netable to send logs to.
 final class CustomLogDestination: LogDestination {
     func log(event: LogEvent) {
         switch event {

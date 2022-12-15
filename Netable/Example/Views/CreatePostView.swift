@@ -32,8 +32,7 @@ struct CreatePostView: View {
                         .padding(.bottom, 10)
                         Button(action: {
                             viewModel.createPost()
-                            self.presentationMode.wrappedValue.dismiss()
-                        }) {
+                            self.presentationMode.wrappedValue.dismiss() }) {
                             Text("Post")
                         }.padding()
                         .padding(.horizontal, 40)
@@ -48,4 +47,3 @@ struct CreatePostView: View {
         }
     }
 }
-

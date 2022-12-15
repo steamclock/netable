@@ -16,5 +16,3 @@ struct SimpleVersion: Decodable {
 struct Version: Decodable {
     let buildNumber: String
 }
-
-

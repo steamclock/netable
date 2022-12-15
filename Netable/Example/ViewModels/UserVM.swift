@@ -19,8 +19,6 @@ class UserVM: ObservableObject {
     }
 
     func bindViewModel() {
-        unbindViewModel()
-
         AuthNetworkService.shared.user
             .receive(on: RunLoop.main)
             .sink { [weak self] user in
@@ -33,4 +31,3 @@ class UserVM: ObservableObject {
     }
 }
 
-    
