@@ -15,8 +15,15 @@ class SimpleNetworkService {
 
     private let netable = Netable(baseURL: URL(string: "http://localhost:8080/")!)
 
-    func getVersion() async throws -> Version {
-        try await netable.request(GetVersionRequest())
+    func getVersion() {
+        Task {
+            do {
+                let version = try await netable.request(GetVersionRequest())
+                print(version.buildNumber)
+            } catch {
+                print(error)
+            }
+        }
     }
 
 }

@@ -12,6 +12,7 @@ import Netable
 struct GetVersionRequest: Request {
     typealias Parameters = Empty
     typealias RawResource = Version
+    typealias FallbackResource = SimpleVersion
 
     var method: HTTPMethod { return .get }
 

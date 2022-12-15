@@ -19,7 +19,6 @@ class HomeVM: ObservableObject {
 
     @Published var posts: [Post]?
     @Published var user: User? 
-    @Published var loginFailed = false
 
     @Published var error: String?
 
@@ -55,10 +54,7 @@ class HomeVM: ObservableObject {
     }
 
     func getVersion() {
-        Task {
-            let version = try await SimpleNetworkService.shared.getVersion()
-            print(version.buildNumber)
-        }
+          SimpleNetworkService.shared.getVersion()
     }
 
     func getPosts() {
@@ -87,15 +83,19 @@ class HomeVM: ObservableObject {
                 resetLoginSettings()
                 getUser()
             } catch {
-                loginFailed = true
+                print(error)
             }
         }
+    }
+
+    func fillForm() {
+        username = "cat@netable.com"
+        password = "meows"
     }
 
     func resetLoginSettings() {
         username = ""
         password = ""
-        loginFailed = false
     }
 
     func clearError() {

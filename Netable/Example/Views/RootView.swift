@@ -73,11 +73,6 @@ struct RootView: View {
     var loginView: some View {
         VStack(alignment: .center, spacing: 10) {
             Spacer()
-            if viewModel.loginFailed {
-                Text("Password/username are incorrect. Hint:")
-                Text("User: cat@netable.com")
-                Text("Password: meows")
-            }
             VStack {
                 Text("Welcome back!")
                     .font(.title)
@@ -99,6 +94,9 @@ struct RootView: View {
                     .background(.blue)
                     .cornerRadius(10)
                     .foregroundColor(.white)
+                Button("Add Credentials") {
+                    viewModel.fillForm()
+                }
             }.padding()
             Spacer()
         }.background(Color.lightGrey)
