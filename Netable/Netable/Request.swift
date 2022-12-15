@@ -197,6 +197,9 @@ public extension Request where
             decoder.userInfo = [
                 .smartUnwrapKey: smartUnwrapKey
             ]
+            decoder.dateDecodingStrategy = .iso8601
+            decoder.keyDecodingStrategy = jsonKeyDecodingStrategy ?? defaultDecodingStrategy
+
 
             guard arrayDecodeStrategy == .lossy else {
                 return try decoder.decode(SmartUnwrap<FinalResource>.self, from: data)
@@ -228,6 +231,9 @@ public extension Request where RawResource == SmartUnwrap<FinalResource> {
             decoder.userInfo = [
                 .smartUnwrapKey: smartUnwrapKey
             ]
+            decoder.dateDecodingStrategy = .iso8601
+            decoder.keyDecodingStrategy = jsonKeyDecodingStrategy ?? defaultDecodingStrategy
+
             let decodedResult = try decoder.decode(SmartUnwrap<FinalResource>.self, from: data)
             return decodedResult
         } catch {
