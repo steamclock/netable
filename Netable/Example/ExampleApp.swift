@@ -11,8 +11,8 @@ import SwiftUI
 @main
 struct ExampleApp: App {
     init() {
-        // We have to initalize this here for the server to start, or else the first request will fail.
-        MockNetworkService.shared
+        // We have to add this here to "nudge" the server to start, or else the first request will fail.
+        let _ = MockNetworkService.shared
     }
 
     var body: some Scene {

@@ -21,7 +21,7 @@ struct UpdatePostsMutation: GraphQLRequest {
 
     var input: UpdatePostMutationInput
 
-    var source = GraphQLQuerySource.resource("UpdatePostsMutation")
+    var source = GraphQLQuerySource.autoResource
 
     var unredactedParameterKeys: Set<String> {
         ["query", "variables"]

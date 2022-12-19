@@ -32,12 +32,10 @@ class AuthNetworkService {
             baseURL: URL(string: "http://localhost:8080/")!)
 
         unauthNetable.requestFailurePublisher.sink { [weak self] error in
-            guard case let NetableError.httpError(statusCode, _) = error, statusCode == 401 else {
-                return
+            if error.errorCode == 401 {
+                self?.user.send(nil)
+                self?.authError.send(error)
             }
-
-            self?.user.send(nil)
-            self?.authError.send(error)
         }.store(in: &cancellables)
     }
 
@@ -51,7 +49,7 @@ class AuthNetworkService {
             requestFailureDelegate: ErrorService.shared)
     }
 
-    func getUser() async throws {
+    func getUser() {
         let (_, result) = netable.request(GetUserRequest(headers: ["Accept-Language": "en-US"]))
         result.sink { result in
             switch result {
@@ -67,7 +65,7 @@ class AuthNetworkService {
         try await netable.request(GetPostsRequest())
     }
 
-    func createPost(title: String, content: String) async throws {
+    func createPost(title: String, content: String) {
         // this request is deliberately failing. Since there is a retry configuration set to the authNetable request, we are going to make use of `cancel()`
         // to cancel the task after sending it so it doesn't try again.
 

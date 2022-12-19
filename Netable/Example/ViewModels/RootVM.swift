@@ -10,26 +10,18 @@ import Combine
 import Foundation
 import Netable
 
-class RootVM: ObservableObject {
+class RootVM: ObservableVM {
 
     let homeVM = HomeVM()
-    let userVM = UserVM()
+    let loginVM = LoginVM()
     let graphQLVM = GraphQLVM()
+    let userVM = UserVM()
 
-    @Published var username: String = ""
-    @Published var password: String = ""
     @Published var user: User?
     @Published var error: String?
 
-    private var cancellables = [AnyCancellable]()
-
-    func unbindViewModel() {
-        cancellables.forEach { $0.cancel() }
-        cancellables.removeAll()
-    }
-
-    func bindViewModel() {
-        unbindViewModel()
+    override func bindViewModel() {
+        super.bindViewModel()
 
         AuthNetworkService.shared.user
             .receive(on: RunLoop.main)
@@ -53,35 +45,7 @@ class RootVM: ObservableObject {
     }
 
     func getVersion() {
-          SimpleNetworkService.shared.getVersion()
-    }
-
-    func getUser() {
-        Task { @MainActor in
-            try await AuthNetworkService.shared.getUser()
-        }
-    }
-
-    func login() {
-        Task { @MainActor in
-            do {
-                try await AuthNetworkService.shared.login(email: username, password: password)
-                resetLoginSettings()
-                getUser()
-            } catch {
-                print(error)
-            }
-        }
-    }
-
-    func fillForm() {
-        username = "cat@netable.com"
-        password = "meows"
-    }
-
-    func resetLoginSettings() {
-        username = ""
-        password = ""
+        SimpleNetworkService.shared.getVersion()
     }
 
     func clearError() {

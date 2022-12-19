@@ -89,6 +89,10 @@
 		E12D8414294BB215006EF71A /* ErrorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12D8413294BB215006EF71A /* ErrorService.swift */; };
 		E12D841A294BD893006EF71A /* RootVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12D8419294BD893006EF71A /* RootVM.swift */; };
 		E169C7A829383E3B00A49824 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E169C7A729383E3B00A49824 /* CustomColor.swift */; };
+		E17FBD4D2950DBB500B6533E /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17FBD4C2950DBB500B6533E /* ErrorView.swift */; };
+		E17FBD4F2950E25600B6533E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17FBD4E2950E25600B6533E /* LoginView.swift */; };
+		E17FBD532950E3FA00B6533E /* ObservableVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17FBD522950E3FA00B6533E /* ObservableVM.swift */; };
+		E17FBD552950E64C00B6533E /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17FBD542950E64C00B6533E /* LoginVM.swift */; };
 		E186202129425EFF009B6E0C /* Netable.framework in Embeded Framworks */ = {isa = PBXBuildFile; fileRef = B8C9288023E9F68000DB2B37 /* Netable.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E18AAA1029312DF700756455 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA0F29312DF700756455 /* Version.swift */; };
 		E18AAA19293524AA00756455 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA18293524AA00756455 /* NetworkService.swift */; };
@@ -247,6 +251,10 @@
 		E12D8413294BB215006EF71A /* ErrorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorService.swift; sourceTree = "<group>"; };
 		E12D8419294BD893006EF71A /* RootVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootVM.swift; sourceTree = "<group>"; };
 		E169C7A729383E3B00A49824 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
+		E17FBD4C2950DBB500B6533E /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		E17FBD4E2950E25600B6533E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		E17FBD522950E3FA00B6533E /* ObservableVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableVM.swift; sourceTree = "<group>"; };
+		E17FBD542950E64C00B6533E /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
 		E18AAA0F29312DF700756455 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		E18AAA18293524AA00756455 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		E18AAA1A2935251400756455 /* GetVersionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVersionRequest.swift; sourceTree = "<group>"; };
@@ -528,6 +536,8 @@
 				E1BAC49229393EF80042BF60 /* RootView.swift */,
 				E1BAC498293AA6340042BF60 /* CreatePostView.swift */,
 				E124E8B829426EAE003EBCE3 /* CreateGraphQLPostView.swift */,
+				E17FBD4C2950DBB500B6533E /* ErrorView.swift */,
+				E17FBD4E2950E25600B6533E /* LoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -590,6 +600,8 @@
 				E1BAC494293952900042BF60 /* UserVM.swift */,
 				E19C96E52941130B005A77BD /* GraphQLVM.swift */,
 				E12D8419294BD893006EF71A /* RootVM.swift */,
+				E17FBD522950E3FA00B6533E /* ObservableVM.swift */,
+				E17FBD542950E64C00B6533E /* LoginVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -916,10 +928,14 @@
 				E1275827292E9C5A0047E5DD /* HomeView.swift in Sources */,
 				E1275825292E9C5A0047E5DD /* ExampleApp.swift in Sources */,
 				E1BAC49329393EF80042BF60 /* RootView.swift in Sources */,
+				E17FBD532950E3FA00B6533E /* ObservableVM.swift in Sources */,
 				E12D8414294BB215006EF71A /* ErrorService.swift in Sources */,
+				E17FBD552950E64C00B6533E /* LoginVM.swift in Sources */,
 				E124E8B7294267C2003EBCE3 /* GetAllPostsQuery.swift in Sources */,
 				E169C7A829383E3B00A49824 /* CustomColor.swift in Sources */,
 				E18AAA2329354D2400756455 /* User.swift in Sources */,
+				E17FBD4D2950DBB500B6533E /* ErrorView.swift in Sources */,
+				E17FBD4F2950E25600B6533E /* LoginView.swift in Sources */,
 				E1BAC49D293AAA190042BF60 /* CreatePostRequest.swift in Sources */,
 				E18AAA1B2935251400756455 /* GetVersionRequest.swift in Sources */,
 				E18AAA1029312DF700756455 /* Version.swift in Sources */,

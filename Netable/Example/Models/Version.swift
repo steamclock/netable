@@ -10,9 +10,9 @@ import Foundation
 
 struct SimpleVersion: Decodable {
     let buildNumber: String
-    let buildReleaseDate: Date
 }
 
 struct Version: Decodable {
     let buildNumber: String
+    let buildReleaseDate: Date
 }

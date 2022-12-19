@@ -19,7 +19,6 @@ class SimpleNetworkService {
         Task {
             do {
                 let version = try await netable.request(GetVersionRequest())
-                print(version.buildNumber)
             } catch {
                 print(error)
             }

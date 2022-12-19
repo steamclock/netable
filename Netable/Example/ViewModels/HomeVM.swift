@@ -6,24 +6,16 @@
 //  Copyright © 2022 Steamclock Software. All rights reserved.
 //
 
-import Combine
 import Foundation
 import Netable
 
-class HomeVM: ObservableObject {
+class HomeVM: ObservableVM {
     @Published var title: String = ""
     @Published var content: String = ""
-    @Published var posts: [Post]?
+    @Published var posts: [Post] = []
 
-    private var cancellables = [AnyCancellable]()
-
-    func unbindViewModel() {
-        cancellables.forEach { $0.cancel() }
-        cancellables.removeAll()
-    }
-
-    func bindViewModel() {
-        unbindViewModel()
+    override func bindViewModel() {
+        super.bindViewModel()
         getPosts()
     }
 

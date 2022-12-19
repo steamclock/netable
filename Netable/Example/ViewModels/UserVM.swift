@@ -9,16 +9,12 @@
 import Combine
 import Foundation
 
-class UserVM: ObservableObject {
+class UserVM: ObservableVM {
     @Published var user: User?
-    private var cancellables = [AnyCancellable]()
 
-    func unbindViewModel() {
-        cancellables.forEach { $0.cancel() }
-        cancellables.removeAll()
-    }
+   override func bindViewModel() {
+       super.bindViewModel()
 
-    func bindViewModel() {
         AuthNetworkService.shared.user
             .receive(on: RunLoop.main)
             .sink { [weak self] user in

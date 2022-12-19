@@ -26,6 +26,8 @@ struct MyCodingKey: CodingKey {
 
 }
 
+// this was modeled after the basic example for a custom strategy provided in the apple docs here: https://developer.apple.com/documentation/foundation/jsondecoder/keydecodingstrategy/custom
+
 public extension JSONDecoder.KeyDecodingStrategy {
 
     static let convertFromKebabCase = JSONDecoder.KeyDecodingStrategy.custom({ keys in
