@@ -10,11 +10,12 @@ import Foundation
 import Netable
 
 struct GetPostsRequest: Request {
-    typealias Parameters = Empty
     typealias RawResource = SmartUnwrap<[Post]>
     typealias FinalResource = [Post]
 
     var method: HTTPMethod { return .get }
+
+    var arrayDecodeStrategy: ArrayDecodeStrategy  { .lossy }
 
     var smartUnwrapKey = "posts"
 

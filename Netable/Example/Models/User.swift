@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Netable
 
 struct User: Decodable {
     let firstName: String
@@ -14,4 +15,11 @@ struct User: Decodable {
     let location: String
     let bio: String
     let age: Int
+    let loginData: LossyArray<UserLoginData>
+}
+
+struct UserLoginData: Decodable {
+    let date: String
+    let time: String
+    let location: String
 }

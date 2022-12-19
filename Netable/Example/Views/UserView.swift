@@ -14,6 +14,7 @@ struct UserView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             if let user = viewModel.user {
+                let _ = print(user)
                 HStack {
                     Spacer()
                     Text("Hello, \(user.firstName) \(user.lastName)!")
