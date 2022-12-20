@@ -9,10 +9,6 @@
 import Foundation
 import Netable
 
-struct GetAllPostsResponse: Decodable {
-    let posts: [Post]
-}
-
 struct GetAllPostsQuery: GraphQLRequest {
     typealias Parameters = Empty
     typealias RawResource = SmartUnwrap<[Post]>

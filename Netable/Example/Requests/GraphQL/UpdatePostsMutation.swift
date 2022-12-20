@@ -14,6 +14,10 @@ struct UpdatePostMutationInput: Codable {
     let content: String
 }
 
+struct GetAllPostsResponse: Decodable {
+    let posts: [Post]
+}
+
 struct UpdatePostsMutation: GraphQLRequest {
     typealias Input = UpdatePostMutationInput
     typealias RawResource = GetAllPostsResponse
