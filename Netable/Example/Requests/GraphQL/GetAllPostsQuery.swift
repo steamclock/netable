@@ -15,12 +15,8 @@ struct GetAllPostsResponse: Decodable {
 
 struct GetAllPostsQuery: GraphQLRequest {
     typealias Parameters = Empty
-    typealias RawResource = GetAllPostsResponse
+    typealias RawResource = SmartUnwrap<[Post]>
     typealias FinalResource = [Post]
 
     var source = GraphQLQuerySource.resource("GetAllPostsQuery")
-
-    func finalize(raw: GetAllPostsResponse) async throws -> [Post] {
-        raw.posts
-    }
 }
