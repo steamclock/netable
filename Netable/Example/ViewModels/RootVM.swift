@@ -11,7 +11,6 @@ import Foundation
 import Netable
 
 class RootVM: ObservableVM {
-
     let homeVM = HomeVM()
     let loginVM = LoginVM()
     let graphQLVM = GraphQLVM()

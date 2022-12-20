@@ -34,6 +34,7 @@ class MockNetworkService {
             guard let userInfo = self.unwrapJson(from: login) as? [String: String] else {
                 return .internalServerError
             }
+
             let email = self.getValue(params: req.queryParams, value: "email")
             let password = self.getValue(params: req.queryParams, value: "password")
 
@@ -57,10 +58,10 @@ class MockNetworkService {
 
     private func loadJson(from path: String) -> HttpResponseBody {
         guard let path = Bundle.main.path(forResource: path, ofType: "json"),
-                let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe),
-                let jsonResult = try? JSONSerialization.jsonObject(with: data, options: .mutableLeaves),
-                let jsonResult = jsonResult as? Dictionary<String, AnyObject> else {
-            fatalError("Failed to load response JSON for: \(path)")
+            let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe),
+            let jsonResult = try? JSONSerialization.jsonObject(with: data, options: .mutableLeaves),
+            let jsonResult = jsonResult as? Dictionary<String, AnyObject> else {
+                fatalError("Failed to load response JSON for: \(path)")
         }
 
         return .json(jsonResult)
@@ -74,8 +75,8 @@ class MockNetworkService {
 
     private func unwrapJson(from json: HttpResponseBody) -> Any? {
         guard case .json(let jsonData) = json else {
-                return nil
-            }
+            return nil
+        }
         return jsonData
     }
 }

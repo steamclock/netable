@@ -18,7 +18,7 @@ struct User: Decodable {
     let loginData: LossyArray<UserLoginData>
 }
 
-struct UserLoginData: Decodable {
+struct UserLoginData: Decodable, Hashable {
     let date: String
     let time: String
     let location: String

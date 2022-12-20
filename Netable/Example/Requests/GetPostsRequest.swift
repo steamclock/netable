@@ -13,12 +13,8 @@ struct GetPostsRequest: Request {
     typealias RawResource = SmartUnwrap<[Post]>
     typealias FinalResource = [Post]
 
-    var method: HTTPMethod { return .get }
-
-    var arrayDecodeStrategy: ArrayDecodeStrategy  { .lossy }
-
+    var method: HTTPMethod { .get }
+    var arrayDecodeStrategy: ArrayDecodeStrategy { .lossy }
     var smartUnwrapKey = "posts"
-
     var path = "posts/all"
-
 }

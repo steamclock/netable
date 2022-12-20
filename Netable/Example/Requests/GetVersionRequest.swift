@@ -14,8 +14,6 @@ struct GetVersionRequest: Request {
     typealias RawResource = Version
     typealias FallbackResource = SimpleVersion
 
-    var method: HTTPMethod { return .get }
-
+    var method: HTTPMethod { .get }
     var path = "version"
-
 }

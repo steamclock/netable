@@ -22,5 +22,4 @@ class ObservableVM: ObservableObject {
     func bindViewModel() {
         unbindViewModel()
     }
-
 }

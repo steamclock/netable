@@ -18,10 +18,7 @@ struct CreatePostRequest: Request {
     typealias Parameters = CreatePostParameters
     typealias RawResource = Empty
 
-    var method: HTTPMethod { return .post }
-
+    var method: HTTPMethod { .post }
     var parameters: CreatePostParameters
-
     var path = "posts/new"
-
 }

@@ -41,11 +41,10 @@ struct RootView: View {
                 }
             }
         }.onAppear {
-        viewModel.bindViewModel()
+            viewModel.bindViewModel()
         }
         .onDisappear {
             viewModel.unbindViewModel()
         }
     }
-
 }

@@ -23,7 +23,6 @@ struct MyCodingKey: CodingKey {
         self.stringValue = String(intValue)
         self.intValue = intValue
     }
-
 }
 
 // this was modeled after the basic example for a custom strategy provided in the apple docs here: https://developer.apple.com/documentation/foundation/jsondecoder/keydecodingstrategy/custom

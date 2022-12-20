@@ -45,7 +45,7 @@ class ExampleNetworkService {
             .ok(self.loadJson(from: "version"))
         }
 
-        server["/graphql"] = { resp in
+        server["/graphql"] = { _ in
             .ok(self.loadJson(from: "posts"))
         }
 

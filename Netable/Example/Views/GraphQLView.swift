@@ -21,9 +21,9 @@ struct GraphQLView: View {
                     NavigationLink(destination: CreateGraphQLPostView(viewModel: viewModel)) {
                         Text("New Post")
                     }.padding()
-                        .background(.blue)
-                        .cornerRadius(10)
-                        .foregroundColor(.white)
+                    .background(.blue)
+                    .cornerRadius(10)
+                    .foregroundColor(.white)
                 }
 
                 if let posts = viewModel.posts {
@@ -38,7 +38,6 @@ struct GraphQLView: View {
                     }
                 }
             }.padding()
-
         }.onAppear {
             viewModel.getPosts()
         }

@@ -25,13 +25,13 @@ struct ErrorView: View {
                         }
                 }
             }.frame(maxWidth: .infinity)
-                .padding()
-                .background(.yellow)
-                .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                        viewModel.error = nil
-                    }
+            .padding()
+            .background(.yellow)
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    viewModel.error = nil
                 }
+            }
         }
     }
 }

@@ -13,11 +13,9 @@ struct GetUserRequest: Request {
     typealias RawResource = SmartUnwrap<User>
     typealias FinalResource = User
 
-    var method: HTTPMethod { return .get }
-
+    var method: HTTPMethod { .get }
     var smartUnwrapKey = "user"
-    var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy? { return .convertFromKebabCase }
-
+    var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy? { .convertFromKebabCase }
     var path = "user/profile"
     var headers: [String : String]
 }

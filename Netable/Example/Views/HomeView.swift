@@ -26,6 +26,7 @@ struct HomeView: View {
                     .cornerRadius(10)
                     .foregroundColor(.white)
                 }
+
                 ForEach(viewModel.posts, id: \.self) { post in
                     VStack(alignment: .leading) {
                         Text(post.title)

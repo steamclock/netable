@@ -20,9 +20,7 @@ struct UpdatePostsMutation: GraphQLRequest {
     typealias FinalResource = [Post]
 
     var input: UpdatePostMutationInput
-
     var source = GraphQLQuerySource.autoResource
-
     var unredactedParameterKeys: Set<String> {
         ["query", "variables"]
     }

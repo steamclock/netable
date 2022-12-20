@@ -66,8 +66,8 @@ class AuthNetworkService {
     }
 
     func createPost(title: String, content: String) {
-        // this request is deliberately failing. Since there is a retry configuration set to the authNetable request, we are going to make use of `cancel()`
-        // to cancel the task after sending it so it doesn't try again.
+        // this request is deliberately failing. Since there is a retry configuration set to the authNetable request,
+        //  we are going to make use of `cancel()` to cancel the task after sending it so it doesn't try again.
 
        let createRequest = Task {
             do {
@@ -77,8 +77,8 @@ class AuthNetworkService {
             }
         }
 
-        // to see the retry configuration in action, comment out the below line and re-run the application. The request will not print the error
-        // until the retry conditions have been met.
+        // to see the retry configuration in action, comment out the below line and re-run the application.
+        // The request will not print the error until the retry conditions have been met.
         createRequest.cancel()
     }
 

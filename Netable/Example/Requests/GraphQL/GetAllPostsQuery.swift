@@ -14,7 +14,6 @@ struct GetAllPostsResponse: Decodable {
 }
 
 struct GetAllPostsQuery: GraphQLRequest {
-
     typealias Parameters = Empty
     typealias RawResource = GetAllPostsResponse
     typealias FinalResource = [Post]

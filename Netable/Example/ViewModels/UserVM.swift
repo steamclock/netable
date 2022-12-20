@@ -26,4 +26,3 @@ class UserVM: ObservableVM {
         AuthNetworkService.shared.logout()
     }
 }
-

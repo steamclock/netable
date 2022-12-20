@@ -22,12 +22,9 @@ struct LoginRequest: Request {
     typealias Parameters = LoginParameters
     typealias RawResource = LoginToken
 
-    var method: HTTPMethod { return .get }
-
+    var method: HTTPMethod { .get }
     var path = "user/login"
-
     var parameters: LoginParameters
-
     var unredactedParameterKeys: Set<String> {
         ["email"]
     }

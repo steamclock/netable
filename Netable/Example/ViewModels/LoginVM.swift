@@ -28,7 +28,7 @@ class LoginVM: ObservableVM {
         Task { @MainActor in
             do {
                 try await AuthNetworkService.shared.login(email: username, password: password)
-                try await AuthNetworkService.shared.getUser()
+                AuthNetworkService.shared.getUser()
                 resetLoginSettings()
             } catch {
                 print(error)
@@ -45,5 +45,4 @@ class LoginVM: ObservableVM {
         username = ""
         password = ""
     }
-
 }
