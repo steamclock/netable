@@ -89,6 +89,7 @@
 		E12D8414294BB215006EF71A /* ErrorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12D8413294BB215006EF71A /* ErrorService.swift */; };
 		E12D841A294BD893006EF71A /* RootVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12D8419294BD893006EF71A /* RootVM.swift */; };
 		E155A85229523BA1009E0F6D /* LoginDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E155A85129523BA1009E0F6D /* LoginDataView.swift */; };
+		E155A855295260E4009E0F6D /* graphqlPosts.json in Resources */ = {isa = PBXBuildFile; fileRef = E155A854295260E4009E0F6D /* graphqlPosts.json */; };
 		E169C7A829383E3B00A49824 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E169C7A729383E3B00A49824 /* CustomColor.swift */; };
 		E17FBD4D2950DBB500B6533E /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17FBD4C2950DBB500B6533E /* ErrorView.swift */; };
 		E17FBD4F2950E25600B6533E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17FBD4E2950E25600B6533E /* LoginView.swift */; };
@@ -252,6 +253,7 @@
 		E12D8413294BB215006EF71A /* ErrorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorService.swift; sourceTree = "<group>"; };
 		E12D8419294BD893006EF71A /* RootVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootVM.swift; sourceTree = "<group>"; };
 		E155A85129523BA1009E0F6D /* LoginDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataView.swift; sourceTree = "<group>"; };
+		E155A854295260E4009E0F6D /* graphqlPosts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = graphqlPosts.json; sourceTree = "<group>"; };
 		E169C7A729383E3B00A49824 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 		E17FBD4C2950DBB500B6533E /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		E17FBD4E2950E25600B6533E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -558,6 +560,7 @@
 			isa = PBXGroup;
 			children = (
 				E1275837292EAFDE0047E5DD /* posts.json */,
+				E155A854295260E4009E0F6D /* graphqlPosts.json */,
 				E1E5B69E29300390001E7299 /* version.json */,
 				E18AAA1E2935469B00756455 /* login.json */,
 				E18AAA1C293540AD00756455 /* user.json */,
@@ -828,6 +831,7 @@
 				E1275829292E9C5B0047E5DD /* Assets.xcassets in Resources */,
 				E18AAA1F2935469B00756455 /* login.json in Resources */,
 				E1E5B69F29300390001E7299 /* version.json in Resources */,
+				E155A855295260E4009E0F6D /* graphqlPosts.json in Resources */,
 				E1275838292EAFDE0047E5DD /* posts.json in Resources */,
 				E1BAC49B293AA95B0042BF60 /* createPosts.json in Resources */,
 				E124E8B5294265A8003EBCE3 /* GetAllPostsQuery.graphql in Resources */,

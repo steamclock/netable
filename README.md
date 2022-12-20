@@ -31,11 +31,13 @@ Netable is built on a number of core principles we believe a networking library 
 ### Standard Usage
 
 #### Make a new instance of `Netable`, and pass in your base URL:
+
 ```swift
 let netable = Netable(baseURL: URL(string: "https://api.thecatapi.com/v1/")!)
 ```
 
 #### Extend `Request`
+
 ```swift
 struct CatImage: Decodable {
     let id: String

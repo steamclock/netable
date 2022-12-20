@@ -18,7 +18,7 @@ class MockNetworkService {
         server = HttpServer()
 
         server["/graphql"] = { _ in
-           return .ok(self.loadJson(from: "posts"))
+           return .ok(self.loadJson(from: "graphqlPosts"))
         }
 
         server["/posts/new"] = { _ in
