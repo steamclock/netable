@@ -44,3 +44,14 @@ extension LossyArray: Decodable where Element: Decodable {
         self.elements = elements.compactMap { $0 }
     }
 }
+
+/// Adapted from: https://kenb.us/lossy-decodable-for-arrays
+/// Gives array method access to LossyArray without needing to access the element within.
+extension LossyArray: RandomAccessCollection {
+    public var startIndex: Int { return elements.startIndex }
+    public var endIndex: Int { return elements.endIndex }
+
+    public subscript(_ index: Int) -> Element {
+        return elements[index]
+    }
+}
