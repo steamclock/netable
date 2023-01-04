@@ -29,6 +29,7 @@ struct UpdatePostsMutation: GraphQLRequest {
         ["query", "variables"]
     }
 
+    // within this request we're opting out of using SmartUnwrap to unwrap our RawResource to showcase using a manual finalize
     func finalize(raw: GetAllPostsResponse) async throws -> [Post] {
         raw.posts
     }

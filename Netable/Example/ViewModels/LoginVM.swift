@@ -37,7 +37,7 @@ class LoginVM: ObservableVM {
     }
 
     func fillForm() {
-        username = "cat@netable.com"
+        username = "cat@example.com"
         password = "meows"
     }
 

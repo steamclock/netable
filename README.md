@@ -35,7 +35,7 @@ Netable is built on a number of core principles we believe a networking library 
 ```swift
 let netable = Netable(baseURL: URL(string: "https://api.thecatapi.com/v1/")!)
 ```
-See [here](#Additional Netable instance parameters) for information on adding additional instance parameters. 
+See [here](#additional-netable-instance-parameters) for information on adding additional instance parameters. 
 
 #### Extend `Request`
 
@@ -155,6 +155,16 @@ netable.request(GetCatImages()) { result in
 #### Canceling A Request
 
 You're able to easily cancel a request using `.cancel()`, which you can see in action in the [AuthNetworkService](https://github.com/steamclock/netable/blob/aeo/86-new-example-project/Netable/Example/Services/AuthNetworkService.swift#L82) within the Example Project.
+
+To cancel a task, we first need to ensure we retain a reference to the task, like so: 
+
+```swift
+ let createRequest = Task {
+               let result = try await netable.request()
+}
+
+createRequest.cancel()
+```
 
 #### Additional Netable instance parameters
 

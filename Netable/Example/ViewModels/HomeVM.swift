@@ -26,8 +26,6 @@ class HomeVM: ObservableVM {
     }
 
     func createPost() {
-        Task { @MainActor in
-            try await AuthNetworkService.shared.createPost(title: title, content: content)
-        }
+        AuthNetworkService.shared.createPost(title: title, content: content)
     }
 }
