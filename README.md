@@ -154,7 +154,7 @@ netable.request(GetCatImages()) { result in
 
 #### Canceling A Request
 
-You're able to easily cancel a request using `.cancel()`, which you can see in action in the [AuthNetworkService](https://github.com/steamclock/netable/blob/aeo/86-new-example-project/Netable/Example/Services/AuthNetworkService.swift#L82) within the Example Project.
+You're able to easily cancel a request using `.cancel()`, which you can see in action in the [AuthNetworkService](https://github.com/steamclock/netable/blob/master/Netable/Example/Services/AuthNetworkService.swift#L82) within the Example Project.
 
 To cancel a task, we first need to ensure we retain a reference to the task, like so: 
 
@@ -183,13 +183,13 @@ Within your Netable Instance, you're able to provide optional parameters beyond 
             requestFailureDelegate: ErrorService.shared)
 ```
 
-See [AuthNetworkService](https://github.com/steamclock/netable/blob/aeo/86-new-example-project/Netable/Example/Services/AuthNetworkService.swift#L45) in the Example Project for a more detailed example.
+See [AuthNetworkService](https://github.com/steamclock/netable/blob/master/Netable/Example/Services/AuthNetworkService.swift#L45) in the Example Project for a more detailed example.
 
 #### Additional Request parameters
 
-You also have the flexibility to set optional parameters to be sent along with each individual request made to an instance. Note that for duplicated parameters between an instance and an individual request, the instance's paramters will be overridden by an individual request. You can see the list of these [here](https://github.com/steamclock/netable/blob/aeo/86-new-example-project/Netable/Netable/Request.swift).
+You also have the flexibility to set optional parameters to be sent along with each individual request made to an instance. Note that for duplicated parameters between an instance and an individual request, the instance's paramters will be overridden by an individual request. You can see the list of these [here](https://github.com/steamclock/netable/blob/master/Netable/Netable/Request.swift).
 
-Within the Example Project, you can see an example of adding `unredactedParameterKeys` within the [LoginRequest](https://github.com/steamclock/netable/blob/aeo/86-new-example-project/Netable/Example/Requests/LoginRequest.swift) and a `jsonKeyDecodingStrategy` within the [GetUserRequest](https://github.com/steamclock/netable/blob/aeo/86-new-example-project/Netable/Example/Requests/GetUserRequest.swift).
+Within the Example Project, you can see an example of adding `unredactedParameterKeys` within the [LoginRequest](https://github.com/steamclock/netable/blob/master/Netable/Example/Requests/LoginRequest.swift) and a `jsonKeyDecodingStrategy` within the [GetUserRequest](https://github.com/steamclock/netable/blob/master/Netable/Example/Requests/GetUserRequest.swift).
 
 ### Resource Extraction
 
@@ -354,7 +354,7 @@ In addition to handling errors locally that are thrown, or returned through `Res
 
 #### Using `requestFailureDelegate`
 
-See [GlobalRequestFailureDelegate](https://github.com/steamclock/netable/blob/aeo/86-new-example-project/Netable/Example/Services/ErrorService.swift) in the Example project for a more detailed example.
+See [GlobalRequestFailureDelegate](https://github.com/steamclock/netable/blob/master/Netable/Example/Services/ErrorService.swift) in the Example project for a more detailed example.
 
 ```swift
 extension GlobalRequestFailureDelegateExample: RequestFailureDelegate {
@@ -369,7 +369,7 @@ extension GlobalRequestFailureDelegateExample: RequestFailureDelegate {
 
 If you prefer `Combine`, you can subscribe to this publisher to receive `NetableErrors` from elsewhere in your app.
 
-See [GlobalRequestFailurePublisher](https://github.com/steamclock/netable/blob/aeo/86-new-example-project/Netable/Example/Services/AuthNetworkService.swift#L34) in the Example project for a more detailed example.
+See [GlobalRequestFailurePublisher](https://github.com/steamclock/netable/blob/master/Netable/Example/Services/AuthNetworkService.swift#L34) in the Example project for a more detailed example.
 
 ```swift
 netable.requestFailurePublisher.sink { error in
@@ -404,7 +404,7 @@ typealias FallbackResource: Cat
 }
 ```
 
-See [FallbackDecoderViewController](https://github.com/steamclock/netable/blob/aeo/86-new-example-project/Netable/Example/Requests/GetVersionRequest.swift) in the Example project for a more detailed example.
+See [FallbackDecoderViewController](https://github.com/steamclock/netable/blob/master/Netable/Example/Requests/GetVersionRequest.swift) in the Example project for a more detailed example.
 
 ### GraphQL Support
 
@@ -420,7 +420,7 @@ struct GetAllPostsQuery: GraphQLRequest {
 }
 ```
 
-See [UpdatePostsMutation](https://github.com/steamclock/netable/blob/aeo/86-new-example-project/Netable/Example/Requests/GraphQL/UpdatePostsMutation.swift) in the Example Project for a more detailed example. Note that by default it's important that your `.graphql` file's name matches _exactly_ with your request.
+See [UpdatePostsMutation](https://github.com/steamclock/netable/blob/master/Netable/Example/Requests/GraphQL/UpdatePostsMutation.swift) in the Example Project for a more detailed example. Note that by default it's important that your `.graphql` file's name matches _exactly_ with your request.
 
 We recommend using a tool like [Postman](https://www.postman.com/) to document and test your queries. Also note that currently, shared fragments are not supported.
 
