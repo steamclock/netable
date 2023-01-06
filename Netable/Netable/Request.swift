@@ -22,7 +22,7 @@ public protocol Request: Sendable {
 
     /// An optional convenience type that Netable will try to use to decode your response if `RawResource` fails for any reason.
     /// See `FallbackDecoderViewController` for an example.
-    associatedtype FallbackResource = AnyObject
+    associatedtype FallbackResource: Sendable = Sendable
 
     /// Allows for top-level arrays to be partially decoded if some elements fail to decode.
     var arrayDecodeStrategy: ArrayDecodeStrategy { get }
