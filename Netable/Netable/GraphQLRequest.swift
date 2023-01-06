@@ -9,7 +9,7 @@
 import Foundation
 
 /// Specify how to retrieve the GraphQL query for a request
-public enum GraphQLQuerySource {
+public enum GraphQLQuerySource: Sendable {
     /// Autogenerate resource file from dynamic class name (risky)
     /// This functionality checks the name of the request and uses `type(of: self)` to find a .graphql file with the same name in the bundle.
     case autoResource

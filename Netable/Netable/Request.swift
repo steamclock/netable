@@ -22,7 +22,7 @@ public protocol Request: Sendable {
 
     /// An optional convenience type that Netable will try to use to decode your response if `RawResource` fails for any reason.
     /// See `FallbackDecoderViewController` for an example.
-    associatedtype FallbackResource: Sendable = AnyObject
+    associatedtype FallbackResource = AnyObject
 
     /// Allows for top-level arrays to be partially decoded if some elements fail to decode.
     var arrayDecodeStrategy: ArrayDecodeStrategy { get }
@@ -274,6 +274,6 @@ public extension Request where RawResource: Decodable, FallbackResource: Decodab
     }
 }
 
-public struct Empty: Codable {
+public struct Empty: Codable, Sendable {
     public static let data = "{}".data(using: .utf8)!
 }
