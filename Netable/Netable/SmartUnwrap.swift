@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct SmartUnwrap<T: Decodable>: Decodable {
+public struct SmartUnwrap<T: Decodable>: Decodable, Sendable where T: Sendable {
     public typealias DecodedType = T
 
     public var decodedType: DecodedType
