@@ -12,7 +12,7 @@ import Foundation
 
 /// Array container that allows for partial decoding of elements.
 /// If an element of the array fails to decode, it will be omitted rather than the rest of the array failing to decode.
-public struct LossyArray<Element> {
+public struct LossyArray<Element>: Sendable where Element: Sendable {
     /// All elements of the array that decoded successfully.
     public var elements: [Element]
 
