@@ -1,0 +1,26 @@
+{
+    "user": {
+        "first-name": "Sir",
+        "last-name": "Meowington",
+        "location": "Somewhere far far away",
+        "bio": "Love causing havoc, eating inappropriate things, and screaming at 3am.",
+        "age": 4,
+        "login-data" : [
+            {
+                "date": "Sept 2",
+                "time": "4pm",
+                "location": "Vancouver"
+            },
+            {
+                "date": "Sept 4",
+                "time": "12pm",
+                "location": "Vancouver"
+            },
+            {
+                "date": "Sept 12",
+                "time": "8am",
+                "location": null
+            }
+        ]
+    }
+}
