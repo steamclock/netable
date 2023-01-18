@@ -11,7 +11,7 @@ import Foundation
 import Netable
 
 class AuthNetworkService {
-    static var shared = AuthNetworkService()
+    static let shared = AuthNetworkService()
 
     private let unauthNetable: Netable
 

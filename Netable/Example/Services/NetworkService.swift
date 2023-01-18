@@ -11,7 +11,7 @@ import Foundation
 import Netable
 
 class SimpleNetworkService {
-    static var shared = SimpleNetworkService()
+    static let shared = SimpleNetworkService()
 
     private let netable = Netable(baseURL: URL(string: "http://localhost:8080/")!)
 

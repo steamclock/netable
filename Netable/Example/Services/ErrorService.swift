@@ -11,7 +11,7 @@ import Foundation
 import Netable
 
 class ErrorService {
-    static var shared = ErrorService()
+    static let shared = ErrorService()
 
     var errors = PassthroughSubject<NetableError?, Never>()
 }
