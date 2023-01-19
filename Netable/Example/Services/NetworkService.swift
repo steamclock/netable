@@ -18,7 +18,7 @@ class SimpleNetworkService {
     func getVersion() {
         Task {
             do {
-                let version = try await netable.request(GetVersionRequest())
+                try await netable.request(GetVersionRequest())
             } catch {
                 print(error)
             }

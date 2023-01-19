@@ -71,7 +71,7 @@ class AuthNetworkService {
 
        let createRequest = Task {
             do {
-               let result = try await netable.request(CreatePostRequest(parameters: CreatePostParameters(title: title, content: content)))
+               try await netable.request(CreatePostRequest(parameters: CreatePostParameters(title: title, content: content)))
             } catch {
                 print("Create request error: \(error)")
             }

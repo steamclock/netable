@@ -9,7 +9,7 @@
 import Foundation
 import Netable
 
-struct User: Decodable {
+struct User: Decodable, Sendable {
     let firstName: String
     let lastName: String
     let location: String
