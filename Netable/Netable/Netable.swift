@@ -36,7 +36,7 @@ public actor Netable {
     public let retryConfiguration: RetryConfiguration
 
     /// Delegate to handle global request errors
-    public nonisolated let requestFailureDelegate: RequestFailureDelegate?
+    public let requestFailureDelegate: RequestFailureDelegate?
 
     /// Publisher for global request errors
     private let requestFailureSubject = PassthroughSubject<NetableError, Never>()

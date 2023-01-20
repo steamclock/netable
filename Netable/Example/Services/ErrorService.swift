@@ -10,17 +10,21 @@ import Combine
 import Foundation
 import Netable
 
-class ErrorService {
+@MainActor
+final class ErrorService {
     static let shared = ErrorService()
 
-    var errors = PassthroughSubject<NetableError?, Never>()
+    let errors = PassthroughSubject<NetableError?, Never>()
 }
+
 
 extension ErrorService: RequestFailureDelegate {
     func requestDidFail<T>(_ request: T, error: NetableError) {
         if case let NetableError.httpError(statusCode, _) = error, statusCode == 401 {
             return
         }
-        errors.send(error)
+        Task { @MainActor in
+            errors.send(error)
+        }
     }
 }

@@ -28,7 +28,7 @@ class AuthNetworkService {
         user = CurrentValueSubject<User?, Never>(nil)
         authError = CurrentValueSubject<NetableError?, Never>(nil)
 
-        unauthNetable = Netable(
+    unauthNetable = Netable(
             baseURL: URL(string: "http://localhost:8080/")!)
 
         unauthNetable.requestFailurePublisher.sink { [weak self] error in
@@ -65,7 +65,7 @@ class AuthNetworkService {
         try await netable.request(GetPostsRequest())
     }
 
-    func createPost(title: String, content: String) {
+    @MainActor func createPost(title: String, content: String) {
         // this request is deliberately failing. Since there is a retry configuration set to the authNetable request,
         //  we are going to make use of `cancel()` to cancel the task after sending it so it doesn't try again.
 
