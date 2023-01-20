@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol RequestFailureDelegate: Sendable {
-    nonisolated func requestDidFail<T: Request>(_ request: T, error: NetableError)
+    func requestDidFail<T: Request>(_ request: T, error: NetableError)
 }

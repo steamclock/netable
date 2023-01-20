@@ -28,7 +28,7 @@ class AuthNetworkService {
         user = CurrentValueSubject<User?, Never>(nil)
         authError = CurrentValueSubject<NetableError?, Never>(nil)
 
-    unauthNetable = Netable(
+        unauthNetable = Netable(
             baseURL: URL(string: "http://localhost:8080/")!)
 
         unauthNetable.requestFailurePublisher.sink { [weak self] error in
