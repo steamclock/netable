@@ -126,7 +126,7 @@ public actor Netable {
      */
     @available(*, deprecated, message: "Please update to use the new `async`/`await` APIs.")
     @discardableResult
-    public nonisolated func request<T: Request>(_ request: T, completion unsafeCompletion: @escaping (Result<T.FinalResource, NetableError>) -> Void) -> Task<(), Never> {
+    public nonisolated func request<T: Request>(_ request: T, completion unsafeCompletion: @escaping @Sendable (Result<T.FinalResource, NetableError>) -> Void) -> Task<(), Never> {
         // We don't need the whole request to run on the main thread, but DO need to make sure the completion does
         let completion: @Sendable (Result<T.FinalResource, NetableError>) -> Void = { result in
             Task { @MainActor in
