@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		3B00B3C726D7EA3C00A1DF79 /* DecodingError+Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B00B3C626D7EA3C00A1DF79 /* DecodingError+Logging.swift */; };
 		A63ABCCA24ABB402004DE84E /* RetryConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63ABCC924ABB402004DE84E /* RetryConfiguration.swift */; };
-		B8A18C0D23F2201000941EA6 /* Netable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C9288023E9F68000DB2B37 /* Netable.framework */; };
-		B8A18C0E23F2201000941EA6 /* Netable.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B8C9288023E9F68000DB2B37 /* Netable.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B8C9288A23E9F68000DB2B37 /* Netable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C9288023E9F68000DB2B37 /* Netable.framework */; };
 		B8C9288F23E9F68000DB2B37 /* NetableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C9288E23E9F68000DB2B37 /* NetableTests.swift */; };
 		B8C9289123E9F68000DB2B37 /* Netable.h in Headers */ = {isa = PBXBuildFile; fileRef = B8C9288323E9F68000DB2B37 /* Netable.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -29,7 +27,6 @@
 		C64ADA47293F9ED900695444 /* ArrayDecodeStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64ADA46293F9ED900695444 /* ArrayDecodeStrategy.swift */; };
 		C64F8592241FE4870028E0E9 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = C64F8591241FE4870028E0E9 /* CHANGELOG.md */; };
 		C65289F526D01829009D486B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65289F426D01829009D486B /* Config.swift */; };
-		C692788626F1254800917E65 /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = C692788526F1254800917E65 /* Swifter */; };
 		C6953F42241A95830044D278 /* LogDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6953F41241A95830044D278 /* LogDestination.swift */; };
 		C6DA3354293822230076F693 /* LossyArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DA3353293822230076F693 /* LossyArray.swift */; };
 		C6F4CFB026D582E8004E6BB8 /* RequestFailedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F4CFAF26D582E8004E6BB8 /* RequestFailedDelegate.swift */; };
@@ -83,13 +80,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B8A18C0F23F2201000941EA6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B8C9287723E9F68000DB2B37 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B8C9287F23E9F68000DB2B37;
-			remoteInfo = Netable;
-		};
 		B8C9288B23E9F68000DB2B37 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B8C9287723E9F68000DB2B37 /* Project object */;
@@ -107,17 +97,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		B8A18C1123F2201000941EA6 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				B8A18C0E23F2201000941EA6 /* Netable.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E186202029425EE7009B6E0C /* Embeded Framworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -134,7 +113,6 @@
 /* Begin PBXFileReference section */
 		3B00B3C626D7EA3C00A1DF79 /* DecodingError+Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DecodingError+Logging.swift"; sourceTree = "<group>"; };
 		A63ABCC924ABB402004DE84E /* RetryConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryConfiguration.swift; sourceTree = "<group>"; };
-		B822C8EB23F20E8900D7BDAD /* NetableExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetableExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8C9288023E9F68000DB2B37 /* Netable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Netable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8C9288323E9F68000DB2B37 /* Netable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Netable.h; sourceTree = "<group>"; };
 		B8C9288423E9F68000DB2B37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -207,15 +185,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B822C8E823F20E8900D7BDAD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B8A18C0D23F2201000941EA6 /* Netable.framework in Frameworks */,
-				C692788626F1254800917E65 /* Swifter in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B8C9287D23E9F68000DB2B37 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -259,7 +228,6 @@
 			children = (
 				B8C9288023E9F68000DB2B37 /* Netable.framework */,
 				B8C9288923E9F68000DB2B37 /* NetableTests.xctest */,
-				B822C8EB23F20E8900D7BDAD /* NetableExample.app */,
 				E1275822292E9C5A0047E5DD /* Example.app */,
 			);
 			name = Products;
@@ -455,28 +423,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		B822C8EA23F20E8900D7BDAD /* NetableExample */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B822C8FE23F20E8B00D7BDAD /* Build configuration list for PBXNativeTarget "NetableExample" */;
-			buildPhases = (
-				B822C8E723F20E8900D7BDAD /* Sources */,
-				B822C8E823F20E8900D7BDAD /* Frameworks */,
-				B822C8E923F20E8900D7BDAD /* Resources */,
-				B8A18C1123F2201000941EA6 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B8A18C1023F2201000941EA6 /* PBXTargetDependency */,
-			);
-			name = NetableExample;
-			packageProductDependencies = (
-				C692788526F1254800917E65 /* Swifter */,
-			);
-			productName = NetableExample;
-			productReference = B822C8EB23F20E8900D7BDAD /* NetableExample.app */;
-			productType = "com.apple.product-type.application";
-		};
 		B8C9287F23E9F68000DB2B37 /* Netable */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B8C9289423E9F68000DB2B37 /* Build configuration list for PBXNativeTarget "Netable" */;
@@ -544,12 +490,9 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1410;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1410;
 				ORGANIZATIONNAME = "Steamclock Software";
 				TargetAttributes = {
-					B822C8EA23F20E8900D7BDAD = {
-						CreatedOnToolsVersion = 11.3.1;
-					};
 					B8C9287F23E9F68000DB2B37 = {
 						CreatedOnToolsVersion = 11.3.1;
 						LastSwiftMigration = 1130;
@@ -580,20 +523,12 @@
 			targets = (
 				B8C9287F23E9F68000DB2B37 /* Netable */,
 				B8C9288823E9F68000DB2B37 /* NetableTests */,
-				B822C8EA23F20E8900D7BDAD /* NetableExample */,
 				E1275821292E9C5A0047E5DD /* Example */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		B822C8E923F20E8900D7BDAD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B8C9287E23E9F68000DB2B37 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -629,13 +564,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		B822C8E723F20E8900D7BDAD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B8C9287C23E9F68000DB2B37 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -714,11 +642,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B8A18C1023F2201000941EA6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B8C9287F23E9F68000DB2B37 /* Netable */;
-			targetProxy = B8A18C0F23F2201000941EA6 /* PBXContainerItemProxy */;
-		};
 		B8C9288C23E9F68000DB2B37 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B8C9287F23E9F68000DB2B37 /* Netable */;
@@ -732,52 +655,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		B822C8FC23F20E8B00D7BDAD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = NetableExample/Resources/NetableExample.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
-				DEVELOPMENT_TEAM = GH868RP95T;
-				INFOPLIST_FILE = NetableExample/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.steamclock.NetableExample;
-				PRODUCT_NAME = NetableExample;
-				SUPPORTS_MACCATALYST = YES;
-				SWIFT_STRICT_CONCURRENCY = complete;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		B822C8FD23F20E8B00D7BDAD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = NetableExample/Resources/NetableExample.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
-				DEVELOPMENT_TEAM = GH868RP95T;
-				INFOPLIST_FILE = NetableExample/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.steamclock.NetableExample;
-				PRODUCT_NAME = NetableExample;
-				SUPPORTS_MACCATALYST = YES;
-				SWIFT_STRICT_CONCURRENCY = complete;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		B8C9289223E9F68000DB2B37 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -804,6 +681,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -868,6 +746,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -925,7 +804,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -955,7 +834,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
-				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1064,15 +943,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B822C8FE23F20E8B00D7BDAD /* Build configuration list for PBXNativeTarget "NetableExample" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B822C8FC23F20E8B00D7BDAD /* Debug */,
-				B822C8FD23F20E8B00D7BDAD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		B8C9287A23E9F68000DB2B37 /* Build configuration list for PBXProject "Netable" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1123,11 +993,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C692788526F1254800917E65 /* Swifter */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C692788426F1254800917E65 /* XCRemoteSwiftPackageReference "swifter" */;
-			productName = Swifter;
-		};
 		E1275845292EDD110047E5DD /* Swifter */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C692788426F1254800917E65 /* XCRemoteSwiftPackageReference "swifter" */;

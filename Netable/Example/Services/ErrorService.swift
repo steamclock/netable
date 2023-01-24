@@ -19,7 +19,7 @@ final class ErrorService {
 
 
 extension ErrorService: RequestFailureDelegate {
-    func requestDidFail<T>(_ request: T, error: NetableError) {
+    nonisolated func requestDidFail<T>(_ request: T, error: NetableError) {
         if case let NetableError.httpError(statusCode, _) = error, statusCode == 401 {
             return
         }

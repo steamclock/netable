@@ -124,7 +124,8 @@ public extension Request where FinalResource == RawResource {
 public extension Request where
     RawResource: Sequence,
     RawResource: Decodable,
-    RawResource.Element: Decodable
+    RawResource.Element: Decodable,
+    RawResource.Element: Sendable
 {
     func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) async throws -> RawResource {
         let decoder = JSONDecoder()
@@ -185,7 +186,8 @@ public extension Request where
     RawResource == SmartUnwrap<FinalResource>,
     FinalResource: Sequence,
     FinalResource: Decodable,
-    FinalResource.Element: Decodable
+    FinalResource.Element: Decodable,
+    FinalResource.Element: Sendable
 {
     func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) async throws -> RawResource {
         guard let data = data else {
