@@ -154,19 +154,16 @@ public actor Netable {
      *
      * - returns: A tuple that contains a reference to the `Task`, for cancellation, and a PassthroughSubject to monitor for results.
      */
+    
     public nonisolated func request<T: Request>(_ request: T) -> (task: Task<(), Never>, subject: Publishers.ReceiveOn<PassthroughSubject<Result<T.FinalResource, NetableError>, Never>, RunLoop>) {
-        let resultSubject = PassthroughSubject<Result<T.FinalResource, NetableError>, Never>()
+         let resultSubject = PassthroughSubject<Result<T.FinalResource, NetableError>, Never>()
 
         let task = Task {
             do {
                 let finalResource = try await self.request(request)
-                await MainActor.run {
                     resultSubject.send(.success(finalResource))
-                }
             } catch {
-                await MainActor.run {
                     resultSubject.send(.failure(error.netableError))
-                }
             }
         }
 
@@ -269,9 +266,11 @@ public actor Netable {
     }
 
     internal func sendToErrorDelegates<T: Request>(_ error: NetableError, request: T) {
-        Task { @MainActor in
+        Task {
             self.requestFailureSubject.send(error)
             self.requestFailureDelegate?.requestDidFail(request, error: error)
         }
     }
 }
+
+extension AnyPublisher: @unchecked Sendable {}

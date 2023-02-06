@@ -10,7 +10,7 @@ import Foundation
 import Netable
 
 class GraphQLNetworkService {
-    static var shared = GraphQLNetworkService()
+    static let shared = GraphQLNetworkService()
 
     private let netable = Netable(baseURL: URL(string: "http://localhost:8080/graphql")!)
 

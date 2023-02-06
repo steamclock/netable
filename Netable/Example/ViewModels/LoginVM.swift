@@ -9,6 +9,7 @@
 import Combine
 import Foundation
 
+@MainActor
 class LoginVM: ObservableVM {
     @Published var user: User?
     @Published var username: String = ""

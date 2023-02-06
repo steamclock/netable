@@ -8,6 +8,7 @@
 
 import Foundation
 
+@MainActor
 class GraphQLVM: ObservableObject {
     @Published var posts: [Post]?
     @Published var title: String = ""
