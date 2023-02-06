@@ -161,13 +161,9 @@ public actor Netable {
         let task = Task {
             do {
                 let finalResource = try await self.request(request)
-                await MainActor.run {
                     resultSubject.send(.success(finalResource))
-                }
             } catch {
-                await MainActor.run {
                     resultSubject.send(.failure(error.netableError))
-                }
             }
         }
 
