@@ -18,6 +18,6 @@ class DataManager {
     }
 
     func printData() {
-        print("Data Manager User: ", user)
+        print("Data Manager User: ", user ?? "No User Found")
     }
 }
