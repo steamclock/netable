@@ -44,7 +44,9 @@ class RootVM: ObservableVM {
     }
 
     func getVersion() {
-        SimpleNetworkService.shared.getVersion()
+        Task {
+            try await SimpleNetworkService.shared.getVersion()
+        }
     }
 
     func clearError() {

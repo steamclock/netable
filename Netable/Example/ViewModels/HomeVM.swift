@@ -9,6 +9,7 @@
 import Foundation
 import Netable
 
+@MainActor
 class HomeVM: ObservableVM {
     @Published var title: String = ""
     @Published var content: String = ""

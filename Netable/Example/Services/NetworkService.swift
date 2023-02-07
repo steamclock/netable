@@ -11,17 +11,11 @@ import Foundation
 import Netable
 
 class SimpleNetworkService {
-    static var shared = SimpleNetworkService()
+    static let shared = SimpleNetworkService()
 
     private let netable = Netable(baseURL: URL(string: "http://localhost:8080/")!)
 
-    func getVersion() {
-        Task {
-            do {
-                let version = try await netable.request(GetVersionRequest())
-            } catch {
-                print(error)
-            }
-        }
+    func getVersion() async throws {
+        try await netable.request(GetVersionRequest())
     }
 }

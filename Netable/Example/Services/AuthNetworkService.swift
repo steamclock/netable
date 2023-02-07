@@ -11,7 +11,7 @@ import Foundation
 import Netable
 
 class AuthNetworkService {
-    static var shared = AuthNetworkService()
+    static let shared = AuthNetworkService()
 
     private let unauthNetable: Netable
 
@@ -65,13 +65,13 @@ class AuthNetworkService {
         try await netable.request(GetPostsRequest())
     }
 
-    func createPost(title: String, content: String) {
+    @MainActor func createPost(title: String, content: String) {
         // this request is deliberately failing. Since there is a retry configuration set to the authNetable request,
         //  we are going to make use of `cancel()` to cancel the task after sending it so it doesn't try again.
 
        let createRequest = Task {
             do {
-               let result = try await netable.request(CreatePostRequest(parameters: CreatePostParameters(title: title, content: content)))
+               try await netable.request(CreatePostRequest(parameters: CreatePostParameters(title: title, content: content)))
             } catch {
                 print("Create request error: \(error)")
             }

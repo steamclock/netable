@@ -10,6 +10,7 @@ import Combine
 import Foundation
 import Netable
 
+@MainActor
 class ObservableVM: ObservableObject {
 
     var cancellables: [AnyCancellable] = []
