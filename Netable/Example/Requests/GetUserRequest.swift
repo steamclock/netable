@@ -19,8 +19,7 @@ struct GetUserRequest: Request {
     var path = "user/profile"
     var headers: [String : String]
 
-    func postProcess(result: FinalResource) -> FinalResource {
+    func postProcess(result: FinalResource) {
         DataManager.shared.user = result
-        return result
     }
 }

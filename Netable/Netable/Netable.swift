@@ -105,9 +105,9 @@ public actor Netable {
             request.headers.forEach { key, value in
                 urlRequest.setValue(value, forHTTPHeaderField: key)
             }
-            let successfultResult = try await startRequestTask(request, urlRequest: urlRequest, id: UUID().uuidString)
-            let postProcessed = try await request.postProcess(result: successfultResult)
-            return postProcessed
+            let result = try await startRequestTask(request, urlRequest: urlRequest, id: UUID().uuidString)
+            try await request.postProcess(result: result)
+            return result
 
         } catch {
             let netableError = (error as? NetableError) ?? NetableError.unknownError(error)
