@@ -106,9 +106,7 @@ public actor Netable {
                 urlRequest.setValue(value, forHTTPHeaderField: key)
             }
             let result = try await startRequestTask(request, urlRequest: urlRequest, id: UUID().uuidString)
-            try await request.postProcess(result: result)
-            return result
-
+            return try await request.postProcess(result: result)
         } catch {
             let netableError = (error as? NetableError) ?? NetableError.unknownError(error)
             await log(.requestCreationFailed(urlString: request.path, error: netableError))

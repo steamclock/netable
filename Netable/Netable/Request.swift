@@ -61,7 +61,7 @@ public protocol Request: Sendable {
     func finalize(raw: RawResource) async throws -> FinalResource
 
     /// Optional: The method to perform a process after getting the result but before the request returns it.
-    func postProcess(result: FinalResource) async throws
+    func postProcess(result: FinalResource) async throws -> FinalResource
 }
 
 public extension Request {
@@ -109,8 +109,9 @@ public extension Request {
         return nil
     }
 
-    /// Sets the default `postProcess` to not perform any functionality.
-    func postProcess(result: FinalResource) {
+    /// Sets the default `postProcess` to just return the FinalResource.
+    func postProcess(result: FinalResource) -> FinalResource {
+        return result
     }
 }
 
