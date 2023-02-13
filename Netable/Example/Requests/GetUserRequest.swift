@@ -18,4 +18,9 @@ struct GetUserRequest: Request {
     var jsonKeyDecodingStrategy: JSONDecoder.KeyDecodingStrategy? { .convertFromKebabCase }
     var path = "user/profile"
     var headers: [String : String]
+
+    func postProcess(result: FinalResource) -> FinalResource {
+        DataManager.shared.user = result
+        return result
+    }
 }

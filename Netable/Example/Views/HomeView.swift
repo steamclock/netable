@@ -40,6 +40,7 @@ struct HomeView: View {
         }.padding()
         .onAppear {
             viewModel.bindViewModel()
+            DataManager.shared.printData()
         }
         .onDisappear {
             viewModel.unbindViewModel()

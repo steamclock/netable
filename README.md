@@ -154,7 +154,7 @@ netable.request(GetCatImages()) { result in
 
 #### Canceling A Request
 
-You're able to easily cancel a request using `.cancel()`, which you can see in action in the [AuthNetworkService](https://github.com/steamclock/netable/blob/master/Netable/Example/Services/AuthNetworkService.swift#L82) within the Example Project.
+You're able to easily cancel a request using `.cancel()`, which you can see in action in the [AuthNetworkService](https://github.com/steamclock/netable/blob/main/Netable/Example/Services/AuthNetworkService.swift#L82) within the Example Project.
 
 To cancel a task, we first need to ensure we retain a reference to the task, like so: 
 
@@ -348,13 +348,32 @@ Note: to access the LossyArray's elements, you have to access `.element` within,
     }
 ```
 
+#### Perform an optional process before returning the result using postProcess
+
+This is helpful for managing data in places like caches or data managers. You can see this more indepth in our [UserRequest](https://github.com/steamclock/netable/blob/main/Netable/Example/Requests/GetUserRequest.swift)
+
+To use `postProcess` inside of the request, add the code you want to run before the return statement:
+
+```swift
+
+struct GetUserRequest: Request {
+   // ...
+   
+    func postProcess(result: FinalResource) -> FinalResource {
+        DataManager.shared.user = result
+        return result
+    }
+}
+
+```
+
 ### Handling Errors
 
 In addition to handling errors locally that are thrown, or returned through `Result` objects, we provide two ways to handle errors globally. These can be useful for doing things like presenting errors in the UI for common error cases across multiple requests, or catching things like failed authentication requests to clear a stored user.
 
 #### Using `requestFailureDelegate`
 
-See [GlobalRequestFailureDelegate](https://github.com/steamclock/netable/blob/master/Netable/Example/Services/ErrorService.swift) in the Example project for a more detailed example.
+See [GlobalRequestFailureDelegate](https://github.com/steamclock/netable/blob/main/Netable/Example/Services/ErrorService.swift) in the Example project for a more detailed example.
 
 ```swift
 extension GlobalRequestFailureDelegateExample: RequestFailureDelegate {
@@ -369,7 +388,7 @@ extension GlobalRequestFailureDelegateExample: RequestFailureDelegate {
 
 If you prefer `Combine`, you can subscribe to this publisher to receive `NetableErrors` from elsewhere in your app.
 
-See [GlobalRequestFailurePublisher](https://github.com/steamclock/netable/blob/master/Netable/Example/Services/AuthNetworkService.swift#L34) in the Example project for a more detailed example.
+See [GlobalRequestFailurePublisher](https://github.com/steamclock/netable/blob/main/Netable/Example/Services/AuthNetworkService.swift#L34) in the Example project for a more detailed example.
 
 ```swift
 netable.requestFailurePublisher.sink { error in
@@ -400,11 +419,11 @@ struct GetCatRequest: Request {
 typealias RawResource: CoolCat
 typealias FallbackResource: Cat
 
-\\
+// ...
 }
 ```
 
-See [FallbackDecoderViewController](https://github.com/steamclock/netable/blob/master/Netable/Example/Requests/GetVersionRequest.swift) in the Example project for a more detailed example.
+See [FallbackDecoderViewController](https://github.com/steamclock/netable/blob/main/Netable/Example/Requests/GetVersionRequest.swift) in the Example project for a more detailed example.
 
 ### GraphQL Support
 
@@ -420,7 +439,7 @@ struct GetAllPostsQuery: GraphQLRequest {
 }
 ```
 
-See [UpdatePostsMutation](https://github.com/steamclock/netable/blob/master/Netable/Example/Requests/GraphQL/UpdatePostsMutation.swift) in the Example Project for a more detailed example. Note that by default it's important that your `.graphql` file's name matches _exactly_ with your request.
+See [UpdatePostsMutation](https://github.com/steamclock/netable/blob/main/Netable/Example/Requests/GraphQL/UpdatePostsMutation.swift) in the Example Project for a more detailed example. Note that by default it's important that your `.graphql` file's name matches _exactly_ with your request.
 
 We recommend using a tool like [Postman](https://www.postman.com/) to document and test your queries. Also note that currently, shared fragments are not supported.
 
@@ -450,4 +469,4 @@ Since Netable 2.0 leverages `async`/`await` under the hood, if you want to build
 
 ## License
 
-Netable is available under the MIT license. See the [License.md](https://github.com/steamclock/netable/blob/master/LICENSE.md) for more info.
+Netable is available under the MIT license. See the [License.md](https://github.com/steamclock/netable/blob/main/LICENSE.md) for more info.

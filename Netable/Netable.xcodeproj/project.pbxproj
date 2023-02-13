@@ -56,6 +56,7 @@
 		E17FBD532950E3FA00B6533E /* ObservableVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17FBD522950E3FA00B6533E /* ObservableVM.swift */; };
 		E17FBD552950E64C00B6533E /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17FBD542950E64C00B6533E /* LoginVM.swift */; };
 		E186202129425EFF009B6E0C /* Netable.framework in Embeded Framworks */ = {isa = PBXBuildFile; fileRef = B8C9288023E9F68000DB2B37 /* Netable.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E188440A297B3C63009EE74B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1884409297B3C63009EE74B /* DataManager.swift */; };
 		E18AAA1029312DF700756455 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA0F29312DF700756455 /* Version.swift */; };
 		E18AAA19293524AA00756455 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA18293524AA00756455 /* NetworkService.swift */; };
 		E18AAA1B2935251400756455 /* GetVersionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AAA1A2935251400756455 /* GetVersionRequest.swift */; };
@@ -161,6 +162,7 @@
 		E17FBD4E2950E25600B6533E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E17FBD522950E3FA00B6533E /* ObservableVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableVM.swift; sourceTree = "<group>"; };
 		E17FBD542950E64C00B6533E /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
+		E1884409297B3C63009EE74B /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		E18AAA0F29312DF700756455 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		E18AAA18293524AA00756455 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		E18AAA1A2935251400756455 /* GetVersionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVersionRequest.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 		E1275823292E9C5A0047E5DD /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				E1884408297B3C55009EE74B /* Managers */,
 				E18AAA2629368F9200756455 /* Helpers */,
 				E18AAA152935243100756455 /* Services */,
 				E1275848292EE7950047E5DD /* ViewModels */,
@@ -375,6 +378,14 @@
 				E17FBD542950E64C00B6533E /* LoginVM.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E1884408297B3C55009EE74B /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				E1884409297B3C63009EE74B /* DataManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		E18AAA152935243100756455 /* Services */ = {
@@ -633,6 +644,7 @@
 				E17FBD4D2950DBB500B6533E /* ErrorView.swift in Sources */,
 				E17FBD4F2950E25600B6533E /* LoginView.swift in Sources */,
 				E1BAC49D293AAA190042BF60 /* CreatePostRequest.swift in Sources */,
+				E188440A297B3C63009EE74B /* DataManager.swift in Sources */,
 				E18AAA1B2935251400756455 /* GetVersionRequest.swift in Sources */,
 				E18AAA1029312DF700756455 /* Version.swift in Sources */,
 				E127583B292EB21C0047E5DD /* Post.swift in Sources */,
