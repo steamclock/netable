@@ -33,11 +33,8 @@ public struct Interceptor: Sendable {
         }
 
         if let adapted = adaptedURLRequest {
-            print("==== returning changed")
             return AdaptedRequest.changed(adapted)
         }
-
-        print("=== returning no change")
 
         return .notChanged
     }
