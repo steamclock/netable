@@ -9,14 +9,14 @@
 
 import Foundation
 
-public struct Interceptor: Sendable {
-    let interceptors: [RequestInterceptor]
+public struct InterceptorList: Sendable {
+    let interceptors: [Interceptor]
 
-    public init(_ interceptors: [RequestInterceptor]) {
+    public init(_ interceptors: [Interceptor]) {
         self.interceptors = interceptors
     }
 
-    public init(_ interceptor: RequestInterceptor) {
+    public init(_ interceptor: Interceptor) {
         self.interceptors = [interceptor]
     }
 
@@ -40,12 +40,12 @@ public struct Interceptor: Sendable {
     }
 }
 
-public enum AdaptedRequest {
+public enum AdaptedRequest: Sendable {
     case changed(URLRequest)
     case mocked(URL)
     case notChanged
 }
 
-public protocol RequestInterceptor: Sendable {
+public protocol Interceptor: Sendable {
     func adapt(_ request: URLRequest, instance: Netable) async throws -> AdaptedRequest
 }

@@ -31,7 +31,7 @@ public actor Netable {
 
     /// Any interceptors to be applied to all outgoing requests.
     /// These interceptors will be applied _before_ any request-level interceptors.
-    public let interceptor: Interceptor?
+    public let interceptorList: InterceptorList?
 
     /// Destination that logs will be printed to during network requests.
     public let logDestination: LogDestination
@@ -51,20 +51,20 @@ public actor Netable {
      *
      * - parameter baseURL: The base URL of your endpoint.
      * - parameter config: Configuration such as timeouts and caching policies for the underlying url session.
-     * - parameter interceptor: Any interceptors to be applied to all outoing requests.
+     * - parameter interceptorList: Any interceptors to be applied to all outoing requests.
      * - parameter logDestination: Destination to send request logs to. Default is DefaultLogDestination
      * - parameter retryConfiguration: Configuration for request retry policies
      */
     public init(
             baseURL: URL,
             config: Config = Config(),
-            interceptor: Interceptor? = nil,
+            interceptorList: InterceptorList? = nil,
             logDestination: LogDestination = DefaultLogDestination(),
             retryConfiguration: RetryConfiguration = RetryConfiguration(),
             requestFailureDelegate: RequestFailureDelegate? = nil) {
         self.baseURL = baseURL
         self.config = config
-        self.interceptor = interceptor
+        self.interceptorList = interceptorList
         self.logDestination = logDestination
         self.retryConfiguration = retryConfiguration
         self.requestFailureDelegate = requestFailureDelegate
@@ -83,13 +83,12 @@ public actor Netable {
      * Create and send a new asynchronous request.
      *
      * - parameter request: The request to send, this has to extend `Request`.
-     * - parameter interceptor: Any interceptors to apply to this request. These will be applied _after_ any Netable-level interceptors.
      *
      * - Throws: An error of type `NetableError`
      * - returns: Your `FinalResource`
      */
     @discardableResult
-    public func request<T: Request>(_ request: T, interceptor: Interceptor? = nil) async throws -> T.FinalResource {
+    public func request<T: Request>(_ request: T) async throws -> T.FinalResource {
         var urlRequest: URLRequest!
 
         do {
@@ -115,7 +114,6 @@ public actor Netable {
             }
             let result = try await startRequestTask(
                 request,
-                interceptor: interceptor,
                 urlRequest: urlRequest,
                 id: UUID().uuidString
             )
@@ -133,7 +131,6 @@ public actor Netable {
      * Under the hood, this will use async/await to dispatch your request and return the result on the main thread.
      *
      * - parameter request: The request to send, this has to extend `Request`.
-     * - parameter interceptor: Any interceptors to apply to this request. These will be applied _after_ any Netable-level interceptors.
      * - parameter completion: Your completion handler for the request.
      *
      * - returns: the Task your request is running in, for cancellation
@@ -142,7 +139,6 @@ public actor Netable {
     @discardableResult
     public nonisolated func request<T: Request>(
         _ request: T,
-        interceptor: Interceptor? = nil,
         completion unsafeCompletion: @escaping @Sendable (Result<T.FinalResource, NetableError>) -> Void
     ) -> Task<(), Never> {
         // We don't need the whole request to run on the main thread, but DO need to make sure the completion does
@@ -154,7 +150,7 @@ public actor Netable {
 
         let task = Task {
             do {
-                let result = try await self.request(request, interceptor: interceptor)
+                let result = try await self.request(request)
                 completion(.success(result))
             } catch {
                 completion(.failure(error.netableError))
@@ -169,17 +165,16 @@ public actor Netable {
      * Note that the PassthroughSubject runs on RunLoop.main.
      *
      * - parameter request: The request to send, this has to extend `Request
-     * - parameter interceptor: Any interceptors to apply to this request. These will be applied _after_ any Netable-level interceptors.
      *
      * - returns: A tuple that contains a reference to the `Task`, for cancellation, and a PassthroughSubject to monitor for results.
      */
     
-    public nonisolated func request<T: Request>(_ request: T, interceptor: Interceptor? = nil) -> (task: Task<(), Never>, subject: Publishers.ReceiveOn<PassthroughSubject<Result<T.FinalResource, NetableError>, Never>, RunLoop>) {
+    public nonisolated func request<T: Request>(_ request: T) -> (task: Task<(), Never>, subject: Publishers.ReceiveOn<PassthroughSubject<Result<T.FinalResource, NetableError>, Never>, RunLoop>) {
          let resultSubject = PassthroughSubject<Result<T.FinalResource, NetableError>, Never>()
 
         let task = Task {
             do {
-                let finalResource = try await self.request(request, interceptor: interceptor)
+                let finalResource = try await self.request(request)
                     resultSubject.send(.success(finalResource))
             } catch {
                     resultSubject.send(.failure(error.netableError))
@@ -191,7 +186,6 @@ public actor Netable {
 
     private func startRequestTask<T: Request>(
         _ request: T,
-        interceptor: Interceptor?,
         urlRequest: URLRequest,
         id: String
     ) async throws -> T.FinalResource {
@@ -199,17 +193,8 @@ public actor Netable {
 
         var finalUrlRequest = urlRequest
         var mockedUrl: URL?
-        if let interceptor = self.interceptor {
-            let result = try await interceptor.applyInterceptors(request: finalUrlRequest, instance: self)
-            switch result {
-            case .changed(let newRequest): finalUrlRequest = newRequest
-            case .mocked(let url): mockedUrl = url
-            case .notChanged: break
-            }
-        }
-
-        if let interceptor = interceptor {
-            let result = try await interceptor.applyInterceptors(request: finalUrlRequest, instance: self)
+        if let interceptorList = self.interceptorList {
+            let result = try await interceptorList.applyInterceptors(request: finalUrlRequest, instance: self)
             switch result {
             case .changed(let newRequest): finalUrlRequest = newRequest
             case .mocked(let url): mockedUrl = url
@@ -235,9 +220,7 @@ public actor Netable {
 
         if let mocked = mockedUrl {
             let data = try Data(contentsOf: mocked)
-            let decoded = try await request.decode(data, defaultDecodingStrategy: self.config.jsonDecodingStrategy)
-            let finalizedResult = try await request.finalize(raw: decoded)
-            return finalizedResult
+            return try await finalize(request: request, data: data)
         }
 
         for retry in 0..<retryConfiguration.count {
@@ -249,8 +232,7 @@ public actor Netable {
                   throw NetableError.httpError(response.statusCode, data)
                 }
 
-                let decoded = try await request.decode(data, defaultDecodingStrategy: self.config.jsonDecodingStrategy)
-                let finalizedResult = try await request.finalize(raw: decoded)
+                let finalizedResult = try await finalize(request: request, data: data)
 
                 await self.log(.requestSuccess(request: requestInfo, taskTime: CACurrentMediaTime() - startTimestamp, statusCode: response.statusCode, responseData: data, finalizedResult: finalizedResult))
 
@@ -292,6 +274,12 @@ public actor Netable {
     }
 
     // MARK: Private Helper Functions
+
+    private func finalize<T: Request>(request: T, data: Data) async throws -> T.FinalResource {
+        let decoded = try await request.decode(data, defaultDecodingStrategy: self.config.jsonDecodingStrategy)
+        let finalizedResult = try await request.finalize(raw: decoded)
+        return finalizedResult
+    }
 
     /**
      * Helper function for logging, to avoid having to reference the log destination everywhere and so we can possibly change the semantics of,

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		3B00B3C726D7EA3C00A1DF79 /* DecodingError+Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B00B3C626D7EA3C00A1DF79 /* DecodingError+Logging.swift */; };
 		A63ABCCA24ABB402004DE84E /* RetryConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63ABCC924ABB402004DE84E /* RetryConfiguration.swift */; };
-		B31E6D2B2A2FB6480002AE1E /* Interceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E6D2A2A2FB6480002AE1E /* Interceptor.swift */; };
+		B31E6D2B2A2FB6480002AE1E /* InterceptorList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E6D2A2A2FB6480002AE1E /* InterceptorList.swift */; };
 		B8C9288A23E9F68000DB2B37 /* Netable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C9288023E9F68000DB2B37 /* Netable.framework */; };
 		B8C9288F23E9F68000DB2B37 /* NetableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C9288E23E9F68000DB2B37 /* NetableTests.swift */; };
 		B8C9289123E9F68000DB2B37 /* Netable.h in Headers */ = {isa = PBXBuildFile; fileRef = B8C9288323E9F68000DB2B37 /* Netable.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -115,7 +115,7 @@
 /* Begin PBXFileReference section */
 		3B00B3C626D7EA3C00A1DF79 /* DecodingError+Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DecodingError+Logging.swift"; sourceTree = "<group>"; };
 		A63ABCC924ABB402004DE84E /* RetryConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryConfiguration.swift; sourceTree = "<group>"; };
-		B31E6D2A2A2FB6480002AE1E /* Interceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interceptor.swift; sourceTree = "<group>"; };
+		B31E6D2A2A2FB6480002AE1E /* InterceptorList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterceptorList.swift; sourceTree = "<group>"; };
 		B8C9288023E9F68000DB2B37 /* Netable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Netable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8C9288323E9F68000DB2B37 /* Netable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Netable.h; sourceTree = "<group>"; };
 		B8C9288423E9F68000DB2B37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -248,7 +248,7 @@
 				C639674B28E4F4BF00ADAE3E /* Helper */,
 				B8C928A223E9FBEC00DB2B37 /* HTTPMethod.swift */,
 				B8C9288423E9F68000DB2B37 /* Info.plist */,
-				B31E6D2A2A2FB6480002AE1E /* Interceptor.swift */,
+				B31E6D2A2A2FB6480002AE1E /* InterceptorList.swift */,
 				C6953F41241A95830044D278 /* LogDestination.swift */,
 				C6DA3353293822230076F693 /* LossyArray.swift */,
 				B8C9288323E9F68000DB2B37 /* Netable.h */,
@@ -593,7 +593,7 @@
 				B8C928A123E9FBA100DB2B37 /* Request.swift in Sources */,
 				C6DA3354293822230076F693 /* LossyArray.swift in Sources */,
 				C65289F526D01829009D486B /* Config.swift in Sources */,
-				B31E6D2B2A2FB6480002AE1E /* Interceptor.swift in Sources */,
+				B31E6D2B2A2FB6480002AE1E /* InterceptorList.swift in Sources */,
 				C639674D28E4F4CD00ADAE3E /* Netable+Equatable.swift in Sources */,
 				C6953F42241A95830044D278 /* LogDestination.swift in Sources */,
 				C64ADA47293F9ED900695444 /* ArrayDecodeStrategy.swift in Sources */,
