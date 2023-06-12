@@ -63,13 +63,4 @@ public struct InterceptorList: Sendable {
 
         return .notChanged
     }
-
-    /**
-     * Check if a `URL` starts with 'https://' to determine if it's a remote URL or not.
-     *
-     * - parameter url: The URL to check.
-     */
-    private func isRemote(_ url: URL) -> Bool {
-        return url.absoluteString.contains("https://")
-    }
 }

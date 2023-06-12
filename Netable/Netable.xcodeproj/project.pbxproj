@@ -12,7 +12,6 @@
 		B31E6D2B2A2FB6480002AE1E /* InterceptorList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E6D2A2A2FB6480002AE1E /* InterceptorList.swift */; };
 		B367A3352A33A65000032814 /* Interceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B367A3342A33A65000032814 /* Interceptor.swift */; };
 		B367A3372A33AA4900032814 /* AdaptedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B367A3362A33AA4900032814 /* AdaptedRequest.swift */; };
-		B367A3392A33C82E00032814 /* mockPosts.json in Resources */ = {isa = PBXBuildFile; fileRef = B367A3382A33C82E00032814 /* mockPosts.json */; };
 		B8C9288A23E9F68000DB2B37 /* Netable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C9288023E9F68000DB2B37 /* Netable.framework */; };
 		B8C9288F23E9F68000DB2B37 /* NetableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C9288E23E9F68000DB2B37 /* NetableTests.swift */; };
 		B8C9289123E9F68000DB2B37 /* Netable.h in Headers */ = {isa = PBXBuildFile; fileRef = B8C9288323E9F68000DB2B37 /* Netable.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -121,7 +120,6 @@
 		B31E6D2A2A2FB6480002AE1E /* InterceptorList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterceptorList.swift; sourceTree = "<group>"; };
 		B367A3342A33A65000032814 /* Interceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interceptor.swift; sourceTree = "<group>"; };
 		B367A3362A33AA4900032814 /* AdaptedRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptedRequest.swift; sourceTree = "<group>"; };
-		B367A3382A33C82E00032814 /* mockPosts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mockPosts.json; sourceTree = "<group>"; };
 		B8C9288023E9F68000DB2B37 /* Netable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Netable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8C9288323E9F68000DB2B37 /* Netable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Netable.h; sourceTree = "<group>"; };
 		B8C9288423E9F68000DB2B37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -424,7 +422,6 @@
 				E169C7A729383E3B00A49824 /* CustomColor.swift */,
 				E1BAC4962939720D0042BF60 /* CustomLogDestination.swift */,
 				E1B98DBA294A477B00DC9434 /* CustomDecodingStrategy.swift */,
-				B367A3382A33C82E00032814 /* mockPosts.json */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -581,7 +578,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E124E8BB29427057003EBCE3 /* UpdatePostsMutation.graphql in Resources */,
-				B367A3392A33C82E00032814 /* mockPosts.json in Resources */,
 				E18AAA1D293540AD00756455 /* user.json in Resources */,
 				E1275829292E9C5B0047E5DD /* Assets.xcassets in Resources */,
 				E18AAA1F2935469B00756455 /* login.json in Resources */,

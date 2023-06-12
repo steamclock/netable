@@ -163,7 +163,7 @@ public actor Netable {
      * Create and send a new request, returning a tuple containing a reference to the task and a PassthroughSubject to monitor for results.
      * Note that the PassthroughSubject runs on RunLoop.main.
      *
-     * - parameter request: The request to send, this has to extend `Request
+     * - parameter request: The request to send, this has to extend `Request`.
      *
      * - returns: A tuple that contains a reference to the `Task`, for cancellation, and a PassthroughSubject to monitor for results.
      */

@@ -414,7 +414,6 @@ func adapt(_ request: URLRequest, instance: Netable) async throws -> AdaptedRequ
     
     return .notChanged
 }
-
 ```
 
 See [MockRequestInterceptor](https://github.com/steamclock/netable/blob/main/Netable/Example/Services/AuthNetworkService.swift) in the Example project for a more detailed example.
