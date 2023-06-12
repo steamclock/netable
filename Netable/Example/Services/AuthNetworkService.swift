@@ -87,3 +87,17 @@ class AuthNetworkService {
         self.user.send(nil)
     }
 }
+
+final class MockRequestInterceptor: Interceptor {
+    func adapt(_ request: URLRequest, instance: Netable) async throws -> AdaptedRequest {
+        if let requestURL = request.url,
+                let mockedURL = Bundle.main.url(forResource: "mockPosts", withExtension: "json"),
+                requestURL.absoluteString.contains("/all") {
+            return .mocked(mockedURL)
+        }
+
+        return .notChanged
+    }
+}
+
+

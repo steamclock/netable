@@ -30,7 +30,6 @@ public actor Netable {
     public let baseURL: URL
 
     /// Any interceptors to be applied to all outgoing requests.
-    /// These interceptors will be applied _before_ any request-level interceptors.
     public let interceptorList: InterceptorList?
 
     /// Destination that logs will be printed to during network requests.
@@ -169,15 +168,18 @@ public actor Netable {
      * - returns: A tuple that contains a reference to the `Task`, for cancellation, and a PassthroughSubject to monitor for results.
      */
     
-    public nonisolated func request<T: Request>(_ request: T) -> (task: Task<(), Never>, subject: Publishers.ReceiveOn<PassthroughSubject<Result<T.FinalResource, NetableError>, Never>, RunLoop>) {
-         let resultSubject = PassthroughSubject<Result<T.FinalResource, NetableError>, Never>()
+    public nonisolated func request<T: Request>(_ request: T) -> (
+        task: Task<(), Never>,
+        subject: Publishers.ReceiveOn<PassthroughSubject<Result<T.FinalResource, NetableError>, Never>, RunLoop>
+    ) {
+        let resultSubject = PassthroughSubject<Result<T.FinalResource, NetableError>, Never>()
 
         let task = Task {
             do {
                 let finalResource = try await self.request(request)
-                    resultSubject.send(.success(finalResource))
+                resultSubject.send(.success(finalResource))
             } catch {
-                    resultSubject.send(.failure(error.netableError))
+                resultSubject.send(.failure(error.netableError))
             }
         }
 
