@@ -29,6 +29,9 @@ public actor Netable {
     /// The base URL of your api endpoint.
     public let baseURL: URL
 
+    /// Any interceptors to be applied to all outgoing requests.
+    public let interceptorList: InterceptorList?
+
     /// Destination that logs will be printed to during network requests.
     public let logDestination: LogDestination
 
@@ -47,17 +50,20 @@ public actor Netable {
      *
      * - parameter baseURL: The base URL of your endpoint.
      * - parameter config: Configuration such as timeouts and caching policies for the underlying url session.
+     * - parameter interceptorList: Any interceptors to be applied to all outoing requests.
      * - parameter logDestination: Destination to send request logs to. Default is DefaultLogDestination
      * - parameter retryConfiguration: Configuration for request retry policies
      */
     public init(
             baseURL: URL,
             config: Config = Config(),
+            interceptorList: InterceptorList? = nil,
             logDestination: LogDestination = DefaultLogDestination(),
             retryConfiguration: RetryConfiguration = RetryConfiguration(),
             requestFailureDelegate: RequestFailureDelegate? = nil) {
         self.baseURL = baseURL
         self.config = config
+        self.interceptorList = interceptorList
         self.logDestination = logDestination
         self.retryConfiguration = retryConfiguration
         self.requestFailureDelegate = requestFailureDelegate
@@ -105,7 +111,11 @@ public actor Netable {
             request.headers.forEach { key, value in
                 urlRequest.setValue(value, forHTTPHeaderField: key)
             }
-            let result = try await startRequestTask(request, urlRequest: urlRequest, id: UUID().uuidString)
+            let result = try await startRequestTask(
+                request,
+                urlRequest: urlRequest,
+                id: UUID().uuidString
+            )
             return try await request.postProcess(result: result)
         } catch {
             let netableError = (error as? NetableError) ?? NetableError.unknownError(error)
@@ -126,7 +136,10 @@ public actor Netable {
      */
     @available(*, deprecated, message: "Please update to use the new `async`/`await` APIs.")
     @discardableResult
-    public nonisolated func request<T: Request>(_ request: T, completion unsafeCompletion: @escaping @Sendable (Result<T.FinalResource, NetableError>) -> Void) -> Task<(), Never> {
+    public nonisolated func request<T: Request>(
+        _ request: T,
+        completion unsafeCompletion: @escaping @Sendable (Result<T.FinalResource, NetableError>) -> Void
+    ) -> Task<(), Never> {
         // We don't need the whole request to run on the main thread, but DO need to make sure the completion does
         let completion: @Sendable (Result<T.FinalResource, NetableError>) -> Void = { result in
             Task { @MainActor in
@@ -155,28 +168,46 @@ public actor Netable {
      * - returns: A tuple that contains a reference to the `Task`, for cancellation, and a PassthroughSubject to monitor for results.
      */
     
-    public nonisolated func request<T: Request>(_ request: T) -> (task: Task<(), Never>, subject: Publishers.ReceiveOn<PassthroughSubject<Result<T.FinalResource, NetableError>, Never>, RunLoop>) {
-         let resultSubject = PassthroughSubject<Result<T.FinalResource, NetableError>, Never>()
+    public nonisolated func request<T: Request>(_ request: T) -> (
+        task: Task<(), Never>,
+        subject: Publishers.ReceiveOn<PassthroughSubject<Result<T.FinalResource, NetableError>, Never>, RunLoop>
+    ) {
+        let resultSubject = PassthroughSubject<Result<T.FinalResource, NetableError>, Never>()
 
         let task = Task {
             do {
                 let finalResource = try await self.request(request)
-                    resultSubject.send(.success(finalResource))
+                resultSubject.send(.success(finalResource))
             } catch {
-                    resultSubject.send(.failure(error.netableError))
+                resultSubject.send(.failure(error.netableError))
             }
         }
 
         return (task: task, subject: resultSubject.receive(on: RunLoop.main))
     }
 
-    private func startRequestTask<T: Request>(_ request: T, urlRequest: URLRequest, id: String) async throws -> T.FinalResource {
+    private func startRequestTask<T: Request>(
+        _ request: T,
+        urlRequest: URLRequest,
+        id: String
+    ) async throws -> T.FinalResource {
         let startTimestamp = CACurrentMediaTime()
 
+        var finalUrlRequest = urlRequest
+        var mockedUrl: URL?
+        if let interceptorList = self.interceptorList {
+            let result = try await interceptorList.applyInterceptors(request: finalUrlRequest, instance: self)
+            switch result {
+            case .changed(let newRequest): finalUrlRequest = newRequest
+            case .mocked(let url): mockedUrl = url
+            case .notChanged: break
+            }
+        }
+
         let requestInfo = LogEvent.RequestInfo(
-            urlString:  urlRequest.url?.absoluteString ?? "UNDEFINED",
+            urlString:  finalUrlRequest.url?.absoluteString ?? "UNDEFINED",
             method: request.method,
-            headers: urlRequest.allHTTPHeaderFields ?? [:]
+            headers: finalUrlRequest.allHTTPHeaderFields ?? [:]
         )
 
         await log(.requestStarted(request: requestInfo))
@@ -189,17 +220,21 @@ public actor Netable {
 
         let retryConfiguration = self.retryConfiguration
 
+        if let mocked = mockedUrl {
+            let data = try Data(contentsOf: mocked)
+            return try await finalize(request: request, data: data)
+        }
+
         for retry in 0..<retryConfiguration.count {
             do {
-                let (data, response) = try await urlSession.data(for: urlRequest)
+                let (data, response) = try await urlSession.data(for: finalUrlRequest)
                 guard let response = response as? HTTPURLResponse else { fatalError("Casting response to HTTPURLResponse failed") }
 
                 guard 200...299 ~= response.statusCode else {
                   throw NetableError.httpError(response.statusCode, data)
                 }
 
-                let decoded = try await request.decode(data, defaultDecodingStrategy: self.config.jsonDecodingStrategy)
-                let finalizedResult = try await request.finalize(raw: decoded)
+                let finalizedResult = try await finalize(request: request, data: data)
 
                 await self.log(.requestSuccess(request: requestInfo, taskTime: CACurrentMediaTime() - startTimestamp, statusCode: response.statusCode, responseData: data, finalizedResult: finalizedResult))
 
@@ -241,6 +276,12 @@ public actor Netable {
     }
 
     // MARK: Private Helper Functions
+
+    private func finalize<T: Request>(request: T, data: Data) async throws -> T.FinalResource {
+        let decoded = try await request.decode(data, defaultDecodingStrategy: self.config.jsonDecodingStrategy)
+        let finalizedResult = try await request.finalize(raw: decoded)
+        return finalizedResult
+    }
 
     /**
      * Helper function for logging, to avoid having to reference the log destination everywhere and so we can possibly change the semantics of,

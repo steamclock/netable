@@ -18,11 +18,14 @@ public enum NetableError: Error, Sendable {
     /// Something went wrong while encoding request parameters.
     case codingError(String)
 
-    /// Something went wrong while decoding the response.√
+    /// Something went wrong while decoding the response.
     case decodingError(Error, Data?)
 
     /// The request was successful, but returned a non-200 status code.
     case httpError(Int, Data?)
+
+    /// Something went wrong while trying to apply interceptors to the request.
+    case interceptorError(String)
 
     /// The URL provided isn't properly formatted.
     case malformedURL
@@ -73,6 +76,8 @@ extension NetableError: LocalizedError {
             return 8
         case .fallbackDecode:
             return 9
+        case .interceptorError:
+            return 10
         }
     }
 
@@ -92,6 +97,8 @@ extension NetableError: LocalizedError {
             return "\(message) \(error.loggableDescription())"
         case .httpError(let statusCode, _):
             return "HTTP status code: \(statusCode)"
+        case .interceptorError(let message):
+            return "Interceptor error: \(message)"
         case .malformedURL:
             return "Malformed URL"
         case .requestFailed(let error):
@@ -121,6 +128,8 @@ extension NetableError: Equatable {
             return lhsError.localizedDescription == rhsError.localizedDescription && lhsData == rhsData
         case (.httpError(let lhsCode, let lhsData), .httpError(let rhsCode, let rhsData)):
             return lhsCode == rhsCode && lhsData == rhsData
+        case (.interceptorError(let lhsMessage), .interceptorError(let rhsMessage)):
+            return lhsMessage == rhsMessage
         case (.malformedURL, .malformedURL):
             return true
         case (.requestFailed(let lhsError), .requestFailed(let rhsError)):

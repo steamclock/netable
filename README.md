@@ -9,6 +9,7 @@ Modern apps interact with a lot of different APIs. Netable makes that easier by 
     - [Standard Usage](#standard-usage)
     - [Resource Extraction](#resource-extraction)
     - [Handling Errors](#handling-errors)
+    - [Request Interceptors](#request-interceptors)
     - [GraphQL Support](#graphql-support)
 - [Example](#example)
    - [Full Documentation](#full-documentation)
@@ -383,6 +384,39 @@ extension GlobalRequestFailureDelegateExample: RequestFailureDelegate {
     }
 }
 ```
+
+### Request Interceptors
+
+Interceptors are a powerful and flexible way to modify a `Request` before it is executed. When you create your `Netable` instance, you can pass in an optional `InterceptorList`, containing any `Interceptor`s you would like to be applied to requests.
+
+When you make a request, each `Interceptor` will call its `adapt` function in turn, in the order it was passed in to the `InterceptorList`. `adapt` should return a special `AdaptedRequest` object that indicates the result of the function call.
+
+You might attached a new header, modifying the request:
+
+```
+func adapt(_ request: URLRequest, instance: Netable) async throws -> AdaptedRequest {
+    var newRequest = request
+    newRequest.addValue("1a2a3a4a", forHTTPHeaderField: "Authorization")
+    return .changed(newRequest)
+}
+
+```
+
+Or, you might sub out the entire request with a mocked file for specific endpoints, otherwise do nothing:
+
+```
+func adapt(_ request: URLRequest, instance: Netable) async throws -> AdaptedRequest {
+    if request.url.contains("/foo") {
+        return .mocked("./path/to/foo-mock.json")
+    } else if request.url.contains("/bar") {
+        return .mocked("./path/to/bar-mock.json")
+    }
+    
+    return .notChanged
+}
+```
+
+See [MockRequestInterceptor](https://github.com/steamclock/netable/blob/main/Netable/Example/Services/AuthNetworkService.swift) in the Example project for a more detailed example.
 
 #### Using `requestFailurePublisher`
 
