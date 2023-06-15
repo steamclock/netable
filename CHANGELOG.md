@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## UNRELEASED
+
+
+## [2.2.0] 15-6-22
+- [118] Add new `Interceptors` support.
+
+
 ## [2.1.0] 14-12-22
 - [104] Add support for partially decoding arrays through new `arrayDecodingStrategy` parameter on `Request`.
 - [106] Fix `RetryConfiguration` not being marked as `Sendable`.
