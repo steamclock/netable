@@ -5,10 +5,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## UNRELEASED
+## [2.3.0] 15-6-22
+- [118] Add support for request `Interceptors`.
 
 
 ## [2.2.0] 15-6-22
-- [118] Add new `Interceptors` support.
+- [116] Add more support for `Sendable`.
+- [105] Revamp example project to highlight async/await features, use SwiftUI.
 
 
 ## [2.1.0] 14-12-22
