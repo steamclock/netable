@@ -137,7 +137,15 @@ public extension Request where
 {
     func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) async throws -> RawResource {
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
+        let dateDecodingStrategy: JSONDecoder.DateDecodingStrategy
+
+        if #available(iOS 15, *) {
+            dateDecodingStrategy = .iso8601withOptionalFractionalSeconds
+        } else {
+            dateDecodingStrategy = .iso8601
+        }
+
+        decoder.dateDecodingStrategy = dateDecodingStrategy
         decoder.keyDecodingStrategy = jsonKeyDecodingStrategy ?? defaultDecodingStrategy
 
         guard let data = data else { throw NetableError.noData }
@@ -159,7 +167,15 @@ public extension Request where
 public extension Request where RawResource: Decodable {
     func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) async throws -> RawResource {
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
+        let dateDecodingStrategy: JSONDecoder.DateDecodingStrategy
+
+        if #available(iOS 15, *) {
+            dateDecodingStrategy = .iso8601withOptionalFractionalSeconds
+        } else {
+            dateDecodingStrategy = .iso8601
+        }
+
+        decoder.dateDecodingStrategy = dateDecodingStrategy
         decoder.keyDecodingStrategy = jsonKeyDecodingStrategy ?? defaultDecodingStrategy
 
         do {
@@ -207,7 +223,16 @@ public extension Request where
             decoder.userInfo = [
                 .smartUnwrapKey: smartUnwrapKey
             ]
-            decoder.dateDecodingStrategy = .iso8601
+            
+            let dateDecodingStrategy: JSONDecoder.DateDecodingStrategy
+
+            if #available(iOS 15, *) {
+                dateDecodingStrategy = .iso8601withOptionalFractionalSeconds
+            } else {
+                dateDecodingStrategy = .iso8601
+            }
+
+            decoder.dateDecodingStrategy = dateDecodingStrategy
             decoder.keyDecodingStrategy = jsonKeyDecodingStrategy ?? defaultDecodingStrategy
 
 
@@ -241,7 +266,16 @@ public extension Request where RawResource == SmartUnwrap<FinalResource> {
             decoder.userInfo = [
                 .smartUnwrapKey: smartUnwrapKey
             ]
-            decoder.dateDecodingStrategy = .iso8601
+            
+            let dateDecodingStrategy: JSONDecoder.DateDecodingStrategy
+
+            if #available(iOS 15, *) {
+                dateDecodingStrategy = .iso8601withOptionalFractionalSeconds
+            } else {
+                dateDecodingStrategy = .iso8601
+            }
+
+            decoder.dateDecodingStrategy = dateDecodingStrategy
             decoder.keyDecodingStrategy = jsonKeyDecodingStrategy ?? defaultDecodingStrategy
 
             let decodedResult = try decoder.decode(SmartUnwrap<FinalResource>.self, from: data)
@@ -260,7 +294,16 @@ public extension Request where RawResource == SmartUnwrap<FinalResource> {
 public extension Request where RawResource: Decodable, FallbackResource: Decodable {
     func decode(_ data: Data?, defaultDecodingStrategy: JSONDecoder.KeyDecodingStrategy) async throws -> RawResource {
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
+        
+        let dateDecodingStrategy: JSONDecoder.DateDecodingStrategy
+
+        if #available(iOS 15, *) {
+            dateDecodingStrategy = .iso8601withOptionalFractionalSeconds
+        } else {
+            dateDecodingStrategy = .iso8601
+        }
+
+        decoder.dateDecodingStrategy = dateDecodingStrategy
         decoder.keyDecodingStrategy = jsonKeyDecodingStrategy ?? defaultDecodingStrategy
 
         do {
