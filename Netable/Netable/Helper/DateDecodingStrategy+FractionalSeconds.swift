@@ -7,7 +7,7 @@
 
 import Foundation
 
-@available(iOS 15, *)
+@available(iOS 15, macOS 12, *)
 extension JSONDecoder.DateDecodingStrategy {
     static let iso8601withOptionalFractionalSeconds = custom {
         let string = try $0.singleValueContainer().decode(String.self)
@@ -19,7 +19,7 @@ extension JSONDecoder.DateDecodingStrategy {
     }
 }
 
-@available(iOS 15, *)
+@available(iOS 15, macOS 12, *)
 extension ParseStrategy where Self == Date.ISO8601FormatStyle {
     static var iso8601withFractionalSeconds: Self { .init(includingFractionalSeconds: true) }
 }

@@ -139,7 +139,7 @@ public extension Request where
         let decoder = JSONDecoder()
         let dateDecodingStrategy: JSONDecoder.DateDecodingStrategy
 
-        if #available(iOS 15, *) {
+        if #available(iOS 15, macOS 12, *) {
             dateDecodingStrategy = .iso8601withOptionalFractionalSeconds
         } else {
             dateDecodingStrategy = .iso8601
@@ -169,7 +169,7 @@ public extension Request where RawResource: Decodable {
         let decoder = JSONDecoder()
         let dateDecodingStrategy: JSONDecoder.DateDecodingStrategy
 
-        if #available(iOS 15, *) {
+        if #available(iOS 15, macOS 12, *) {
             dateDecodingStrategy = .iso8601withOptionalFractionalSeconds
         } else {
             dateDecodingStrategy = .iso8601
@@ -226,7 +226,7 @@ public extension Request where
             
             let dateDecodingStrategy: JSONDecoder.DateDecodingStrategy
 
-            if #available(iOS 15, *) {
+            if #available(iOS 15, macOS 12, *) {
                 dateDecodingStrategy = .iso8601withOptionalFractionalSeconds
             } else {
                 dateDecodingStrategy = .iso8601
@@ -269,7 +269,7 @@ public extension Request where RawResource == SmartUnwrap<FinalResource> {
             
             let dateDecodingStrategy: JSONDecoder.DateDecodingStrategy
 
-            if #available(iOS 15, *) {
+            if #available(iOS 15, macOS 12, *) {
                 dateDecodingStrategy = .iso8601withOptionalFractionalSeconds
             } else {
                 dateDecodingStrategy = .iso8601
@@ -297,7 +297,7 @@ public extension Request where RawResource: Decodable, FallbackResource: Decodab
         
         let dateDecodingStrategy: JSONDecoder.DateDecodingStrategy
 
-        if #available(iOS 15, *) {
+        if #available(iOS 15, macOS 12, *) {
             dateDecodingStrategy = .iso8601withOptionalFractionalSeconds
         } else {
             dateDecodingStrategy = .iso8601
